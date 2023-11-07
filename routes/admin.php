@@ -17,3 +17,6 @@ Route::post('admin/logout', function () {
 
 Route::get('admin/dashboard' , [DashboardController::class , 'dashboard'])->name('admin.dashboard');
 
+//vehcile_type
+Route::get('admin.vehcile_type/{id}/delete' , [VehcileTypeController::class , 'delete'])->name('vehciletype.delete');
+Route::resource('admin/vehcile_type' , VehcileTypeController::class);
