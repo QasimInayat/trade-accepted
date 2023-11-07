@@ -36,19 +36,27 @@
         <li @if(url()->current() == Route::is('admin.vehicle_type.index' , 'admin.vehicle_type.create' , 'admin.vehicle_type.edit')) class="menu-item active" @endif class="menu-item">
             <a href="{{ route('admin.vehicle_type.index') }}" class="menu-link">
               <i style="margin-right: 10px;" class="fa fa-dashboard"></i>
-              <div>Vehicle TYpe</div>
+              <div>Vehicle Type</div>
+            </a>
+          </li>
+
+
+        <li @if(url()->current() == Route::is('admin.make.index','admin.make.create','admin.make.edit')) class="menu-item active" @endif  class="menu-item">
+            <a href="{{ route('admin.make.index') }}" class="menu-link">
+              <i style="margin-right: 10px;" class="fa fa-user"></i>
+              <div> Make</div>
             </a>
           </li>
 
 
 
           <li class="menu-item">
-            <a class="menu-link" href="{{ route('admin.login') }}" {{-- onclick="event.preventDefault(); document.getElementById('logout-form').submit();" --}}>
+            <a class="menu-link" href="javascript:;"  onclick="event.preventDefault(); document.getElementById('logout-form').submit();" >
                 <i style="margin-right: 10px;" class="fa fa-sign-out"></i>
                 <div class="align-middle"> Log Out</div>
-                {{-- <form id="logout-form" action="{{ route('admin.logout') }}" method="POST" class="d-none">
+                <form id="logout-form" action="{{ route('admin.logout') }}" method="POST" class="d-none">
                    @csrf
-                </form> --}}
+                </form>
              </a>
         </li>
 

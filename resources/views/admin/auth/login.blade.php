@@ -69,10 +69,10 @@
                   <!-- /Logo -->
                   <h4 class="mb-1 pt-2">Welcome to {{ env('APP_NAME')}}! 👋</h4>
                   <p class="mb-4">Please sign-in to your account</p>
-                  @if(Session::has('Error'))
-                  <div class="alert alert-danger">{{ Session::get('Error') }}</div>
+                  @if(Session::has('error'))
+                  <div class="alert alert-danger">{{ Session::get('error') }}</div>
                   @endif
-                  <form id="formAuthentication" class="mb-3" action="#" method="POST">
+                  <form id="formAuthentication" class="mb-3" action="{{ route('admin.login') }}" method="POST">
                      @csrf
                      <div class="mb-3">
                         <label for="email" class="form-label">Email</label>
@@ -108,7 +108,7 @@
         else{
             show.type = 'password';
         }
-    }</script>    
+    }</script>
 <script>
       (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
         new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],

@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\VehicleTypeController;
+use App\Http\Controllers\Admin\MakeController;
 
 
 
@@ -16,8 +17,17 @@ Route::post('admin/logout', function () {
 
 
 
-Route::get('admin/dashboard' , [DashboardController::class , 'dashboard'])->name('admin.dashboard');
+Route::middleware(['auth:admin'])->name('admin.')->prefix('admin')->group(function () {
 
 //vehicle_type
-Route::get('admin.vehicle_type/{id}/delete' , [VehicleTypeController::class , 'delete'])->name('admin.vehicle-type.delete');
-Route::resource('admin/vehicle_type' , VehicleTypeController::class);
+Route::get('vehicle_type/{slug}/delete' , [VehicleTypeController::class , 'delete'])->name('vehicle_type.delete');
+Route::resource('vehicle_type' , VehicleTypeController::class);
+    // Dashboard
+    Route::get('dashboard' , [DashboardController::class , 'dashboard'])->name('dashboard');
+
+    //Make
+    Route::get('make/{slug}/delete', [MakeController::class, 'delete'])->name('make.delete');
+    Route::resource('make', MakeController::class);
+
+
+});
