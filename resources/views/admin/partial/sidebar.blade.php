@@ -12,7 +12,7 @@
           <div>
           <a href="{{ route('admin.dashboard') }}"><img src="{{ asset('asset/img/trade-accepted-logo.png') }}" alt="" height="50px" width="200px"></a>
           </div>
-          
+
         </a>
 
         <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto">
@@ -34,7 +34,14 @@
           </a>
         </li>
 
-      
+        <li @if(url()->current() == Route::is('admin.make.index','admin.make.create','admin.make.edit')) class="menu-item active" @endif  class="menu-item">
+            <a href="{{ route('admin.make.index') }}" class="menu-link">
+              <i style="margin-right: 10px;" class="fa fa-user"></i>
+              <div> Make</div>
+            </a>
+          </li>
+
+
 
           <li class="menu-item">
             <a class="menu-link" href="{{ route('admin.login') }}" {{-- onclick="event.preventDefault(); document.getElementById('logout-form').submit();" --}}>
