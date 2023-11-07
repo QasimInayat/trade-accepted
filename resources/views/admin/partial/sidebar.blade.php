@@ -44,12 +44,12 @@
 
 
           <li class="menu-item">
-            <a class="menu-link" href="{{ route('admin.login') }}" {{-- onclick="event.preventDefault(); document.getElementById('logout-form').submit();" --}}>
+            <a class="menu-link" href="javascript:;"  onclick="event.preventDefault(); document.getElementById('logout-form').submit();" >
                 <i style="margin-right: 10px;" class="fa fa-sign-out"></i>
                 <div class="align-middle"> Log Out</div>
-                {{-- <form id="logout-form" action="{{ route('admin.logout') }}" method="POST" class="d-none">
+                <form id="logout-form" action="{{ route('admin.logout') }}" method="POST" class="d-none">
                    @csrf
-                </form> --}}
+                </form>
              </a>
         </li>
 

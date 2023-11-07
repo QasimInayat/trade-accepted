@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\MakeController;
 
 
 
@@ -15,8 +16,14 @@ Route::post('admin/logout', function () {
 
 
 
-Route::get('admin/dashboard' , [DashboardController::class , 'dashboard'])->name('admin.dashboard');
+Route::middleware(['auth:admin'])->name('admin.')->prefix('admin')->group(function () {
 
- //Make
-Route::get('admin/make/{slug}/delete', [MakeController::class, 'delete'])->name('admin.make.delete');
-Route::resource('admin/make', MakeController::class);
+    // Dashboard
+    Route::get('dashboard' , [DashboardController::class , 'dashboard'])->name('dashboard');
+
+    //Make
+    Route::get('make/{slug}/delete', [MakeController::class, 'delete'])->name('make.delete');
+    Route::resource('make', MakeController::class);
+
+
+});
