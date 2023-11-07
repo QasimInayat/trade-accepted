@@ -34,7 +34,7 @@ Make
                      <tr>
                         <td>{{ ++$index }}</td>
                         <td>{{ $make->name }}</td>
-                        <td style="width:10%"><img class="rounded img-thumbnail" src="{{asset('upload/image/'.$make->image)}}" alt="" width="100%"></td>
+                        <td style="width:12%"><img class="rounded img-thumbnail" src="{{asset('upload/image/'.$make->image)}}" alt="" width="100%"></td>
                         <td>
                         @if($make->status == 1)
                     <span class="badge bg-label-success me-1">Active</span>

@@ -43,10 +43,10 @@ class MakeController extends Controller
         ]);
 
         if(!empty($store->id)){
-            return redirect()->route('admin.make.index')->with('success','Make Created');
+            return redirect()->route('admin.make.index')->with('success','Make created');
         }
         else{
-            return redirect()->route('admin.make.create')->with('error','Something Went Wrong');
+            return redirect()->route('admin.make.create')->with('error','Something went wrong');
         }
     }
 
@@ -79,15 +79,15 @@ class MakeController extends Controller
         'image' => $imageName,
     ]);
     if($update > 0){
-        return redirect()->route('admin.make.index')->with('success','Make Updated');
+        return redirect()->route('admin.make.index')->with('success','Make updated');
     }
-    return redirect()->route('admin.make.index')->with('error','something went wrong');
+    return redirect()->route('admin.make.index')->with('error','Something went wrong');
     }
     public function delete($slug){
         $makes =  Make::where('slug',$slug)->first();
         if(!empty($makes)){
             $makes->delete();
-            return redirect()->route('admin.make.index')->with('success','Make Deleted');
+            return redirect()->route('admin.make.index')->with('success','Make deleted');
            }
            return redirect()->route('admin.make.index')->with('error','record not found');
         }
