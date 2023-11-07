@@ -23,13 +23,13 @@ Create Vehicle Type
                      </div>
                      <div class="col-md-6">
                         <div style="float: right; margin-right: 15px;" class="mt-4">
-                           <a href="{{ route('admin.vehicle-type.index') }}" class="btn btn-primary waves-effect">Back to Vehicle Type</a>
+                           <a href="{{ route('admin.vehicle_type.index') }}" class="btn btn-primary waves-effect">Back to Vehicle Type</a>
                         </div>
                      </div>
                   </div>
                   <div class="card-body">
 
-                     {!! Form::open(['route' => 'admin.vehicle-type.store' , 'enctype' => 'multipart/form-data' ]) !!}
+                     {!! Form::open(['route' => 'admin.vehicle_type.store' , 'enctype' => 'multipart/form-data' ]) !!}
 
                         <div class="row">
                            <div class="col-md-6 mt-4">
@@ -40,8 +40,8 @@ Create Vehicle Type
                               </div>
                            </div>
                            <div class="col-md-6 mt-4">
-                                 <input type="file" class="form-control  p-3 " name="logo">
-                                 <small class="text-danger">@error ('logo') {{ $message }} @enderror</small>
+                                 <input type="file" class="form-control  p-3 " name="image">
+                                 <small class="text-danger">@error ('image') {{ $message }} @enderror</small>
                            </div>
                            <div class="col-md-6 mt-4">
                               <div class="form-floating">

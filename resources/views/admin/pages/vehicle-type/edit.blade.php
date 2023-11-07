@@ -23,13 +23,13 @@ Edit Vehicle Type
                      </div>
                      <div class="col-md-6">
                         <div style="float: right; margin-right: 15px;" class="mt-4">
-                           <a href="{{ route('admin.vehicle-type.index') }}" class="btn btn-primary waves-effect">Back to Vehicle Type</a>
+                           <a href="{{ route('admin.vehicle_type.index') }}" class="btn btn-primary waves-effect">Back to Vehicle Type</a>
                         </div>
                      </div>
                   </div>
                   <div class="card-body">
 
-                     {!! Form::model($vehicletype, ['route' => ['admin.vehicle-type.update' , $vehicletype->slug] , 'enctype' => 'multipart/form-data' ]) !!}
+                     {!! Form::model($vehicletype, ['route' => ['admin.vehicle_type.update' , $vehicletype->slug] , 'enctype' => 'multipart/form-data' ]) !!}
                         @method('PUT')
                         <div class="row">
                            <div class="col-md-6 mt-4">
@@ -40,11 +40,11 @@ Edit Vehicle Type
                               </div>
                            </div>
                            <div class="col-md-6 mt-4">
-                                 <input type="file" class="form-control  p-3 " name="logo">
-                                 @if(!empty($vehicletype->logo))
-                                 <img src="{{asset('upload/logo/'.$vehicletype->logo)}}" alt="" width="100px" class="img-thumbnail mt-3">
+                                 <input type="file" class="form-control  p-3 " name="image">
+                                 @if(!empty($vehicletype->image))
+                                 <img src="{{asset('upload/image/'.$vehicletype->image)}}" alt="" width="100px" class="img-thumbnail mt-3">
                              @endif
-                                 <small class="text-danger">@error ('logo') {{ $message }} @enderror</small>
+                                 <small class="text-danger">@error ('image') {{ $message }} @enderror</small>
                            </div>
                            <div class="col-md-6 mt-4">
                               <div class="form-floating">

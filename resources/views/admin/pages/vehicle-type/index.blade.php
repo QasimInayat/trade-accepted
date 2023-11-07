@@ -21,7 +21,7 @@ Vehicle Type
                 </div>
                 <div class="col-md-6">
                     <div style="float: right; margin-right: 15px;" class="mt-4">
-                        <a href="{{ route('admin.vehicle-type.create') }}" class="btn btn-primary waves-effect">Create Vehicle Type</a>
+                        <a href="{{ route('admin.vehicle_type.create') }}" class="btn btn-primary waves-effect">Create Vehicle Type</a>
                     </div>
                 </div>
             </div>
@@ -32,7 +32,7 @@ Vehicle Type
                      <tr>
                         <th>ID</th>
                         <th>Name</th>
-                        <th>Logo</th>
+                        <th>Image</th>
                         <th>Status</th>
                         <th>Actions</th>
                      </tr>
@@ -42,7 +42,7 @@ Vehicle Type
                      <tr>
                         <td>{{ ++$index }}</td>
                         <td>{{ $vehicletype->name }}</td>
-                        <td style="width: 15%;" ><img class="" height="100px" wisth="100px" src="{{ asset('upload/logo/' . $vehicletype->logo) }}" alt=""></td>
+                        <td style="width: 15%;" ><img class="" height="100px" width="100px" src="{{ asset('upload/image/' . $vehicletype->image) }}" alt=""></td>
                         <td>
                         @if($vehicletype->status == 1)
                     <span class="badge bg-label-success me-1">Active</span>
@@ -51,12 +51,11 @@ Vehicle Type
                     @endif
                         </td>
                         <td>
-                           <a href="{{ route('admin.vehicle-type.edit' , $vehicletype->slug) }}"><i class="text-info fa fa-edit"></i> </a>&nbsp;|&nbsp;
-                           <a href="{{ route('admin.vehicle-type.delete' , $vehicletype->slug) }}"><i class="text-danger fa fa-trash"></i></a>
+                           <a href="{{ route('admin.vehicle_type.edit' , $vehicletype->slug) }}"><i class="text-info fa fa-edit"></i> </a>&nbsp;|&nbsp;
+                           <a href="{{ route('admin.vehicle_type.delete' , $vehicletype->slug) }}"><i class="text-danger fa fa-trash"></i></a>
                         </td>
                      </tr>
                      @empty
-                     <td class="text-center" colspan="5">No data found</td>
                      @endforelse
                   </tbody>
                </table>
