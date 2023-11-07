@@ -6,14 +6,6 @@ Edit Make
 <div class="layout-page">
    <div class="content-wrapper">
       <div class="container-xxl flex-grow-1 container-p-y">
-         @if(Session::has('error'))
-         <div class=" alert alert-danger d-flex align-items-center" role="alert">
-            <span class="alert-icon text-danger me-2">
-            <i class="fa fa-times"></i>
-            </span>
-            {{Session::get('error')}}
-         </div>
-         @endif
          <div class="row">
             <div class="col-md-12">
                <div class="card">

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Make;
+use Str;
 
 class MakeController extends Controller
 {
@@ -42,7 +43,7 @@ class MakeController extends Controller
         ]);
 
         if(!empty($store->id)){
-            return redirect()->route('admin.make.index')->with('success','make Created');
+            return redirect()->route('admin.make.index')->with('success','Make Created');
         }
         else{
             return redirect()->route('admin.make.create')->with('error','Something Went Wrong');

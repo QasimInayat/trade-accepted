@@ -6,14 +6,6 @@ Make
 <div class="layout-page">
 <div class="content-wrapper">
    <div class="container-xxl flex-grow-1 container-p-y">
-   @if(Session::has('success'))
-    <div class="alert alert-success d-flex align-items-center" role="alert">
-        <span class="alert-icon text-success me-2">
-          <i class="fa fa-check"></i>
-        </span>
-        {{Session::get('success')}}
-      </div>
-      @endif
       <div class="card">
           <div class="row">
               <div class="col-md-6">
@@ -56,7 +48,6 @@ Make
                         </td>
                      </tr>
                      @empty
-                     <td class="text-center" colspan="7">No data found</td>
                      @endforelse
                   </tbody>
                </table>
