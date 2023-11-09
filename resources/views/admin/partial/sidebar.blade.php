@@ -39,7 +39,7 @@
         <li @if(url()->current() == Route::is('admin.user')) class="menu-item active" @endif  class="menu-item">
             <a href="{{ route('admin.user') }}" class="menu-link">
               <i style="margin-right: 10px;" class="fa fa-user"></i>
-              <div> User</div>
+              <div> Users</div>
             </a>
           </li>
 
@@ -53,7 +53,7 @@
         <li @if(url()->current() == Route::is('admin.vehicle.index')) class="menu-item active" @endif class="menu-item">
             <a href="{{ route('admin.vehicle.index') }}" class="menu-link">
               <i style="margin-right: 10px;" class="fa fa-car"></i>
-              <div>Vehicle</div>
+              <div>Vehicles</div>
             </a>
           </li>
           <li @if(url()->current() == Route::is('admin.transaction','admin.transaction.detail')) class="menu-item active" @endif class="menu-item">
