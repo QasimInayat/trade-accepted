@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\VehicleTypeController;
 use App\Http\Controllers\Admin\MakeController;
+use App\Http\Controllers\Admin\VehicleController;
 
 
 
@@ -29,5 +30,6 @@ Route::resource('vehicle_type' , VehicleTypeController::class);
     Route::get('make/{slug}/delete', [MakeController::class, 'delete'])->name('make.delete');
     Route::resource('make', MakeController::class);
 
+    Route::get('vehicle' , [VehicleController::class , 'index'])->name('vehicle.index');
 
 });

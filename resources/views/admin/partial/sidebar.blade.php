@@ -4,6 +4,9 @@
         box-shadow: 0px 2px 6px 0px rgba(115,103,240,.48);
         color: #fff !important;
     }
+    .bg-menu-theme.menu-vertical .menu-sub>.menu-item>.menu-link:before {
+    left: -5rem;
+    }
     </style>
     <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
 
@@ -33,19 +36,33 @@
             <div>Dashboard</div>
           </a>
         </li>
-        <li @if(url()->current() == Route::is('admin.vehicle_type.index' , 'admin.vehicle_type.create' , 'admin.vehicle_type.edit')) class="menu-item active" @endif class="menu-item">
-            <a href="{{ route('admin.vehicle_type.index') }}" class="menu-link">
-              <i style="margin-right: 10px;" class="fa fa-dashboard"></i>
-              <div>Vehicle Type</div>
+
+        <li @if(url()->current() == Route::is('admin.vehicle.index')) class="menu-item active" @endif class="menu-item">
+            <a href="{{ route('admin.vehicle.index') }}" class="menu-link">
+              <i style="margin-right: 10px;" class="fa fa-car"></i>
+              <div>Vehicle</div>
             </a>
           </li>
-
-
-        <li @if(url()->current() == Route::is('admin.make.index','admin.make.create','admin.make.edit')) class="menu-item active" @endif  class="menu-item">
-            <a href="{{ route('admin.make.index') }}" class="menu-link">
-              <i style="margin-right: 10px;" class="fa fa-user"></i>
-              <div> Make</div>
+          <li @if(url()->current() == Route::is('admin.make.index','admin.make.create','admin.make.edit','admin.vehicle_type.index','admin.vehicle_type.create','admin.vehicle_type.edit','admin.product_attribute.index','admin.product_attribute.create','admin.product_attribute.edit','admin.product.index','admin.product.create','admin.product.edit')) class="menu-item active" @endif class="menu-item"  style="">
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
+              <i class="menu-icon fa fa-caret-down"></i>
+              <div data-i18n="Setups">Setups</div>
             </a>
+            <ul class="menu-sub">
+            <li @if(url()->current() == Route::is('admin.make.index','admin.make.create','admin.make.edit')) class="menu-item active" @endif class="menu-item">
+                  <a href="{{ route('admin.make.index') }}" class="menu-link" >
+                    <i style="margin-right: 10px;" class="fa fa-file"></i>
+                    <div>Make</div>
+                  </a>
+                </li>
+                <li @if(url()->current() == Route::is('admin.vehicle_type.index','admin.vehicle_type.create','admin.vehicle_type.edit')) class="menu-item active" @endif class="menu-item">
+                  <a href="{{ route('admin.vehicle_type.index') }}" class="menu-link" >
+                    <i style="margin-right: 10px;" class="fa fa-car"></i>
+                    <div>Vehicle Type</div>
+                  </a>
+              </li>
+
+            </ul>
           </li>
 
 
@@ -59,6 +76,8 @@
                 </form>
              </a>
         </li>
+
+
 
   </ul>
 
