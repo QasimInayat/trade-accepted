@@ -111,6 +111,7 @@
                          <thead>
                              <th>ID</th>
                              <th>User</th>
+                             <th>Image</th>
                              <th>Purchasing Date</th>
                              <th>Chasis #</th>
                              <th>Make</th>
@@ -125,6 +126,7 @@
                              <tr>
                                  <td>1</td>
                                  <td>Rywajur</td>
+                                 <td><img style="height: 80px; width: 90px;" class="rounded" src="{{ asset('admin/assets/img/vehicle/toyota.jpg') }}" alt=""></td>
                                  <td>2018-06-26</td>
                                  <td>123456789</td>
                                  <td>Adara William</td>
@@ -138,6 +140,7 @@
                              <tr>
                                  <td>2</td>
                                  <td>xinonet</td>
+                                 <td><img style="height: 80px; width: 90px;" class="rounded" src="{{ asset('admin/assets/img/vehicle/honda.jpg') }}" alt=""></td>
                                  <td>2004-06-27</td>
                                  <td>1234567</td>
                                  <td>Holmes Beasley</td>
@@ -151,6 +154,7 @@
                              <tr>
                                  <td>3</td>
                                  <td>ruhelugu</td>
+                                 <td><img style="height: 80px; width: 90px;" class="rounded" src="{{ asset('admin/assets/img/vehicle/auddi.jpg') }}" alt=""></td>
                                  <td>2014-06-25</td>
                                  <td>12345678</td>
                                  <td>Holmes Beasley</td>
