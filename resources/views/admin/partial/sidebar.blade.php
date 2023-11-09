@@ -43,6 +43,12 @@
               <div>Vehicle</div>
             </a>
           </li>
+          <li @if(url()->current() == Route::is('admin.transaction','admin.transaction.detail')) class="menu-item active" @endif class="menu-item">
+            <a href="{{ route('admin.transaction') }}" class="menu-link">
+              <i style="margin-right: 10px;" class="fa fa-credit-card"></i>
+              <div>Transactions</div>
+            </a>
+          </li>
           <li @if(url()->current() == Route::is('admin.make.index','admin.make.create','admin.make.edit','admin.vehicle_type.index','admin.vehicle_type.create','admin.vehicle_type.edit','admin.product_attribute.index','admin.product_attribute.create','admin.product_attribute.edit','admin.product.index','admin.product.create','admin.product.edit')) class="menu-item active" @endif class="menu-item"  style="">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
               <i class="menu-icon fa fa-caret-down"></i>
@@ -64,6 +70,8 @@
 
             </ul>
           </li>
+
+
 
 
 

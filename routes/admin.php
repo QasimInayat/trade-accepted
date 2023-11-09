@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\VehicleTypeController;
 use App\Http\Controllers\Admin\MakeController;
 use App\Http\Controllers\Admin\VehicleController;
+use App\Http\Controllers\Admin\TransactionController;
 
 
 
@@ -31,5 +32,11 @@ Route::resource('vehicle_type' , VehicleTypeController::class);
     Route::resource('make', MakeController::class);
 
     Route::get('vehicle' , [VehicleController::class , 'index'])->name('vehicle.index');
+    // Transaction
+    Route::get('transaction' , [TransactionController::class , 'index'])->name('transaction');
+    Route::get('transaction/detail', [TransactionController::class, 'detail'])->name('transaction.detail');
+
 
 });
+
+
