@@ -5,6 +5,8 @@ use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\VehicleTypeController;
 use App\Http\Controllers\Admin\MakeController;
+use App\Http\Controllers\Admin\VehicleController;
+use App\Http\Controllers\Admin\TransactionController;
 
 
 
@@ -33,5 +35,12 @@ Route::resource('vehicle_type' , VehicleTypeController::class);
     Route::get('user', [DashboardController::class, 'user'])->name('user');
     //user
     Route::get('reviews', [DashboardController::class, 'reviews'])->name('reviews');
+    Route::get('vehicle' , [VehicleController::class , 'index'])->name('vehicle.index');
+    // Transaction
+    Route::get('transaction' , [TransactionController::class , 'index'])->name('transaction');
+    Route::get('transaction/detail', [TransactionController::class, 'detail'])->name('transaction.detail');
+
 
 });
+
+
