@@ -48,6 +48,13 @@
             </a>
           </li>
 
+          <li @if(url()->current() == Route::is('admin.transaction','admin.transaction.detail')) class="menu-item active" @endif class="menu-item">
+            <a href="{{ route('admin.transaction') }}" class="menu-link">
+              <i style="margin-right: 10px;" class="fa fa-credit-card"></i>
+              <div>Transactions</div>
+            </a>
+          </li>
+
 
 
           <li class="menu-item">
