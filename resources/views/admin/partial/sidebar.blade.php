@@ -36,6 +36,19 @@
             <div>Dashboard</div>
           </a>
         </li>
+        <li @if(url()->current() == Route::is('admin.user')) class="menu-item active" @endif  class="menu-item">
+            <a href="{{ route('admin.user') }}" class="menu-link">
+              <i style="margin-right: 10px;" class="fa fa-user"></i>
+              <div> User</div>
+            </a>
+          </li>
+
+          <li @if(url()->current() == Route::is('admin.reviews')) class="menu-item active" @endif  class="menu-item">
+            <a href="{{ route('admin.reviews') }}" class="menu-link">
+              <i style="margin-right: 10px;" class="fa fa-star-o"></i>
+              <div> Reviews</div>
+            </a>
+          </li>
 
         <li @if(url()->current() == Route::is('admin.vehicle.index')) class="menu-item active" @endif class="menu-item">
             <a href="{{ route('admin.vehicle.index') }}" class="menu-link">
@@ -71,21 +84,6 @@
             </ul>
           </li>
 
-
-
-          <li @if(url()->current() == Route::is('admin.user')) class="menu-item active" @endif  class="menu-item">
-            <a href="{{ route('admin.user') }}" class="menu-link">
-              <i style="margin-right: 10px;" class="fa fa-user"></i>
-              <div> User</div>
-            </a>
-          </li>
-
-          <li @if(url()->current() == Route::is('admin.reviews')) class="menu-item active" @endif  class="menu-item">
-            <a href="{{ route('admin.reviews') }}" class="menu-link">
-              <i style="margin-right: 10px;" class="fa fa-user"></i>
-              <div> Reviews</div>
-            </a>
-          </li>
 
 
 
