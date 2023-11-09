@@ -29,5 +29,9 @@ Route::resource('vehicle_type' , VehicleTypeController::class);
     Route::get('make/{slug}/delete', [MakeController::class, 'delete'])->name('make.delete');
     Route::resource('make', MakeController::class);
 
+    //user
+    Route::get('user', [DashboardController::class, 'user'])->name('user');
+    //user
+    Route::get('reviews', [DashboardController::class, 'reviews'])->name('reviews');
 
 });
