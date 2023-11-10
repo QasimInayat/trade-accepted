@@ -35,12 +35,19 @@ Route::resource('vehicle_type' , VehicleTypeController::class);
     Route::get('user', [DashboardController::class, 'user'])->name('user');
     //user
     Route::get('reviews', [DashboardController::class, 'reviews'])->name('reviews');
-    Route::get('vehicle' , [VehicleController::class , 'index'])->name('vehicle.index');
     // Transaction
     Route::get('transaction' , [TransactionController::class , 'index'])->name('transaction');
     Route::get('transaction/detail', [TransactionController::class, 'detail'])->name('transaction.detail');
 
 
+    // Vehicle
+    Route::post('vehicle/{id}/update' , [VehicleController::class , 'update'])->name('vehicle.update');
+    Route::get('vehicle/{id}/delete' , [VehicleController::class , 'delete'])->name('vehicle.delete');
+    Route::get('vehicle' , [VehicleController::class , 'index'])->name('vehicle.index');
+    Route::get('vehicle/store' , [VehicleController::class , 'store'])->name('vehicle.store');
+    Route::get('vehicle/{id}/edit' , [VehicleController::class , 'edit'])->name('vehicle.edit');
+    Route::resource('vehicle', VehicleController::class);
+    Route::get('remove_gallery/{id}', [VehicleController::class , 'remove_gallery'])->name('remove.gallery');
 });
 
 

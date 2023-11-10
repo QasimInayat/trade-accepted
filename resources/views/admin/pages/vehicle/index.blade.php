@@ -13,6 +13,7 @@
                 </div>
                 <div class="col-md-6">
                     <div style="float: right; margin-right: 15px;" class="mt-4">
+                        <a href="{{ route('admin.vehicle.create') }}" class="btn btn-primary">Create Vehicle</a>
                     </div>
                 </div>
             </div>
@@ -21,61 +22,47 @@
                <table class="table table-striped table-bordered">
                     <thead>
                         <th>ID</th>
-                        <th>User</th>
-                        <th>Purchasing Date</th>
-                        <th>Chasis #</th>
+                        <th>Title</th>
+                        <th>Price</th>
+                        <th>Address</th>
+                        <th>Description</th>
+                        <th>Country</th>
+                        <th>City</th>
+                        <th>Mileage</th>
+                        <th>Transmission</th>
+                        <th>ExteriorColor</th>
+                        <th>Interior Color</th>
                         <th>Make</th>
                         <th>Model</th>
-                        <th>Color</th>
+                        <th>Trim</th>
                         <th>Year</th>
-                        <th>Selling Price</th>
-                        <th>Country</th>
-                        <th>Port</th>
                         <th>Action</th>
                     </thead>
                     <tbody>
+                        @forelse($vehicles as $index=>$item)
                         <tr>
-                            <td>1</td>
-                            <td>Rywajur</td>
-                            <td>2018-06-26</td>
-                            <td>123456789</td>
-                            <td>Adara William</td>
-                            <td>Leonard Humphrey</td>
-                            <td>2018</td>
-                            <td>Black</td>
-                            <td>$500k</td>
-                            <td>USA</td>
-                            <td>San Francisco</td>
-                            <td><i class="fa fa-edit text-info"></i>&nbsp;|&nbsp;<i class="text-danger fa fa-trash"></i></td>
+                            <td>{{ ++$index }}</td>
+                            <td>{{ $item->title }}</td>
+                            <td>${{ $item->price }}</td>
+                            <td>{{ $item->address }}</td>
+                            <td>{{ $item->description }}</td>
+                            <td>{{ $item->country_id }}</td>
+                            <td>{{ $item->city_id }}</td>
+                            <td>{{ $item->mileage }}</td>
+                            <td>{{ $item->transmission }}</td>
+                            <td>{{ $item->exterior_color }}</td>
+                            <td>{{ $item->interior_color }}</td>
+                            <td>{{ $item->make->name }}</td>
+                            <td>{{ $item->model_id }}</td>
+                            <td>{{ $item->trim }}</td>
+                            <td>{{ $item->year }}</td>
+                            <td>
+                                <a href="{{ route('admin.vehicle.edit',$item->id) }}"><i class="fa fa-edit text-info"></i></a>&nbsp;|&nbsp;
+                                <a href="{{ route('admin.vehicle.delete',$item->id) }}"><i class="fa fa-trash text-danger"></i></a>
+                            </td>
                         </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>xinonet</td>
-                            <td>2004-06-27</td>
-                            <td>1234567</td>
-                            <td>Holmes Beasley</td>
-                            <td>Leonard Humphrey</td>
-                            <td>2015</td>
-                            <td>White</td>
-                            <td>$900k</td>
-                            <td>USA</td>
-                            <td>Hollywood</td>
-                            <td><i class="fa fa-edit text-info"></i>&nbsp;|&nbsp;<i class="text-danger fa fa-trash"></i></td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>ruhelugu</td>
-                            <td>2014-06-25</td>
-                            <td>12345678</td>
-                            <td>Holmes Beasley</td>
-                            <td>Leonard Humphrey</td>
-                            <td>2013</td>
-                            <td>Grey</td>
-                            <td>$700k</td>
-                            <td>USA</td>
-                            <td>Atlanta</td>
-                            <td><i class="fa fa-edit text-info"></i>&nbsp;|&nbsp;<i class="text-danger fa fa-trash"></i></td>
-                        </tr>
+                        @empty
+                        @endforelse
                     </tbody>
                </table>
             </div>

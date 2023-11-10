@@ -50,7 +50,7 @@
             </a>
           </li>
 
-        <li @if(url()->current() == Route::is('admin.vehicle.index')) class="menu-item active" @endif class="menu-item">
+        <li @if(url()->current() == Route::is('admin.vehicle.index','admin.vehicle.create','admin.vehicle.edit')) class="menu-item active" @endif class="menu-item">
             <a href="{{ route('admin.vehicle.index') }}" class="menu-link">
               <i style="margin-right: 10px;" class="fa fa-car"></i>
               <div>Vehicles</div>
