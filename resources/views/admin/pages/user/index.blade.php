@@ -22,7 +22,8 @@ User List
                       <thead>
                          <tr>
                             <th>ID</th>
-                            <th>Name</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
                             <th>E-mail</th>
                             <th>Action</th>
                          </tr>
@@ -31,7 +32,8 @@ User List
                         @foreach($users as $index=>$user)
                         <tr>
                             <td>{{ ++$index }}</td>
-                            <td>{{ $user->name }}</td>
+                            <td>{{ $user->first_name }}</td>
+                            <td>{{ $user->last_name }}</td>
                             <td>{{ $user->email }}</td>
                             <td><a href="{{ route('admin.profile',$user->id) }}"><button class="btn btn-primary btn-sm"><i style="margin-right: 5px" class="fa fa-user"></i>Edit Profile</button></a></td>
                         </tr>

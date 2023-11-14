@@ -44,7 +44,8 @@ class ProfileController extends Controller
     }
     public function update(Request $request , $id){
         $request->validate([
-            'name' => 'required|min:1|max:191',
+            'first_name' => 'required|min:1|max:191',
+            'last_name' => 'required|min:1|max:191',
             'email' => 'required|min:1|max:191',
             'phone' => 'required|min:1|max:191',
             'address' => 'required|min:1|max:191',
@@ -62,7 +63,8 @@ class ProfileController extends Controller
             $imageName = $imageData->image;
         }
         $update = User::where('id' , $id)->update([
-            'name' => $request->name,
+            'first_name' => $request->first_name,
+            'last_name' => $request->last_name,
             'email' => $request->email,
             'phone' => $request->phone,
             'address' => $request->address,

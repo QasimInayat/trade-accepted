@@ -31,12 +31,19 @@ User Profile
                        <div class="row">
                        <div class="col-md-6">
                           <div class="form-floating">
-                             {!! Form::text('name', null, ['class' => 'form-control', 'id' => 'floatingInput', 'placeholder' => 'Enter your name', 'aria-describedby' => 'floatingInputHelp']) !!}
-                             <label for="floatingInput">Name</label>
-                             <small class="text-danger">@error ('name') {{ $message }} @enderror</small>
+                             {!! Form::text('first_name', null, ['class' => 'form-control', 'id' => 'floatingInput', 'placeholder' => 'Enter your First Name', 'aria-describedby' => 'floatingInputHelp']) !!}
+                             <label for="floatingInput">First Name</label>
+                             <small class="text-danger">@error ('first_name') {{ $message }} @enderror</small>
                           </div>
                        </div>
                        <div class="col-md-6">
+                        <div class="form-floating">
+                           {!! Form::text('last_name', null, ['class' => 'form-control', 'id' => 'floatingInput', 'placeholder' => 'Enter your Last Name', 'aria-describedby' => 'floatingInputHelp']) !!}
+                           <label for="floatingInput">Last Name</label>
+                           <small class="text-danger">@error ('last_name') {{ $message }} @enderror</small>
+                        </div>
+                     </div>
+                       <div class="col-md-6 mt-4">
                         <input type="file" name="image" class="form-control w-50" name="image">
                         @isset($profile)
                         @if ($profile->image)
