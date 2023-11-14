@@ -82,26 +82,30 @@ Reset Password
                     <div class="col-md-6">
                         <div class="auth-form-cotainer">
                             <div class="w-100">
-                                <form action="" class="auth-form w-100">
+                                <form action="{{ route('password.update') }}" method="POST" class="auth-form w-100">
+                                    @csrf
                                     <h3 class="mb-5">Forgot password?</h3>
                                     <div class="mb-3">
+                                        <input type="hidden" name="token" value="{{ $token }}">
                                         <label for="exampleInputPassword1" class="form-label">Type your password</label>
                                         <div class="position-relative pass-eye">
-                                            <input type="password" class="form-control"
-                                                id="exampleInputPassword1">
+                                            <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
                                             <i class="fa-solid fa-eye toggle-password"></i>
+                                            @error('password')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
                                         </div>
                                     </div>
                                     <div class="mb-3">
                                         <label for="exampleInputPassword1" class="form-label">Retype your password</label>
                                         <div class="position-relative pass-eye">
-                                            <input type="password" class="form-control"
-                                                id="exampleInputPassword1">
+                                            <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                                             <i class="fa-solid fa-eye toggle-password"></i>
                                         </div>
                                     </div>
-                                    <button type="submit"
-                                        class="btn btn-primary w-100 fw-bold mt-4">Update Password</button>
+                                    <button type="submit" class="btn btn-primary w-100 fw-bold mt-4">Update Password</button>
                                 </form>
 
                             </div>

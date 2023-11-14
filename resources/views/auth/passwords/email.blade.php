@@ -64,18 +64,18 @@ Forgot Password
                     <div class="col-md-6">
                         <div class="auth-form-cotainer">
                             <div class="w-100">
-                                <form action="" class="auth-form w-100">
+                                <form action="{{ route('password.email') }}" method="POST" class="auth-form w-100">
+                                @csrf
                                     <h3>Forgot password?</h3>
                                     <div class="auth-policy mb-4">
                                         <p class="mb-0">Please enter your email, we’ll send you reset password link.</p>
                                     </div>
                                     <div class="mb-3">
                                         <label for="exampleInputEmail1" class="form-label">Email</label>
-                                        <input type="email" class="form-control" id="exampleInputEmail1"
+                                        <input name="email" value="{{ old('email') }}" required autocomplete="email" autofocus type="email" class="@error('email') is-invalid @enderror form-control" id="exampleInputEmail1"
                                             aria-describedby="emailHelp">
                                     </div>
-                                    <button type="button" onclick="window.location.href='reset.html'"
-                                        class="btn btn-primary w-100 fw-bold mt-4">Reset Password</button>
+                                    <button type="submit" class="btn btn-primary w-100 fw-bold mt-4">Reset Password</button>
                                 </form>
 
                             </div>

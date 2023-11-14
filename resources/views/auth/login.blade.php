@@ -127,7 +127,7 @@ Login/Register
                                                         for="exampleCheck1">Keep me login</label>
                                                 </div>
                                                 <div>
-                                                    <a href="forgot.html" class="forgot">Forgot Password?</a>
+                                                    <a href="{{route('password.request')}}" class="forgot">Forgot Password?</a>
                                                 </div>
                                             </div>
                                             <button type="submit"
