@@ -90,7 +90,7 @@ Reset Password
                                         <label for="exampleInputPassword1" class="form-label">Type your password</label>
                                         <div class="position-relative pass-eye">
                                             <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-                                            <i class="fa-solid fa-eye toggle-password"></i>
+                                             <i class="fa-solid fa-eye toggle-password"></i>
                                             @error('password')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
