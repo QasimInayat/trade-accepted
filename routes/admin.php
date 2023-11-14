@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\VehicleTypeController;
 use App\Http\Controllers\Admin\MakeController;
 use App\Http\Controllers\Admin\VehicleController;
 use App\Http\Controllers\Admin\TransactionController;
+use App\Http\Controllers\Admin\ProfileController;
 
 
 
@@ -33,6 +34,9 @@ Route::resource('vehicle_type' , VehicleTypeController::class);
 
     //user
     Route::get('user', [DashboardController::class, 'user'])->name('user');
+    Route::get('user/{id}/profile' , [ProfileController::class , 'profile'])->name('profile');
+    Route::post('user-profile/store' , [ProfileController::class , 'store'])->name('userprofile.store');
+    Route::post('user-profile/{id}/update' , [ProfileController::class , 'update'])->name('userprofile.update');
     //user
     Route::get('reviews', [DashboardController::class, 'reviews'])->name('reviews');
     // Transaction

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class DashboardController extends Controller
 {
@@ -13,6 +14,7 @@ class DashboardController extends Controller
     }
     public function user(){
         $data['title'] = 'User List';
+        $data['users'] = User::get();
         return view('admin.pages.user.index' , $data);
     }
     public function reviews(){

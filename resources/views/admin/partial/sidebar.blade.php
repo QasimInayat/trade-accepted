@@ -36,7 +36,7 @@
             <div>Dashboard</div>
           </a>
         </li>
-        <li @if(url()->current() == Route::is('admin.user')) class="menu-item active" @endif  class="menu-item">
+        <li @if(url()->current() == Route::is('admin.user','admin.user.profile')) class="menu-item active" @endif  class="menu-item">
             <a href="{{ route('admin.user') }}" class="menu-link">
               <i style="margin-right: 10px;" class="fa fa-user"></i>
               <div> Users</div>

@@ -22,36 +22,20 @@ User List
                       <thead>
                          <tr>
                             <th>ID</th>
-                            <th>First Name</th>
-                            <th>Last Name</th>
+                            <th>Name</th>
                             <th>E-mail</th>
+                            <th>Action</th>
                          </tr>
                       </thead>
                       <tbody>
+                        @foreach($users as $index=>$user)
                         <tr>
-                            <td>1</td>
-                            <td>Leorm</td>
-                            <td>Ipusm</td>
-                            <td>ipsume321@gmail.com</td>
+                            <td>{{ ++$index }}</td>
+                            <td>{{ $user->name }}</td>
+                            <td>{{ $user->email }}</td>
+                            <td><a href="{{ route('admin.profile',$user->id) }}"><button class="btn btn-primary btn-sm"><i style="margin-right: 5px" class="fa fa-user"></i>Edit Profile</button></a></td>
                         </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Jhon</td>
-                            <td>Divid</td>
-                            <td>jhondivid68@gmail.com</td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>Willsom</td>
-                            <td>Clark</td>
-                            <td>clarkkal98@gmail.com</td>
-                        </tr>
-                        <tr>
-                            <td>4</td>
-                            <td>Adam</td>
-                            <td>Duck</td>
-                            <td>adamduck@gmail.com</td>
-                        </tr>
+                        @endforeach
                       </tbody>
                    </table>
                    </div>
