@@ -55,13 +55,14 @@ Login/Register
                                             </div>
                                             <button type="submit"
                                                 class="btn btn-primary w-100 fw-bold mt-4">Login</button>
+                                                <p style="font-size:13px;color:grey;" class="text-center mt-3">Create New Account <a style="text-decoration: none" href="{{ route('register') }}">Sign Up</a></p>
                                         </form>
                                     </div>
                                 </div>
 
                             </div>
                             <div class="auth-policy">
-                                <img src="{{asset('assets/imgs/logo.png')}}" width="120" alt="">
+                               <a href="{{ route('home') }}"> <img src="{{asset('assets/imgs/logo.png')}}" width="120" alt=""></a>
                                 <p class="mb-0">All trademarks are the property of Trades Accepted or a related company
                                     or a licensor unless otherwise noted. ©2023 Trades Accepted. All rights reserved.
                                 </p>

@@ -1,50 +1,3 @@
-{{-- @extends('layouts.app')
-
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Reset Password') }}</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    <form method="POST" action="{{ route('password.email') }}">
-                        @csrf
-
-                        <div class="row mb-3">
-                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Send Password Reset Link') }}
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-@endsection --}}
 
 @extends('layouts.auth-scaffold')
 @push('title')
@@ -70,17 +23,25 @@ Forgot Password
                                     <div class="auth-policy mb-4">
                                         <p class="mb-0">Please enter your email, we’ll send you reset password link.</p>
                                     </div>
+                                    <div class="col-md-12">
+                                        @if (session('status'))
+                                        <div style="" class="alert alert-success" role="alert">
+                                           {{ session('status') }}
+                                        </div>
+                                        @endif
+                                    </div>
                                     <div class="mb-3">
                                         <label for="exampleInputEmail1" class="form-label">Email</label>
                                         <input name="email" value="{{ old('email') }}" required autocomplete="email" autofocus type="email" class="@error('email') is-invalid @enderror form-control" id="exampleInputEmail1"
                                             aria-describedby="emailHelp">
                                     </div>
                                     <button type="submit" class="btn btn-primary w-100 fw-bold mt-4">Reset Password</button>
+                                    <p style="font-size:13px;color:grey;" class="text-center mt-3">Back To <a style="text-decoration: none" href="{{ route('login') }}">Login</a></p>
                                 </form>
 
                             </div>
                             <div class="auth-policy">
-                                <img src="{{asset('assets/imgs/logo.png')}}" width="120" alt="">
+                               <a href="{{ route('home') }}"> <img src="{{asset('assets/imgs/logo.png')}}" width="120" alt=""></a>
                                 <p class="mb-0">All trademarks are the property of Trades Accepted or a related company
                                     or a licensor unless otherwise noted. ©2023 Trades Accepted. All rights reserved.
                                 </p>
