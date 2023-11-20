@@ -8,8 +8,7 @@
             <div class="vertical-nav d-flex align-items-center">
                 <ul class="list-unstyled text-end d-lg-block d-none mb-0">
                     <li class="d-inline-block">
-                        <button class="btn btn-primary w-fit" data-bs-toggle="modal"
-                            data-bs-target="#addListing">Add Listing</button>
+                        <button class="btn btn-primary w-fit" ><a href="{{route('vehicle.create')}}"> Add Listing </a></button>
                     </li>
                     <li class="d-inline-block">
                         <a href="javascript:;" class="px-2">
