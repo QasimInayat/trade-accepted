@@ -27,4 +27,4 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('index', [FrontendController::class, 'index'])->name('index');
 Route::get('detail', [FrontendController::class, 'detail'])->name('detail');
 Route::get('search', [FrontendController::class, 'search'])->name('search');
-Route::get('mesanger', [FrontendController::class, 'mesanger'])->name('mesanger');
+Route::get('messanger', [FrontendController::class, 'messanger'])->name('messanger');
