@@ -1,550 +1,286 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=s, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
-    <link rel="stylesheet" href="./assets/css/style.css">
-</head>
-
-<body>
-
+@extends('layouts.scaffold')
+@push('title')
+Messanger
+@endpush
+@section('content')
     <main>
-        <header class="py-3 px-2">
-            <div class="container-fluid">
-                <div class="d-flex align-items-center justify-content-between">
-                    <div class="logo-head d-flex align-items-center gap-3">
-                        <img src="./assets/imgs/logo.png" alt="" class="d-block">
-                        <h1 class="mb-0">Dashboard</h1>
-                    </div>
-                    <div class="vertical-nav d-flex align-items-center">
-                        <ul class="list-unstyled text-end d-lg-block d-none mb-0">
-                            <li class="d-inline-block">
-                                <button class="btn btn-primary w-fit" data-bs-toggle="modal"
-                                    data-bs-target="#addListing">Add Listing</button>
-                            </li>
-                            <li class="d-inline-block">
-                                <a href="javascript:;" class="px-2">
-                                    <img src="./assets/imgs/fi_search.svg" alt="">
-                                </a>
-                            </li>
-                            <li class="d-inline-block">
-                                <a href="javascript:;" class="px-2">
-                                    <img src="./assets/imgs/fi_bell.svg" alt="">
-                                </a>
-                            </li>
-                            <li class="d-inline-block">
-                                <a href="javascript:;" class="px-2">
-                                    <img src="./assets/imgs/fi_message-square.svg" alt="">
-                                </a>
-                            </li>
-                            <li class="d-inline-block">
-                                <a href="javascript:;" class="px-2">
-                                    <img src="./assets/imgs/fi_help-circle.svg" alt="">
-                                </a>
-                            </li>
-                        </ul>
-                        <div class="d-flex align-items-center">
-
-                            <div class="dropdown">
-                                <button class="btn btn-secondary dropdown-toggle auth-dropdown" type="button"
-                                    data-bs-toggle="dropdown" aria-expanded="false">
-                                    <span class="user-image">
-                                        <img src="./assets/imgs/user.png" alt="">
-                                    </span>
-                                    <span class="d-md-inline d-none">Welcome back, Steve!</span>
-                                </button>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#">Action</a></li>
-                                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </header>
-
-        <aside>
-            <div class="d-flex flex-column justify-content-between h-100">
-                <ul class="list-unstyled side-nav">
-                    <li>
-                        <a href="javascript:;">
-                            <img src="./assets/imgs/fi_layout.svg" alt="">
-                        </a>
-                    </li>
-                    <li>
-                        <a href="javascript:;">
-                            <img src="./assets/imgs/fi_align-left.svg" alt="">
-                        </a>
-                    </li>
-                    <li>
-                        <a href="javascript:;">
-                            <img src="./assets/imgs/fi_bell-1.svg" alt="">
-                        </a>
-                    </li>
-                    <li>
-                        <a href="javascript:;">
-                            <img src="./assets/imgs/fi_message-square-1.svg" alt="">
-                        </a>
-                    </li>
-                    <li>
-                        <a href="javascript:;">
-                            <img src="./assets/imgs/fi_settings.svg" alt="">
-                        </a>
-                    </li>
-                </ul>
-                <a href="javascript:;" class="d-block">
-                    <img src="./assets/imgs/fi_log-out.svg" alt="">
-                </a>
-            </div>
-        </aside>
 
         <div class="content pe-2">
             <div class="container-fluid">
-                <div class="row mb-4">
-                    <div class="col-md-10 col-8">
-                        <h2 class="section-heading mb-0">Recent Uploads</h2>
-                    </div>
-                    <div class="col-md-2 col-4">
-                        <p class="view-all mb-0 text-end">View All</p>
-                    </div>
-                </div>
-                <div class="row mb-5">
-                    <div class="col-lg-3 col-md-6 mb-3">
-                        <a href="javascipt:;">
-                            <div class="multi-card">
-                                <div class="card-img position-relative">
-                                    <img src="./assets/imgs/car-1.png" class="w-100" alt="">
-                                    <div class="card-meta d-flex justify-content-between">
-                                        <h5 class="mb-0 text-white">2006 Porsche 911</h5>
-                                        <div>
-                                            <span>
-                                                <img src="./assets/imgs/fi_share-2.svg" alt="">
-                                            </span>
-                                            <span class="ms-1">
-                                                <img src="./assets/imgs/fi_bookmark.svg" alt="">
-                                            </span>
+
+                <section class="message-area">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-lg-8">
+                                <div class="chat-area">
+                                    <!-- chatlist -->
+                                    <div class="chatlist">
+                                        <div class="modal-dialog-scrollable">
+                                            <div class="modal-content">
+
+                                                <div class="modal-body mt-2">
+                                                    <!-- chat-list -->
+                                                    <div class="chat-lists">
+                                                        <div class="chat-list">
+                                                            <a href="#" class="d-flex align-items-center">
+                                                                <div class="flex-shrink-0">
+                                                                    <img class="img-fluid" src="https://mehedihtml.com/chatbox/assets/img/user.png" alt="user img">
+                                                                    <span class="active"></span>
+                                                                </div>
+                                                                <div class="flex-grow-1 ms-3">
+                                                                    <h3>Mehedi Hasan</h3>
+                                                                    <p>front end developer</p>
+                                                                </div>
+                                                            </a>
+                                                            <a href="#" class="d-flex align-items-center">
+                                                                <div class="flex-shrink-0">
+                                                                    <img class="img-fluid" src="https://mehedihtml.com/chatbox/assets/img/user.png" alt="user img">
+                                                                </div>
+                                                                <div class="flex-grow-1 ms-3">
+                                                                    <h3>Ryhan</h3>
+                                                                    <p>front end developer</p>
+                                                                </div>
+                                                            </a>
+                                                            <a href="#" class="d-flex align-items-center">
+                                                                <div class="flex-shrink-0">
+                                                                    <img class="img-fluid" src="https://mehedihtml.com/chatbox/assets/img/user.png" alt="user img">
+                                                                </div>
+                                                                <div class="flex-grow-1 ms-3">
+                                                                    <h3>Malek Hasan</h3>
+                                                                    <p>front end developer</p>
+                                                                </div>
+                                                            </a>
+                                                            <a href="#" class="d-flex align-items-center">
+                                                                <div class="flex-shrink-0">
+                                                                    <img class="img-fluid" src="https://mehedihtml.com/chatbox/assets/img/user.png" alt="user img">
+                                                                </div>
+                                                                <div class="flex-grow-1 ms-3">
+                                                                    <h3>Sadik Hasan</h3>
+                                                                    <p>front end developer</p>
+                                                                </div>
+                                                            </a>
+                                                            <a href="#" class="d-flex align-items-center">
+                                                                <div class="flex-shrink-0">
+                                                                    <img class="img-fluid" src="https://mehedihtml.com/chatbox/assets/img/user.png" alt="user img">
+                                                                </div>
+                                                                <div class="flex-grow-1 ms-3">
+                                                                    <h3>Bulu </h3>
+                                                                    <p>front end developer</p>
+                                                                </div>
+                                                            </a>
+                                                            <a href="#" class="d-flex align-items-center">
+                                                                <div class="flex-shrink-0">
+                                                                    <img class="img-fluid" src="https://mehedihtml.com/chatbox/assets/img/user.png" alt="user img">
+                                                                </div>
+                                                                <div class="flex-grow-1 ms-3">
+                                                                    <h3>Maria SK</h3>
+                                                                    <p>front end developer</p>
+                                                                </div>
+                                                            </a>
+                                                            <a href="#" class="d-flex align-items-center">
+                                                                <div class="flex-shrink-0">
+                                                                    <img class="img-fluid" src="https://mehedihtml.com/chatbox/assets/img/user.png" alt="user img">
+                                                                </div>
+                                                                <div class="flex-grow-1 ms-3">
+                                                                    <h3>Dipa Hasan</h3>
+                                                                    <p>front end developer</p>
+                                                                </div>
+                                                            </a>
+                                                            <a href="#" class="d-flex align-items-center">
+                                                                <div class="flex-shrink-0">
+                                                                    <img class="img-fluid" src="https://mehedihtml.com/chatbox/assets/img/user.png" alt="user img">
+                                                                </div>
+                                                                <div class="flex-grow-1 ms-3">
+                                                                    <h3>Jhon Hasan</h3>
+                                                                    <p>front end developer</p>
+                                                                </div>
+                                                            </a>
+                                                            <a href="#" class="d-flex align-items-center">
+                                                                <div class="flex-shrink-0">
+                                                                    <img class="img-fluid" src="https://mehedihtml.com/chatbox/assets/img/user.png" alt="user img">
+                                                                </div>
+                                                                <div class="flex-grow-1 ms-3">
+                                                                    <h3>Tumpa Moni</h3>
+                                                                    <p>front end developer</p>
+                                                                </div>
+                                                            </a>
+                                                            <a href="#" class="d-flex align-items-center">
+                                                                <div class="flex-shrink-0">
+                                                                    <img class="img-fluid" src="https://mehedihtml.com/chatbox/assets/img/user.png" alt="user img">
+                                                                </div>
+                                                                <div class="flex-grow-1 ms-3">
+                                                                    <h3>Payel Akter</h3>
+                                                                    <p>front end developer</p>
+                                                                </div>
+                                                            </a>
+
+
+
+                                                        </div>
+
+                                                    </div>
+                                                    <!-- chat-list -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- chatlist -->
+
+
+
+                                    <!-- chatbox -->
+                                    <div class="chatbox">
+                                        <div class="modal-dialog-scrollable">
+                                            <div class="modal-content">
+
+
+                                                <div class="modal-body p-4">
+                                                    <div class="msg-body">
+                                                        <ul class="p-0">
+                                                            <li class="repaly d-flex gap-3 justify-content-end">
+                                                                <!-- <p class="default"> -->
+                                                                    <div class="car-offer">
+                                                                        <h2>2006 Porsche 911</h2>
+                                                                        <h4>$48,995</h4>
+
+                                                                        <div class="d-lg-flex gap-3">
+                                                                            <button class="btn btn-primary px-4" data-bs-toggle="modal" data-bs-target="#deposit">Deposit</button>
+                                                                            <button class="btn btn-light text-uppercase" data-bs-toggle="modal" data-bs-target="#negoriate">Negotiate</button>
+                                                                        </div>
+                                                                    </div>
+                                                                <!-- </p> -->
+                                                                <img src="{{asset('assets/imgs/user.png')}}">
+                                                            </li>
+                                                            <li class="sender">
+                                                                <img src="{{asset('assets/imgs/seller.png')}}">
+                                                                <p> Hey, Are you there? </p>
+                                                                <span class="time">10:06 am</span>
+                                                            </li>
+                                                            <li class="sender">
+                                                                <img src="{{asset('assets/imgs/seller.png')}}">
+                                                                <p> Hey, Are you there? </p>
+                                                                <span class="time">10:16 am</span>
+                                                            </li>
+                                                            <li class="repaly">
+
+                                                                <p>yes!</p>
+                                                                <img src="{{asset('assets/imgs/user.png')}}">
+                                                                <span class="time">10:20 am</span>
+                                                            </li>
+                                                            <li class="sender">
+                                                                <img src="{{asset('assets/imgs/seller.png')}}">
+                                                                <p> Hey, Are you there? </p>
+                                                                <span class="time">10:26 am</span>
+                                                            </li>
+                                                            <li class="sender">
+                                                                <img src="{{asset('assets/imgs/seller.png')}}">
+                                                                <p> Hey, Are you there? </p>
+                                                                <span class="time">10:32 am</span>
+                                                            </li>
+                                                            <li class="repaly">
+                                                                <p>How are you?</p>
+                                                                <img src="{{asset('assets/imgs/user.png')}}">
+                                                                <span class="time">10:35 am</span>
+                                                            </li>
+                                                            <li>
+                                                                <div class="divider">
+                                                                    <h6>Today</h6>
+                                                                </div>
+                                                            </li>
+
+                                                            <li class="repaly">
+                                                                <p> yes, tell me</p>
+                                                                <img src="{{asset('assets/imgs/user.png')}}">
+                                                                <span class="time">10:36 am</span>
+                                                            </li>
+                                                            <li class="repaly">
+                                                                <p>yes... on it</p>
+                                                                <img src="{{asset('assets/imgs/user.png')}}">
+                                                                <span class="time">junt now</span>
+                                                            </li>
+                                                            <li class="sender">
+                                                                <img src="{{asset('assets/imgs/seller.png')}}">
+                                                                <p> Hey, Are you there? </p>
+                                                                <span class="time">10:32 am</span>
+                                                            </li>
+                                                            <li class="repaly">
+                                                                <p>How are you?</p>
+                                                                <img src="{{asset('assets/imgs/user.png')}}">
+                                                                <span class="time">10:35 am</span>
+                                                            </li>
+                                                            <li>
+                                                                <div class="divider">
+                                                                    <h6>Today</h6>
+                                                                </div>
+                                                            </li>
+
+                                                            <li class="repaly">
+                                                                <p> yes, tell me</p>
+                                                                <img src="{{asset('assets/imgs/user.png')}}">
+                                                                <span class="time">10:36 am</span>
+                                                            </li>
+                                                            <li class="repaly">
+                                                                <p>yes... on it</p>
+                                                                <img src="{{asset('assets/imgs/user.png')}}">
+                                                                <span class="time">junt now</span>
+                                                            </li>
+                                                            <li class="sender">
+                                                                <img src="{{asset('assets/imgs/seller.png')}}">
+                                                                <p> Hey, Are you there? </p>
+                                                                <span class="time">10:32 am</span>
+                                                            </li>
+                                                            <li class="repaly">
+                                                                <p>How are you?</p>
+                                                                <img src="{{asset('assets/imgs/user.png')}}">
+                                                                <span class="time">10:35 am</span>
+                                                            </li>
+                                                            <li>
+                                                                <div class="divider">
+                                                                    <h6>Today</h6>
+                                                                </div>
+                                                            </li>
+
+                                                            <li class="repaly">
+                                                                <p> yes, tell me</p>
+                                                                <img src="{{asset('assets/imgs/user.png')}}">
+                                                                <span class="time">10:36 am</span>
+                                                            </li>
+                                                            <li class="repaly">
+                                                                <p>yes... on it</p>
+                                                                <img src="{{asset('assets/imgs/user.png')}}">
+                                                                <span class="time">junt now</span>
+                                                            </li>
+
+                                                        </ul>
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="send-box">
+                                                    <form action="">
+                                                        <input type="text" class="form-control" aria-label="message…" placeholder="Write message…">
+
+                                                        <button type="button" class="text-primary btn "><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
+                                                    </form>
+
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="d-flex justify-content-between align-items-center mt-2">
-                                    <h4 class="mb-0">$48,995</h4>
-                                    <p class="mb-0">68K miles . Craig</p>
-                                </div>
+                                <!-- chatbox -->
+
 
                             </div>
-                        </a>
-                    </div>
-
-                    <div class="col-lg-3 col-md-6 mb-3">
-                        <a href="javascipt:;">
-                            <div class="multi-card">
-                                <div class="card-img position-relative">
-                                    <img src="./assets/imgs/car-1.png" class="w-100" alt="">
-                                    <div class="card-meta d-flex justify-content-between">
-                                        <h5 class="mb-0 text-white">2006 Porsche 911</h5>
-                                        <div>
-                                            <span>
-                                                <img src="./assets/imgs/fi_share-2.svg" alt="">
-                                            </span>
-                                            <span class="ms-1">
-                                                <img src="./assets/imgs/fi_bookmark.svg" alt="">
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="d-flex justify-content-between align-items-center mt-2">
-                                    <h4 class="mb-0">$48,995</h4>
-                                    <p class="mb-0">68K miles . Craig</p>
-                                </div>
+                            <div class="col-lg-4">
 
                             </div>
-                        </a>
+                        </div>
                     </div>
-
-                    <div class="col-lg-3 col-md-6 mb-3">
-                        <a href="javascipt:;">
-                            <div class="multi-card">
-                                <div class="card-img position-relative">
-                                    <img src="./assets/imgs/car-1.png" class="w-100" alt="">
-                                    <div class="card-meta d-flex justify-content-between">
-                                        <h5 class="mb-0 text-white">2006 Porsche 911</h5>
-                                        <div>
-                                            <span>
-                                                <img src="./assets/imgs/fi_share-2.svg" alt="">
-                                            </span>
-                                            <span class="ms-1">
-                                                <img src="./assets/imgs/fi_bookmark.svg" alt="">
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="d-flex justify-content-between align-items-center mt-2">
-                                    <h4 class="mb-0">$48,995</h4>
-                                    <p class="mb-0">68K miles . Craig</p>
-                                </div>
-
-                            </div>
-                        </a>
                     </div>
+                </section>
 
-                    <div class="col-lg-3 col-md-6 mb-3">
-                        <a href="javascipt:;">
-                            <div class="multi-card">
-                                <div class="card-img position-relative">
-                                    <img src="./assets/imgs/car-1.png" class="w-100" alt="">
-                                    <div class="card-meta d-flex justify-content-between">
-                                        <h5 class="mb-0 text-white">2006 Porsche 911</h5>
-                                        <div>
-                                            <span>
-                                                <img src="./assets/imgs/fi_share-2.svg" alt="">
-                                            </span>
-                                            <span class="ms-1">
-                                                <img src="./assets/imgs/fi_bookmark.svg" alt="">
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="d-flex justify-content-between align-items-center mt-2">
-                                    <h4 class="mb-0">$48,995</h4>
-                                    <p class="mb-0">68K miles . Craig</p>
-                                </div>
 
-                            </div>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="row mb-4">
-                    <div class="col-md-10 col-8">
-                        <h2 class="section-heading mb-0">Other Listing</h2>
-                    </div>
-                    <div class="col-md-2 col-4">
-                        <p class="view-all mb-0 text-end">View All</p>
-                    </div>
-                </div>
-
-                <div class="row mb-5">
-                    <div class="col-lg-3 col-md-4 mb-3">
-                        <a href="javascipt:;">
-                            <div class="multi-card">
-                                <div class="card-img position-relative">
-                                    <img src="./assets/imgs/car-1.png" class="w-100" alt="">
-                                    <div class="card-meta d-flex justify-content-between">
-                                        <h5 class="mb-0 text-white">2006 Porsche 911</h5>
-                                        <div>
-                                            <span>
-                                                <img src="./assets/imgs/fi_share-2.svg" alt="">
-                                            </span>
-                                            <span class="ms-1">
-                                                <img src="./assets/imgs/fi_bookmark.svg" alt="">
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="d-flex justify-content-between align-items-center mt-2">
-                                    <h4 class="mb-0">$48,995</h4>
-                                    <p class="mb-0">68K miles . Craig</p>
-                                </div>
-
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="col-lg-3 col-md-4 mb-3">
-                        <a href="javascipt:;">
-                            <div class="multi-card">
-                                <div class="card-img position-relative">
-                                    <img src="./assets/imgs/car-1.png" class="w-100" alt="">
-                                    <div class="card-meta d-flex justify-content-between">
-                                        <h5 class="mb-0 text-white">2006 Porsche 911</h5>
-                                        <div>
-                                            <span>
-                                                <img src="./assets/imgs/fi_share-2.svg" alt="">
-                                            </span>
-                                            <span class="ms-1">
-                                                <img src="./assets/imgs/fi_bookmark.svg" alt="">
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="d-flex justify-content-between align-items-center mt-2">
-                                    <h4 class="mb-0">$48,995</h4>
-                                    <p class="mb-0">68K miles . Craig</p>
-                                </div>
-
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="col-lg-3 col-md-4 mb-3">
-                        <a href="javascipt:;">
-                            <div class="multi-card">
-                                <div class="card-img position-relative">
-                                    <img src="./assets/imgs/car-1.png" class="w-100" alt="">
-                                    <div class="card-meta d-flex justify-content-between">
-                                        <h5 class="mb-0 text-white">2006 Porsche 911</h5>
-                                        <div>
-                                            <span>
-                                                <img src="./assets/imgs/fi_share-2.svg" alt="">
-                                            </span>
-                                            <span class="ms-1">
-                                                <img src="./assets/imgs/fi_bookmark.svg" alt="">
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="d-flex justify-content-between align-items-center mt-2">
-                                    <h4 class="mb-0">$48,995</h4>
-                                    <p class="mb-0">68K miles . Craig</p>
-                                </div>
-
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="col-lg-3 col-md-4 mb-3">
-                        <a href="javascipt:;">
-                            <div class="multi-card">
-                                <div class="card-img position-relative">
-                                    <img src="./assets/imgs/car-1.png" class="w-100" alt="">
-                                    <div class="card-meta d-flex justify-content-between">
-                                        <h5 class="mb-0 text-white">2006 Porsche 911</h5>
-                                        <div>
-                                            <span>
-                                                <img src="./assets/imgs/fi_share-2.svg" alt="">
-                                            </span>
-                                            <span class="ms-1">
-                                                <img src="./assets/imgs/fi_bookmark.svg" alt="">
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="d-flex justify-content-between align-items-center mt-2">
-                                    <h4 class="mb-0">$48,995</h4>
-                                    <p class="mb-0">68K miles . Craig</p>
-                                </div>
-
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="col-lg-3 col-md-4 mb-3">
-                        <a href="javascipt:;">
-                            <div class="multi-card">
-                                <div class="card-img position-relative">
-                                    <img src="./assets/imgs/car-1.png" class="w-100" alt="">
-                                    <div class="card-meta d-flex justify-content-between">
-                                        <h5 class="mb-0 text-white">2006 Porsche 911</h5>
-                                        <div>
-                                            <span>
-                                                <img src="./assets/imgs/fi_share-2.svg" alt="">
-                                            </span>
-                                            <span class="ms-1">
-                                                <img src="./assets/imgs/fi_bookmark.svg" alt="">
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="d-flex justify-content-between align-items-center mt-2">
-                                    <h4 class="mb-0">$48,995</h4>
-                                    <p class="mb-0">68K miles . Craig</p>
-                                </div>
-
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="col-lg-3 col-md-4 mb-3">
-                        <a href="javascipt:;">
-                            <div class="multi-card">
-                                <div class="card-img position-relative">
-                                    <img src="./assets/imgs/car-1.png" class="w-100" alt="">
-                                    <div class="card-meta d-flex justify-content-between">
-                                        <h5 class="mb-0 text-white">2006 Porsche 911</h5>
-                                        <div>
-                                            <span>
-                                                <img src="./assets/imgs/fi_share-2.svg" alt="">
-                                            </span>
-                                            <span class="ms-1">
-                                                <img src="./assets/imgs/fi_bookmark.svg" alt="">
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="d-flex justify-content-between align-items-center mt-2">
-                                    <h4 class="mb-0">$48,995</h4>
-                                    <p class="mb-0">68K miles . Craig</p>
-                                </div>
-
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="col-lg-3 col-md-4 mb-3">
-                        <a href="javascipt:;">
-                            <div class="multi-card">
-                                <div class="card-img position-relative">
-                                    <img src="./assets/imgs/car-1.png" class="w-100" alt="">
-                                    <div class="card-meta d-flex justify-content-between">
-                                        <h5 class="mb-0 text-white">2006 Porsche 911</h5>
-                                        <div>
-                                            <span>
-                                                <img src="./assets/imgs/fi_share-2.svg" alt="">
-                                            </span>
-                                            <span class="ms-1">
-                                                <img src="./assets/imgs/fi_bookmark.svg" alt="">
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="d-flex justify-content-between align-items-center mt-2">
-                                    <h4 class="mb-0">$48,995</h4>
-                                    <p class="mb-0">68K miles . Craig</p>
-                                </div>
-
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="col-lg-3 col-md-4 mb-3">
-                        <a href="javascipt:;">
-                            <div class="multi-card">
-                                <div class="card-img position-relative">
-                                    <img src="./assets/imgs/car-1.png" class="w-100" alt="">
-                                    <div class="card-meta d-flex justify-content-between">
-                                        <h5 class="mb-0 text-white">2006 Porsche 911</h5>
-                                        <div>
-                                            <span>
-                                                <img src="./assets/imgs/fi_share-2.svg" alt="">
-                                            </span>
-                                            <span class="ms-1">
-                                                <img src="./assets/imgs/fi_bookmark.svg" alt="">
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="d-flex justify-content-between align-items-center mt-2">
-                                    <h4 class="mb-0">$48,995</h4>
-                                    <p class="mb-0">68K miles . Craig</p>
-                                </div>
-
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="col-lg-3 col-md-4 mb-3">
-                        <a href="javascipt:;">
-                            <div class="multi-card">
-                                <div class="card-img position-relative">
-                                    <img src="./assets/imgs/car-1.png" class="w-100" alt="">
-                                    <div class="card-meta d-flex justify-content-between">
-                                        <h5 class="mb-0 text-white">2006 Porsche 911</h5>
-                                        <div>
-                                            <span>
-                                                <img src="./assets/imgs/fi_share-2.svg" alt="">
-                                            </span>
-                                            <span class="ms-1">
-                                                <img src="./assets/imgs/fi_bookmark.svg" alt="">
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="d-flex justify-content-between align-items-center mt-2">
-                                    <h4 class="mb-0">$48,995</h4>
-                                    <p class="mb-0">68K miles . Craig</p>
-                                </div>
-
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="col-lg-3 col-md-4 mb-3">
-                        <a href="javascipt:;">
-                            <div class="multi-card">
-                                <div class="card-img position-relative">
-                                    <img src="./assets/imgs/car-1.png" class="w-100" alt="">
-                                    <div class="card-meta d-flex justify-content-between">
-                                        <h5 class="mb-0 text-white">2006 Porsche 911</h5>
-                                        <div>
-                                            <span>
-                                                <img src="./assets/imgs/fi_share-2.svg" alt="">
-                                            </span>
-                                            <span class="ms-1">
-                                                <img src="./assets/imgs/fi_bookmark.svg" alt="">
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="d-flex justify-content-between align-items-center mt-2">
-                                    <h4 class="mb-0">$48,995</h4>
-                                    <p class="mb-0">68K miles . Craig</p>
-                                </div>
-
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="col-lg-3 col-md-4 mb-3">
-                        <a href="javascipt:;">
-                            <div class="multi-card">
-                                <div class="card-img position-relative">
-                                    <img src="./assets/imgs/car-1.png" class="w-100" alt="">
-                                    <div class="card-meta d-flex justify-content-between">
-                                        <h5 class="mb-0 text-white">2006 Porsche 911</h5>
-                                        <div>
-                                            <span>
-                                                <img src="./assets/imgs/fi_share-2.svg" alt="">
-                                            </span>
-                                            <span class="ms-1">
-                                                <img src="./assets/imgs/fi_bookmark.svg" alt="">
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="d-flex justify-content-between align-items-center mt-2">
-                                    <h4 class="mb-0">$48,995</h4>
-                                    <p class="mb-0">68K miles . Craig</p>
-                                </div>
-
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="col-lg-3 col-md-4 mb-3">
-                        <a href="javascipt:;">
-                            <div class="multi-card">
-                                <div class="card-img position-relative">
-                                    <img src="./assets/imgs/car-1.png" class="w-100" alt="">
-                                    <div class="card-meta d-flex justify-content-between">
-                                        <h5 class="mb-0 text-white">2006 Porsche 911</h5>
-                                        <div>
-                                            <span>
-                                                <img src="./assets/imgs/fi_share-2.svg" alt="">
-                                            </span>
-                                            <span class="ms-1">
-                                                <img src="./assets/imgs/fi_bookmark.svg" alt="">
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="d-flex justify-content-between align-items-center mt-2">
-                                    <h4 class="mb-0">$48,995</h4>
-                                    <p class="mb-0">68K miles . Craig</p>
-                                </div>
-
-                            </div>
-                        </a>
-                    </div>
-
-                </div>
             </div>
         </div>
     </main>
@@ -606,8 +342,157 @@
         </div>
     </div>
 
-    <script src="./assets/js/jquery.min.js"></script>
-    <script src="./assets/js/bootstrap.bundle.min.js"></script>
-</body>
 
-</html>
+    <div class="modal fade" id="deposit" tabindex="-1" aria-labelledby="depositLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content p-4 position-relative">
+                <div class="text-end border-0">
+                    <!-- <h1 class="modal-title fs-5" id="depositLabel">Modal title</h1> -->
+                    <button type="button" class="btn-close ms-auto" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="deposit-modal">
+                        <form action="">
+                            <h4 class="text-center">Make a Deposite <br> Secure this Vahicle Now</h4>
+
+                            <div class="d-flex gap-3 flex-md-row flex-column align-items-center justify-content-center mt-4 custom-radio mb-4">
+                                <div class="position-relative mb-3 radio">
+                                    <input class="deposit-radio" type="radio" name="deposit" value="5%" id="d-1">
+                                    <label for="d-1">5%</label>
+                                </div>
+                                <div class="position-relative mb-3 radio">
+                                    <input class="deposit-radio" type="radio" name="deposit" value="10%" id="d-2">
+                                    <label for="d-2">10%</label>
+                                </div>
+                                <div class="position-relative mb-3 radio">
+                                    <input class="deposit-radio" type="radio" name="deposit" value="15%" id="d-3">
+                                    <label for="d-3">15%</label>
+                                </div>
+                                <div class="position-relative mb-3 radio">
+                                    <input class="deposit-radio" type="radio" name="deposit" value="20%" id="d-4">
+                                    <label for="d-4">20%</label>
+                                </div>
+                            </div>
+                            <button id="deposit-submit" class="btn btn-primary mx-auto d-block" disabled>Deposit now</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="negoriate" tabindex="-1" aria-labelledby="negoriate Label" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content p-4 position-relative">
+                <div class="text-end border-0">
+                    <!-- <h1 class="modal-title fs-5" id="negoriate Label">Modal title</h1> -->
+                    <button type="button" class="btn-close ms-auto" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="deposit-modal">
+                        <form action="">
+                            <h4 class="text-center">Negotiate</h4>
+
+                            <div class="d-flex gap-3 flex-column align-items-center justify-content-center mt-4 custom-radio mb-4">
+                                <div class="position-relative mb-2 radio">
+                                    <input type="radio" name="negotitate" value="Offer 5% Less than Asking" id="n-1">
+                                    <label for="n-1">Offer 5% Less than Asking</label>
+                                </div>
+                                <div class="position-relative mb-2 radio">
+                                    <input type="radio" name="negotitate" value="Offer 10% Less than Asking" id="n-2">
+                                    <label for="n-2">Offer 10% Less than Asking</label>
+                                </div>
+                                <div class="position-relative mb-2">
+                                    <input type="text" class="form-control text-center" placeholder="Custom" name="deposit" id="n-custom">
+                                    <!-- <label for="d-4">20%</label> -->
+                                </div>
+                            </div>
+                            <button id="negotiate-submit" class="btn btn-primary mx-auto d-block" disabled>Send Offer</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection
+@push('scripts')
+    <script>
+        $(document).ready(function () {
+            $(".chat-list a").click(function () {
+                $(".chatbox").addClass('showbox');
+                return false;
+            });
+
+            $(".chat-icon").click(function () {
+                $(".chatbox").removeClass('showbox');
+            });
+
+            $('input.deposit-radio').on('change', function () {
+                // Enable or disable the button based on the radio button state
+                if ($('#d-1').is(':checked') || $('#d-2').is(':checked') || $('#d-3').is(':checked') || $('#d-3').is(':checked')) {
+                    $('#deposit-submit').prop('disabled', false);
+                } else {
+                    $('#deposit-submit').prop('disabled', true);
+                }
+            });
+
+            // function checkButtonStatus() {
+            //     console.log($('#n-custom').val());
+            //     // Check if input field has a value or if any radio button is checked
+            //     if ($('#n-custom').val() !== '' || $('input[name="negotitate"]:checked').length > 0) {
+            //         $('#negotiate-submit').prop('disabled', false);
+
+            //     } else {
+            //         $('#negotiate-submit').prop('disabled', true);
+            //     }
+            // }
+
+            // // Check button status on input field change
+            // $('#n-custom').on('input', function () {
+            //     checkButtonStatus();
+            // });
+
+
+            // $('input[name="negotitate"]').on('change', function () {
+            //     $('#n-custom').val('');
+            //     // If any radio button is checked, make the input optional
+            //     if ($('input[name="negotitate"]:checked').length > 0) {
+            //         $('#n-custom').prop('required', false);
+
+            //     } else {
+            //         // If no radio button is checked, make the input required
+            //         $('#n-custom').prop('required', true);
+            //     }
+
+            //     checkButtonStatus();
+            // });
+
+            function checkButtonStatus() {
+                // Check if input field has a value or if any radio button is checked
+                const customValue = $('#n-custom').val();
+                const radioChecked = $('input[name="negotitate"]:checked').length > 0;
+
+                if(customValue !== ''){
+                    $('#n-custom').addClass('has-value');
+                    $('input[name="negotitate"]').prop('checked', false);
+                } else {
+                    $('#n-custom').removeClass('has-value');
+                }
+
+                $('#negotiate-submit').prop('disabled', customValue === '' && !radioChecked);
+            }
+
+            // Check button status on input field change
+            $('#n-custom').on('input', checkButtonStatus);
+
+            $('input[name="negotitate"]').on('change', function () {
+                $('#n-custom').val('');
+
+                // If any radio button is checked, make the input optional
+                $('#n-custom').prop('required', !$('input[name="negotitate"]:checked').length > 0);
+
+                checkButtonStatus();
+});
+        });
+    </script>
+@endpush
