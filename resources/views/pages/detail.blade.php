@@ -18,13 +18,12 @@ Detail
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="car-slider">
+                            @forelse ($galleries as $gallery)
                             <div>
-                                @forelse ($galleries as $gallery)
                                 <img class="w-100" src="{{ asset('upload/vehicle/'.$gallery->image) }}" alt="">
-                                @empty
-
-                                @endforelse
                             </div>
+                            @empty
+                            @endforelse
                         </div>
                     </div>
 
@@ -55,7 +54,7 @@ Detail
                                 <div class="seller d-flex justify-content-between align-items-center mt-4">
                                     <div class="d-flex gap-3 align-items-center">
                                         <div class="seller-img">
-                                            <img src="{{asset('upload/user/'. auth()->user()->image)}}" alt="">
+                                            <img class="rounded-circle" style="height: 100px;width:100px;" src="{{asset('upload/user/'. auth()->user()->image)}}" alt="">
                                         </div>
                                         <div class="seller-info">
                                             <h5>{{ auth()->user()->first_name }} {{ auth()->user()->last_name }}</h5>
