@@ -15,10 +15,6 @@ use App\Http\Controllers\VehicleController;
 |
 */
 
-Route::get('/', function () {
-    return redirect()->route('login');
-    return view('welcome');
-});
 
 Route::get('/', [FrontendController::class, 'index'])->name('index');
 Route::get('detail/{id}', [FrontendController::class, 'detail'])->name('detail');

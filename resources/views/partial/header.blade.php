@@ -2,7 +2,7 @@
     <div class="container-fluid">
         <div class="d-flex align-items-center justify-content-between">
             <div class="logo-head d-flex align-items-center gap-3">
-                <img src="{{asset('assets/imgs/logo.png')}}" alt="" class="d-block">
+                <a href="{{ route('index') }}"><img src="{{asset('assets/imgs/logo.png')}}" alt="" class="d-block"></a>
                 <h1 class="mb-0">Dashboard</h1>
             </div>
             <div class="vertical-nav d-flex align-items-center">

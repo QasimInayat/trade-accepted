@@ -32,6 +32,7 @@ class VehicleController extends Controller
             'model_id' => 'required',
         ]);
         $store = Vehicle::create([
+           'user_id' => $request->user_id,
            'title' => $request->title,
            'price' => $request->price,
            'address' => $request->address,
@@ -109,7 +110,7 @@ class VehicleController extends Controller
                     'is_main' => $index==0 ? 1 : 0,
                 ]);
             }
-        }        
+        }
         Gallery::where('vehicle_id', $vehicle->id)->update(['is_main' => 0]);
         Gallery::where('id', $request->is_main)->update(['is_main' => 1]);
         if($update > 0){

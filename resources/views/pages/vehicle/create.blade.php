@@ -23,7 +23,7 @@
 
                      {!! Form::open(['route' => 'vehicle.store' , 'enctype' => 'multipart/form-data']) !!}
                      <div class="row">
-                        {{-- <input type="hidden" name="user_id" value="{{ auth()->user()->id }}"> --}}
+                        <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
                         <div class="col-md-6 mt-4">
                             <div class="form-floating">
                                {!! Form::text('title', null, ['class' => 'form-control', 'id' => 'floatingInput', 'placeholder' => 'Enter your title', 'aria-describedby' => 'floatingInputHelp']) !!}
