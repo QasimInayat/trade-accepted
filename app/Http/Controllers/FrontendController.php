@@ -3,15 +3,19 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Vehicle;
 
 class FrontendController extends Controller
 {
     public function index(){
         $data ['title'] = 'Index';
+        $data ['vehicles'] = Vehicle::get();
         return view('pages.index',$data);
     }
-    public function detail(){
+    public function detail($id){
         $data ['title'] = 'Detail';
+        $data ['vehicle'] = Vehicle::where('id',$id)->firstorfail();
+        $data['galleries'] = Gallery::where('vehicle_id' , $data['vehicle']->id)->get();
         return view('pages.detail',$data);
     }
     public function search(){

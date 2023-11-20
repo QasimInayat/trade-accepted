@@ -19,13 +19,11 @@ Detail
                     <div class="col-lg-6">
                         <div class="car-slider">
                             <div>
-                                <img src="{{asset('assets/imgs/car-2.png')}}" class="w-100" alt="">
-                            </div>
-                            <div>
-                                <img src="{{asset('assets/imgs/car-3.png')}}" class="w-100" alt="">
-                            </div>
-                            <div>
-                                <img src="{{asset('assets/imgs/car-4.png')}}" class="w-100" alt="">
+                                @forelse ($galleries as $gallery)
+                                <img class="w-100" src="{{ asset('upload/vehicle/'.$gallery->image) }}" alt="">
+                                @empty
+
+                                @endforelse
                             </div>
                         </div>
                     </div>
@@ -33,7 +31,7 @@ Detail
                     <div class="col-lg-6 mt-lg-0 mt-4">
                         <div class="car-details">
                             <div class="d-flex align-items-center justify-content-between">
-                                <h2>2006 Porsche 911</h2>
+                                <h2>{{ $vehicle->title }}</h2>
                                 <div>
                                     <span>
                                         <img src="{{asset('assets/imgs/fi_share-2-red.svg')}}" alt="">
@@ -44,12 +42,12 @@ Detail
                                 </div>
                             </div>
                             <div class="price d-flex align-items-end gap-4 mt-3">
-                                <h4 class="mb-0">$48,995</h4>
-                                <p class="mb-0">Listed 5 hours ago . Aurora, CO</p>
+                                <h4 class="mb-0">${{ $vehicle->price }}</h4>
+                                <p class="mb-0">{{ $vehicle->created_at }} . {{ $vehicle->city_id }}</p>
                             </div>
                             <div class="desc mt-5">
                                 <h5>Description</h5>
-                                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia.</p>
+                                <p>{!! $vehicle->description !!}</p>
                             </div>
 
                             <div class="desc mt-5">
@@ -57,14 +55,14 @@ Detail
                                 <div class="seller d-flex justify-content-between align-items-center mt-4">
                                     <div class="d-flex gap-3 align-items-center">
                                         <div class="seller-img">
-                                            <img src="{{asset('assets/imgs/seller.png')}}" alt="">
+                                            <img src="{{asset('upload/user/'. auth()->user()->image)}}" alt="">
                                         </div>
                                         <div class="seller-info">
-                                            <h5>Benjamin William</h5>
+                                            <h5>{{ auth()->user()->first_name }} {{ auth()->user()->last_name }}</h5>
                                             <p class="mb-0 fw-bold">Manual</p>
                                         </div>
                                     </div>
-                                    <button class="btn btn-primary px-4">Contact</button>
+                                    <a href="{{ route('messanger') }}"><button class="btn btn-primary px-4">Contact</button></a>
                                 </div>
                             </div>
                         </div>
@@ -79,35 +77,35 @@ Detail
                                 <div class="row">
                                     <div class="col-lg-3 col-md-4 col-sm-6 mb-3">
                                         <p class="head mb-1">Mileage</p>
-                                        <p class="title text-primary">Driven 77,189 miles</p>
+                                        <p class="title text-primary">{{ $vehicle->mileage }}</p>
                                     </div>
                                     <div class="col-lg-3 col-md-4 col-sm-6 mb-3">
                                         <p class="head mb-1">Transmission</p>
-                                        <p class="title text-primary">Manual</p>
+                                        <p class="title text-primary">{{ $vehicle->transmission }}</p>
                                     </div>
                                     <div class="col-lg-3 col-md-4 col-sm-6 mb-3">
                                         <p class="head mb-1">Exterior Color</p>
-                                        <p class="title text-primary">Red</p>
+                                        <p class="title text-primary">{{ $vehicle->exterior_color }}</p>
                                     </div>
                                     <div class="col-lg-3 col-md-4 col-sm-6 mb-3">
                                         <p class="head mb-1">Interior Color</p>
-                                        <p class="title text-primary">Black</p>
+                                        <p class="title text-primary">{{ $vehicle->interior_color }}</p>
                                     </div>
                                     <div class="col-lg-3 col-md-4 col-sm-6 mb-3">
                                         <p class="head mb-1">Make</p>
-                                        <p class="title text-primary">Volkswagen</p>
+                                        <p class="title text-primary">{{ isset($vehicle->make) ? $vehicle->make->name : '-' }}</p>
                                     </div>
                                     <div class="col-lg-3 col-md-4 col-sm-6 mb-3">
                                         <p class="head mb-1">Model</p>
-                                        <p class="title text-primary">911</p>
+                                        <p class="title text-primary">{{ $vehicle->model_id }}</p>
                                     </div>
                                     <div class="col-lg-3 col-md-4 col-sm-6 mb-3">
                                         <p class="head mb-1">Trim</p>
-                                        <p class="title text-primary">Information</p>
+                                        <p class="title text-primary">{{ $vehicle->trim }}</p>
                                     </div>
                                     <div class="col-lg-3 col-md-4 col-sm-6 mb-3">
                                         <p class="head mb-1">Year</p>
-                                        <p class="title text-primary">2006</p>
+                                        <p class="title text-primary">{{ $vehicle->year }}</p>
                                     </div>
                                 </div>
                             </div>
@@ -117,7 +115,7 @@ Detail
                     <div class="col-lg-6">
                         <div class="map">
                             <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d627.1937268859081!2d-114.08504708112466!3d51.03877794729636!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2s!4v1700433195619!5m2!1sen!2s" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                            <h4>Aurora, CO</h4>
+                            <h4>{{ $vehicle->address }}</h4>
                         </div>
                     </div>
                 </div>
