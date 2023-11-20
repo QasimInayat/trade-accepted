@@ -19,12 +19,18 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/', [FrontendController::class, 'index'])->name('index');
+Route::get('detail/{id}', [FrontendController::class, 'detail'])->name('detail');
+Route::get('search', [FrontendController::class, 'search'])->name('search');
+Route::get('messanger', [FrontendController::class, 'messanger'])->name('messanger');
+
+Route::middleware(['auth'])->group(function () {
+
+});
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
-Route::get('index', [FrontendController::class, 'index'])->name('index');
-Route::get('detail', [FrontendController::class, 'detail'])->name('detail');
-Route::get('search', [FrontendController::class, 'search'])->name('search');
-Route::get('messanger', [FrontendController::class, 'messanger'])->name('messanger');
+
