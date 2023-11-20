@@ -51,7 +51,7 @@ class VehicleController extends Controller
         if($request->has('images')){
             foreach($request->file('images') as $index=>$image){
                 $imageName = 'vehicle' . '-' . time() .'-'.rand(1000,100). '.' . $image->getClientOriginalExtension();
-                $image->move(public_path('upload/vehicle'),$imageName);
+                $image->move(public_path('upload/vehicle_images'),$imageName);
                 Gallery::create([
                     'vehicle_id' => $store->id,
                     'image' => $imageName,
@@ -103,7 +103,7 @@ class VehicleController extends Controller
         if($request->has('images')){
             foreach($request->file('images') as $index=>$image){
                 $imageName = 'vehicle' . '-' . time() .'-'.rand(1000,100). '.' . $image->getClientOriginalExtension();
-                $image->move(public_path('upload/vehicle'),$imageName);
+                $image->move(public_path('upload/vehicle_images'),$imageName);
                 Gallery::create([
                     'vehicle_id' => $vehicle->id,
                     'image' => $imageName,

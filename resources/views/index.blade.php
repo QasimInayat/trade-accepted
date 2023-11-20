@@ -21,10 +21,11 @@ Index
                     <div class="col-lg-3 col-md-6 mb-3">
                         <a href="javascipt:;">
                             <div class="multi-card">
+                               <a href="{{ route('detail',$vehicle->id) }}">
                                 <div class="card-img position-relative">
-                                    <img src="{{ asset('upload/vehicle/'.mainImage($vehicle->id)) }}" class="w-100" alt="">
+                                    <img src="{{ asset('upload/vehicle_images/'.mainImage($vehicle->id)) }}" class="w-100" alt="">
                                     <div class="card-meta d-flex justify-content-between">
-                                        <h5 class="mb-0 text-white">2006 Porsche 911</h5>
+                                        <h5 class="mb-0 text-white">{{ $vehicle->title }}</h5>
                                         <div>
                                             <span>
                                                 <img src="{{asset('assets/imgs/fi_share-2.svg')}}" alt="">
@@ -35,8 +36,9 @@ Index
                                         </div>
                                     </div>
                                 </div>
+                               </a>
                                 <div class="d-flex justify-content-between align-items-center mt-2">
-                                    <h4 class="mb-0">$48,995</h4>
+                                    <h4 class="mb-0">${{ $vehicle->price }}</h4>
                                     <p class="mb-0">68K miles . Craig</p>
                                 </div>
 
