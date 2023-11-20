@@ -23,7 +23,7 @@ Index
                             <div class="multi-card">
                                <a href="{{ route('detail',$vehicle->id) }}">
                                 <div class="card-img position-relative">
-                                    <img src="{{ asset('upload/vehicle_images/'.mainImage($vehicle->id)) }}" class="w-100" alt="">
+                                    <img src="{{ asset('upload/vehicle/'.mainImage($vehicle->id)) }}" class="w-100" alt="">
                                     <div class="card-meta d-flex justify-content-between">
                                         <h5 class="mb-0 text-white">{{ $vehicle->title }}</h5>
                                         <div>
