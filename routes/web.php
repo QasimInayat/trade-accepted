@@ -16,7 +16,7 @@ use App\Http\Controllers\VehicleController;
 */
 
 
-Route::get('/', [FrontendController::class, 'index'])->name('index');
+Route::get('/' , [FrontendController::class , 'index'])->name('index');
 Route::get('detail/{id}', [FrontendController::class, 'detail'])->name('detail');
 Route::get('search', [FrontendController::class, 'search'])->name('search');
 Route::get('messanger', [FrontendController::class, 'messanger'])->name('messanger');

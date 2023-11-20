@@ -23,6 +23,7 @@
                     {!! Form::model($vehicle, ['route' => ['vehicle.update' , $vehicle->id], 'enctype' => 'multipart/form-data']) !!}
                     @method('PUT')
                      <div class="row">
+                        <input type="hidden" name="user_id" value="{{ $user->id }}">
                         <div class="col-md-6 mt-4">
                             <div class="form-floating">
                                {!! Form::text('title', null, ['class' => 'form-control', 'id' => 'floatingInput', 'placeholder' => 'Enter your title', 'aria-describedby' => 'floatingInputHelp']) !!}

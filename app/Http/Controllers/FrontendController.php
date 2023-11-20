@@ -10,7 +10,7 @@ class FrontendController extends Controller
     public function index(){
         $data ['title'] = 'Index';
         $data ['vehicles'] = Vehicle::get();
-        return view('pages.index',$data);
+        return view('index',$data);
     }
     public function detail($id){
         $data ['title'] = 'Detail';

@@ -29,7 +29,10 @@
             </li>
         </ul>
             <a href="javascript:;" class="d-block">
-                <a class="dropdown-item" href="javscript:;" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="mdi mdi-logout text-muted fs-16 align-middle me-1"></i> <span class="align-middle" data-key="t-logout"> <img src="{{asset('assets/imgs/fi_log-out.svg')}}" alt=""><form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none"> @csrf </form>
+            <a href="javscript:;" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="mdi mdi-logout text-muted fs-16 align-middle me-1"></i> <span class="align-middle" data-key="t-logout"> <img src="{{asset('assets/imgs/fi_log-out.svg')}}" alt="">
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                    @csrf
+                </form>
             </a>
     </div>
 </aside>

@@ -32,10 +32,15 @@
                     </li>
                 </ul>
                 <div class="d-flex align-items-center">
-
+                    @guest
+                    <button class="btn btn-danger"><a href="{{ route('login') }}"> Login </a></button>&nbsp;&nbsp;
+                    <button class="btn btn-danger"><a href="{{ route('register') }}"> Register </a></button>
+                    @endguest
+                    @auth
                     <div class="dropdown">
                         <button class="btn btn-secondary dropdown-toggle auth-dropdown" type="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
+
                             <span class="user-image">
                                 <img src="{{asset('upload/user/'. auth()->user()->image)}}" alt="">
                             </span>
@@ -47,6 +52,7 @@
                             <li><a class="dropdown-item" href="#">Something else here</a></li>
                         </ul>
                     </div>
+                    @endauth
                 </div>
             </div>
         </div>

@@ -13,7 +13,6 @@ Vehicle
                 </div>
                 <div class="col-md-6">
                     <div style="float: right; margin-right: 15px;" class="mt-4">
-                        <a href="{{route('vehicle.create')}}" class="btn btn-primary">Create Vehicle</a>
                     </div>
                 </div>
             </div>

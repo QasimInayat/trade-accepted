@@ -23,7 +23,6 @@
 
                      {!! Form::open(['route' => 'vehicle.store' , 'enctype' => 'multipart/form-data']) !!}
                      <div class="row">
-                        {{-- <input type="hidden" name="user_id" value="{{ auth()->user()->id }}"> --}}
                         <input type="hidden" name="user_id" value="{{ $user->id }}">
 
                         <div class="col-md-6 mt-4">

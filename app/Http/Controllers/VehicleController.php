@@ -12,7 +12,7 @@ class VehicleController extends Controller
 {
     public function index(){
         $data['title'] = 'Vehicle';
-        $data['vehicles'] = Vehicle::get();
+        $data['vehicles'] = Vehicle::where('user_id',auth()->user()->id)->get();
         return view('pages.vehicle.index' ,$data);
     }
     public function create(){
