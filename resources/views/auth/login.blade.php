@@ -59,6 +59,7 @@ Login/Register
                                                 <a href="{{route('register')}}" class="forgot text-center">Don't have an account?, Register</a>
                                                     
                                                 </center>
+
                                         </form>
                                     </div>
                                 </div>

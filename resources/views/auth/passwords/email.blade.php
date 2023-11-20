@@ -23,7 +23,11 @@ Forgot Password
                                     <div class="auth-policy mb-4">
                                         <p class="mb-0">Please enter your email, we’ll send you reset password link.</p>
                                     </div>
+<<<<<<< HEAD
                                        <div class="col-md-12">
+=======
+                                    <div class="col-md-12">
+>>>>>>> f8ab42d6d98bd4f1d7f2124d1024c447f22c6c15
                                         @if (session('status'))
                                         <div style="" class="alert alert-success" role="alert">
                                            {{ session('status') }}
@@ -36,11 +40,12 @@ Forgot Password
                                             aria-describedby="emailHelp">
                                     </div>
                                     <button type="submit" class="btn btn-primary w-100 fw-bold mt-4">Reset Password</button>
+                                    <p style="font-size:13px;color:grey;" class="text-center mt-3">Back To <a style="text-decoration: none" href="{{ route('login') }}">Login</a></p>
                                 </form>
 
                             </div>
                             <div class="auth-policy">
-                                <img src="{{asset('assets/imgs/logo.png')}}" width="120" alt="">
+                               <a href="{{ route('home') }}"> <img src="{{asset('assets/imgs/logo.png')}}" width="120" alt=""></a>
                                 <p class="mb-0">All trademarks are the property of Trades Accepted or a related company
                                     or a licensor unless otherwise noted. ©2023 Trades Accepted. All rights reserved.
                                 </p>

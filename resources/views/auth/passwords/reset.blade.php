@@ -20,15 +20,15 @@ Reset Password
                                 <form action="{{ route('password.update') }}" method="POST" class="auth-form w-100">
                                     @csrf
                                     <h3 class="mb-5">Reset password?</h3>
-                                     <input type="hidden" name="token" value="{{ $token }}">
-                                        <div class="mb-3">
+                                    <input type="hidden" name="token" value="{{ $token }}">
+                                    <div class="mb-3">
                                         <label for="email">Email <span>*</span></label>
-                                         <input class="form-control" id="email" type="text" class="@error('email') is-invalid @enderror" name="email" value="{{ $email ?? old('email') }}" required autocomplete="email" autofocus>
-                                            @error('email')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
+                                    <input class="form-control" id="email" type="text" class="@error('email') is-invalid @enderror" name="email" value="{{ $email ?? old('email') }}" required autocomplete="email" autofocus>
+                                    @error('email')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                     </div>
                                     <div class="mb-3">
                                         <label for="exampleInputPassword1" class="form-label">Type your password</label>
@@ -54,7 +54,7 @@ Reset Password
 
                             </div>
                             <div class="auth-policy">
-                                <img src="{{asset('assets/imgs/logo.png')}}" width="120" alt="">
+                               <a href="{{ route('home') }}"> <img src="{{asset('assets/imgs/logo.png')}}" width="120" alt=""></a>
                                 <p class="mb-0">All trademarks are the property of Trades Accepted or a related company
                                     or a licensor unless otherwise noted. ©2023 Trades Accepted. All rights reserved.
                                 </p>
