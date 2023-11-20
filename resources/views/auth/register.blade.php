@@ -78,13 +78,20 @@ Login/Register
                                             </div>
                                             <button type="submit" class="btn btn-primary w-100 fw-bold mt-4">Register
                                                 Now</button>
+                                                                                                <center>
+                                                <a href="{{route('login')}}" class="forgot text-center">Already have an account?, Login</a>
+                                                    
+                                                </center>
+
                                         </form>
                                     </div>
                                 </div>
 
                             </div>
                             <div class="auth-policy">
+                                                                <a href="{{('/')}}">
                                 <img src="{{asset('assets/imgs/logo.png')}}" width="120" alt="">
+                                </a>
                                 <p class="mb-0">All trademarks are the property of Trades Accepted or a related company
                                     or a licensor unless otherwise noted. ©2023 Trades Accepted. All rights reserved.
                                 </p>
