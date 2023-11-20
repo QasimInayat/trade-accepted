@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ForentedController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,3 +22,9 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+Route::get('index', [ForentedController::class, 'index'])->name('index');
+Route::get('detail', [ForentedController::class, 'detail'])->name('detail');
+Route::get('search', [ForentedController::class, 'search'])->name('search');
+Route::get('mesanger', [ForentedController::class, 'mesanger'])->name('mesanger');
