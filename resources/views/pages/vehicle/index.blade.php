@@ -3,18 +3,17 @@
 Vehicle
 @endpush
 @section('content')
-<div class="main">
-<div class="layout-page">
-<div class="content-wrapper">
-   <div class="container-xxl flex-grow-1 container-p-y">
-      <div class="card">
+<div class="layout-page mb-5" style="margin-top:130px; margin-left:100px;">
+    <div class="content-wrapper">
+       <div class="container">
+         <div class="card shadow-lg p-3">
           <div class="row">
               <div class="col-md-6">
-                  <h4 class="card-header">Vehicle</h4>
+                  <h2 class="mt-3">Vehicle</h2>
                 </div>
                 <div class="col-md-6">
                     <div style="float: right; margin-right: 15px;" class="mt-4">
-                        <a href="#" class="btn btn-primary">Create Vehicle</a>
+                        <a href="{{route('vehicle.create')}}" class="btn btn-primary">Create Vehicle</a>
                     </div>
                 </div>
             </div>
@@ -70,7 +69,6 @@ Vehicle
          </div>
       </div>
    </div>
-</div>
 </div>
 </div>
 @endsection

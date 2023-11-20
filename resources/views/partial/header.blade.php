@@ -42,7 +42,7 @@
                             <span class="d-md-inline d-none">Welcome back, Steve!</span>
                         </button>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li><a class="dropdown-item" href="{{route('vehicle.index')}}">Action</a></li>
                             <li><a class="dropdown-item" href="#">Another action</a></li>
                             <li><a class="dropdown-item" href="#">Something else here</a></li>
                         </ul>

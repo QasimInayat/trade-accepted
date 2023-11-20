@@ -18,7 +18,7 @@ class VehicleController extends Controller
     public function create(){
         $data['title'] = 'Create Vehicle';
         $data['makes'] = Make::get();
-        // $data['user'] = User::where('user_id', auth()->user()->id)->get();
+        $data['user'] = User::where('id',auth()->user()->id)->first();
         return view('pages.vehicle.create' ,$data);
     }
     public function store(Request $request){
@@ -33,6 +33,7 @@ class VehicleController extends Controller
             'model_id' => 'required',
         ]);
         $store = Vehicle::create([
+           'user_id' => $request->user_id,
            'title' => $request->title,
            'price' => $request->price,
            'address' => $request->address,
@@ -70,6 +71,7 @@ class VehicleController extends Controller
         $data['makes'] = Make::get();
         $data['vehicle'] = Vehicle::where('id' , $id)->firstorfail();
         $data['galleries'] = Gallery::where('vehicle_id' , $id)->get();
+        $data['user'] = User::where('id',auth()->user()->id)->first();
         return view('pages.vehicle.edit' ,$data);
     }
     public function update(Request $request , $id){
@@ -84,6 +86,7 @@ class VehicleController extends Controller
             'model_id' => 'required',
         ]);
         $update = Vehicle::where('id' , $id)->update([
+            'user_id' => $request->user_id,
             'title' => $request->title,
             'price' => $request->price,
             'address' => $request->address,

@@ -3,12 +3,12 @@
 {{ $title ?? '' }}
 @endpush
 @section('content')
-<div class="layout-page" style="margin-top:130px;">
+<div class="layout-page mb-5" style="margin-top:130px; margin-left:70px;">
    <div class="content-wrapper">
       <div class="container">
          <div class="row">
             <div class="col-md-12">
-               <div class="card">
+               <div class="card shadow-lg p-3">
                   <div class="row">
                      <div class="col-md-6">
                         <h2 class="mt-3 ">{{ $title ?? '' }}</h2>
@@ -24,6 +24,8 @@
                      {!! Form::open(['route' => 'vehicle.store' , 'enctype' => 'multipart/form-data']) !!}
                      <div class="row">
                         {{-- <input type="hidden" name="user_id" value="{{ auth()->user()->id }}"> --}}
+                        <input type="hidden" name="user_id" value="{{ $user->id }}">
+
                         <div class="col-md-6 mt-4">
                             <div class="form-floating">
                                {!! Form::text('title', null, ['class' => 'form-control', 'id' => 'floatingInput', 'placeholder' => 'Enter your title', 'aria-describedby' => 'floatingInputHelp']) !!}
@@ -51,7 +53,7 @@
                                     <option value="1">Pakistan</option>
                                     <option value="2">India</option>
                                 </select>
-                               <label for="floatingInput">Country</label>
+                               <label for="floatingInput text-danger">Country</label>
                                <small class="text-danger">@error ('country_id') {{ $message }} @enderror</small>
                             </div>
                          </div>
@@ -141,7 +143,7 @@
                          <div class="col-md-6 mt-4">
                             <div class="form-floating">
                                 <input type="file" name="images[]" id="" accept="image/*" class="form-control" multiple>
-                               <label for="floatingInput">Image</label>
+                               <label for="floatingInput">image</label>
                                <small class="text-danger">@error ('images[]') {{ $message }} @enderror</small>
                             </div>
                          </div>

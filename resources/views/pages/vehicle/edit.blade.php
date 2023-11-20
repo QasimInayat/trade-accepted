@@ -3,15 +3,15 @@
 {{ $title ?? '' }}
 @endpush
 @section('content')
-<div class="layout-page">
-   <div class="content-wrapper">
-      <div class="container-xxl flex-grow-1 container-p-y">
-         <div class="row">
-            <div class="col-md-12">
-               <div class="card">
+<div class="layout-page mb-5" style="margin-top:130px; margin-left:70px;">
+    <div class="content-wrapper">
+       <div class="container">
+          <div class="row">
+             <div class="col-md-12">
+                <div class="card shadow-lg p-3">
                   <div class="row">
                      <div class="col-md-6">
-                        <h4 class="card-header">{{ $title ?? '' }}</h4>
+                        <h2 class="mt-3">{{ $title ?? '' }}</h2>
                      </div>
                      <div class="col-md-6">
                         <div style="float: right; margin-right: 15px;" class="mt-4">
@@ -140,7 +140,7 @@
                          <div class="col-md-6 mt-4">
                             <div class="form-floating">
                                 <input type="file" name="images[]" id="" accept="image/*" class="form-control" multiple>
-                               <label for="floatingInput">Image</label>
+                                <label for="floatingInput">Image</label>
                                <div class="row">
                                @foreach ($galleries as $gallery)
                                 <div class="col-md-3">
