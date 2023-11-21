@@ -13,7 +13,7 @@ Index
                         <h2 class="section-heading mb-0">Recent Uploads</h2>
                     </div>
                     <div class="col-md-2 col-4">
-                        <p class="view-all mb-0 text-end">View All</p>
+                        {{-- <p class="view-all mb-0 text-end">View All</p> --}}
                     </div>
                 </div>
                 <div class="row mb-5">
@@ -39,7 +39,7 @@ Index
                                </a>
                                 <div class="d-flex justify-content-between align-items-center mt-2">
                                     <h4 class="mb-0">${{ $vehicle->price }}</h4>
-                                    <p class="mb-0">68K miles . Craig</p>
+                                    <p class="mb-0">{{ $vehicle->address }} . {{ $vehicle->country_id }} {{ $vehicle->city_id }}</p>
                                 </div>
 
                             </div>
@@ -55,7 +55,7 @@ Index
                         <h2 class="section-heading mb-0">Other Listing</h2>
                     </div>
                     <div class="col-md-2 col-4">
-                        <p class="view-all mb-0 text-end">View All</p>
+                        {{-- <p class="view-all mb-0 text-end">View All</p> --}}
                     </div>
                 </div>
 

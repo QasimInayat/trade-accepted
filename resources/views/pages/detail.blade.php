@@ -10,7 +10,7 @@ Detail
 
                 <div class="row mb-4">
                     <div class="col-12">
-                        <a href="javascript:;" class="back"><i class="fa fa-chevron-left text-primary me-2"></i>
+                        <a href="{{ route('index') }}" class="back"><i class="fa fa-chevron-left text-primary me-2"></i>
                             Back</a>
                     </div>
                 </div>
@@ -30,7 +30,7 @@ Detail
                     <div class="col-lg-6 mt-lg-0 mt-4">
                         <div class="car-details">
                             <div class="d-flex align-items-center justify-content-between">
-                                <h2>{{ $vehicle->title }}</h2>
+                                <h2>{{ ucwords($vehicle->title) }}</h2>
                                 <div>
                                     <span>
                                         <img src="{{asset('assets/imgs/fi_share-2-red.svg')}}" alt="">
@@ -42,7 +42,7 @@ Detail
                             </div>
                             <div class="price d-flex align-items-end gap-4 mt-3">
                                 <h4 class="mb-0">${{ $vehicle->price }}</h4>
-                                <p class="mb-0">{{ $vehicle->created_at }} . {{ $vehicle->city_id }}</p>
+                                <p class="mb-0">{{ Carbon\Carbon::parse($vehicle->created_at)->diffForHumans() }} . {{ $vehicle->country_id }} {{ $vehicle->city_id }}</p>
                             </div>
                             <div class="desc mt-5">
                                 <h5>Description</h5>
