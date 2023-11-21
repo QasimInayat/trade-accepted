@@ -7,11 +7,13 @@
             </div>
             <div class="vertical-nav d-flex align-items-center">
                 <ul class="list-unstyled text-end d-lg-block d-none mb-0">
+                   @auth
+                   <li class="d-inline-block">
+                    <a class="btn btn-primary w-fit" href="{{route('vehicle.create')}}"> Add Listing </a>
+                </li>
+                @endauth
                     <li class="d-inline-block">
-                        <a class="btn btn-primary w-fit" href="{{route('vehicle.create')}}"> Add Listing </a>
-                    </li>
-                    <li class="d-inline-block">
-                        <a href="javascript:;" class="px-2">
+                        <a href="{{ route('search') }}" class="px-2">
                             <img src="{{asset('assets/imgs/fi_search.svg')}}" alt="">
                         </a>
                     </li>
@@ -20,14 +22,14 @@
                             <img src="{{asset('assets/imgs/fi_bell.svg')}}" alt="">
                         </a>
                     </li>
-                    <li class="d-inline-block">
-                        <a href="javascript:;" class="px-2">
+                    <li style="margin-right: 10px" class="d-inline-block">
+                        <a href="{{ route('messanger') }}" class="px-2">
                             <img src="{{asset('assets/imgs/fi_message-square.svg')}}" alt="">
                         </a>
                     </li>
                     <li class="d-inline-block">
-                        <a href="javascript:;" class="px-2">
-                            <img src="{{asset('assets/imgs/fi_help-circle.svg')}}" alt="">
+                        <a style="font-size: 1px;" href="javascript:;" class="px-2">
+                           .
                         </a>
                     </li>
                 </ul>
@@ -45,19 +47,18 @@
                                 @if (!empty(userImage()->image))
                                     <img src="{{asset('upload/user/'. userImage()->image)}}" alt="">
                                 @else
-                                    <div style="background-color: #E81110; padding-left: 7px; padding-bottom: 1px;  padding-right: 10px; border-radius: 100px;">
-                                        <div>
-                                            <div style="padding: 10px;" class="text-white">{{ subStr(auth()->user()->first_name,0,1) }}{{ subStr(auth()->user()->last_name,0,1) }}</div>
-                                        </div>
-                                    </div>
+                                <img src="{{asset('assets/imgs/placeholder1.png')}}" alt="">
                                 @endif
                             </span>
                             <span class="d-md-inline d-none">Welcome back, {{ auth()->user()->first_name }} {{ auth()->user()->last_name }}!</span>
                         </button>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="{{route('vehicle.index')}}">Action</a></li>
-                            <li><a class="dropdown-item" href="#">Another action</a></li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            <li><a class="dropdown-item" href="javscript:;" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="mdi mdi-logout text-muted fs-16 align-middle me-1"></i> <span class="align-middle" data-key="t-logout"> <i class="fa fa-sign-out"></i> Logout
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    @csrf
+                                </form>
+                            </a></li>
                         </ul>
                     </div>
                     @endauth
