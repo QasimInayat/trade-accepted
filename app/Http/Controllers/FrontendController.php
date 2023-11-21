@@ -11,7 +11,7 @@ class FrontendController extends Controller
 {
     public function index(){
         $data ['title'] = 'Index';
-        $data ['vehicles'] = Vehicle::get();
+        $data ['vehicles'] = Vehicle::orderBy('created_at' , 'DESC')->get();
         return view('index',$data);
     }
     public function detail($slug){
