@@ -2,6 +2,30 @@
 @push('title')
 {{ $title ?? '' }}
 @endpush
+@push('styles')
+<link href="{{ asset('assets/css/main.css') }}" rel="stylesheet" type="text/css">
+
+<style>
+    .multiple-uploader {
+        width: 100%;
+    }
+    .image-container {
+        margin: 10px;
+        width: 100px;
+        height: 100px;
+        position: relative;
+        cursor: auto;
+        pointer-events: unset;
+    }
+    .image-preview {
+        height: 100px;
+        width : 100px
+    }
+    .multiple-uploader {
+        border: 2px dashed lightgrey;
+    }
+    </style>
+@endpush
 @section('content')
 <div class="layout-page mb-5" style="margin-top:130px; margin-left:70px;">
    <div class="content-wrapper">
@@ -21,7 +45,7 @@
                   </div>
                   <div class="card-body">
 
-                     {!! Form::open(['route' => 'vehicle.store' , 'enctype' => 'multipart/form-data']) !!}
+                     {!! Form::open(['route' => 'vehicle.store' , 'enctype' => 'multipart/form-data' , 'id' => 'my-form']) !!}
                      <div class="row">
                         <input type="hidden" name="user_id" value="{{ $user->id }}">
 
@@ -139,11 +163,16 @@
                             </div>
                          </div>
 
-                         <div class="col-md-6 mt-4">
-                            <div class="form-floating">
-                                <input type="file" name="images[]" id="" accept="image/*" class="form-control" multiple>
-                               <label for="floatingInput">image</label>
-                               <small class="text-danger">@error ('images[]') {{ $message }} @enderror</small>
+                         <div class="col-md-12 mt-4">
+                            <div class="multiple-uploader" id="multiple-uploader">
+                                <div class="mup-msg">
+                                    <i class="display-4 text-muted ri-upload-cloud-2-fill"></i>
+                                    <span class="mup-main-msg">Click to upload images.</span>
+                                    <label for="" style="display: none;">
+                                    <input type="file" name="images[]" id="" accept="image/*" class="form-control" multiple>
+        
+                                    </label>
+                                </div>
                             </div>
                          </div>
 
@@ -169,3 +198,15 @@
    </div>
 </div>
 @endsection
+@push('scripts')
+<script src="{{ asset('assets/js/multiple-uploader.js') }}"></script>
+<script>
+
+    let multipleUploader = new MultipleUploader('#multiple-uploader').init({
+        maxUpload : 20, // maximum number of uploaded images
+        maxSize:2, // in size in mb
+        filesInpName:'images', // input name sent to backend
+        formSelector: '#my-form', // form selector
+    });
+</script>
+@endpush

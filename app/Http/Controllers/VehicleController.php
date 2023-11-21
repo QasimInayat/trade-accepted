@@ -59,7 +59,7 @@ class VehicleController extends Controller
                 Gallery::create([
                     'vehicle_id' => $store->id,
                     'image' => $imageName,
-                    'is_main' => $index==0 ? 1 : 0,
+                    'is_main' => $index==1 ? 1 : 0,
                 ]);
             }
         }
@@ -115,7 +115,7 @@ class VehicleController extends Controller
                 Gallery::create([
                     'vehicle_id' => $vehicle->id,
                     'image' => $imageName,
-                    'is_main' => $index==0 ? 1 : 0,
+                    'is_main' => $index==1 ? 1 : 0,
                 ]);
             }
         }
