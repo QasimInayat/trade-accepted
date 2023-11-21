@@ -115,7 +115,6 @@
                                        <small class="text-danger">@error ('exterior_color') {{ $message }} @enderror</small>
                                     </div>
                                  </div>
-
                                  <div class="col-md-6 mt-4">
                                     <div class="form-floating">
                                        {!! Form::text('interior_color', null, ['class' => 'form-control', 'id' => 'floatingInput', 'placeholder' => 'Enter your interior_color', 'aria-describedby' => 'floatingInputHelp']) !!}
@@ -135,7 +134,6 @@
                                        <small class="text-danger">@error ('make_id') {{ $message }} @enderror</small>
                                     </div>
                                  </div>
-
                                  <div class="col-md-6 mt-4">
                                     <div class="form-floating">
                                         {!! Form::text('model_id', null, ['class' => 'form-control', 'id' => 'floatingInput', 'placeholder' => 'Enter your Model', 'aria-describedby' => 'floatingInputHelp']) !!}
@@ -143,7 +141,6 @@
                                        <small class="text-danger">@error ('model_id') {{ $message }} @enderror</small>
                                     </div>
                                  </div>
-
                                  <div class="col-md-6 mt-4">
                                     <div class="form-floating">
                                        {!! Form::text('trim', null, ['class' => 'form-control', 'id' => 'floatingInput', 'placeholder' => 'Enter your trim', 'aria-describedby' => 'floatingInputHelp']) !!}
@@ -158,7 +155,6 @@
                                        <small class="text-danger">@error ('fuel') {{ $message }} @enderror</small>
                                     </div>
                                  </div>
-
                                  <div class="col-md-6 mt-4">
                                     <div class="form-floating">
                                        {!! Form::text('year', null, ['class' => 'form-control', 'id' => 'floatingInput', 'placeholder' => 'Enter your year', 'aria-describedby' => 'floatingInputHelp']) !!}
@@ -166,7 +162,6 @@
                                        <small class="text-danger">@error ('year') {{ $message }} @enderror</small>
                                     </div>
                                  </div>
-
                                  <div class="col-md-12 mt-4">
                                     <div class="multiple-uploader" id="multiple-uploader">
                                         <div class="mup-msg">

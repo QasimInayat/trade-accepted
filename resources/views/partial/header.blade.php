@@ -22,7 +22,7 @@
                             <img src="{{asset('assets/imgs/fi_bell.svg')}}" alt="">
                         </a>
                     </li>
-                    <li style="margin-right: 10px" class="d-inline-block">
+                    <li style="margin-right: 15px" class="d-inline-block">
                         <a href="{{ route('messenger') }}" class="px-2">
                             <img src="{{asset('assets/imgs/fi_message-square.svg')}}" alt="">
                         </a>
