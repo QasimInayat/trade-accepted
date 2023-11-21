@@ -12,7 +12,7 @@ use Str;
 class VehicleController extends Controller
 {
     public function index(){
-        $data['title'] = 'My Listing';
+        $data['title'] = 'MY LISTING';
         $data['vehicles'] = Vehicle::where('user_id',auth()->user()->id)->orderBy('created_at' , 'DESC')->get();
         return view('pages.vehicle.index' ,$data);
     }
