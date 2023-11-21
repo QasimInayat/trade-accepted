@@ -23,7 +23,7 @@
                         </a>
                     </li>
                     <li style="margin-right: 10px" class="d-inline-block">
-                        <a href="{{ route('messanger') }}" class="px-2">
+                        <a href="{{ route('messenger') }}" class="px-2">
                             <img src="{{asset('assets/imgs/fi_message-square.svg')}}" alt="">
                         </a>
                     </li>
@@ -53,8 +53,8 @@
                             <span class="d-md-inline d-none">Welcome back, {{ auth()->user()->first_name }} {{ auth()->user()->last_name }}!</span>
                         </button>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="{{route('vehicle.index')}}">Action</a></li>
-                            <li><a class="dropdown-item" href="javscript:;" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="mdi mdi-logout text-muted fs-16 align-middle me-1"></i> <span class="align-middle" data-key="t-logout"> <i class="fa fa-sign-out"></i> Logout
+                            <li><a class="dropdown-item" href="{{route('vehicle.index')}}">My Listing</a></li>
+                            <li><a class="dropdown-item" href="#">Another action</a></li>
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                     @csrf
                                 </form>

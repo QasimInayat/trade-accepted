@@ -39,7 +39,7 @@
                      </div>
                      <div class="col-md-6">
                         <div style="float: right; margin-right: 15px;" class="mt-4">
-                           <a href="{{ route('vehicle.index') }}" class="btn btn-primary waves-effect">Back to vehicles</a>
+                           <a href="{{ route('vehicle.index') }}" class="btn btn-primary waves-effect">Back to Listing</a>
                         </div>
                      </div>
                   </div>
@@ -153,7 +153,13 @@
                                <small class="text-danger">@error ('trim') {{ $message }} @enderror</small>
                             </div>
                          </div>
-
+                         <div class="col-md-6 mt-4">
+                            <div class="form-floating">
+                               {!! Form::text('fuel', null, ['class' => 'form-control', 'id' => 'floatingInput', 'placeholder' => 'Enter your Fuel', 'aria-describedby' => 'floatingInputHelp']) !!}
+                               <label for="floatingInput">Fuel</label>
+                               <small class="text-danger">@error ('fuel') {{ $message }} @enderror</small>
+                            </div>
+                         </div>
                          <div class="col-md-6 mt-4">
                             <div class="form-floating">
                                {!! Form::text('year', null, ['class' => 'form-control', 'id' => 'floatingInput', 'placeholder' => 'Enter your year', 'aria-describedby' => 'floatingInputHelp']) !!}
@@ -189,11 +195,9 @@
                          </div>
 
                          <div class="col-md-12 mt-4">
-                            <div class="form-floating">
-                                <textarea name="description" class="form-control" id="" cols="30" rows="20">{{ $vehicle->description }}</textarea>
-                               <label for="floatingInput">Description</label>
+                             <label for="floatingInput">Description</label>
+                                <textarea name="description" class="form-control" id="" rows="5">{{ $vehicle->description }}</textarea>
                                <small class="text-danger">@error ('description') {{ $message }} @enderror</small>
-                            </div>
                          </div>
                          <div class="col-md-12 mt-4">
                             <div style="float: right;">

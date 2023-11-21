@@ -18,7 +18,7 @@
                 </a>
             </li>
             <li>
-                <a href="{{ route('messanger') }}">
+                <a href="{{ route('messenger') }}">
                     <img src="{{asset('assets/imgs/fi_message-square-1.svg')}}" alt="">
                 </a>
             </li>

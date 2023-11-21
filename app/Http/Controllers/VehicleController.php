@@ -12,12 +12,12 @@ use Str;
 class VehicleController extends Controller
 {
     public function index(){
-        $data['title'] = 'Vehicle';
+        $data['title'] = 'My Listing';
         $data['vehicles'] = Vehicle::where('user_id',auth()->user()->id)->orderBy('created_at' , 'DESC')->get();
         return view('pages.vehicle.index' ,$data);
     }
     public function create(){
-        $data['title'] = 'Create Vehicle';
+        $data['title'] = 'Create Listing';
         $data['makes'] = Make::get();
         $data['user'] = User::where('id',auth()->user()->id)->first();
         return view('pages.vehicle.create' ,$data);
@@ -50,6 +50,7 @@ class VehicleController extends Controller
            'model_id' => $request->model_id,
            'trim' => $request->trim,
            'year' => $request->year,
+           'fuel' => $request->fuel,
            'description' => $request->description,
         ]);
         if($request->has('images')){
@@ -70,7 +71,7 @@ class VehicleController extends Controller
         }
     }
     public function edit($slug){
-        $data['title'] = 'Edit Vehicle';
+        $data['title'] = 'Edit Listing';
         $data['makes'] = Make::get();
         $data['vehicle'] = Vehicle::where('slug' , $slug)->firstorfail();
         $data['galleries'] = Gallery::where('vehicle_id' , $data['vehicle']->id)->get();
@@ -105,6 +106,7 @@ class VehicleController extends Controller
             'model_id' => $request->model_id,
             'trim' => $request->trim,
             'year' => $request->year,
+            'fuel' => $request->fuel,
             'description' => $request->description,
         ]);
         $vehicle = Vehicle::where('id' , $id)->firstorfail();

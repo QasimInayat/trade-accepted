@@ -65,7 +65,7 @@ Detail
                                             <p class="mb-0 fw-bold">Manual</p>
                                         </div>
                                     </div>
-                                    <a href="{{ route('messanger') }}"><button class="btn btn-primary px-4">Contact</button></a>
+                                    <a href="{{ route('messenger') }}"><button class="btn btn-primary px-4">Contact</button></a>
                                 </div>
                             </div>
                         </div>
