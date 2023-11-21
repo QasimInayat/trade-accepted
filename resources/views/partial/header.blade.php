@@ -55,7 +55,7 @@
                             <span class="d-md-inline d-none">Welcome back, {{ auth()->user()->first_name }} {{ auth()->user()->last_name }}!</span>
                         </button>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="{{route('vehicle.index')}}">Action</a></li>
+                            <li><a class="dropdown-item" href="{{route('vehicle.index')}}">My Listing</a></li>
                             <li><a class="dropdown-item" href="#">Another action</a></li>
                             <li><a class="dropdown-item" href="#">Something else here</a></li>
                         </ul>

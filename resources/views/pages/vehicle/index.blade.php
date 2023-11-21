@@ -1,6 +1,6 @@
 @extends('layouts.scaffold')
 @push('title')
-Vehicle
+{{ $title ?? '' }}
 @endpush
 @section('content')
 <div class="layout-page mb-5" style="margin-top:130px; margin-left:100px;">
@@ -9,7 +9,7 @@ Vehicle
          <div class="card shadow-lg p-3">
           <div class="row">
               <div class="col-md-6">
-                  <h2 class="mt-3">Vehicle</h2>
+                  <h2 class="mt-3">My Listing</h2>
                 </div>
                 <div class="col-md-6">
                     <div style="float: right; margin-right: 15px;" class="mt-4">
@@ -34,6 +34,7 @@ Vehicle
                         <th>Make</th>
                         <th>Model</th>
                         <th>Trim</th>
+                        <th>Fuel</th>
                         <th>Year</th>
                         <th>Action</th>
                     </thead>
@@ -54,6 +55,7 @@ Vehicle
                             <td>{{ $item->make->name }}</td>
                             <td>{{ $item->model_id }}</td>
                             <td>{{ $item->trim }}</td>
+                            <td>{{ $item->fuel }}</td>
                             <td>{{ $item->year }}</td>
                             <td>
                                 <a href="{{ route('vehicle.edit',$item->slug) }}"><i class="fa fa-edit text-info"></i></a>&nbsp;|&nbsp;
@@ -61,6 +63,7 @@ Vehicle
                             </td>
                         </tr>
                         @empty
+                        <td colspan="17" class="text-center">No Data Available </td>
                         @endforelse
                     </tbody>
                </table>

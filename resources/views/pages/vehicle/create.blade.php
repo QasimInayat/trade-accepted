@@ -15,7 +15,7 @@
                      </div>
                      <div class="col-md-6">
                         <div style="float: right; margin-right: 15px;" class="mt-4">
-                           <a href="{{ route('vehicle.index') }}" class="btn btn-primary waves-effect">Back to vehicles</a>
+                           <a href="{{ route('vehicle.index') }}" class="btn btn-primary waves-effect">Back to Listing</a>
                         </div>
                      </div>
                   </div>
@@ -112,12 +112,7 @@
 
                          <div class="col-md-6 mt-4">
                             <div class="form-floating">
-                                <select name="model_id" id="" class="form-control">
-                                    <option value="1">Toyota</option>
-                                    <option value="2">Corola</option>
-                                    <option value="3">Honda</option>
-                                    <option value="4">Civic</option>
-                                </select>
+                                {!! Form::text('model_id', null, ['class' => 'form-control', 'id' => 'floatingInput', 'placeholder' => 'Enter your Model', 'aria-describedby' => 'floatingInputHelp']) !!}
                                <label for="floatingInput">Model</label>
                                <small class="text-danger">@error ('model_id') {{ $message }} @enderror</small>
                             </div>
@@ -130,6 +125,13 @@
                                <small class="text-danger">@error ('trim') {{ $message }} @enderror</small>
                             </div>
                          </div>
+                         <div class="col-md-6 mt-4">
+                            <div class="form-floating">
+                               {!! Form::text('fuel', null, ['class' => 'form-control', 'id' => 'floatingInput', 'placeholder' => 'Enter your Fuel', 'aria-describedby' => 'floatingInputHelp']) !!}
+                               <label for="floatingInput">Fuel</label>
+                               <small class="text-danger">@error ('fuel') {{ $message }} @enderror</small>
+                            </div>
+                         </div>
 
                          <div class="col-md-6 mt-4">
                             <div class="form-floating">
@@ -139,7 +141,7 @@
                             </div>
                          </div>
 
-                         <div class="col-md-6 mt-4">
+                         <div class="col-md-12 mt-4">
                             <div class="form-floating">
                                 <input type="file" name="images[]" id="" accept="image/*" class="form-control" multiple>
                                <label for="floatingInput">image</label>
@@ -148,11 +150,9 @@
                          </div>
 
                          <div class="col-md-12 mt-4">
-                            <div class="form-floating">
-                                <textarea name="description" class="form-control" id="" cols="30" rows="20">{{ old('description') }}</textarea>
-                               <label for="floatingInput">Description</label>
+                                <label for="floatingInput">Description</label>
+                                <textarea name="description" class="form-control" rows="5"  >{{ old('description') }}</textarea>
                                <small class="text-danger">@error ('description') {{ $message }} @enderror</small>
-                            </div>
                          </div>
                          <div class="col-md-12 mt-4">
                             <div style="float: right;">

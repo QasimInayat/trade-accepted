@@ -28,6 +28,7 @@ return new class extends Migration
             $table->integer('model_id')->nullable();
             $table->string('trim')->nullable();
             $table->integer('year')->nullable();
+            $table->integer('fuel')->nullable();
             $table->timestamps();
         });
     }
