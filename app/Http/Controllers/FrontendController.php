@@ -24,8 +24,8 @@ class FrontendController extends Controller
         $data ['title'] = 'Search';
         return view('pages.search',$data);
     }
-    public function messanger(){
-        $data ['title'] = 'Messanger';
-        return view('pages.messanger',$data);
+    public function messenger(){
+        $data ['title'] = 'Messenger';
+        return view('pages.messenger',$data);
     }
 }
