@@ -19,7 +19,7 @@ use App\Http\Controllers\VehicleController;
 Route::get('/' , [FrontendController::class , 'index'])->name('index');
 Route::get('detail/{id}', [FrontendController::class, 'detail'])->name('detail');
 Route::get('search', [FrontendController::class, 'search'])->name('search');
-Route::get('messanger', [FrontendController::class, 'messanger'])->name('messanger');
+Route::get('messenger', [FrontendController::class, 'messenger'])->name('messenger');
 
 Route::middleware(['auth'])->group(function () {
 

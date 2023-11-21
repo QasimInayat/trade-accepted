@@ -3,7 +3,7 @@
     <div class="d-flex flex-column justify-content-between h-100">
         <ul class="list-unstyled side-nav">
             <li>
-                <a href="javascript:;">
+                <a href="{{ route('index') }}">
                     <img src="{{asset('assets/imgs/fi_layout.svg')}}" alt="">
                 </a>
             </li>
@@ -18,7 +18,7 @@
                 </a>
             </li>
             <li>
-                <a href="javascript:;">
+                <a href="{{ route('messenger') }}">
                     <img src="{{asset('assets/imgs/fi_message-square-1.svg')}}" alt="">
                 </a>
             </li>

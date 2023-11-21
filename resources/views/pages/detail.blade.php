@@ -55,13 +55,9 @@ Detail
                                     <div class="d-flex gap-3 align-items-center">
                                         <div class="seller-img">
                                             @if (!empty($vehicle->user->image))
-                                            <img src="{{asset('upload/user/'. $vehicle->user->image)}}" alt="" style="height: 50px; width: 50px;" class="rounded-circle">
+                                            <img src="{{asset('upload/user/'. $vehicle->user->image)}}" alt="" style="height: 80px; width: 80px;" class="rounded-circle">
                                         @else
-                                            <div style="background-color: #E81110; padding-left: 7px; padding-bottom: 1px;  padding-right: 10px; border-radius: 100px;">
-                                                <div>
-                                                    <div style="padding: 10px;" class="text-white">{{ subStr($vehicle->user->first_name,0,1) }}{{ subStr($vehicle->user->last_name,0,1) }}</div>
-                                                </div>
-                                            </div>
+                                             <img src="{{asset('assets/imgs/placeholder1.png')}}" alt="" style="height: 80px; width: 80px;" class="rounded-circle">
                                         @endif
                                         </div>
                                         <div class="seller-info">
@@ -69,7 +65,7 @@ Detail
                                             <p class="mb-0 fw-bold">Manual</p>
                                         </div>
                                     </div>
-                                    <a href="{{ route('messanger') }}"><button class="btn btn-primary px-4">Contact</button></a>
+                                    <a href="{{ route('messenger') }}"><button class="btn btn-primary px-4">Contact</button></a>
                                 </div>
                             </div>
                         </div>
