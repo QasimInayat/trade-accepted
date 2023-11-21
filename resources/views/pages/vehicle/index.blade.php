@@ -56,8 +56,8 @@ Vehicle
                             <td>{{ $item->trim }}</td>
                             <td>{{ $item->year }}</td>
                             <td>
-                                <a href="{{ route('vehicle.edit',$item->id) }}"><i class="fa fa-edit text-info"></i></a>&nbsp;|&nbsp;
-                                <a href="{{ route('vehicle.delete',$item->id) }}"><i class="fa fa-trash text-danger"></i></a>
+                                <a href="{{ route('vehicle.edit',$item->slug) }}"><i class="fa fa-edit text-info"></i></a>&nbsp;|&nbsp;
+                                <a href="{{ route('vehicle.delete',$item->slug) }}"><i class="fa fa-trash text-danger"></i></a>
                             </td>
                         </tr>
                         @empty

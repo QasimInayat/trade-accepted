@@ -7,6 +7,7 @@ use App\Models\Vehicle;
 use App\Models\Gallery;
 use App\Models\Make;
 use App\Models\User;
+use Str;
 
 class VehicleController extends Controller
 {
@@ -32,8 +33,10 @@ class VehicleController extends Controller
             'make_id' => 'required',
             'model_id' => 'required',
         ]);
+        $slug = Str::slug($request->title , '-');
         $store = Vehicle::create([
            'user_id' => $request->user_id,
+           'slug' => $slug,
            'title' => $request->title,
            'price' => $request->price,
            'address' => $request->address,
@@ -66,11 +69,11 @@ class VehicleController extends Controller
             return redirect()->back()->with('error','Something went wrong');
         }
     }
-    public function edit($id){
+    public function edit($slug){
         $data['title'] = 'Edit Vehicle';
         $data['makes'] = Make::get();
-        $data['vehicle'] = Vehicle::where('id' , $id)->firstorfail();
-        $data['galleries'] = Gallery::where('vehicle_id' , $id)->get();
+        $data['vehicle'] = Vehicle::where('slug' , $slug)->firstorfail();
+        $data['galleries'] = Gallery::where('vehicle_id' , $data['vehicle']->id)->get();
         $data['user'] = User::where('id',auth()->user()->id)->first();
         return view('pages.vehicle.edit' ,$data);
     }
@@ -85,9 +88,11 @@ class VehicleController extends Controller
             'make_id' => 'required',
             'model_id' => 'required',
         ]);
+        $slug = Str::slug($request->title , '-');
         $update = Vehicle::where('id' , $id)->update([
             'user_id' => $request->user_id,
             'title' => $request->title,
+            'slug' => $slug,
             'price' => $request->price,
             'address' => $request->address,
             'country_id' => $request->country_id,
@@ -130,8 +135,8 @@ class VehicleController extends Controller
             return redirect()->back()->with('error' , '404 image not found');
         }
     }
-    public function delete($id){
-        $vehicle = Vehicle::where('id' , $id)->delete();
+    public function delete($slug){
+        $vehicle = Vehicle::where('slug' , $slug)->delete();
         if(!empty($vehicle)){
             return redirect()->back()->with('success' , 'Vehicle deleted');
         }else{

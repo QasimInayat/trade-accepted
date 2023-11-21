@@ -13,4 +13,8 @@ class Vehicle extends Model
     public function make(){
         return $this->belongsTo(Make::class);
     }
+
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
 }

@@ -20,7 +20,7 @@ Detail
                         <div class="car-slider">
                             @forelse ($galleries as $gallery)
                             <div>
-                                <img class="w-100" src="{{ asset('upload/vehicle/'.$gallery->image) }}" alt="">
+                                <img height="400px"class="w-100" src="{{ asset('upload/vehicle/'.$gallery->image) }}" alt="">
                             </div>
                             @empty
                             @endforelse
@@ -54,10 +54,18 @@ Detail
                                 <div class="seller d-flex justify-content-between align-items-center mt-4">
                                     <div class="d-flex gap-3 align-items-center">
                                         <div class="seller-img">
-                                            <img class="rounded-circle" style="height: 100px;width:100px;" src="{{asset('upload/user/'. auth()->user()->image)}}" alt="">
+                                            @if (!empty($vehicle->user->image))
+                                            <img src="{{asset('upload/user/'. $vehicle->user->image)}}" alt="" style="height: 50px; width: 50px;" class="rounded-circle">
+                                        @else
+                                            <div style="background-color: #E81110; padding-left: 7px; padding-bottom: 1px;  padding-right: 10px; border-radius: 100px;">
+                                                <div>
+                                                    <div style="padding: 10px;" class="text-white">{{ subStr($vehicle->user->first_name,0,1) }}{{ subStr($vehicle->user->last_name,0,1) }}</div>
+                                                </div>
+                                            </div>
+                                        @endif
                                         </div>
                                         <div class="seller-info">
-                                            <h5>{{ auth()->user()->first_name }} {{ auth()->user()->last_name }}</h5>
+                                            <h5>{{ $vehicle->user->first_name }} {{ $vehicle->user->last_name }}</h5>
                                             <p class="mb-0 fw-bold">Manual</p>
                                         </div>
                                     </div>

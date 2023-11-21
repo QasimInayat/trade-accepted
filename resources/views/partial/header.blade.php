@@ -8,7 +8,7 @@
             <div class="vertical-nav d-flex align-items-center">
                 <ul class="list-unstyled text-end d-lg-block d-none mb-0">
                     <li class="d-inline-block">
-                        <button class="btn btn-primary w-fit" ><a href="{{route('vehicle.create')}}"> Add Listing </a></button>
+                        <a class="btn btn-primary w-fit" href="{{route('vehicle.create')}}"> Add Listing </a>
                     </li>
                     <li class="d-inline-block">
                         <a href="javascript:;" class="px-2">
@@ -33,8 +33,8 @@
                 </ul>
                 <div class="d-flex align-items-center">
                     @guest
-                    <button class="btn btn-danger"><a href="{{ route('login') }}"> Login </a></button>&nbsp;&nbsp;
-                    <button class="btn btn-danger"><a href="{{ route('register') }}"> Register </a></button>
+                    <a class="btn btn-primary" href="{{ route('login') }}"> Login </a>&nbsp;&nbsp;
+                    <a class="btn btn-primary" href="{{ route('register') }}"> Register </a>
                     @endguest
                     @auth
                     <div class="dropdown">
@@ -42,9 +42,17 @@
                             data-bs-toggle="dropdown" aria-expanded="false">
 
                             <span class="user-image">
-                                <img src="{{asset('upload/user/'. auth()->user()->image)}}" alt="">
+                                @if (!empty(userImage()->image))
+                                    <img src="{{asset('upload/user/'. userImage()->image)}}" alt="">
+                                @else
+                                    <div style="background-color: #E81110; padding-left: 7px; padding-bottom: 1px;  padding-right: 10px; border-radius: 100px;">
+                                        <div>
+                                            <div style="padding: 10px;" class="text-white">{{ subStr(auth()->user()->first_name,0,1) }}{{ subStr(auth()->user()->last_name,0,1) }}</div>
+                                        </div>
+                                    </div>
+                                @endif
                             </span>
-                            <span class="d-md-inline d-none">Welcome back, {{ auth()->user()->first_name }}{{ auth()->user()->last_name }}!</span>
+                            <span class="d-md-inline d-none">Welcome back, {{ auth()->user()->first_name }} {{ auth()->user()->last_name }}!</span>
                         </button>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="{{route('vehicle.index')}}">Action</a></li>

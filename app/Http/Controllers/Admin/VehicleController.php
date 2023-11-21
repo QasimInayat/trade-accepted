@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Vehicle;
 use App\Models\Gallery;
+use Str;
 use App\Models\Make;
 
 class VehicleController extends Controller

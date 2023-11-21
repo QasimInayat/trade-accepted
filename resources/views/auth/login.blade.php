@@ -57,7 +57,7 @@ Login/Register
                                                 class="btn btn-primary w-100 fw-bold mt-4">Login</button>
                                                 <center>
                                                 <a href="{{route('register')}}" class="forgot text-center">Don't have an account?, Register</a>
-                                                    
+
                                                 </center>
 
                                         </form>

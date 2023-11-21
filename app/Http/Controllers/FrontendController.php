@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Vehicle;
 use App\Models\Gallery;
+use App\Models\User;
 
 class FrontendController extends Controller
 {
@@ -13,9 +14,9 @@ class FrontendController extends Controller
         $data ['vehicles'] = Vehicle::get();
         return view('index',$data);
     }
-    public function detail($id){
+    public function detail($slug){
         $data ['title'] = 'Detail';
-        $data ['vehicle'] = Vehicle::where('id',$id)->firstorfail();
+        $data ['vehicle'] = Vehicle::where('slug',$slug)->firstorfail();
         $data['galleries'] = Gallery::where('vehicle_id' , $data['vehicle']->id)->get();
         return view('pages.detail',$data);
     }

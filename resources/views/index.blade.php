@@ -21,9 +21,9 @@ Index
                     <div class="col-lg-3 col-md-6 mb-3">
                         <a href="javascipt:;">
                             <div class="multi-card">
-                               <a href="{{ route('detail',$vehicle->id) }}">
+                               <a href="{{ route('detail',$vehicle->slug) }}">
                                 <div class="card-img position-relative">
-                                    <img src="{{ asset('upload/vehicle/'.mainImage($vehicle->id)) }}" class="w-100" alt="">
+                                    <img style="height: 170px;" src="{{ asset('upload/vehicle/'.mainImage($vehicle->id)) }}" class="w-100" alt="">
                                     <div class="card-meta d-flex justify-content-between">
                                         <h5 class="mb-0 text-white">{{ $vehicle->title }}</h5>
                                         <div>
