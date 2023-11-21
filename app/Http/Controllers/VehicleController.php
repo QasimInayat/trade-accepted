@@ -17,7 +17,7 @@ class VehicleController extends Controller
         return view('pages.vehicle.index' ,$data);
     }
     public function create(){
-        $data['title'] = 'Create Listing';
+        $data['title'] = 'ADD LISTING';
         $data['makes'] = Make::get();
         $data['user'] = User::where('id',auth()->user()->id)->first();
         return view('pages.vehicle.create' ,$data);
@@ -71,7 +71,7 @@ class VehicleController extends Controller
         }
     }
     public function edit($slug){
-        $data['title'] = 'Edit Listing';
+        $data['title'] = 'EDIT LISTING';
         $data['makes'] = Make::get();
         $data['vehicle'] = Vehicle::where('slug' , $slug)->firstorfail();
         $data['galleries'] = Gallery::where('vehicle_id' , $data['vehicle']->id)->get();

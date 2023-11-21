@@ -18,8 +18,8 @@ return new class extends Migration
             $table->string('price')->nullable();
             $table->string('address')->nullable();
             $table->text('description')->nullable();
-            $table->integer('country_id')->nullable();
-            $table->integer('city_id')->nullable();
+            $table->string('country_id')->nullable();
+            $table->string('city_id')->nullable();
             $table->string('mileage')->nullable();
             $table->string('transmission')->nullable();
             $table->string('exterior_color')->nullable();

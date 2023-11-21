@@ -30,19 +30,21 @@
 <div class="layout-page mb-5" style="margin-top:130px; margin-left:70px;">
     <div class="content-wrapper">
        <div class="container">
-          <div class="row">
-             <div class="col-md-12">
-                <div class="card shadow-lg p-3">
-                  <div class="row">
-                     <div class="col-md-6">
-                        <h2 class="mt-3">{{ $title ?? '' }}</h2>
-                     </div>
-                     <div class="col-md-6">
-                        <div style="float: right; margin-right: 15px;" class="mt-4">
-                           <a href="{{ route('vehicle.index') }}" class="btn btn-primary waves-effect">Back to Listing</a>
-                        </div>
-                     </div>
-                  </div>
+        <div class="card">
+            <div class="card-header text-white" style="background-color:red;">
+                <a href="{{ route('index') }}"><i style="font-size: 13px;" class="fa fa-chevron-left"></i>  <span><b>Back</b></span></a>            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-12">
+                       <div class="card shadow-lg p-3">
+                          <div class="row">
+                             <div class="col-md-12">
+                                <h2 class="mt-3 text-danger text-center"><b>{{ $title ?? '' }}</b></h2>
+                             </div>
+                             <div class="col-md-12">
+                                <p class=" text-center">Edit Your Vehicle Details</p>
+                             </div>
+                          </div>
                   <div class="card-body">
                     {!! Form::model($vehicle, ['route' => ['vehicle.update' , $vehicle->id], 'enctype' => 'multipart/form-data' , 'id' => 'my-form']) !!}
                     @method('PUT')
@@ -175,7 +177,7 @@
                                         <span class="mup-main-msg">Click to upload images.</span>
                                         <label for="" style="display: none;">
                                         <input type="file" name="images[]" id="" accept="image/*" class="form-control" multiple>
-            
+
                                         </label>
                                     </div>
                                 </div>
