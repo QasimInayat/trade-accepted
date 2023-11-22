@@ -16,6 +16,8 @@ Detail
                 </div>
 
                 <div class="row">
+                 
+
                     <div class="col-lg-6">
                         <div class="car-slider">
                             @forelse ($galleries as $gallery)
@@ -26,7 +28,6 @@ Detail
                             @endforelse
                         </div>
                     </div>
-
                     <div class="col-lg-6 mt-lg-0 mt-4">
                         <div class="car-details">
                             <div class="d-flex align-items-center justify-content-between">

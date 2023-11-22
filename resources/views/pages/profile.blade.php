@@ -28,28 +28,32 @@ Profile
 
                                     <div class="payment-form mt-5">
                                         <h3 class="text-center">Payment Method</h3>
-                                        <form action="" class="mt-4">
+                                        @if(isset($user))
+                                        {!! Form::model($user, ['route' => ['userprofile.update' , $user->id] ,'enctype'=>'multipart/form-data' , 'class' => 'mt-4']) !!}
+                                        @else
+                                        {!! Form::open(['route' => 'userprofile.store' ,'enctype'=>'multipart/form-data' , 'class' => 'mt-4']) !!}
+                                        @endif
                                             <div class="mb-3">
                                                 <label for="" class="form-label">Card Number</label>
-                                                <input type="text" class="form-control"
-                                                    placeholder="5325 2354 8900 0094">
+                                                {!! Form::text('card_number', null, ['class' => 'form-control', 'id' => 'card_number' , 'placeholder' => '4242-4242-4242-4242']) !!}
                                             </div>
 
                                             <div class="mb-3">
                                                 <label for="" class="form-label">Name</label>
-                                                <input type="text" class="form-control" placeholder="Steve Davidson">
+                                                {!! Form::text('full_name', null, ['class' => 'form-control', 'placeholder' => '']) !!}
                                             </div>
 
                                             <div class="mb-3">
+
                                                 <label for="" class="form-label">Expiry</label>
-                                                <input type="text" class="form-control" placeholder="16/26">
+                                                {!! Form::text('expiry', null, ['class' => 'form-control' , 'id' => 'exprationDate' , 'placeholder' => 'MM / YYYY']) !!}
                                             </div>
 
                                             <div class="mb-3">
                                                 <label for="" class="form-label">CVC</label>
-                                                <input type="text" class="form-control" placeholder="154">
+                                                {!! Form::text('cvc', null, ['class' => 'form-control' , 'id' => 'card_cvc' , 'placeholder' => 'card-cvc']) !!}
                                             </div>
-                                        </form>
+                                            {!! Form::close() !!}
                                     </div>
                                 </div>
                             </div>
@@ -333,3 +337,13 @@ Profile
 
 
 @endsection
+@push('scripts')    
+    <script src="{{ asset('assets/js/payment-relatedss.js') }}"></script>
+    <script>
+        $(function() {
+        $("#card_number").mask("9999-9999-9999-9999");
+        $("#card_cvc").mask("999");
+        $("#exprationDate").mask("99/9999");
+    });
+</script>
+@endpush
