@@ -25,7 +25,7 @@ public function update(Request $request){
     if($request->file('image')){
         $image = $request->file('image');
         $imageName = 'profile' . '-' . time() . '.' . $image->getClientOriginalExtension();
-        $image->move('upload/profile/', $imageName);
+        $image->move('upload/user/', $imageName);
     }
     else{
         $imageName = $imageData->image;

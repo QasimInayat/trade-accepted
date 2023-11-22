@@ -4,7 +4,8 @@ Profile
 @endpush
 @push('styles')
 <style>
-  .avatar-upload {
+
+.avatar-upload {
     position: relative;
     max-width: 205px;
     margin: 50px auto;
@@ -52,13 +53,23 @@ Profile
         border-radius: 100%;
         border: 6px solid #F8F8F8;
         box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
+        > div {
+            width: 100%;
+            height: 100%;
+            border-radius: 100%;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
     }
-    .imageicon{
+}
+.imageicon{
         background-color: white;
         padding: 10px;
         border-radius: 30px;
-        color: darkgray;
+        color: gray;
         cursor: pointer;
+        margin-right: 10px;
   }
 </style>
 @endpush
@@ -367,14 +378,14 @@ Profile
 
 
         <!-- The Modal -->
-        <div class="modal" id="myModal">
+        <div class="modal fade" id="myModal">
           <div class="modal-dialog">
             <div class="modal-content">
 
               <!-- Modal Header -->
               <div class="modal-header">
-                <h4 class="modal-title">Modal Heading</h4>
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h4 class="modal-title">Modal Heading</h4>
+                  <button style="border: none; background-color:transparent ;" type="button" class="close" data-dismiss="modal">&times;</button>
               </div>
 
               <!-- Modal body -->
@@ -382,19 +393,23 @@ Profile
                 {!! Form::model($user, ['route' => ['userprofile.update' , auth()->user()->id] , 'enctype' => 'multipart/form-data']) !!}
                     <div class="row align-items-center">
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
-                    <div class="avatar-upload">
-                        <div class="avatar-edit">
-                            <label for="imageUpload">
-                                <input type='file' name="image" id="imageUpload" accept=".png, .jpg, .jpeg" />
-                            </label>
-                            <i class="imageicon fa fa-pencil"></i>
-                        </div>
-                        <div class="avatar-preview">
-
+                        <div class="avatar-upload">
+                            <div class="avatar-edit">
+                                <label for="imageUpload">
+                                <input style="display: none;" type='file' id="imageUpload" accept=".png, .jpg, .jpeg" />
+                                <i class="imageicon fa fa-pencil"></i>
+                                </label>
+                            </div>
+                            <div class="avatar-preview">
+                                @if (!empty(userImage()->image))
+                                <div id="imagePreview" style="background-image: url({{asset('upload/user/'. userImage()->image)}}) ;" ></div>
+                                @else
+                                <img id="imagePreview" src="{{asset('assets/imgs/placeholder1.png')}}" alt="">
+                                @endif
+                            </div>
                         </div>
                     </div>
-                    </div>
-                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                        <div class="col-xl-6  mt-3col-lg-6 col-md-12 col-sm-12">
                             <div class="form-group">
                                 <label class="small text-dark ft-medium">First Name *</label>
                                 <input type="text" class="form-control" name="first_name" value="{{ $user->first_name }}">
@@ -402,14 +417,14 @@ Profile
                             </div>
                         </div>
 
-                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                        <div class="col-xl-6  mt-3col-lg-6 col-md-12 col-sm-12">
                             <div class="form-group">
                                 <label class="small text-dark ft-medium">Last Name *</label>
                                 <input type="text" class="form-control" name="last_name" value="{{ $user->last_name }}">
                                 <small class="text-danger">@error ('last_name') {{ $message }} @enderror</small>
                             </div>
                         </div>
-                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                        <div class="col-xl-12 mt-3 col-lg-12 col-md-12 col-sm-12">
                             <div class="form-group">
                                 <label class="small text-dark ft-medium">Address *</label>
                                 <input type="text" class="form-control" name="address" value="{{ $user->address }}">
@@ -419,7 +434,7 @@ Profile
 
                         <div class="float-right">
                             <div class="form-group  mt-3">
-                                <button type="submit" class="float-right btn text-light" style="background:#3498DB;">Save Changes</button>
+                                <button type="submit" class="float-right btn text-light btn btn-primary" >Save Changes</button>
                             </div>
                         </div>
                     </div>
@@ -438,7 +453,7 @@ Profile
 @push('scripts')
 <script src="{{ asset('assets/js/payment-relatedss.js') }}"></script>
 <script>
-    function readURL(input) {
+   function readURL(input) {
     if (input.files && input.files[0]) {
         var reader = new FileReader();
         reader.onload = function(e) {
