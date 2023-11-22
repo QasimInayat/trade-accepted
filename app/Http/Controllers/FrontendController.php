@@ -32,13 +32,6 @@ class FrontendController extends Controller
         $data ['heading'] = 'Messenger';
         return view('pages.messenger',$data);
     }
-    public function profile(){
-        $data ['title'] = 'Profile';
-        $data ['heading'] = 'Profile';
-        $data ['user'] = User::where('id' , auth()->user()->id)->firstorfail();
-        return view('pages.profile',$data);
-    }
-
     public function clientProfile(){
         $data ['title'] = 'Client Profile';
         $data ['heading'] = 'Client Profile';

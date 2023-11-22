@@ -2,6 +2,66 @@
 @push('title')
 Profile
 @endpush
+@push('styles')
+<style>
+  .avatar-upload {
+    position: relative;
+    max-width: 205px;
+    margin: 50px auto;
+    .avatar-edit {
+        position: absolute;
+        right: 12px;
+        z-index: 1;
+        top: 10px;
+        input {
+            display: none;
+            + label {
+                display: inline-block;
+                width: 34px;
+                height: 34px;
+                margin-bottom: 0;
+                border-radius: 100%;
+                background: #FFFFFF;
+                border: 1px solid transparent;
+                box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.12);
+                cursor: pointer;
+                font-weight: normal;
+                transition: all .2s ease-in-out;
+                &:hover {
+                    background: #f1f1f1;
+                    border-color: #d6d6d6;
+                }
+                &:after {
+                    content: "\f040";
+                    font-family: 'FontAwesome';
+                    color: #757575;
+                    position: absolute;
+                    top: 10px;
+                    left: 0;
+                    right: 0;
+                    text-align: center;
+                    margin: auto;
+                }
+            }
+        }
+    }
+    .avatar-preview {
+        width: 192px;
+        height: 192px;
+        position: relative;
+        border-radius: 100%;
+        border: 6px solid #F8F8F8;
+        box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
+    }
+    .imageicon{
+        background-color: white;
+        padding: 10px;
+        border-radius: 30px;
+        color: darkgray;
+        cursor: pointer;
+  }
+</style>
+@endpush
 @section('content')
     <main>
         <div class="content pe-2">
@@ -79,89 +139,38 @@ Profile
                                     <div class="tab-content" id="pills-tabContent">
                                         <div class="tab-pane fade show active" id="pills-active" role="tabpanel"
                                             aria-labelledby="pills-active-tab">
+                                            @forelse($vehicles as $item)
                                             <div class="car-list mb-4">
-                                                <div class="row">
-                                                    <div class="col-xl-4 col-lg-5">
-                                                        <img src="{{asset('assets/imgs/car-4.png')}}" class="w-100" alt="">
-                                                    </div>
-                                                    <div class="col-xl-8 col-lg-7 mt-lg-0 mt-3">
-                                                        <h5>
-                                                            2006 Porsche 911
-                                                            <img src="{{asset('assets/imgs/fi_share-2-red.svg')}}" class="ms-2"
-                                                                alt="">
-                                                        </h5>
-                                                        <h4>$48,995</h4>
-                                                        <p class="mb-2">68K miles . Craig</p>
-                                                        <div class="d-flex gap-4">
-                                                            <div class="list-meta">
-                                                                <img src="{{asset('assets/imgs/fi_eye.svg')}}" class="me-2" alt="">
-                                                                254 views
-                                                            </div>
-                                                            <div class="list-meta">
-                                                                <img src="{{asset('assets/imgs/fi_bookmark-g.svg')}}" class="me-2"
+                                                <a href="{{ route('detail',$item->slug) }}">
+                                                    <div class="row">
+                                                        <div class="col-xl-4 col-lg-5">
+                                                            <img src="{{ asset('upload/vehicle/'.mainImage($item->id)) }}" class="w-100" alt="">
+                                                        </div>
+                                                        <div class="col-xl-8 col-lg-7 mt-lg-0 mt-3">
+                                                            <h5>
+                                                                {{ $item->title }}
+                                                                <img src="{{asset('assets/imgs/fi_share-2-red.svg')}}" class="ms-2"
                                                                     alt="">
-                                                                56 bookmarks
+                                                            </h5>
+                                                            <h4>${{ $item->price }}</h4>
+                                                            <p class="mb-2">{{ $item->address }}. {{ $item->country_id }} {{ $item->city_id }}</p>
+                                                            <div class="d-flex gap-4">
+                                                                <div class="list-meta">
+                                                                    <img src="{{asset('assets/imgs/fi_eye.svg')}}" class="me-2" alt="">
+                                                                    254 views
+                                                                </div>
+                                                                <div class="list-meta">
+                                                                    <img src="{{asset('assets/imgs/fi_bookmark-g.svg')}}" class="me-2"
+                                                                        alt="">
+                                                                    56 bookmarks
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
+                                                </a>
                                             </div>
-
-                                            <div class="car-list mb-4">
-                                                <div class="row">
-                                                    <div class="col-xl-4 col-lg-5">
-                                                        <img src="{{asset('assets/imgs/car-5.png')}}" class="w-100" alt="">
-                                                    </div>
-                                                    <div class="col-xl-8 col-lg-7 mt-lg-0 mt-3">
-                                                        <h5>
-                                                            2006 Porsche 911
-                                                            <img src="{{asset('assets/imgs/fi_share-2-red.svg')}}" class="ms-2"
-                                                                alt="">
-                                                        </h5>
-                                                        <h4>$48,995</h4>
-                                                        <p class="mb-2">68K miles . Craig</p>
-                                                        <div class="d-flex gap-4">
-                                                            <div class="list-meta">
-                                                                <img src="{{asset('assets/imgs/fi_eye.svg')}}" class="me-2" alt="">
-                                                                254 views
-                                                            </div>
-                                                            <div class="list-meta">
-                                                                <img src="{{asset('assets/imgs/fi_bookmark-g.svg')}}" class="me-2"
-                                                                    alt="">
-                                                                56 bookmarks
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="car-list mb-4">
-                                                <div class="row">
-                                                    <div class="col-xl-4 col-lg-5">
-                                                        <img src="{{asset('assets/imgs/car-6.png')}}" class="w-100" alt="">
-                                                    </div>
-                                                    <div class="col-xl-8 col-lg-7 mt-lg-0 mt-3">
-                                                        <h5>
-                                                            2006 Porsche 911
-                                                            <img src="{{asset('assets/imgs/fi_share-2-red.svg')}}" class="ms-2"
-                                                                alt="">
-                                                        </h5>
-                                                        <h4>$48,995</h4>
-                                                        <p class="mb-2">68K miles . Craig</p>
-                                                        <div class="d-flex gap-4">
-                                                            <div class="list-meta">
-                                                                <img src="{{asset('assets/imgs/fi_eye.svg')}}" class="me-2" alt="">
-                                                                254 views
-                                                            </div>
-                                                            <div class="list-meta">
-                                                                <img src="{{asset('assets/imgs/fi_bookmark-g.svg')}}" class="me-2"
-                                                                    alt="">
-                                                                56 bookmarks
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                            @empty
+                                            @endforelse
                                         </div>
                                         <div class="tab-pane fade" id="pills-previous" role="tabpanel"
                                             aria-labelledby="pills-previous-tab">
@@ -372,13 +381,54 @@ Profile
 
               <!-- Modal body -->
               <div class="modal-body">
-                Modal body..
-              </div>
+                {{-- {!! Form::model($user, ['route' => ['userprofile.update' , auth()->user()->id] , 'enctype' => 'multipart/form-data']) !!} --}}
+                <form action="">
+                    <div class="row align-items-center">
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                    <div class="avatar-upload">
+                        <div class="avatar-edit">
+                            <label for="imageUpload">
+                                <input type='file' name="image" id="imageUpload" accept=".png, .jpg, .jpeg" />
+                            </label>
+                            <i class="imageicon fa fa-pencil"></i>
+                        </div>
+                        <div class="avatar-preview">
 
-              <!-- Modal footer -->
-              <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-              </div>
+                        </div>
+                    </div>
+                    </div>
+                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                            <div class="form-group">
+                                <label class="small text-dark ft-medium">First Name *</label>
+                                <input type="text" class="form-control" name="first_name" value="">
+                                <small class="text-danger">@error ('first_name') {{ $message }} @enderror</small>
+                            </div>
+                        </div>
+
+                        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                            <div class="form-group">
+                                <label class="small text-dark ft-medium">Last Name *</label>
+                                <input type="text" class="form-control" name="last_name" value="">
+                                <small class="text-danger">@error ('last_name') {{ $message }} @enderror</small>
+                            </div>
+                        </div>
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                            <div class="form-group">
+                                <label class="small text-dark ft-medium">Address *</label>
+                                <input type="text" class="form-control" name="address" value="">
+                                <small class="text-danger">@error ('address') {{ $message }} @enderror</small>
+                            </div>
+                        </div>
+
+                        <div class="float-right">
+                            <div class="form-group  mt-3">
+                                <button type="submit" class="float-right btn text-light" style="background:#3498DB;">Save Changes</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+                     </div>
 
             </div>
           </div>
@@ -388,9 +438,23 @@ Profile
 
 
 @endsection
-@push('scripts')    
-    <script src="{{ asset('assets/js/payment-relatedss.js') }}"></script>
-    <script>
+@push('scripts')
+<script src="{{ asset('assets/js/payment-relatedss.js') }}"></script>
+<script>
+    function readURL(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            $('#imagePreview').css('background-image', 'url('+e.target.result +')');
+            $('#imagePreview').hide();
+            $('#imagePreview').fadeIn(650);
+        }
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+$("#imageUpload").change(function() {
+    readURL(this);
+});
         $(function() {
         $("#card_number").mask("9999-9999-9999-9999");
         $("#card_cvc").mask("999");
