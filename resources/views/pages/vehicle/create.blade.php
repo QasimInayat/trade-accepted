@@ -27,8 +27,8 @@
     </style>
 @endpush
 @section('content')
-<div class="layout-page mb-5" style="margin-top:130px; margin-left:70px;">
-   <div class="content-wrapper">
+<div class="layout-page mb-5" style="margin-top:130px; ">
+   <div style="margin-left: 40px;" class="content-wrapper">
       <div class="container">
         <div class="card">
             <div class="card-header text-white" style="background-color:red;">
@@ -75,8 +75,8 @@
                                  <div class="col-md-6 mt-4">
                                     <div class="form-floating">
                                         <select name="country_id" id="" class="form-control">
-                                            <option value="Pakistan">Pakistan</option>
-                                            <option value="India">India</option>
+                                            <option value="pakistan">Pakistan</option>
+                                            <option value="pndia">India</option>
                                         </select>
                                        <label for="floatingInput text-danger">Country</label>
                                        <small class="text-danger">@error ('country_id') {{ $message }} @enderror</small>
@@ -85,10 +85,10 @@
                                  <div class="col-md-6 mt-4">
                                     <div class="form-floating">
                                         <select name="city_id" id="" class="form-control">
-                                            <option value="Karachi">Karachi</option>
-                                            <option value="Lahore">Lahore</option>
-                                            <option value="UP">UP</option>
-                                            <option value="Bihar">Bihar</option>
+                                            <option value="karachi">Karachi</option>
+                                            <option value="lahore">Lahore</option>
+                                            <option value="up">UP</option>
+                                            <option value="bihar">Bihar</option>
                                         </select>
                                        <label for="floatingInput">City</label>
                                        <small class="text-danger">@error ('city_id') {{ $message }} @enderror</small>
@@ -124,12 +124,7 @@
                                  </div>
                                  <div class="col-md-6 mt-4">
                                     <div class="form-floating">
-                                        <select name="make_id" id="" class="form-control">
-                                            @forelse ($makes as $value)
-                                                <option value="{{ $value->id }}">{{ $value->name }}</option>
-                                            @empty
-                                            @endforelse
-                                        </select>
+                                        {!! Form::select('make_id', $makes, null, [ 'class' => 'form-control']) !!}
                                        <label for="floatingInput">Make</label>
                                        <small class="text-danger">@error ('make_id') {{ $message }} @enderror</small>
                                     </div>
