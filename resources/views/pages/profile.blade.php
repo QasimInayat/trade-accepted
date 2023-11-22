@@ -139,89 +139,38 @@ Profile
                                     <div class="tab-content" id="pills-tabContent">
                                         <div class="tab-pane fade show active" id="pills-active" role="tabpanel"
                                             aria-labelledby="pills-active-tab">
+                                            @forelse($vehicles as $item)
                                             <div class="car-list mb-4">
-                                                <div class="row">
-                                                    <div class="col-xl-4 col-lg-5">
-                                                        <img src="{{asset('assets/imgs/car-4.png')}}" class="w-100" alt="">
-                                                    </div>
-                                                    <div class="col-xl-8 col-lg-7 mt-lg-0 mt-3">
-                                                        <h5>
-                                                            2006 Porsche 911
-                                                            <img src="{{asset('assets/imgs/fi_share-2-red.svg')}}" class="ms-2"
-                                                                alt="">
-                                                        </h5>
-                                                        <h4>$48,995</h4>
-                                                        <p class="mb-2">68K miles . Craig</p>
-                                                        <div class="d-flex gap-4">
-                                                            <div class="list-meta">
-                                                                <img src="{{asset('assets/imgs/fi_eye.svg')}}" class="me-2" alt="">
-                                                                254 views
-                                                            </div>
-                                                            <div class="list-meta">
-                                                                <img src="{{asset('assets/imgs/fi_bookmark-g.svg')}}" class="me-2"
+                                                <a href="{{ route('detail',$item->slug) }}">
+                                                    <div class="row">
+                                                        <div class="col-xl-4 col-lg-5">
+                                                            <img src="{{ asset('upload/vehicle/'.mainImage($item->id)) }}" class="w-100" alt="">
+                                                        </div>
+                                                        <div class="col-xl-8 col-lg-7 mt-lg-0 mt-3">
+                                                            <h5>
+                                                                {{ $item->title }}
+                                                                <img src="{{asset('assets/imgs/fi_share-2-red.svg')}}" class="ms-2"
                                                                     alt="">
-                                                                56 bookmarks
+                                                            </h5>
+                                                            <h4>${{ $item->price }}</h4>
+                                                            <p class="mb-2">{{ $item->address }}. {{ $item->country_id }} {{ $item->city_id }}</p>
+                                                            <div class="d-flex gap-4">
+                                                                <div class="list-meta">
+                                                                    <img src="{{asset('assets/imgs/fi_eye.svg')}}" class="me-2" alt="">
+                                                                    254 views
+                                                                </div>
+                                                                <div class="list-meta">
+                                                                    <img src="{{asset('assets/imgs/fi_bookmark-g.svg')}}" class="me-2"
+                                                                        alt="">
+                                                                    56 bookmarks
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
+                                                </a>
                                             </div>
-
-                                            <div class="car-list mb-4">
-                                                <div class="row">
-                                                    <div class="col-xl-4 col-lg-5">
-                                                        <img src="{{asset('assets/imgs/car-5.png')}}" class="w-100" alt="">
-                                                    </div>
-                                                    <div class="col-xl-8 col-lg-7 mt-lg-0 mt-3">
-                                                        <h5>
-                                                            2006 Porsche 911
-                                                            <img src="{{asset('assets/imgs/fi_share-2-red.svg')}}" class="ms-2"
-                                                                alt="">
-                                                        </h5>
-                                                        <h4>$48,995</h4>
-                                                        <p class="mb-2">68K miles . Craig</p>
-                                                        <div class="d-flex gap-4">
-                                                            <div class="list-meta">
-                                                                <img src="{{asset('assets/imgs/fi_eye.svg')}}" class="me-2" alt="">
-                                                                254 views
-                                                            </div>
-                                                            <div class="list-meta">
-                                                                <img src="{{asset('assets/imgs/fi_bookmark-g.svg')}}" class="me-2"
-                                                                    alt="">
-                                                                56 bookmarks
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="car-list mb-4">
-                                                <div class="row">
-                                                    <div class="col-xl-4 col-lg-5">
-                                                        <img src="{{asset('assets/imgs/car-6.png')}}" class="w-100" alt="">
-                                                    </div>
-                                                    <div class="col-xl-8 col-lg-7 mt-lg-0 mt-3">
-                                                        <h5>
-                                                            2006 Porsche 911
-                                                            <img src="{{asset('assets/imgs/fi_share-2-red.svg')}}" class="ms-2"
-                                                                alt="">
-                                                        </h5>
-                                                        <h4>$48,995</h4>
-                                                        <p class="mb-2">68K miles . Craig</p>
-                                                        <div class="d-flex gap-4">
-                                                            <div class="list-meta">
-                                                                <img src="{{asset('assets/imgs/fi_eye.svg')}}" class="me-2" alt="">
-                                                                254 views
-                                                            </div>
-                                                            <div class="list-meta">
-                                                                <img src="{{asset('assets/imgs/fi_bookmark-g.svg')}}" class="me-2"
-                                                                    alt="">
-                                                                56 bookmarks
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                            @empty
+                                            @endforelse
                                         </div>
                                         <div class="tab-pane fade" id="pills-previous" role="tabpanel"
                                             aria-labelledby="pills-previous-tab">
