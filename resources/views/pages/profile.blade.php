@@ -124,6 +124,11 @@ Profile
                                                 <label for="" class="form-label">CVC</label>
                                                 {!! Form::text('cvc', null, ['class' => 'form-control' , 'id' => 'card_cvc' , 'placeholder' => 'card-cvc']) !!}
                                             </div>
+
+                                            <div class="mb-5" style="float: right;">
+                                                <button type="submit" class="btn-sm btn btn-primary">Save</button>
+                                            </div>
+                                            <div></div>
                                             {!! Form::close() !!}
                                     </div>
                                 </div>

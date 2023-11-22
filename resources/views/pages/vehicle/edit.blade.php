@@ -73,9 +73,7 @@
                          </div>
                          <div class="col-md-6 mt-4">
                             <div class="form-floating">
-                                <select name="country_id" id="" class="form-control">
-                                    <option value="pakistan">Pakistan</option>
-                                    <option value="india">India</option>
+                                <select name="country_id" required class="form-control custom-control" id="country" onchange="print_state('state',this.selectedIndex);">
                                 </select>
                                <label for="floatingInput">Country</label>
                                <small class="text-danger">@error ('country_id') {{ $message }} @enderror</small>
@@ -207,8 +205,11 @@
 </div>
 @endsection
 @push('scripts')
+@push('scripts')
 <script src="{{ asset('assets/js/multiple-uploader.js') }}"></script>
+<script src="{{ asset('assets/js/payment-related.js') }}"></script>
 <script>
+        print_country("country");
 
     let multipleUploader = new MultipleUploader('#multiple-uploader').init({
         maxUpload : 20, // maximum number of uploaded images

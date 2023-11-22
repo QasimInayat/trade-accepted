@@ -34,6 +34,9 @@ public function update(Request $request){
         'first_name' => $request->first_name,
         'last_name' => $request->last_name,
         'address' => $request->address,
+        'card_number' => $request->card_number,
+        'expiry' => $request->expiry,
+        'cvc' => $request->cvc,
         'image' => $imageName,
     ]);
     if($update > 0){
