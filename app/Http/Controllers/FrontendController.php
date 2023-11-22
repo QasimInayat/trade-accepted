@@ -34,6 +34,7 @@ class FrontendController extends Controller
     }
     public function profile(){
         $data ['title'] = 'Profile';
+        $data ['heading'] = 'Profile';
         return view('pages.profile',$data);
     }
 
