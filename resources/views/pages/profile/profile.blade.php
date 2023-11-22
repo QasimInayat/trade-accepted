@@ -12,8 +12,8 @@ Profile
                             <div class="chat-area custom-flow p-4">
                                 <div class="profile-detail">
                                     <div class="edit text-end">
-                                        <button class="btn btn-light bg-transparent btn-sm">
-                                            <img src="{{asset('assets/imgs/fi_edit-3.svg')}}" class="me-1" alt="">
+                                        <button class="btn btn-light bg-transparent btn-sm" data-toggle="modal" data-target="#myModal">
+                                            <img src="{{asset('assets/imgs/fi_edit-3.svg')}}" class="me-1" alt="" >
                                             Edit
                                         </button>
                                     </div>
@@ -351,4 +351,36 @@ Profile
             </div>
         </div>
     </div>
+
+    <div class="container">
+
+
+        <!-- The Modal -->
+        <div class="modal" id="myModal">
+          <div class="modal-dialog">
+            <div class="modal-content">
+
+              <!-- Modal Header -->
+              <div class="modal-header">
+                <h4 class="modal-title">Modal Heading</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+              </div>
+
+              <!-- Modal body -->
+              <div class="modal-body">
+                Modal body..
+              </div>
+
+              <!-- Modal footer -->
+              <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+
 @endsection
