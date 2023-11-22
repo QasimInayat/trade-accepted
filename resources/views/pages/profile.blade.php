@@ -78,12 +78,16 @@ Profile
                                         </button>
                                     </div>
                                     <div class="profile text-center mt-3">
-                                        <img src="{{asset('assets/imgs/user.png')}}" alt="" class="d-block mx-auto">
-                                        <span class="d-block mt-3">Member Since 2018</span>
-                                        <h3 class="name text-primary fw-bold mt-3">Steve Davidson</h3>
+                                        @if (!empty(userImage()->image))
+                                        <img src="{{asset('upload/profile/'. userImage()->image)}}" alt="">
+                                    @else
+                                    <img src="{{asset('assets/imgs/placeholder1.png')}}" alt="">
+                                    @endif
+                                    <span class="d-block mt-3">Member Since 2018</span>
+                                        <h3 class="name text-primary fw-bold mt-3">{{ auth()->user()->first_name }} {{ auth()->user()->last_name }}</h3>
                                         <p class="mb-1">steve.davidson@example.com</p>
                                         <p class="mb-1">+1 (456) 356 5486</p>
-                                        <p class="mb-1">123 Columbus Avenue, 9th Floor <br>New York, NY 10023</p>
+                                        <p class="mb-1">{{ auth()->user()->address }} </p>
                                     </div>
 
                                     <div class="payment-form mt-5">
