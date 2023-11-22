@@ -21,6 +21,7 @@ Route::get('detail/{id}', [FrontendController::class, 'detail'])->name('detail')
 Route::get('search', [FrontendController::class, 'search'])->name('search');
 Route::get('messenger', [FrontendController::class, 'messenger'])->name('messenger');
 Route::get('profile', [FrontendController::class, 'profile'])->name('profile');
+Route::get('client_profile', [FrontendController::class, 'clientProfile'])->name('client-profile');
 
 Route::middleware(['auth'])->group(function () {
 
