@@ -18,11 +18,8 @@
                          <div class="col-md-12">
                             <h2 class="mt-3 text-danger text-center"><b>{{ $title ?? '' }}</b></h2>
                          </div>
-                         <div class="col-md-12">
-                            <p class=" text-center">My Vehicle Listing</p>
-                         </div>
                       </div>
-                <div class="table-responsive ">
+                <div class="table-responsive mt-3">
                     <table class="table table-striped table-bordered">
                         <thead>
                             <th>ID</th>
