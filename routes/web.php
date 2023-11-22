@@ -26,8 +26,8 @@ Route::get('client_profile', [FrontendController::class, 'clientProfile'])->name
 
 
 Route::middleware(['auth'])->group(function () {
-    
-    Route::get('profile', [FrontendController::class, 'profile'])->name('profile');
+
+    Route::get('profile', [ProfileController::class, 'profile'])->name('profile');
     Route::post('user-profile/store' , [ProfileController::class , 'store'])->name('userprofile.store');
     Route::post('user-profile/{id}/update' , [ProfileController::class , 'update'])->name('userprofile.update');
 
