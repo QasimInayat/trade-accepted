@@ -18,10 +18,10 @@ class VehicleController extends Controller
     }
     public function create(){
         $data['title'] = 'ADD LISTING';
-        $data['makes'] = Make::get();
+        $data['makes'] = Make::pluck('name' , 'id')->toArray();
         $data['user'] = User::where('id',auth()->user()->id)->first();
         return view('pages.vehicle.create' ,$data);
-    }
+    }   
     public function store(Request $request){
         $request->validate([
             'title' => 'required|max:191',
@@ -72,7 +72,7 @@ class VehicleController extends Controller
     }
     public function edit($slug){
         $data['title'] = 'EDIT LISTING';
-        $data['makes'] = Make::get();
+        $data['makes'] = Make::pluck('name' , 'id')->toArray();
         $data['vehicle'] = Vehicle::where('slug' , $slug)->firstorfail();
         $data['galleries'] = Gallery::where('vehicle_id' , $data['vehicle']->id)->get();
         $data['user'] = User::where('id',auth()->user()->id)->first();
