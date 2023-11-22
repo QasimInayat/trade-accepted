@@ -45,7 +45,7 @@
 
                             <span class="user-image">
                                 @if (!empty(userImage()->image))
-                                    <img src="{{asset('upload/user/'. userImage()->image)}}" alt="">
+                                    <img src="{{asset('upload/profile/'. userImage()->image)}}" alt="">
                                 @else
                                 <img src="{{asset('assets/imgs/placeholder1.png')}}" alt="">
                                 @endif
