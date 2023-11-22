@@ -33,7 +33,6 @@ class FrontendController extends Controller
         return view('pages.messenger',$data);
     }
 
-
     public function clientProfile(){
         $data ['title'] = 'Client Profile';
         $data ['heading'] = 'Client Profile';
