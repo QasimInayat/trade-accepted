@@ -141,14 +141,13 @@ Profile
                                             aria-labelledby="pills-active-tab">
                                             @forelse($vehicles as $item)
                                             <div class="car-list mb-4">
-                                                <a href="{{ route('detail',$item->slug) }}">
                                                     <div class="row">
                                                         <div class="col-xl-4 col-lg-5">
-                                                            <img src="{{ asset('upload/vehicle/'.mainImage($item->id)) }}" class="w-100" alt="">
+                                                            <a href="{{ route('detail',$item->slug) }}"><img src="{{ asset('upload/vehicle/'.mainImage($item->id)) }}" class="w-100" alt=""></a>
                                                         </div>
                                                         <div class="col-xl-8 col-lg-7 mt-lg-0 mt-3">
                                                             <h5>
-                                                                {{ $item->title }}
+                                                                <a href="{{ route('detail',$item->slug) }}">{{ $item->title }}</a>
                                                                 <img src="{{asset('assets/imgs/fi_share-2-red.svg')}}" class="ms-2"
                                                                     alt="">
                                                             </h5>
@@ -167,7 +166,6 @@ Profile
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </a>
                                             </div>
                                             @empty
                                             @endforelse
