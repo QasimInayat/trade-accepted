@@ -10,7 +10,7 @@ class ProfileController extends Controller
     public function profile(){
         $data ['title'] = 'Profile';
         $data ['heading'] = 'Profile';
-        $data ['profile'] = User::where('id',auth()->user()->id)->firstorfail();
+        $data ['user'] = User::where('id' , auth()->user()->id)->firstorfail();
         return view('pages.profile',$data);
-    }
+}
 }
