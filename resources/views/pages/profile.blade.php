@@ -366,7 +366,7 @@ Profile
 
               <!-- Modal Header -->
               <div class="modal-header">
-                  <h4 class="modal-title">Modal Heading</h4>
+                  <h4 class="modal-title">Profile Edit</h4>
                   <button style="border: none; background-color:transparent ;" type="button" class="close" data-dismiss="modal">&times;</button>
               </div>
 
