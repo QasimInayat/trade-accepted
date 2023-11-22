@@ -25,6 +25,7 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $data ['heading'] = 'Home';
         $data ['vehicles'] = Vehicle::get();
         return view('index' ,$data);
     }

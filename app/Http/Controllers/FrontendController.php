@@ -11,11 +11,13 @@ class FrontendController extends Controller
 {
     public function index(){
         $data ['title'] = 'Index';
+        $data ['heading'] = 'Home';
         $data ['vehicles'] = Vehicle::orderBy('created_at' , 'DESC')->get();
         return view('index',$data);
     }
     public function detail($slug){
         $data ['title'] = 'Detail';
+        $data ['heading'] = 'Detail';
         $data ['vehicle'] = Vehicle::where('slug',$slug)->firstorfail();
         $data['galleries'] = Gallery::where('vehicle_id' , $data['vehicle']->id)->get();
         return view('pages.detail',$data);
