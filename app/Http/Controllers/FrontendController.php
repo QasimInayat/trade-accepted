@@ -24,14 +24,17 @@ class FrontendController extends Controller
     }
     public function search(){
         $data ['title'] = 'Search';
+        $data ['heading'] = 'Search';
         return view('pages.search',$data);
     }
     public function messenger(){
         $data ['title'] = 'Messenger';
+        $data ['heading'] = 'Messenger';
         return view('pages.messenger',$data);
     }
     public function clientProfile(){
         $data ['title'] = 'Client Profile';
+        $data ['heading'] = 'Client Profile';
         return view('pages.client-profile',$data);
     }
 }
