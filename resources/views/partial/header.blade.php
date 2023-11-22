@@ -47,7 +47,7 @@
                                 @if (!empty(userImage()->image))
                                     <img src="{{asset('upload/user/'. userImage()->image)}}" alt="">
                                 @else
-                                <img src="{{asset('assets/imgs/placeholder1.jpg')}}" alt="">
+                                <img src="{{asset('assets/imgs/placeholder1.png')}}" alt="">
                                 @endif
                             </span>
                             <span class="d-md-inline d-none">Welcome back, {{ auth()->user()->first_name }} {{ auth()->user()->last_name }}!</span>
