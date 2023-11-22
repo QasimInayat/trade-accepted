@@ -90,7 +90,7 @@ Profile
                                     </div>
                                     <div class="profile text-center mt-3">
                                         @if (!empty(userImage()->image))
-                                        <img src="{{asset('upload/profile/'. userImage()->image)}}" alt="">
+                                        <img src="{{asset('upload/user/'. userImage()->image)}}" alt="">
                                     @else
                                     <img src="{{asset('assets/imgs/placeholder1.png')}}" alt="">
                                     @endif
@@ -103,11 +103,7 @@ Profile
 
                                     <div class="payment-form mt-5">
                                         <h3 class="text-center">Payment Method</h3>
-                                        @if(isset($user))
-                                        {!! Form::model($user, ['route' => ['userprofile.update' , $user->id] ,'enctype'=>'multipart/form-data' , 'class' => 'mt-4']) !!}
-                                        @else
-                                        {!! Form::open(['route' => 'userprofile.store' ,'enctype'=>'multipart/form-data' , 'class' => 'mt-4']) !!}
-                                        @endif
+                                        {!! Form::model($user, ['route' => ['userprofile.update' , auth()->user()->id] , 'enctype' => 'multipart/form-data']) !!}
                                             <div class="mb-3">
                                                 <label for="" class="form-label">Card Number</label>
                                                 {!! Form::text('card_number', null, ['class' => 'form-control', 'id' => 'card_number' , 'placeholder' => '4242-4242-4242-4242']) !!}
@@ -130,7 +126,7 @@ Profile
                                             </div>
 
                                             <div class="mb-5" style="float: right;">
-                                                <button type="submit" class="btn-sm btn btn-primary">Save</button>
+                                                {{-- <button type="submit" class="btn-sm btn btn-primary">Save</button> --}}
                                             </div>
                                             <div></div>
                                             {!! Form::close() !!}
@@ -382,7 +378,7 @@ Profile
                         <div class="avatar-upload">
                             <div class="avatar-edit">
                                 <label for="imageUpload">
-                                <input style="display: none;" type='file' id="imageUpload" accept=".png, .jpg, .jpeg" />
+                                <input style="display: none;" name="image" type='file' id="imageUpload" accept=".png, .jpg, .jpeg" />
                                 <i class="imageicon fa fa-pencil"></i>
                                 </label>
                             </div>
