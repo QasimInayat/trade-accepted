@@ -45,7 +45,7 @@
 
                             <span class="user-image">
                                 @if (!empty(userImage()->image))
-                                    <img src="{{asset('upload/user/'. userImage()->image)}}" alt="">
+                                    <img src="{{asset('upload/profile/'. userImage()->image)}}" alt="">
                                 @else
                                 <img src="{{asset('assets/imgs/placeholder1.png')}}" alt="">
                                 @endif
@@ -53,6 +53,7 @@
                             <span class="d-md-inline d-none">Welcome back, {{ auth()->user()->first_name }} {{ auth()->user()->last_name }}!</span>
                         </button>
                         <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="{{route('profile')}}">Profile</a></li>
                             <li><a class="dropdown-item" href="{{route('vehicle.index')}}">My Listing</a></li>
                             <li><a class="dropdown-item" href="javscript:;" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="mdi mdi-logout text-muted fs-16 align-middle me-1"></i> <span class="align-middle" data-key="t-logout"> <i class="fa fa-sign-out"></i> Logout
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">

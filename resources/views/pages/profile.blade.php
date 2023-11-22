@@ -379,8 +379,7 @@ Profile
 
               <!-- Modal body -->
               <div class="modal-body">
-                {{-- {!! Form::model($user, ['route' => ['userprofile.update' , auth()->user()->id] , 'enctype' => 'multipart/form-data']) !!} --}}
-                <form action="">
+                {!! Form::model($user, ['route' => ['userprofile.update' , auth()->user()->id] , 'enctype' => 'multipart/form-data']) !!}
                     <div class="row align-items-center">
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
                     <div class="avatar-upload">
@@ -398,7 +397,7 @@ Profile
                         <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
                             <div class="form-group">
                                 <label class="small text-dark ft-medium">First Name *</label>
-                                <input type="text" class="form-control" name="first_name" value="">
+                                <input type="text" class="form-control" name="first_name" value="{{ $user->first_name }}">
                                 <small class="text-danger">@error ('first_name') {{ $message }} @enderror</small>
                             </div>
                         </div>
@@ -406,14 +405,14 @@ Profile
                         <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
                             <div class="form-group">
                                 <label class="small text-dark ft-medium">Last Name *</label>
-                                <input type="text" class="form-control" name="last_name" value="">
+                                <input type="text" class="form-control" name="last_name" value="{{ $user->last_name }}">
                                 <small class="text-danger">@error ('last_name') {{ $message }} @enderror</small>
                             </div>
                         </div>
                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
                             <div class="form-group">
                                 <label class="small text-dark ft-medium">Address *</label>
-                                <input type="text" class="form-control" name="address" value="">
+                                <input type="text" class="form-control" name="address" value="{{ $user->address }}">
                                 <small class="text-danger">@error ('address') {{ $message }} @enderror</small>
                             </div>
                         </div>
@@ -425,7 +424,7 @@ Profile
                         </div>
                     </div>
                 </div>
-            </form>
+            {!! Form::close() !!}
                      </div>
 
             </div>
@@ -459,4 +458,9 @@ $("#imageUpload").change(function() {
         $("#exprationDate").mask("99/9999");
     });
 </script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
 @endpush
