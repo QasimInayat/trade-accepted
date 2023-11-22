@@ -277,30 +277,7 @@ Profile
                                         </div>
                                         <p class="mt-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et  magna aliqua.</p>
                                     </div>
-
-                                    <div class="review-list mt-4">
-                                        <div class="review-image d-flex justify-content-between align-items-end">
-                                            <img src="{{asset('assets/imgs/seller.png')}}" alt="" class="d-block users">
-                                            <img src="{{asset('assets/imgs/star.png')}}" alt="">
-                                        </div>
-                                        <p class="mt-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et  magna aliqua.</p>
-                                    </div>
-
-                                    <div class="review-list mt-4">
-                                        <div class="review-image d-flex justify-content-between align-items-end">
-                                            <img src="{{asset('assets/imgs/user.png')}}" alt="" class="d-block users">
-                                            <img src="{{asset('assets/imgs/star.png')}}" alt="">
-                                        </div>
-                                        <p class="mt-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et  magna aliqua.</p>
-                                    </div>
-
-                                    <div class="review-list mt-4">
-                                        <div class="review-image d-flex justify-content-between align-items-end">
-                                            <img src="{{asset('assets/imgs/seller.png')}}" alt="" class="d-block users">
-                                            <img src="{{asset('assets/imgs/star.png')}}" alt="">
-                                        </div>
-                                        <p class="mt-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et  magna aliqua.</p>
-                                    </div>
+                                    
                                 </div>
                             </div>
                         </div>
