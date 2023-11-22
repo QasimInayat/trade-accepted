@@ -188,7 +188,8 @@ Profile
                                         </div>
                                         <div class="tab-pane fade" id="pills-previous" role="tabpanel"
                                             aria-labelledby="pills-previous-tab">
-                                            <div class="car-list mb-4">
+                                            <h5><b>No Record Found</b></h5>
+                                            {{-- <div class="car-list mb-4">
                                                 <div class="row">
                                                     <div class="col-xl-4 col-lg-5">
                                                         <img src="{{asset('assets/imgs/car-10.png')}}" class="w-100" alt="">
@@ -270,7 +271,7 @@ Profile
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </div> --}}
                                         </div>
                                     </div>
                                 </div>
@@ -289,7 +290,7 @@ Profile
                                         </div>
                                         <p class="mt-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et  magna aliqua.</p>
                                     </div>
-                                    
+
                                 </div>
                             </div>
                         </div>
