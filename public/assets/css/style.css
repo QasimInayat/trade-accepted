@@ -344,10 +344,10 @@ aside {
 
 /* Messanger */
 
-.message-area {
+/* .message-area {
     height: calc(100vh - 150px);
     overflow: hidden;
-}
+} */
 
 .chat-area {
     position: relative;
@@ -574,22 +574,6 @@ a.add img {
     position: relative;
 }
 
-.msg-body ul li.sender:before {
-    display: block;
-    clear: both;
-    content: '';
-    position: absolute;
-    top: -6px;
-    left: -7px;
-    width: 0;
-    height: 0;
-    border-style: solid;
-    border-width: 0 12px 15px 12px;
-    border-color: transparent transparent #f5f5f5 transparent;
-    -webkit-transform: rotate(-37deg);
-    -ms-transform: rotate(-37deg);
-    transform: rotate(-37deg);
-}
 
 .msg-body ul li.sender p {
     color: #000;
@@ -730,12 +714,15 @@ li.repaly .time {
     color: #222;
     background-color: #fff;
     background-clip: padding-box;
-    border: 1px solid #ccc;
+    border: 0;
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
     border-radius: 0.25rem;
     transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+    background: rgb(181 181 181 / 30%);
+    height: 44px;
+    border-radius: 30vh;
 }
 
 
@@ -851,10 +838,9 @@ button:focus {
 
 .car-offer {
     background: #ececec;
-    padding: 25px 20px;
+    padding: 25px 35px;
     border-radius: 22px;
     text-align: left;
-    min-width: 320px;
 }
 
 .car-offer h2 {
@@ -921,6 +907,111 @@ button:focus {
     background: red;
 }
 
+.message-for img {
+    max-width: 200px;
+    width: 100%;
+}
+
+.message-for .car-details h4 {
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.message-for .car-meta h4 {
+    font-size: 19px;
+}
+
+.message-for .price h5 {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.message-for .price p {
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+.custom-flow.chat-area {
+    overflow: auto;
+    background: #f7f7f7;
+    border-radius: 22px;
+}
+
+.profile{
+    color: #6D7181;
+}
+
+.profile span{
+    font-size: 10px;
+}
+
+.profile p{
+    font-size: 14px;
+}
+
+.profile img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+}
+
+.payment-form .form-control {
+    height: 48px;
+    width: 100%;
+    background: #B5B5B51A;
+    border: 1px solid #B5B5B54D;
+    border-radius: 6px;
+}
+
+.payment-form .form-label {
+    color: #6D7181;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.car-list h5 {
+    font-weight: 700;
+    font-size: 19px;
+}
+
+.car-list h4 {
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.car-list p{
+    font-size: 13px;
+    color: var(--primary);
+}
+
+.list-meta {
+    color: #B5B5B5;
+    font-size: 11px;
+}
+
+.listing-tabs .nav-pills .nav-link.active, .listing-tabs .nav-pills .show>.nav-link {
+    background: red;
+    color: #fff;
+}
+.listing-tabs .nav-pills .nav-link {
+    color: #000;
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 15px 25px;
+    border-radius: 14px 14px 0 0;
+}
+
+.review-list img.users {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+}
+
+.review-list p {
+    font-size: 14px;
+}
+
 @media (max-width: 991px) {
     .chat-icon {
         display: block;
@@ -976,6 +1067,14 @@ button:focus {
         border-top-left-radius: 6px;
         border-top-right-radius: 6px;
         border-bottom-left-radius: 6px;
+    }
+
+    .custom-flow.chat-area {
+       height: auto;
+    }
+
+    .logo-head h1 {
+        font-size: 25px;
     }
 }
 
