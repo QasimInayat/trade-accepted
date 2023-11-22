@@ -22,41 +22,26 @@
                <table class="table table-striped table-bordered">
                     <thead>
                         <th>ID</th>
+                        <th>User</th>
                         <th>Title</th>
+                        <th>Image</th>
                         <th>Price</th>
-                        <th>Address</th>
-                        <th>Description</th>
-                        <th>Country</th>
-                        <th>City</th>
-                        <th>Mileage</th>
-                        <th>Transmission</th>
-                        <th>ExteriorColor</th>
-                        <th>Interior Color</th>
                         <th>Make</th>
                         <th>Model</th>
-                        <th>Trim</th>
-                        <th>Year</th>
                         <th>Action</th>
                     </thead>
                     <tbody>
                         @forelse($vehicles as $index=>$item)
                         <tr>
                             <td>{{ ++$index }}</td>
+                            <td>{{ isset($item->user) ? $item->user->first_name : '' }} {{ isset($item->user) ? $item->user->last_name : '-' }}</td>
                             <td>{{ $item->title }}</td>
+                            <td><img style="border-radius:10px;" height="70px" width="100px" src="{{ asset('upload/vehicle/'.mainImage($item->id)) }}" alt=""></td>
                             <td>${{ $item->price }}</td>
-                            <td>{{ $item->address }}</td>
-                            <td>{{ $item->description }}</td>
-                            <td>{{ $item->country_id }}</td>
-                            <td>{{ $item->city_id }}</td>
-                            <td>{{ $item->mileage }}</td>
-                            <td>{{ $item->transmission }}</td>
-                            <td>{{ $item->exterior_color }}</td>
-                            <td>{{ $item->interior_color }}</td>
                             <td>{{ $item->make->name }}</td>
                             <td>{{ $item->model_id }}</td>
-                            <td>{{ $item->trim }}</td>
-                            <td>{{ $item->year }}</td>
                             <td>
+                                <a href="{{ route('detail',$item->slug) }}"><i class="fa fa-eye text-success"></i></a>&nbsp;|&nbsp;
                                 <a href="{{ route('admin.vehicle.edit',$item->id) }}"><i class="fa fa-edit text-info"></i></a>&nbsp;|&nbsp;
                                 <a href="{{ route('admin.vehicle.delete',$item->id) }}"><i class="fa fa-trash text-danger"></i></a>
                             </td>

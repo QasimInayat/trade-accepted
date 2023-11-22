@@ -12,8 +12,8 @@
 
 <body>
     @yield('content')
+    @include('partial.header')
     @include('partial.sidebar')
-       @include('partial.header')
     @include('partial.scripts')
     @stack('scripts')
 </body>

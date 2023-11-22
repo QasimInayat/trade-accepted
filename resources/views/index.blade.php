@@ -23,7 +23,7 @@ Index
                             <div class="multi-card">
                                <a href="{{ route('detail',$vehicle->slug) }}">
                                 <div class="card-img position-relative">
-                                    <img style="height: 170px;" src="{{ asset('upload/vehicle/'.mainImage($vehicle->id)) }}" class="w-100" alt="">
+                                    <img style="height: 200px;" src="{{ asset('upload/vehicle/'.mainImage($vehicle->id)) }}" class="w-100" alt="">
                                     <div class="card-meta d-flex justify-content-between">
                                         <h5 class="mb-0 text-white">{{ $vehicle->title }}</h5>
                                         <div>
@@ -50,12 +50,12 @@ Index
                     @endforelse
                 </div>
 
-                <div class="row mb-4">
+                {{-- <div class="row mb-4">
                     <div class="col-md-10 col-8">
                         <h2 class="section-heading mb-0">Other Listing</h2>
                     </div>
                     <div class="col-md-2 col-4">
-                        {{-- <p class="view-all mb-0 text-end">View All</p> --}}
+                        <p class="view-all mb-0 text-end">View All</p>
                     </div>
                 </div>
 
@@ -85,7 +85,7 @@ Index
                             </div>
                         </a>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
     </main>
