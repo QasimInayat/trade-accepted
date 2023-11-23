@@ -103,15 +103,15 @@ Profile
 
                                     <div class="payment-form mt-5">
                                         <h3 class="text-center">Payment Method</h3>
-                                        {!! Form::model($user, ['route' => ['userprofile.update' , auth()->user()->id] , 'enctype' => 'multipart/form-data']) !!}
+                                        {!! Form::model($user, ['route' => ['payment.update' , auth()->user()->id] , 'enctype' => 'multipart/form-data']) !!}
                                             <div class="mb-3">
                                                 <label for="" class="form-label">Card Number</label>
                                                 {!! Form::text('card_number', null, ['class' => 'form-control', 'id' => 'card_number' , 'placeholder' => '4242-4242-4242-4242']) !!}
                                             </div>
 
                                             <div class="mb-3">
-                                                <label for="" class="form-label">Name</label>
-                                                {!! Form::text('full_name', null, ['class' => 'form-control', 'placeholder' => '']) !!}
+                                                <label for="" class="form-label">Card Name</label>
+                                                {!! Form::text('card_name', null, ['class' => 'form-control', 'placeholder' => 'Name']) !!}
                                             </div>
 
                                             <div class="mb-3">
@@ -126,7 +126,7 @@ Profile
                                             </div>
 
                                             <div class="mb-5" style="float: right;">
-                                                {{-- <button type="submit" class="btn-sm btn btn-primary">Save</button> --}}
+                                                <button type="submit" class="btn-sm btn btn-primary">Save</button>
                                             </div>
                                             <div></div>
                                             {!! Form::close() !!}

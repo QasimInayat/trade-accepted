@@ -34,13 +34,23 @@ public function update(Request $request){
         'first_name' => $request->first_name,
         'last_name' => $request->last_name,
         'address' => $request->address,
-        'card_number' => $request->card_number,
-        'expiry' => $request->expiry,
-        'cvc' => $request->cvc,
         'image' => $imageName,
     ]);
     if($update > 0){
         return redirect()->back()->with('success','Profile Updated Successfully');
+    }
+    return redirect()->back()->with('error','Something Went Wrong');
+}
+
+public function paymentUpdate(Request $request){
+    $update = User::where('id' , auth()->user()->id)->update([
+        'card_number' => $request->card_number,
+        'card_name' => $request->card_name,
+        'expiry' => $request->expiry,
+        'cvc' => $request->cvc,
+    ]);
+    if($update > 0){
+        return redirect()->back()->with('success','Payment Updated Successfully');
     }
     return redirect()->back()->with('error','Something Went Wrong');
 }

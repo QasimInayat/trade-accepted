@@ -29,8 +29,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('profile', [ProfileController::class, 'profile'])->name('profile');
     Route::post('user-profile/{id}/update' , [ProfileController::class , 'update'])->name('userprofile.update');
-
-
+    Route::post('payment-update/{id}' , [ProfileController::class , 'paymentUpdate'])->name('payment.update');
 
     Route::get('vehicle/{id}/delete' , [VehicleController::class , 'delete'])->name('vehicle.delete');
     Route::resource('vehicle', VehicleController::class);
