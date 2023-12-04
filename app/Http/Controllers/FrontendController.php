@@ -39,6 +39,7 @@ class FrontendController extends Controller
     }
     public function notification(){
         $data ['title'] = 'Notification';
+        $data ['heading'] = 'Notification';
         return view('pages.notification',$data);
     }
 }
