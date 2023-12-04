@@ -42,7 +42,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('remove_gallery/{id}', [VehicleController::class , 'remove_gallery'])->name('remove.gallery');
     Route::get('notification', [FrontendController::class, 'notification'])->name('notification');
 
-
+    //Notification
+    Route::put('update-notification/{id}' , [FrontendController::class , 'updateNotification']);
 });
 
 Auth::routes();
