@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Vehicle;
+use App\Models\Notification;
 use App\Models\Gallery;
 use App\Models\Make;
 use App\Models\User;
@@ -57,6 +58,8 @@ class VehicleController extends Controller
            'description' => $request->description,
            'status' => $request->status,
         ]);
+        sendNotification($store->id, 'App/Models/Vehicle', 'vehicle_created', 'Vehicle created at ' . $store->created_at);
+
         if($request->has('images')){
             foreach($request->file('images') as $index=>$image){
                 $imageName = 'vehicle' . '-' . time() .'-'.rand(1000,100). '.' . $image->getClientOriginalExtension();
@@ -68,12 +71,15 @@ class VehicleController extends Controller
                 ]);
             }
         }
+        
+
         if(!empty($store->id)){
             return redirect()->route('vehicle.index')->with('success' , 'Vehicle created');
         }else{
             return redirect()->back()->with('error','Something went wrong');
         }
     }
+
     public function edit($slug){
         $data['title'] = 'Edit Listing';
         $data['heading'] = 'Edit Listing';

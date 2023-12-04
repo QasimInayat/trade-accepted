@@ -47,12 +47,18 @@
                                 data-bs-toggle="dropdown" aria-expanded="false">
                                 <a href="javascript:;" class="px-2">
                                     <img src="{{asset('assets/imgs/fi_bell.svg')}}" alt="">
+                                    <div style="margin-top: -35px; margin-right: -33px;">
+                                        <span style="height: 14px; width: 18px; font-size: 9px; margin-left: -14px;" class="badge bg-danger">{{ notificationCount() }}</span>
+                                    </div>
                                 </a>
                             </button>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item"><small>Notification</small> <span style="float: right; margin-top: 3px;" class="badge bg-danger">3</span> </a></li>
+                                <li><a class="dropdown-item"><small>Notification</small> <span style="float: right; margin-top: 3px;" class="badge bg-danger">{{ notificationCount() }}</span> </a></li>
+                                @forelse (notification() as $dd)
                                 <hr>
-                                <li><a class="dropdown-item"><small class="text-success">Your order ready for Ship..!</small> <p>your order will place on 3 hours.</p>  </a></li>
+                                <li><a class="dropdown-item"><small class="text-success">Your order ready for Ship..!</small> <p>{{ ucwords($dd->event) }}.</p>  <div style="margin-top: -20px; float: right;"><small style="font-size: 12px;" class="text-secondary">{{ Carbon\Carbon::parse($dd->created_at)->diffForHumans() }}</small></div> </a></li>
+                                @empty
+                                @endforelse
                             </ul>
                         </div>
                     </li>

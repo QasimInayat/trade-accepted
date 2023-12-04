@@ -3,6 +3,7 @@
 use App\Models\Admin;
 use App\Models\Gallery;
 use App\Models\User;
+use App\Models\Notification;
 
 
 
@@ -24,3 +25,22 @@ function mainImage($vehicle_id){
         return null;
     }
 }
+
+function sendNotification($id,$model,$event,$msg){
+	$store = Notification::create(['event' => $event, 'loggable_id' => $id, 'loggable_model' => $model, 'msg' => $msg, 'user_id' => auth()->user()->id]);
+	if(!empty($store)){
+		return $store;
+	}
+	return false;
+}
+
+function notification(){
+    $notification = Notification::where('user_id' ,  auth()->user()->id)->get();
+    return $notification;
+}
+
+function notificationCount(){
+    $notificationCount = Notification::where('user_id' , auth()->user()->id)->count();
+    return $notificationCount;
+}
+
