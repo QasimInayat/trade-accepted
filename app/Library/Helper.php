@@ -35,7 +35,7 @@ function sendNotification($id,$model,$event,$msg){
 }
 
 function notification(){
-    $notification = Notification::where('user_id' ,  auth()->user()->id)->get();
+    $notification = Notification::where('user_id' ,  auth()->user()->id)->take(3)->get();
     return $notification;
 }
 
