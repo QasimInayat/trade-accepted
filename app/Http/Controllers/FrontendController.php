@@ -37,4 +37,8 @@ class FrontendController extends Controller
         $data ['heading'] = 'Client Profile';
         return view('pages.client-profile',$data);
     }
+    public function notification(){
+        $data ['title'] = 'Notification';
+        return view('pages.notification',$data);
+    }
 }
