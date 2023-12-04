@@ -4,18 +4,18 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Vehicle;
 use App\Models\User;
 
 class DashboardController extends Controller
 {
     public function dashboard(){
         $data['title'] = 'Admin Dashboard';
-        return view('admin.pages.dashboard' , $data);
-    }
-    public function user(){
-        $data['title'] = 'User List';
+        $data['totalUsers'] = User::count();
+        $data['totalVehicles'] = Vehicle::count();
         $data['users'] = User::get();
-        return view('admin.pages.user.index' , $data);
+        $data['vehicles'] = Vehicle::orderBy('created_at' , 'DESC')->get();
+        return view('admin.pages.dashboard' , $data);
     }
     public function reviews(){
         $data['title'] = 'Reviews';

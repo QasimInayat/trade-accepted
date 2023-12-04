@@ -12,7 +12,7 @@ class FrontendController extends Controller
     public function index(){
         $data ['title'] = 'Index';
         $data ['heading'] = 'Home';
-        $data ['vehicles'] = Vehicle::orderBy('created_at' , 'DESC')->get();
+        $data ['vehicles'] = Vehicle::where('status' , 1)->orderBy('created_at' , 'DESC')->get();
         return view('index',$data);
     }
     public function detail($slug){

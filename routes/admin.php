@@ -7,7 +7,7 @@ use App\Http\Controllers\Admin\VehicleTypeController;
 use App\Http\Controllers\Admin\MakeController;
 use App\Http\Controllers\Admin\VehicleController;
 use App\Http\Controllers\Admin\TransactionController;
-use App\Http\Controllers\Admin\ProfileController;
+use App\Http\Controllers\Admin\UserController;
 
 
 
@@ -33,10 +33,14 @@ Route::resource('vehicle_type' , VehicleTypeController::class);
     Route::resource('make', MakeController::class);
 
     //user
-    Route::get('user', [DashboardController::class, 'user'])->name('user');
-    Route::get('user/{id}/profile' , [ProfileController::class , 'profile'])->name('profile');
-    Route::post('user-profile/store' , [ProfileController::class , 'store'])->name('userprofile.store');
-    Route::post('user-profile/{id}/update' , [ProfileController::class , 'update'])->name('userprofile.update');
+    Route::get('user', [UserController::class, 'user'])->name('user');
+    Route::get('user/{id}/profile' , [UserController::class , 'profile'])->name('profile');
+    Route::post('user-profile/store' , [UserController::class , 'store'])->name('userprofile.store');
+    Route::post('user-profile/{id}/update' , [UserController::class , 'update'])->name('userprofile.update');
+    Route::get('edit-user/{id}' , [UserController::class , 'edit']);
+    Route::put('update-user/{id}' , [UserController::class , 'Banupdate']);
+
+
     //user
     Route::get('reviews', [DashboardController::class, 'reviews'])->name('reviews');
     // Transaction

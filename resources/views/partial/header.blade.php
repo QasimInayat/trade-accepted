@@ -1,3 +1,22 @@
+<style>
+    .custom-search{position: relative;right:-12px;}
+    #express-form-typeahead{background-color:transparent;background-image:url({{asset('assets/imgs/fi_search.svg')}});background-position:5px center;background-repeat:no-repeat;background-size:15px;border:none;cursor:pointer;height:30px;padding:0 0 0 34px;position:relative;-webkit-transition:width 1.1s ease, background 1.1s ease;transition:width 1.1s ease, background 1.1s ease;width:0;}
+    .close-search{display:none;-webkit-animation: fadeEffect1 2s;animation: fadeEffect1 2s;
+    position: absolute;top:9px;right:9px;background-image: url({{ asset('assets/imgs/cross.png') }});width: 15px;
+    height: 15px;background-repeat: no-repeat;background-size: 15px;}
+    #express-form-typeahead:focus{background-color:#fff;border-bottom:1px solid #e7e7e7;cursor:text;outline:0;width:200px;border-radius: 0;}
+    .search-btn{display:none;}
+    input[type="search"]{-webkit-appearance:textfield;}
+   /* Fade in tabs */
+    @-webkit-keyframes fadeEffect1 {
+        from {opacity: 0;}
+        to {opacity: 1;}
+    }
+    @keyframes fadeEffect1 {
+        from {opacity: 0;}
+        to {opacity: 1;}
+    }
+</style>
 <header class="py-3 px-2">
     <div class="container-fluid">
         <div class="d-flex align-items-center justify-content-between">
@@ -13,14 +32,29 @@
                 </li>
                 @endauth
                     <li class="d-inline-block">
-                        <a href="{{ route('search') }}" class="px-2">
-                            <img src="{{asset('assets/imgs/fi_search.svg')}}" alt="">
-                        </a>
+                        {{-- <img style="margin-bottom: -50px;" src="{{asset('assets/imgs/fi_search.svg')}}" alt=""> --}}
+                        <div class="custom-search">
+                            <div class="cell-wrapper">
+                                <input required="" autocomplete="off" name="q" placeholder="Search Vehcile" class="form-control" id="express-form-typeahead"  type="search">
+                                <button class="search-btn" type="submit"><span class="icon"></span></button>
+                                <div class="close-search" aria-label="Close" id="closeSearch" ></div>
+                            </div>
+                        </div>
                     </li>
                     <li class="d-inline-block">
-                        <a href="javascript:;" class="px-2">
-                            <img src="{{asset('assets/imgs/fi_bell.svg')}}" alt="">
-                        </a>
+                        <div class="dropdown">
+                            <button style="background-color: transparent; border: none;" type="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                <a href="javascript:;" class="px-2">
+                                    <img src="{{asset('assets/imgs/fi_bell.svg')}}" alt="">
+                                </a>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item"><small>Notification</small> <span style="float: right; margin-top: 3px;" class="badge bg-danger">3</span> </a></li>
+                                <hr>
+                                <li><a class="dropdown-item"><small class="text-success">Your order ready for Ship..!</small> <p>your order will place on 3 hours.</p>  </a></li>
+                            </ul>
+                        </div>
                     </li>
                     <li style="margin-right: 15px" class="d-inline-block">
                         <a href="{{ route('messenger') }}" class="px-2">
@@ -68,3 +102,18 @@
         </div>
     </div>
 </header>
+<script>
+//Search Bar
+        var searchBar = document.getElementById("express-form-typeahead");
+        searchBar.addEventListener('click' , function(){
+            var closeSearch = document.getElementById("closeSearch");
+            closeSearch.style.display = "block";
+        });
+        window.addEventListener('mouseup', e =>{
+            //alert(e);
+                if(e.target != searchBar && e.target.parentNode != searchBar )
+                {
+                    var closeSearch = document.getElementById("closeSearch");
+                    closeSearch.style.display = "";
+                }
+        });</script>
