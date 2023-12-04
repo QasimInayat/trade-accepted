@@ -52,13 +52,16 @@
                                     </div>
                                 </a>
                             </button>
-                            <ul class="dropdown-menu">
+                            <ul class="dropdown-menu" style="width: 300px;">
                                 <li><a class="dropdown-item"><small>Notification</small> <span style="float: right; margin-top: 3px;" class="badge bg-danger">{{ notificationCount() }}</span> </a></li>
                                 @forelse (notification() as $dd)
                                 <hr>
-                                <li><a class="dropdown-item"><small class="text-success">Your order ready for Ship..!</small> <p>{{ ucwords($dd->event) }}.</p>  <div style="margin-top: -20px; float: right;"><small style="font-size: 12px;" class="text-secondary">{{ Carbon\Carbon::parse($dd->created_at)->diffForHumans() }}</small></div> </a></li>
+                                <li><a class="dropdown-item"><small class="text-success">{{ $dd->loggable->title }}</small> <p>{{ ucwords($dd->event) }}.</p>  <div style="margin-top: -20px; float: right;"><small style="font-size: 12px;" class="text-secondary">{{ Carbon\Carbon::parse($dd->created_at)->diffForHumans() }}</small></div> </a></li>
                                 @empty
                                 @endforelse
+                                <div style="float: right; margin-top: 10px;">
+                                    <a style="font-size: 13px; margin-left: -59px;" href="{{ route('notification') }}">View All</a>
+                                </div>
                             </ul>
                         </div>
                     </li>

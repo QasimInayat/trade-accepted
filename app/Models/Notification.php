@@ -10,7 +10,7 @@ class Notification extends Model
     use HasFactory;
     protected $guarded = [];
 
-    public function loggable_model(){
+    public function loggable(){
         return $this->belongsTo(Vehicle::class);
     }
 }

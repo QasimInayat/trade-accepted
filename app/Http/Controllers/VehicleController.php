@@ -58,7 +58,7 @@ class VehicleController extends Controller
            'description' => $request->description,
            'status' => $request->status,
         ]);
-        sendNotification($store->id, 'App/Models/Vehicle', 'vehicle_created', 'Vehicle created at ' . $store->created_at);
+        sendNotification($store->id, 'App/Models/Vehicle', 'vehicle created', 'Vehicle created at ' . $store->created_at);
 
         if($request->has('images')){
             foreach($request->file('images') as $index=>$image){
