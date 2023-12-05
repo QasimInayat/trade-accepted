@@ -29,26 +29,64 @@
                                     <div class="tab-pane fade show active" id="pills-active" role="tabpanel"
                                         aria-labelledby="pills-active-tab">
                                         <div style="border: 1px white groove;background-color:white;border-radius:5px;" class="tab-content car-list mb-4 p-3" id="pills-tabContent" >
-                                <div class="row">
-                                    <div class="col-xl-2 col-lg-5">
-                                        <img src="{{asset('assets/imgs/car-9.png')}}" height="60px" alt="">
-                                    </div>
-                                    <div class="col-xl-8 col-lg-7">
-                                        <h6>
-                                                <b>Vehicle Created</b>
-                                        </h6>
-                                        <span style="font-size: 12px">Vehicle Created At 11-09-2023</span>
-                                    </div>
-                                </div>
+                                            @forelse ($notifications  as $noti)
+                                            <div class="row mt-4">
+                                                <div class="col-xl-2 col-lg-5">
+                                                    <img src="{{ asset('upload/vehicle/'.mainImage($noti->loggable->id)) }}" height="60px" width="100%" alt="">
+                                                </div>
+                                                <div class="col-xl-8 col-lg-7">
+                                                    <h6>
+                                                            <b>{{ isset($noti->loggable) ? $noti->loggable->title : '' }}</b>
+                                                    </h6>
+                                                    <span style="font-size: 12px">{{ ucwords($noti->event) }} At {{ Carbon\Carbon::parse($noti->created_at)->diffForHumans() }}</span>
+                                                </div>
+                                            </div>
+                                            @empty
+                                                
+                                            @endforelse
                             </div>
                                     </div>
                                     <div class="tab-pane fade" id="pills-previous" role="tabpanel"
                                         aria-labelledby="pills-previous-tab">
-                                        <h5><b>No Record Found</b></h5>
+                                        <div style="border: 1px white groove;background-color:white;border-radius:5px;" class="tab-content car-list mb-4 p-3" id="pills-tabContent" >
+                                            @forelse ($seenNotifications  as $noti)
+                                            <div class="row mt-4">
+                                                <div class="col-xl-2 col-lg-5">
+                                                    <img src="{{ asset('upload/vehicle/'.mainImage($noti->loggable->id)) }}" height="60px" width="100%" alt="">
+                                                </div>
+                                                <div class="col-xl-8 col-lg-7">
+                                                    <h6>
+                                                            <b>{{ isset($noti->loggable) ? $noti->loggable->title : '' }}</b>
+                                                    </h6>
+                                                    <span style="font-size: 12px">{{ ucwords($noti->event) }} At {{ Carbon\Carbon::parse($noti->created_at)->diffForHumans() }}</span>
+                                                </div>
+                                            </div>
+                                            @empty
+                                                
+                                            <h5><b>No Record Found</b></h5>
+                                            @endforelse
+                            </div>
                                     </div>
                                     <div class="tab-pane fade" id="pills-previous1" role="tabpanel"
                                         aria-labelledby="pills-previous1-tab">
-                                        <h5><b>No Record Found!</b></h5>
+                                        <div style="border: 1px white groove;background-color:white;border-radius:5px;" class="tab-content car-list mb-4 p-3" id="pills-tabContent" >
+                                            @forelse ($UnseenNotifications  as $noti)
+                                            <div class="row mt-4">
+                                                <div class="col-xl-2 col-lg-5">
+                                                    <img src="{{ asset('upload/vehicle/'.mainImage($noti->loggable->id)) }}" height="60px" width="100%" alt="">
+                                                </div>
+                                                <div class="col-xl-8 col-lg-7">
+                                                    <h6>
+                                                            <b>{{ isset($noti->loggable) ? $noti->loggable->title : '' }}</b>
+                                                    </h6>
+                                                    <span style="font-size: 12px">{{ ucwords($noti->event) }} At {{ Carbon\Carbon::parse($noti->created_at)->diffForHumans() }}</span>
+                                                </div>
+                                            </div>
+                                            @empty
+                                                
+                                            <h5><b>No Record Found</b></h5>
+                                            @endforelse
+                            </div>
                                     </div>
                                 </div>
                             </div>

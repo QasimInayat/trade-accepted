@@ -38,7 +38,7 @@
             <li><a class="dropdown-item"><small>Notification</small> <span style="float: right; margin-top: 3px;" class="badge bg-danger">{{ notificationCount() }}</span> </a></li>
             @forelse (notification() as $dd)
             <hr>
-            <li class="seen_notification"><a class="dropdown-item"><input type="hidden" id="edit_notification_id" value="{{ $dd->id }}"> <small class="text-success">{{ $dd->loggable->title }}</small> <p>{{ ucwords($dd->event) }}.</p>  <div style="margin-top: -20px; float: right;"><small style="font-size: 12px;" class="text-secondary">{{ Carbon\Carbon::parse($dd->created_at)->diffForHumans() }}</small></div> </a></li>
+            <li class="seen_notification"><a class="dropdown-item"><input type="hidden" id="edit_notification_id" value="{{ $dd->id }}"> <small class="text-success">{{ isset($dd->loggable) ? $dd->loggable->title : '' }}</small> <p>{{ ucwords($dd->event) }}.</p>  <div style="margin-top: -20px; float: right;"><small style="font-size: 12px;" class="text-secondary">{{ Carbon\Carbon::parse($dd->created_at)->diffForHumans() }}</small></div> </a></li>
             @empty
             @endforelse
             <div style="float: right; margin-top: 10px;">
