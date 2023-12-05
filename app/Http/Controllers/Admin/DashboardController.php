@@ -13,8 +13,8 @@ class DashboardController extends Controller
         $data['title'] = 'Admin Dashboard';
         $data['totalUsers'] = User::count();
         $data['totalVehicles'] = Vehicle::count();
-        $data['users'] = User::get();
-        $data['vehicles'] = Vehicle::orderBy('created_at' , 'DESC')->get();
+        $data['users'] = User::orderBy('created_at' , 'DESC')->take(4)->get();
+        $data['vehicles'] = Vehicle::orderBy('created_at' , 'DESC')->take(4)->get();
         return view('admin.pages.dashboard' , $data);
     }
     public function reviews(){

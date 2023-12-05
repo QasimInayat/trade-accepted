@@ -43,7 +43,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('notification', [FrontendController::class, 'notification'])->name('notification');
 
     //Notification
-    Route::put('update-notification/{id}' , [FrontendController::class , 'updateNotification']);
+    Route::post('update-notification/{id}' , [FrontendController::class , 'updateNotification']);
+    Route::get('notification/count' , [FrontendController::class , 'notificationcount'])->name('load.notification.data');
+
 });
 
 Auth::routes();

@@ -122,6 +122,7 @@ class VehicleController extends Controller
             'description' => $request->description,
             'status' => $request->status,
         ]);
+        // sendNotification($update->id, 'App/Models/Vehicle', 'vehicle updated', 'Vehicle updated at ' . $update->created_at);
         $vehicle = Vehicle::where('id' , $id)->firstorfail();
         if($request->has('images')){
             foreach($request->file('images') as $index=>$image){

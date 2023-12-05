@@ -34,15 +34,15 @@
             <a href="javascript:;" class="px-2">
                 <img src="{{asset('assets/imgs/fi_bell.svg')}}" alt="">
                 <div style="margin-top: -35px; margin-right: -33px;">
-                    <span style="height: 14px; width: 18px; font-size: 9px; margin-left: -14px;" class="badge bg-danger">{{ notificationCount() }}</span>
+                    <span style="height: 14px; width: 18px; font-size: 9px; margin-left: -14px;" class="badge bg-danger total_notification"></span>
                 </div>
             </a>
         </button>
         <ul class="dropdown-menu" style="width: 300px;">
-            <li><a class="dropdown-item"><small>Notification</small> <span style="float: right; margin-top: 3px;" class="badge bg-danger">{{ notificationCount() }}</span> </a></li>
+            <li><a class="dropdown-item"><small>Notification</small> <span style="float: right; margin-top: 3px;" class="badge bg-danger total_notification"></span> </a></li>
             @forelse (notification() as $dd)
             <hr>
-            <li class="seen_notification"><a class="dropdown-item"><input type="hidden" id="edit_notification_id" value="{{ $dd->id }}"> <small class="text-success">{{ isset($dd->loggable) ? $dd->loggable->title : '' }}</small> <p>{{ ucwords($dd->event) }}.</p>  <div style="margin-top: -20px; float: right;"><small style="font-size: 12px;" class="text-secondary">{{ Carbon\Carbon::parse($dd->created_at)->diffForHumans() }}</small></div> </a></li>
+            <li><a href="javascript:;" onClick="notification($(this),{{$dd->id}})" class="dropdown-item"><p class="text-primary" style="margin-bottom: 3px;">{{ isset($dd->loggable) ? $dd->loggable->title : '' }}</p> <small>{{ ucwords($dd->event) }}.</small>  <div style="float: right;"><small style="font-size: 12px;" class="text-secondary">{{ Carbon\Carbon::parse($dd->created_at)->diffForHumans() }}</small></div> </a></li>
             @empty
             @endforelse
             <div style="float: right; margin-top: 10px;">

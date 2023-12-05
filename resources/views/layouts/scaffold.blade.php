@@ -35,19 +35,14 @@
                 source: availableTags
             });
         }
-    
-                    $(document).on('click' , '.seen_notification' , function (e){
-                e.preventDefault();
-                var notification_id = $('#edit_notification_id').val();
-              $.ajaxSetup({
-                  headers: {
-                      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                  }
-              });
-              $.ajax({
-                type: 'PUT',
-                url: 'update-notification/'+notification_id,
-                dataType: 'json',
+
+        function notification(elm,id){
+            $.ajax({
+                type: 'POST',
+                url: 'update-notification/'+id,
+                data: {
+                    '_token' : "{{csrf_token()}}",
+                },
                 success: function(response){
                     if(response.status == 400){
                         $.each(response.errors, function (key, err_values){
@@ -56,12 +51,25 @@
                     }else if(response.status == 404){
                         toastr.error(response.message);
                     }else{
+                        loadnotification();
+                        window.location.reload();
                         toastr.success(response.message);
                     }
                 }
-              });
-          });
+            });
+        }
     
+        loadnotification();
+                function loadnotification(){
+                    $.ajax({
+                        type: 'GET',
+                        url: '{{ route('load.notification.data') }}',
+                        success:function(response){
+                            var response = JSON.parse(response);
+                            $('.total_notification').text(response);
+                        }
+                    });
+                }
         </script>
     
 </body>

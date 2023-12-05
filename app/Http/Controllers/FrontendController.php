@@ -47,10 +47,12 @@ class FrontendController extends Controller
     public function notification(){
         $data ['title'] = 'Notification';
         $data ['heading'] = 'Notification';
-        $data['notifications'] = Notification::where('user_id' , auth()->user()->id)->get();
-        $data['seenNotifications'] = Notification::where(['user_id' => auth()->user()->id , 'is_seen' => '1'])->get();
-        $data['UnseenNotifications'] = Notification::where(['user_id' => auth()->user()->id , 'is_seen' => '0'])->get();
+        $data['notifications'] = Notification::where('user_id' , auth()->user()->id)->orderBy('created_at' , 'DESC')->get();
         return view('pages.notification',$data);
+    }
+    public function notificationcount(){
+        $notificationCount = Notification::where(['user_id' => auth()->user()->id , 'is_seen' => '0'])->count();
+        echo json_encode($notificationCount);
     }
     public function updateNotification(Request $request , $id){
         $notification = Notification::find($id);
