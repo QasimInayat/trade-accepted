@@ -14,11 +14,15 @@
                 @endauth
                     <li class="d-inline-block">
                         {{-- <img style="margin-bottom: -50px;" src="{{asset('assets/imgs/fi_search.svg')}}" alt=""> --}}
-                        <div class="custom-search">
-                            <div class="cell-wrapper">
-                                <input required="" autocomplete="off" name="q" placeholder="Search Vehcile" class="form-control" id="express-form-typeahead"  type="search">
-                                <button class="search-btn" type="submit"><span class="icon"></span></button>
-                                <div class="close-search" aria-label="Close" id="closeSearch" ></div>
+                        <div class="search-bar">
+                            <div class="custom-search">
+                                <div class="cell-wrapper ui-widget">
+                                    <form action="{{ route('search') }}" method="GET">
+                                        <input autocomplete="off" name="title" placeholder="Search Vehcile" class="form-control" id="express-form-typeahead"  type="search">
+                                    </form>
+                                    <button class="search-btn" type="submit"><span class="icon"></span></button>
+                                    <div class="close-search" aria-label="Close" id="closeSearch" ></div>
+                                </div>
                             </div>
                         </div>
                     </li>
@@ -94,32 +98,3 @@
         </div>
     </div>
 </header>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script>
-
-                $(document).on('click' , '.seen_notification' , function (e){
-            e.preventDefault();
-            var notification_id = $('#edit_notification_id').val();
-          $.ajaxSetup({
-              headers: {
-                  'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-              }
-          });
-          $.ajax({
-            type: 'PUT',
-            url: 'update-notification/'+notification_id,
-            dataType: 'json',
-            success: function(response){
-                if(response.status == 400){
-                    $.each(response.errors, function (key, err_values){
-                        $('#updateform_errList').append('<li>'+err_values+'</li>');
-                    });
-                }else if(response.status == 404){
-                    toastr.error(response.message);
-                }else{
-                    toastr.success(response.message);
-                }
-            }
-          });
-      });
-</script>

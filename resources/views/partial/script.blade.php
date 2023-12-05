@@ -35,5 +35,5 @@
                         closeSearch.style.display = "";
                     }
             });
+
 </script>
-    

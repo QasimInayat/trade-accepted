@@ -23,10 +23,16 @@ class FrontendController extends Controller
         $data['galleries'] = Gallery::where('vehicle_id' , $data['vehicle']->id)->get();
         return view('pages.detail',$data);
     }
-    public function search(){
+    public function search(Request $request){
         $data ['title'] = 'Search';
         $data ['heading'] = 'Search';
-        return view('pages.search',$data);
+        if($request->title){
+            $data['searchVehicles'] = Vehicle::where('title','LIKE','%'.$request->title.'%')->get();
+            return view('pages.search',$data);
+        }
+        else{
+            return redirect()->back()->with('error','Empty Search');
+        }
     }
     public function messenger(){
         $data ['title'] = 'Messenger';
@@ -55,5 +61,13 @@ class FrontendController extends Controller
         }else{
             return response()->json(['status' => 404 , 'message' => 'Notification Not Found']);
         }
+    }
+    public function vehicleList(){
+        $vehicles = Vehicle::where('status' , 1)->get();
+        $data = [];
+        foreach($vehicles as $item){
+            $data[] = $item['title'];
+        }
+        return $data;
     }
 }
