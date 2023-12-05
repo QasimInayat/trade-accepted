@@ -23,8 +23,8 @@
     <script>
       var availableTags = [];
         $.ajax({
-            method: 'GET',
-            url: 'vehicle-list',
+            method: "GET",
+            url: "{{ route('vehicle-list') }}",
             success:function(response){
                 // console.log(response);
                 startAutoComplete(response);
