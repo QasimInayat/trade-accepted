@@ -39,6 +39,7 @@ function notification(){
     return $notification;
 }
 
+
 function notificationCount(){
     $notificationCount = Notification::where('user_id' , auth()->user()->id)->count();
     return $notificationCount;
