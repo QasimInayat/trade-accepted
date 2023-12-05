@@ -56,6 +56,7 @@ Index
                     </div>
                     <div class="col-md-2 col-4">
                          <p class="view-all mb-0 text-end">View All</p>
+
                     </div>
                 </div> --}}
 

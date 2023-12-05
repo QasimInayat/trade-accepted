@@ -27,8 +27,8 @@
     </style>
 @endpush
 @section('content')
-<div class="layout-page mb-5" style="margin-top:130px; margin-left:70px;">
-   <div class="content-wrapper">
+<div class="layout-page mb-5" style="margin-top:130px; ">
+   <div style="margin-left: 40px;" class="content-wrapper">
       <div class="container">
         <div class="card">
             <div class="card-header text-white" style="background-color:red;">
@@ -74,25 +74,20 @@
                                  </div>
                                  <div class="col-md-6 mt-4">
                                     <div class="form-floating">
-                                        <select name="country_id" id="" class="form-control">
-                                            <option value="Pakistan">Pakistan</option>
-                                            <option value="India">India</option>
+                                        <select name="country_id" required class="form-control custom-control" id="country" onchange="print_state('state',this.selectedIndex);">
                                         </select>
                                        <label for="floatingInput text-danger">Country</label>
                                        <small class="text-danger">@error ('country_id') {{ $message }} @enderror</small>
                                     </div>
                                  </div>
                                  <div class="col-md-6 mt-4">
-                                    <div class="form-floating">
-                                        <select name="city_id" id="" class="form-control">
-                                            <option value="Karachi">Karachi</option>
-                                            <option value="Lahore">Lahore</option>
-                                            <option value="UP">UP</option>
-                                            <option value="Bihar">Bihar</option>
-                                        </select>
+                                     
+                                      <div class="form-floating">
+                                       {!! Form::text('city_id', null, ['class' => 'form-control', 'id' => 'floatingInput', 'placeholder' => 'City', 'aria-describedby' => 'floatingInputHelp']) !!}
                                        <label for="floatingInput">City</label>
-                                       <small class="text-danger">@error ('city_id') {{ $message }} @enderror</small>
+                                       <small class="text-danger">@error ('price') {{ $message }} @enderror</small>
                                     </div>
+                                  
                                  </div>
                                  <div class="col-md-6 mt-4">
                                     <div class="form-floating">
@@ -124,12 +119,7 @@
                                  </div>
                                  <div class="col-md-6 mt-4">
                                     <div class="form-floating">
-                                        <select name="make_id" id="" class="form-control">
-                                            @forelse ($makes as $value)
-                                                <option value="{{ $value->id }}">{{ $value->name }}</option>
-                                            @empty
-                                            @endforelse
-                                        </select>
+                                        {!! Form::select('make_id', $makes, null, [ 'class' => 'form-control']) !!}
                                        <label for="floatingInput">Make</label>
                                        <small class="text-danger">@error ('make_id') {{ $message }} @enderror</small>
                                     </div>
@@ -199,7 +189,9 @@
 @endsection
 @push('scripts')
 <script src="{{ asset('assets/js/multiple-uploader.js') }}"></script>
+<script src="{{ asset('assets/js/payment-related.js') }}"></script>
 <script>
+        print_country("country");
 
     let multipleUploader = new MultipleUploader('#multiple-uploader').init({
         maxUpload : 20, // maximum number of uploaded images

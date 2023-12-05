@@ -3,7 +3,7 @@
         <div class="d-flex align-items-center justify-content-between">
             <div class="logo-head d-flex align-items-center gap-3">
                 <a href="{{ route('index') }}"><img src="{{asset('assets/imgs/logo.png')}}" alt="" class="d-block"></a>
-                <h1 class="mb-0">Dashboard</h1>
+                <h1 class="mb-0">{{ $heading ?? '' }}</h1>
             </div>
             <div class="vertical-nav d-flex align-items-center">
                 <ul class="list-unstyled text-end d-lg-block d-none mb-0">
@@ -53,6 +53,7 @@
                             <span class="d-md-inline d-none">Welcome back, {{ auth()->user()->first_name }} {{ auth()->user()->last_name }}!</span>
                         </button>
                         <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="{{route('profile')}}">Profile</a></li>
                             <li><a class="dropdown-item" href="{{route('vehicle.index')}}">My Listing</a></li>
                             <li><a class="dropdown-item" href="javscript:;" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="mdi mdi-logout text-muted fs-16 align-middle me-1"></i> <span class="align-middle" data-key="t-logout"> <i class="fa fa-sign-out"></i> Logout
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">

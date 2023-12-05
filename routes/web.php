@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\VehicleController;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,8 +21,16 @@ Route::get('/' , [FrontendController::class , 'index'])->name('index');
 Route::get('detail/{id}', [FrontendController::class, 'detail'])->name('detail');
 Route::get('search', [FrontendController::class, 'search'])->name('search');
 Route::get('messenger', [FrontendController::class, 'messenger'])->name('messenger');
+Route::get('client_profile', [FrontendController::class, 'clientProfile'])->name('client-profile');
+
+
 
 Route::middleware(['auth'])->group(function () {
+
+    Route::get('profile', [ProfileController::class, 'profile'])->name('profile');
+    Route::post('user-profile/{id}/update' , [ProfileController::class , 'update'])->name('userprofile.update');
+
+
 
     Route::get('vehicle/{id}/delete' , [VehicleController::class , 'delete'])->name('vehicle.delete');
     Route::resource('vehicle', VehicleController::class);

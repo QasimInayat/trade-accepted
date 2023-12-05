@@ -18,8 +18,15 @@
                          <div class="col-md-12">
                             <h2 class="mt-3 text-danger text-center"><b>{{ $title ?? '' }}</b></h2>
                          </div>
+<<<<<<< HEAD
                       </div>
                 <div class="table-responsive mt-3">
+=======
+                         <div class="col-md-12">
+                         </div>
+                      </div>
+                <div class="table-responsive mt-4">
+>>>>>>> e12b1dede00bd8cb89cf6b39ff67c27013dea250
                     <table class="table table-striped table-bordered">
                         <thead>
                             <th>ID</th>
@@ -40,9 +47,9 @@
                                 <td>{{ $item->make->name }}</td>
                                 <td>{{ $item->model_id }}</td>
                                 <td>
+                                    <a href="{{ route('detail',$item->slug) }}"><i class="fa fa-eye text-success"></i></a>&nbsp;|&nbsp;
                                     <a href="{{ route('vehicle.edit',$item->slug) }}"><i class="fa fa-edit text-info"></i></a>&nbsp;|&nbsp;
-                                    <a href="{{ route('vehicle.delete',$item->slug) }}"><i class="fa fa-trash text-danger"></i></a>&nbsp;|&nbsp;
-                                    <a href="{{ route('detail',$item->slug) }}"><i class="fa fa-eye text-success"></i></a>
+                                    <a href="{{ route('vehicle.delete',$item->slug) }}"><i class="fa fa-trash text-danger"></i></a>
                                 </td>
                             </tr>
                             @empty

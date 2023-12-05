@@ -12,16 +12,18 @@ use Str;
 class VehicleController extends Controller
 {
     public function index(){
-        $data['title'] = 'MY LISTING';
+        $data['title'] = 'My Listing';
+        $data ['heading'] = 'My Listing';
         $data['vehicles'] = Vehicle::where('user_id',auth()->user()->id)->orderBy('created_at' , 'DESC')->get();
         return view('pages.vehicle.index' ,$data);
     }
     public function create(){
-        $data['title'] = 'ADD LISTING';
-        $data['makes'] = Make::get();
+        $data['title'] = 'Add Listing';
+        $data['heading'] = 'Add Listing';
+        $data['makes'] = Make::pluck('name' , 'id')->toArray();
         $data['user'] = User::where('id',auth()->user()->id)->first();
         return view('pages.vehicle.create' ,$data);
-    }
+    }   
     public function store(Request $request){
         $request->validate([
             'title' => 'required|max:191',
@@ -71,8 +73,9 @@ class VehicleController extends Controller
         }
     }
     public function edit($slug){
-        $data['title'] = 'EDIT LISTING';
-        $data['makes'] = Make::get();
+        $data['title'] = 'Edit Listing';
+        $data['heading'] = 'Edit Listing';
+        $data['makes'] = Make::pluck('name' , 'id')->toArray();
         $data['vehicle'] = Vehicle::where('slug' , $slug)->firstorfail();
         $data['galleries'] = Gallery::where('vehicle_id' , $data['vehicle']->id)->get();
         $data['user'] = User::where('id',auth()->user()->id)->first();
