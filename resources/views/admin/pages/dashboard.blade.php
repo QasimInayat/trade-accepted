@@ -18,7 +18,7 @@
             <div div class="card-body">
                 <div class="row">
                     <div class="col-md-12">
-                        <h4 class="card-title mb-1">20</h4>
+                        <h4 class="card-title mb-1">{{ $totalUsers }}</h4>
                     </div>
                 </div>
                 <div class="d-flex align-items-center mt-4">
@@ -40,7 +40,7 @@
             <div div class="card-body">
                 <div class="row">
                     <div class="col-md-12">
-                        <h4 class="card-title mb-1">02</h4>
+                        <h4 class="card-title mb-1">{{ $totalVehicles }}</h4>
                     </div>
                 </div>
                 <div class="d-flex align-items-center mt-4">
@@ -58,45 +58,39 @@
                 <div class="card-title">
                     <h4><b>RECENT USERS</b></h4>
                 </div>
-                <table class="table table-striped table-bordered" >
-                    <thead>
-                       <tr>
-                          <th>ID</th>
-                          <th>First Name</th>
-                          <th>Last Name</th>
-                          <th>E-mail</th>
-                       </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                          <td>1</td>
-                          <td>Leorm</td>
-                          <td>Ipusm</td>
-                          <td>ipsume321@gmail.com</td>
-                      </tr>
-                      <tr>
-                          <td>2</td>
-                          <td>Jhon</td>
-                          <td>Divid</td>
-                          <td>jhondivid68@gmail.com</td>
-                      </tr>
-                      <tr>
-                          <td>3</td>
-                          <td>Willsom</td>
-                          <td>Clark</td>
-                          <td>clarkkal98@gmail.com</td>
-                      </tr>
-                      <tr>
-                          <td>4</td>
-                          <td>Adam</td>
-                          <td>Duck</td>
-                          <td>adamduck@gmail.com</td>
-                      </tr>
-                    </tbody>
-                 </table>
-            </div>
-
-             </table>
+                <div class="card-body">
+                    <div class="table-responsive ">
+                       <table class="table table-striped table-bordered" id="table">
+                          <thead>
+                             <tr>
+                                <th>ID</th>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>E-mail</th>
+                                <th>IsBan</th>
+                             </tr>
+                          </thead>
+                          <tbody>
+                            @foreach($users as $index=>$user)
+                            <tr>
+                                <td>{{ ++$index }}</td>
+                                <td>{{ $user->first_name }}</td>
+                                <td>{{ $user->last_name }}</td>
+                                <td>{{ $user->email }}</td>
+                                <td>
+                                    @if($user->is_ban == 0)
+                                    <button style="border: none; color: white; font-size: 12px;" data-bs-toggle="modal" data-original-title="test" data-bs-target="#exampleModal" type="button" value="{{ $user->id }}" class="edit_button badge bg-success">Not Banned</button>
+                                @else
+                                    <button style="border: none; color: white; font-size: 12px;" data-bs-toggle="modal" data-original-title="test" data-bs-target="#exampleModal" type="button" value="{{ $user->id }}" class="edit_button badge bg-danger">Banned</button>
+                                @endif
+                                </td>
+                            </tr>
+                            @endforeach
+                          </tbody>
+                       </table>
+                       </div>
+                 </div>
+              </div>
           </div>
 
         <!--/ Website Analytics -->
@@ -107,66 +101,43 @@
                     <h4><b>RECENT VEHICLES</b></h4>
                 </div>
                 <div class="table-responsive ">
-                    <table class="table table-striped table-bordered">
-                         <thead>
-                             <th>ID</th>
-                             <th>User</th>
-                             <th>Image</th>
-                             <th>Purchasing Date</th>
-                             <th>Chasis #</th>
-                             <th>Make</th>
-                             <th>Model</th>
-                             <th>Color</th>
-                             <th>Year</th>
-                             <th>Selling Price</th>
-                             <th>Country</th>
-                             <th>Port</th>
-                         </thead>
-                         <tbody>
-                             <tr>
-                                 <td>1</td>
-                                 <td>Rywajur</td>
-                                 <td><img style="height: 80px; width: 90px;" class="rounded" src="{{ asset('admin/assets/img/vehicle/toyota.jpg') }}" alt=""></td>
-                                 <td>2018-06-26</td>
-                                 <td>123456789</td>
-                                 <td>Adara William</td>
-                                 <td>Leonard Humphrey</td>
-                                 <td>2018</td>
-                                 <td>Black</td>
-                                 <td>$500k</td>
-                                 <td>USA</td>
-                                 <td>San Francisco</td>
-                             </tr>
-                             <tr>
-                                 <td>2</td>
-                                 <td>xinonet</td>
-                                 <td><img style="height: 80px; width: 90px;" class="rounded" src="{{ asset('admin/assets/img/vehicle/honda.jpg') }}" alt=""></td>
-                                 <td>2004-06-27</td>
-                                 <td>1234567</td>
-                                 <td>Holmes Beasley</td>
-                                 <td>Leonard Humphrey</td>
-                                 <td>2015</td>
-                                 <td>White</td>
-                                 <td>$900k</td>
-                                 <td>USA</td>
-                                 <td>Hollywood</td>
-                             </tr>
-                             <tr>
-                                 <td>3</td>
-                                 <td>ruhelugu</td>
-                                 <td><img style="height: 80px; width: 90px;" class="rounded" src="{{ asset('admin/assets/img/vehicle/auddi.jpg') }}" alt=""></td>
-                                 <td>2014-06-25</td>
-                                 <td>12345678</td>
-                                 <td>Holmes Beasley</td>
-                                 <td>Leonard Humphrey</td>
-                                 <td>2013</td>
-                                 <td>Grey</td>
-                                 <td>$700k</td>
-                                 <td>USA</td>
-                                 <td>Atlanta</td>
-                             </tr>
-                         </tbody>
-                    </table>
+                    <div class="card-body">
+                        <div class="table-responsive ">
+                           <table class="table table-striped table-bordered">
+                                <thead>
+                                    <th>ID</th>
+                                    <th>User</th>
+                                    <th>Title</th>
+                                    <th>Image</th>
+                                    <th>Price</th>
+                                    <th>Make</th>
+                                    <th>Model</th>
+                                    <th>Status</th>
+                                </thead>
+                                <tbody>
+                                    @forelse($vehicles as $index=>$item)
+                                    <tr>
+                                        <td>{{ ++$index }}</td>
+                                        <td>{{ isset($item->user) ? $item->user->first_name : '' }} {{ isset($item->user) ? $item->user->last_name : '-' }}</td>
+                                        <td>{{ $item->title }}</td>
+                                        <td><img style="border-radius:10px;" height="70px" width="100px" src="{{ asset('upload/vehicle/'.mainImage($item->id)) }}" alt=""></td>
+                                        <td>${{ $item->price }}</td>
+                                        <td>{{ $item->make->name }}</td>
+                                        <td>{{ $item->model_id }}</td>
+                                        <td>
+                                            @if ($item->status == 0)
+                                            <span class="badge bg-danger">Deactive</span>
+                                            @else
+                                            <span class="badge bg-success">Active</span>
+                                            @endif
+                                        </td>
+                                    </tr>
+                                    @empty
+                                    @endforelse
+                                </tbody>
+                           </table>
+                        </div>
+                     </div>
                  </div>
             </div>
         </div>

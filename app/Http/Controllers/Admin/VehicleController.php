@@ -34,6 +34,7 @@ class VehicleController extends Controller
             'mileage' => 'required|max:191',
             'make_id' => 'required',
             'model_id' => 'required',
+            'status' => 'required',
         ]);
         $slug = Str::slug($request->title , '-');
         $store = Vehicle::create([
@@ -54,6 +55,7 @@ class VehicleController extends Controller
            'fuel' => $request->fuel,
            'year' => $request->year,
            'description' => $request->description,
+           'status' => $request->status,
         ]);
         if($request->has('images')){
             foreach($request->file('images') as $index=>$image){
@@ -91,6 +93,7 @@ class VehicleController extends Controller
             'mileage' => 'required|max:191',
             'make_id' => 'required',
             'model_id' => 'required',
+            'status' => 'required',
         ]);
         $slug = Str::slug($request->title , '-');
         $update = Vehicle::where('id' , $id)->update([
@@ -111,6 +114,7 @@ class VehicleController extends Controller
             'fuel' => $request->fuel,
             'year' => $request->year,
             'description' => $request->description,
+            'status' => $request->status,
         ]);
         $vehicle = Vehicle::where('id' , $id)->firstorfail();
         if($request->has('images')){

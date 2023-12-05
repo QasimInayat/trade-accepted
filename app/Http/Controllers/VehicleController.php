@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Vehicle;
+use App\Models\Notification;
 use App\Models\Gallery;
 use App\Models\Make;
 use App\Models\User;
@@ -23,7 +24,7 @@ class VehicleController extends Controller
         $data['makes'] = Make::pluck('name' , 'id')->toArray();
         $data['user'] = User::where('id',auth()->user()->id)->first();
         return view('pages.vehicle.create' ,$data);
-    }   
+    }
     public function store(Request $request){
         $request->validate([
             'title' => 'required|max:191',
@@ -34,6 +35,7 @@ class VehicleController extends Controller
             'mileage' => 'required|max:191',
             'make_id' => 'required',
             'model_id' => 'required',
+            'status' => 'required',
         ]);
         $slug = Str::slug($request->title , '-');
         $store = Vehicle::create([
@@ -54,7 +56,10 @@ class VehicleController extends Controller
            'year' => $request->year,
            'fuel' => $request->fuel,
            'description' => $request->description,
+           'status' => $request->status,
         ]);
+        sendNotification($store->id, 'App/Models/Vehicle', 'vehicle created', 'Vehicle created at ' . $store->created_at);
+
         if($request->has('images')){
             foreach($request->file('images') as $index=>$image){
                 $imageName = 'vehicle' . '-' . time() .'-'.rand(1000,100). '.' . $image->getClientOriginalExtension();
@@ -66,12 +71,15 @@ class VehicleController extends Controller
                 ]);
             }
         }
+        
+
         if(!empty($store->id)){
             return redirect()->route('vehicle.index')->with('success' , 'Vehicle created');
         }else{
             return redirect()->back()->with('error','Something went wrong');
         }
     }
+
     public function edit($slug){
         $data['title'] = 'Edit Listing';
         $data['heading'] = 'Edit Listing';
@@ -91,6 +99,7 @@ class VehicleController extends Controller
             'mileage' => 'required|max:191',
             'make_id' => 'required',
             'model_id' => 'required',
+            'status' => 'required',
         ]);
         $slug = Str::slug($request->title , '-');
         $update = Vehicle::where('id' , $id)->update([
@@ -111,6 +120,7 @@ class VehicleController extends Controller
             'year' => $request->year,
             'fuel' => $request->fuel,
             'description' => $request->description,
+            'status' => $request->status,
         ]);
         $vehicle = Vehicle::where('id' , $id)->firstorfail();
         if($request->has('images')){

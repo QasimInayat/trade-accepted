@@ -28,6 +28,7 @@
                         <th>Price</th>
                         <th>Make</th>
                         <th>Model</th>
+                        <th>Status</th>
                         <th>Action</th>
                     </thead>
                     <tbody>
@@ -40,6 +41,13 @@
                             <td>${{ $item->price }}</td>
                             <td>{{ $item->make->name }}</td>
                             <td>{{ $item->model_id }}</td>
+                            <td>
+                                @if ($item->status == 0)
+                                <span class="badge bg-danger">Deactive</span>
+                                @else
+                                <span class="badge bg-success">Active</span>
+                                @endif
+                            </td>
                             <td>
                                 <a href="{{ route('detail',$item->slug) }}"><i class="fa fa-eye text-success"></i></a>&nbsp;|&nbsp;
                                 <a href="{{ route('admin.vehicle.edit',$item->id) }}"><i class="fa fa-edit text-info"></i></a>&nbsp;|&nbsp;

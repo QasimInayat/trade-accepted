@@ -103,15 +103,15 @@ Profile
 
                                     <div class="payment-form mt-5">
                                         <h3 class="text-center">Payment Method</h3>
-                                        {!! Form::model($user, ['route' => ['userprofile.update' , auth()->user()->id] , 'enctype' => 'multipart/form-data']) !!}
+                                        {!! Form::model($user, ['route' => ['payment.update' , auth()->user()->id] , 'enctype' => 'multipart/form-data']) !!}
                                             <div class="mb-3">
                                                 <label for="" class="form-label">Card Number</label>
                                                 {!! Form::text('card_number', null, ['class' => 'form-control', 'id' => 'card_number' , 'placeholder' => '4242-4242-4242-4242']) !!}
                                             </div>
 
                                             <div class="mb-3">
-                                                <label for="" class="form-label">Name</label>
-                                                {!! Form::text('full_name', null, ['class' => 'form-control', 'placeholder' => '']) !!}
+                                                <label for="" class="form-label">Card Name</label>
+                                                {!! Form::text('card_name', null, ['class' => 'form-control', 'placeholder' => 'Name']) !!}
                                             </div>
 
                                             <div class="mb-3">
@@ -126,7 +126,7 @@ Profile
                                             </div>
 
                                             <div class="mb-5" style="float: right;">
-                                                {{-- <button type="submit" class="btn-sm btn btn-primary">Save</button> --}}
+                                                <button type="submit" class="btn-sm btn btn-primary">Save</button>
                                             </div>
                                             <div></div>
                                             {!! Form::close() !!}
@@ -164,20 +164,14 @@ Profile
                                                         <div class="col-xl-8 col-lg-7 mt-lg-0 mt-3">
                                                             <h5>
                                                                 <a href="{{ route('detail',$item->slug) }}">{{ $item->title }}</a>
-                                                                <img src="{{asset('assets/imgs/fi_share-2-red.svg')}}" class="ms-2"
-                                                                    alt="">
                                                             </h5>
                                                             <h4>${{ $item->price }}</h4>
                                                             <p class="mb-2">{{ $item->address }}. {{ $item->country_id }} {{ $item->city_id }}</p>
                                                             <div class="d-flex gap-4">
                                                                 <div class="list-meta">
-                                                                    <img src="{{asset('assets/imgs/fi_eye.svg')}}" class="me-2" alt="">
-                                                                    254 views
-                                                                </div>
-                                                                <div class="list-meta">
-                                                                    <img src="{{asset('assets/imgs/fi_bookmark-g.svg')}}" class="me-2"
-                                                                        alt="">
-                                                                    56 bookmarks
+                                                                    <a style="font-size: 11px;" href="{{ route('vehicle.edit',$item->slug) }}" class="badge bg-primary"><i class="text-light fa fa-edit"></i> Edit</a>&nbsp;|&nbsp;
+                                                                    <a style="font-size: 11px;" href="{{ route('vehicle.delete',$item->slug) }}" class="badge bg-danger"><i class="text-light fa fa-trash"></i> Delete</a>
+                                                                   
                                                                 </div>
                                                             </div>
                                                         </div>

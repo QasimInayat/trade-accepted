@@ -185,6 +185,13 @@
                                <small class="text-danger">@error ('description') {{ $message }} @enderror</small>
                          </div>
                          <div class="col-md-12 mt-4">
+                            <div class="form-floating">
+                                {!! Form::select('status', ['0' => 'Deactive' , '1' => 'Active'], null, ['class' => 'form-control' , 'placeholder' => 'Please Select']) !!}
+                               <label for="floatingInput">Status</label>
+                               <small class="text-danger">@error ('status') {{ $message }} @enderror</small>
+                            </div>
+                         </div>
+                         <div class="col-md-12 mt-4">
                             <div style="float: right;">
                                 <button class="btn btn-primary">Save</button>
                             </div>

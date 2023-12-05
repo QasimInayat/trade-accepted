@@ -133,7 +133,7 @@
                                <small class="text-danger">@error ('make_id') {{ $message }} @enderror</small>
                             </div>
                          </div>
-                         
+
                          <div class="col-md-6 mt-4">
                             <div class="form-floating">
                                 {!! Form::text('model_id', null, ['class' => 'form-control', 'id' => 'floatingInput', 'placeholder' => 'Enter your Model', 'aria-describedby' => 'floatingInputHelp']) !!}
@@ -141,7 +141,7 @@
                                <small class="text-danger">@error ('model_id') {{ $message }} @enderror</small>
                             </div>
                          </div>
-                         
+
                          <div class="col-md-6 mt-4">
                             <div class="form-floating">
                                {!! Form::text('trim', null, ['class' => 'form-control', 'id' => 'floatingInput', 'placeholder' => 'Enter your trim', 'aria-describedby' => 'floatingInputHelp']) !!}
@@ -182,6 +182,13 @@
                             <label for="floatingInput">Description</label>
                             <textarea name="description" class="form-control" rows="5"  >{{ old('description') }}</textarea>
                            <small class="text-danger">@error ('description') {{ $message }} @enderror</small>
+                     </div>
+                     <div class="col-md-12 mt-4">
+                        <div class="form-floating">
+                            {!! Form::select('status', ['0' => 'Deactive' , '1' => 'Active'], null, ['class' => 'form-control' , 'placeholder' => 'Please Select']) !!}
+                           <label for="floatingInput">Status</label>
+                           <small class="text-danger">@error ('status') {{ $message }} @enderror</small>
+                        </div>
                      </div>
                          <div class="col-md-12 mt-4">
                             <div style="float: right;">

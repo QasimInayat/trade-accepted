@@ -133,7 +133,7 @@
                                <small class="text-danger">@error ('make_id') {{ $message }} @enderror</small>
                             </div>
                          </div>
-                         
+
                          <div class="col-md-6 mt-4">
                             <div class="form-floating">
                                 {!! Form::text('model_id', null, ['class' => 'form-control', 'id' => 'floatingInput', 'placeholder' => 'Enter your Model', 'aria-describedby' => 'floatingInputHelp']) !!}
@@ -189,9 +189,16 @@
 
                          <div class="col-md-12 mt-4">
                             <div class="form-floating">
-                                <textarea name="description" class="form-control" id="" cols="30" rows="20">{{ $vehicle->description }}</textarea>                                
+                                <textarea name="description" class="form-control" id="" cols="30" rows="20">{{ $vehicle->description }}</textarea>
                                <label for="floatingInput">Description</label>
                                <small class="text-danger">@error ('description') {{ $message }} @enderror</small>
+                            </div>
+                         </div>
+                         <div class="col-md-12 mt-4">
+                            <div class="form-floating">
+                                {!! Form::select('status', ['0' => 'Deactive' , '1' => 'Active'], null, ['class' => 'form-control' , 'placeholder' => 'Please Select']) !!}
+                               <label for="floatingInput">Status</label>
+                               <small class="text-danger">@error ('status') {{ $message }} @enderror</small>
                             </div>
                          </div>
                          <div class="col-md-12 mt-4">

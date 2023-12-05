@@ -6,13 +6,14 @@ use Illuminate\Http\Request;
 use App\Models\Vehicle;
 use App\Models\Gallery;
 use App\Models\User;
+use App\Models\Notification;
 
 class FrontendController extends Controller
 {
     public function index(){
         $data ['title'] = 'Index';
         $data ['heading'] = 'Home';
-        $data ['vehicles'] = Vehicle::orderBy('created_at' , 'DESC')->get();
+        $data ['vehicles'] = Vehicle::where('status' , 1)->orderBy('created_at' , 'DESC')->get();
         return view('index',$data);
     }
     public function detail($slug){
@@ -36,5 +37,20 @@ class FrontendController extends Controller
         $data ['title'] = 'Client Profile';
         $data ['heading'] = 'Client Profile';
         return view('pages.client-profile',$data);
+    }
+    public function notification(){
+        $data ['title'] = 'Notification';
+        $data ['heading'] = 'Notification';
+        return view('pages.notification',$data);
+    }
+    public function updateNotification(Request $request , $id){
+        $notification = Notification::find($id);
+        if($notification){
+            $notification->is_seen = '1';
+            $notification->update();
+            return response()->json(['status' => 200 , 'message' => 'Notification seen']);
+        }else{
+            return response()->json(['status' => 404 , 'message' => 'Notification Not Found']);
+        }
     }
 }
