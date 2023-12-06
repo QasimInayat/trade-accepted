@@ -7,6 +7,7 @@
     <title> {{config("app.name")}} | @stack('title')</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="icon" type="image/x-icon" href="{{asset('asset/img/trade-accepted-favico.png')}}">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
     @include('partial.styles')
     @stack('styles')
 </head>
@@ -17,6 +18,60 @@
     @include('partial.sidebar')
     @include('partial.scripts')
     @stack('scripts')
+    {{-- <script src="https://code.jquery.com/jquery-3.6.0.js"></script> --}}
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <script>
+      var availableTags = [];
+        $.ajax({
+            method: "GET",
+            url: "{{ route('vehicle-list') }}",
+            success:function(response){
+                // console.log(response);
+                startAutoComplete(response);
+            },
+        });
+        function startAutoComplete(availableTags){
+            $( "#express-form-typeahead" ).autocomplete({
+                source: availableTags
+            });
+        }
+
+        function notification(elm,id){
+            $.ajax({
+                type: 'POST',
+                url: 'update-notification/'+id,
+                data: {
+                    '_token' : "{{csrf_token()}}",
+                },
+                success: function(response){
+                    if(response.status == 400){
+                        $.each(response.errors, function (key, err_values){
+                            $('#updateform_errList').append('<li>'+err_values+'</li>');
+                        });
+                    }else if(response.status == 404){
+                        toastr.error(response.message);
+                    }else{
+                        loadnotification();
+                        window.location.reload();
+                        toastr.success(response.message);
+                    }
+                }
+            });
+        }
+    
+        loadnotification();
+                function loadnotification(){
+                    $.ajax({
+                        type: 'GET',
+                        url: '{{ route('load.notification.data') }}',
+                        success:function(response){
+                            var response = JSON.parse(response);
+                            $('.total_notification').text(response);
+                        }
+                    });
+                }
+        </script>
+    
 </body>
 
 </html>

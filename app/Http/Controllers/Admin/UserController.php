@@ -11,7 +11,7 @@ class UserController extends Controller
 {
     public function user(){
         $data['title'] = 'User List';
-        $data['users'] = User::get();
+        $data['users'] = User::orderBy('created_at' , 'DESC')->get();
         return view('admin.pages.user.index' , $data);
     }
 

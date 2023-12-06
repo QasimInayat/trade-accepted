@@ -12,21 +12,23 @@ Search
 
                 <div class="row mb-4">
                     <div class="col-md-10 col-8">
-                        <h2 class="section-heading mb-0">Results for "<span class="text-primary text-italic fw-normal">2006 Porsche 911</span>"</h2>
+                        <h2 class="section-heading mb-0">Results for "<span class="text-primary text-italic fw-normal">{{ request('title') }}</span>"</h2>
                     </div>
                     <div class="col-md-2 col-4">
-                        <p class="view-all mb-0 text-end">View All</p>
+                        {{-- <p class="view-all mb-0 text-end">View All</p> --}}
                     </div>
                 </div>
 
                 <div class="row mb-5">
-                    <div class="col-lg-3 col-md-4 mb-3">
+                    @forelse($searchVehicles as $vehicle)
+                    <div class="col-lg-3 col-md-6 mb-3">
                         <a href="javascipt:;">
                             <div class="multi-card">
+                               <a href="{{ route('detail',$vehicle->slug) }}">
                                 <div class="card-img position-relative">
-                                    <img src="{{asset('assets/imgs/car-1.png')}}" class="w-100" alt="">
+                                    <img style="height: 200px;" src="{{ asset('upload/vehicle/'.mainImage($vehicle->id)) }}" class="w-100" alt="">
                                     <div class="card-meta d-flex justify-content-between">
-                                        <h5 class="mb-0 text-white">2006 Porsche 911</h5>
+                                        <h5 class="mb-0 text-white">{{ $vehicle->title }}</h5>
                                         <div>
                                             <span>
                                                 <img src="{{asset('assets/imgs/fi_share-2.svg')}}" alt="">
@@ -37,301 +39,18 @@ Search
                                         </div>
                                     </div>
                                 </div>
+                               </a>
                                 <div class="d-flex justify-content-between align-items-center mt-2">
-                                    <h4 class="mb-0">$48,995</h4>
-                                    <p class="mb-0">68K miles . Craig</p>
+                                    <h4 class="mb-0">${{ $vehicle->price }}</h4>
+                                    <p class="mb-0">{{ $vehicle->address }} . {{ $vehicle->country_id }} {{ $vehicle->city_id }}</p>
                                 </div>
 
                             </div>
                         </a>
                     </div>
-
-                    <div class="col-lg-3 col-md-4 mb-3">
-                        <a href="javascipt:;">
-                            <div class="multi-card">
-                                <div class="card-img position-relative">
-                                    <img src="{{asset('assets/imgs/car-2.png')}}" class="w-100" alt="">
-                                    <div class="card-meta d-flex justify-content-between">
-                                        <h5 class="mb-0 text-white">2006 Porsche 911</h5>
-                                        <div>
-                                            <span>
-                                                <img src="{{asset('assets/imgs/fi_share-2.svg')}}" alt="">
-                                            </span>
-                                            <span class="ms-1">
-                                                <img src="{{asset('assets/imgs/fi_bookmark.svg')}}" alt="">
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="d-flex justify-content-between align-items-center mt-2">
-                                    <h4 class="mb-0">$48,995</h4>
-                                    <p class="mb-0">68K miles . Craig</p>
-                                </div>
-
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="col-lg-3 col-md-4 mb-3">
-                        <a href="javascipt:;">
-                            <div class="multi-card">
-                                <div class="card-img position-relative">
-                                    <img src="{{asset('assets/imgs/car-3.png')}}" class="w-100" alt="">
-                                    <div class="card-meta d-flex justify-content-between">
-                                        <h5 class="mb-0 text-white">2006 Porsche 911</h5>
-                                        <div>
-                                            <span>
-                                                <img src="{{asset('assets/imgs/fi_share-2.svg')}}" alt="">
-                                            </span>
-                                            <span class="ms-1">
-                                                <img src="{{asset('assets/imgs/fi_bookmark.svg')}}" alt="">
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="d-flex justify-content-between align-items-center mt-2">
-                                    <h4 class="mb-0">$48,995</h4>
-                                    <p class="mb-0">68K miles . Craig</p>
-                                </div>
-
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="col-lg-3 col-md-4 mb-3">
-                        <a href="javascipt:;">
-                            <div class="multi-card">
-                                <div class="card-img position-relative">
-                                    <img src="{{asset('assets/imgs/car-4.png')}}" class="w-100" alt="">
-                                    <div class="card-meta d-flex justify-content-between">
-                                        <h5 class="mb-0 text-white">2006 Porsche 911</h5>
-                                        <div>
-                                            <span>
-                                                <img src="{{asset('assets/imgs/fi_share-2.svg')}}" alt="">
-                                            </span>
-                                            <span class="ms-1">
-                                                <img src="{{asset('assets/imgs/fi_bookmark.svg')}}" alt="">
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="d-flex justify-content-between align-items-center mt-2">
-                                    <h4 class="mb-0">$48,995</h4>
-                                    <p class="mb-0">68K miles . Craig</p>
-                                </div>
-
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="col-lg-3 col-md-4 mb-3">
-                        <a href="javascipt:;">
-                            <div class="multi-card">
-                                <div class="card-img position-relative">
-                                    <img src="{{asset('assets/imgs/car-5.png')}}" class="w-100" alt="">
-                                    <div class="card-meta d-flex justify-content-between">
-                                        <h5 class="mb-0 text-white">2006 Porsche 911</h5>
-                                        <div>
-                                            <span>
-                                                <img src="{{asset('assets/imgs/fi_share-2.svg')}}" alt="">
-                                            </span>
-                                            <span class="ms-1">
-                                                <img src="{{asset('assets/imgs/fi_bookmark.svg')}}" alt="">
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="d-flex justify-content-between align-items-center mt-2">
-                                    <h4 class="mb-0">$48,995</h4>
-                                    <p class="mb-0">68K miles . Craig</p>
-                                </div>
-
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="col-lg-3 col-md-4 mb-3">
-                        <a href="javascipt:;">
-                            <div class="multi-card">
-                                <div class="card-img position-relative">
-                                    <img src="{{asset('assets/imgs/car-6.png')}}" class="w-100" alt="">
-                                    <div class="card-meta d-flex justify-content-between">
-                                        <h5 class="mb-0 text-white">2006 Porsche 911</h5>
-                                        <div>
-                                            <span>
-                                                <img src="{{asset('assets/imgs/fi_share-2.svg')}}" alt="">
-                                            </span>
-                                            <span class="ms-1">
-                                                <img src="{{asset('assets/imgs/fi_bookmark.svg')}}" alt="">
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="d-flex justify-content-between align-items-center mt-2">
-                                    <h4 class="mb-0">$48,995</h4>
-                                    <p class="mb-0">68K miles . Craig</p>
-                                </div>
-
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="col-lg-3 col-md-4 mb-3">
-                        <a href="javascipt:;">
-                            <div class="multi-card">
-                                <div class="card-img position-relative">
-                                    <img src="{{asset('assets/imgs/car-7.png')}}" class="w-100" alt="">
-                                    <div class="card-meta d-flex justify-content-between">
-                                        <h5 class="mb-0 text-white">2006 Porsche 911</h5>
-                                        <div>
-                                            <span>
-                                                <img src="{{asset('assets/imgs/fi_share-2.svg')}}" alt="">
-                                            </span>
-                                            <span class="ms-1">
-                                                <img src="{{asset('assets/imgs/fi_bookmark.svg')}}" alt="">
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="d-flex justify-content-between align-items-center mt-2">
-                                    <h4 class="mb-0">$48,995</h4>
-                                    <p class="mb-0">68K miles . Craig</p>
-                                </div>
-
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="col-lg-3 col-md-4 mb-3">
-                        <a href="javascipt:;">
-                            <div class="multi-card">
-                                <div class="card-img position-relative">
-                                    <img src="{{asset('assets/imgs/car-8.png')}}" class="w-100" alt="">
-                                    <div class="card-meta d-flex justify-content-between">
-                                        <h5 class="mb-0 text-white">2006 Porsche 911</h5>
-                                        <div>
-                                            <span>
-                                                <img src="{{asset('assets/imgs/fi_share-2.svg')}}" alt="">
-                                            </span>
-                                            <span class="ms-1">
-                                                <img src="{{asset('assets/imgs/fi_bookmark.svg')}}" alt="">
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="d-flex justify-content-between align-items-center mt-2">
-                                    <h4 class="mb-0">$48,995</h4>
-                                    <p class="mb-0">68K miles . Craig</p>
-                                </div>
-
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="col-lg-3 col-md-4 mb-3">
-                        <a href="javascipt:;">
-                            <div class="multi-card">
-                                <div class="card-img position-relative">
-                                    <img src="{{asset('assets/imgs/car-9.png')}}" class="w-100" alt="">
-                                    <div class="card-meta d-flex justify-content-between">
-                                        <h5 class="mb-0 text-white">2006 Porsche 911</h5>
-                                        <div>
-                                            <span>
-                                                <img src="{{asset('assets/imgs/fi_share-2.svg')}}" alt="">
-                                            </span>
-                                            <span class="ms-1">
-                                                <img src="{{asset('assets/imgs/fi_bookmark.svg')}}" alt="">
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="d-flex justify-content-between align-items-center mt-2">
-                                    <h4 class="mb-0">$48,995</h4>
-                                    <p class="mb-0">68K miles . Craig</p>
-                                </div>
-
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="col-lg-3 col-md-4 mb-3">
-                        <a href="javascipt:;">
-                            <div class="multi-card">
-                                <div class="card-img position-relative">
-                                    <img src="{{asset('assets/imgs/car-10.png')}}" class="w-100" alt="">
-                                    <div class="card-meta d-flex justify-content-between">
-                                        <h5 class="mb-0 text-white">2006 Porsche 911</h5>
-                                        <div>
-                                            <span>
-                                                <img src="{{asset('assets/imgs/fi_share-2.svg')}}" alt="">
-                                            </span>
-                                            <span class="ms-1">
-                                                <img src="{{asset('assets/imgs/fi_bookmark.svg')}}" alt="">
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="d-flex justify-content-between align-items-center mt-2">
-                                    <h4 class="mb-0">$48,995</h4>
-                                    <p class="mb-0">68K miles . Craig</p>
-                                </div>
-
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="col-lg-3 col-md-4 mb-3">
-                        <a href="javascipt:;">
-                            <div class="multi-card">
-                                <div class="card-img position-relative">
-                                    <img src="{{asset('assets/imgs/car-11.png')}}" class="w-100" alt="">
-                                    <div class="card-meta d-flex justify-content-between">
-                                        <h5 class="mb-0 text-white">2006 Porsche 911</h5>
-                                        <div>
-                                            <span>
-                                                <img src="{{asset('assets/imgs/fi_share-2.svg')}}" alt="">
-                                            </span>
-                                            <span class="ms-1">
-                                                <img src="{{asset('assets/imgs/fi_bookmark.svg')}}" alt="">
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="d-flex justify-content-between align-items-center mt-2">
-                                    <h4 class="mb-0">$48,995</h4>
-                                    <p class="mb-0">68K miles . Craig</p>
-                                </div>
-
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="col-lg-3 col-md-4 mb-3">
-                        <a href="javascipt:;">
-                            <div class="multi-card">
-                                <div class="card-img position-relative">
-                                    <img src="{{asset('assets/imgs/car-12.png')}}" class="w-100" alt="">
-                                    <div class="card-meta d-flex justify-content-between">
-                                        <h5 class="mb-0 text-white">2006 Porsche 911</h5>
-                                        <div>
-                                            <span>
-                                                <img src="{{asset('assets/imgs/fi_share-2.svg')}}" alt="">
-                                            </span>
-                                            <span class="ms-1">
-                                                <img src="{{asset('assets/imgs/fi_bookmark.svg')}}" alt="">
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="d-flex justify-content-between align-items-center mt-2">
-                                    <h4 class="mb-0">$48,995</h4>
-                                    <p class="mb-0">68K miles . Craig</p>
-                                </div>
-
-                            </div>
-                        </a>
-                    </div>
-
+                    @empty
+                    <h4><b>DATA NOT ADDED</b></h4>
+                    @endforelse
                 </div>
             </div>
         </div>

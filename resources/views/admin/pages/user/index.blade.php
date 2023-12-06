@@ -25,7 +25,6 @@ User List
                             <th>First Name</th>
                             <th>Last Name</th>
                             <th>E-mail</th>
-                            <th>IsBan</th>
                             <th>Action</th>
                          </tr>
                       </thead>
@@ -38,12 +37,11 @@ User List
                             <td>{{ $user->email }}</td>
                             <td>
                                 @if($user->is_ban == 0)
-                                <button style="border: none; color: white; font-size: 12px;" data-bs-toggle="modal" data-original-title="test" data-bs-target="#exampleModal" type="button" value="{{ $user->id }}" class="edit_button badge bg-success">Not Banned</button>
+                                <button style="margin-right: 5px; border: none; color: white; font-size: 12px;" data-bs-toggle="modal" data-original-title="test" data-bs-target="#exampleModal" type="button" value="{{ $user->id }}" class="edit_button badge bg-success">Not Banned</button>
                             @else
-                                <button style="border: none; color: white; font-size: 12px;" data-bs-toggle="modal" data-original-title="test" data-bs-target="#exampleModal" type="button" value="{{ $user->id }}" class="edit_button badge bg-danger">Banned</button>
-                            @endif
-                            </td>
-                            <td><a href="{{ route('admin.profile',$user->id) }}"><button class="btn btn-primary btn-sm"><i style="margin-right: 5px" class="fa fa-user"></i>Edit Profile</button></a></td>
+                                <button style="margin-right: 5px; margin-left: 10px; border: none; color: white; font-size: 12px;" data-bs-toggle="modal" data-original-title="test" data-bs-target="#exampleModal" type="button" value="{{ $user->id }}" class="edit_button badge bg-danger">Banned</button>
+                            @endif 
+                            <a href="{{ route('admin.profile',$user->id) }}"><button class="btn btn-primary btn-sm"><i style="margin-right: 5px" class="fa fa-user"></i>Edit Profile</button></a></td>
                         </tr>
                         @endforeach
                       </tbody>

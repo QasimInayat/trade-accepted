@@ -36,4 +36,7 @@
     text-decoration: none;
     background-color: rgb(233 ,236 ,239);
 }
+.ui-menu{
+    z-index: 3500 !important;
+}
 </style>
