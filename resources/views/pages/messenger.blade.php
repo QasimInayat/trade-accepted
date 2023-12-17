@@ -1,6 +1,6 @@
 @extends('layouts.scaffold')
 @push('title')
-Messenger
+{{ $title ?? '' }}
 @endpush
 @section('content')
     <main>
@@ -20,143 +20,25 @@ Messenger
                                                 <div class="modal-body mt-2">
                                                     <!-- chat-list -->
                                                     <div class="chat-lists">
-                                                        <div class="chat-list">
-                                                            <a href="#" class="d-flex align-items-center">
+                                                        <div class="">
+                                                            @forelse ($threads as $thread)
+                                                            <a href="javascript:;" onclick="routetoChat($(this),{{$thread->id}})" style="padding: 5px;" class="d-flex align-items-center">
                                                                 <div class="flex-shrink-0">
-                                                                    <img class="img-fluid" src="https://mehedihtml.com/chatbox/assets/img/user.png" alt="user img">
-                                                                    <span class="active"></span>
+                                                                    @if (!empty($thread->to->image))
+                                                                    <img src="{{asset('upload/user/'. $thread->to->image)}}" alt="" style="margin-top: -18px; height: 47px; width: 53px;" class="rounded-circle">
+                                                                @else
+                                                                     <img src="{{asset('assets/imgs/placeholder1.png')}}" alt="" style="margin-left: -5px; margin-top: -18px; height: 57px; width: 60px;" class="rounded-circle">
+                                                                @endif
                                                                 </div>
                                                                 <div class="flex-grow-1 ms-3">
-                                                                    <h3>Mehedi Hasan</h3>
-                                                                    <p>front end developer</p>
+                                                                    <h3 style="font-size: 16px; margin-top: 7px;">{{ ucwords($thread->to->full_name) }}</h3>
+                                                                    <p style="font-size: 14px; margin-top: -7px;">{{ ucwords($thread->vehicle->title) }}</p>
                                                                 </div>
                                                             </a>
-                                                            <a href="#" class="d-flex align-items-center">
-                                                                <div class="flex-shrink-0">
-                                                                    <img class="img-fluid" src="https://mehedihtml.com/chatbox/assets/img/user.png" alt="user img">
-                                                                </div>
-                                                                <div class="flex-grow-1 ms-3">
-                                                                    <h3>Ryhan</h3>
-                                                                    <p>front end developer</p>
-                                                                </div>
-                                                            </a>
-                                                            <a href="#" class="d-flex align-items-center">
-                                                                <div class="flex-shrink-0">
-                                                                    <img class="img-fluid" src="https://mehedihtml.com/chatbox/assets/img/user.png" alt="user img">
-                                                                </div>
-                                                                <div class="flex-grow-1 ms-3">
-                                                                    <h3>Malek Hasan</h3>
-                                                                    <p>front end developer</p>
-                                                                </div>
-                                                            </a>
-                                                            <a href="#" class="d-flex align-items-center">
-                                                                <div class="flex-shrink-0">
-                                                                    <img class="img-fluid" src="https://mehedihtml.com/chatbox/assets/img/user.png" alt="user img">
-                                                                </div>
-                                                                <div class="flex-grow-1 ms-3">
-                                                                    <h3>Sadik Hasan</h3>
-                                                                    <p>front end developer</p>
-                                                                </div>
-                                                            </a>
-                                                            <a href="#" class="d-flex align-items-center">
-                                                                <div class="flex-shrink-0">
-                                                                    <img class="img-fluid" src="https://mehedihtml.com/chatbox/assets/img/user.png" alt="user img">
-                                                                </div>
-                                                                <div class="flex-grow-1 ms-3">
-                                                                    <h3>Bulu </h3>
-                                                                    <p>front end developer</p>
-                                                                </div>
-                                                            </a>
-                                                            <a href="#" class="d-flex align-items-center">
-                                                                <div class="flex-shrink-0">
-                                                                    <img class="img-fluid" src="https://mehedihtml.com/chatbox/assets/img/user.png" alt="user img">
-                                                                </div>
-                                                                <div class="flex-grow-1 ms-3">
-                                                                    <h3>Maria SK</h3>
-                                                                    <p>front end developer</p>
-                                                                </div>
-                                                            </a>
-                                                            <a href="#" class="d-flex align-items-center">
-                                                                <div class="flex-shrink-0">
-                                                                    <img class="img-fluid" src="https://mehedihtml.com/chatbox/assets/img/user.png" alt="user img">
-                                                                </div>
-                                                                <div class="flex-grow-1 ms-3">
-                                                                    <h3>Dipa Hasan</h3>
-                                                                    <p>front end developer</p>
-                                                                </div>
-                                                            </a>
-                                                            <a href="#" class="d-flex align-items-center">
-                                                                <div class="flex-shrink-0">
-                                                                    <img class="img-fluid" src="https://mehedihtml.com/chatbox/assets/img/user.png" alt="user img">
-                                                                </div>
-                                                                <div class="flex-grow-1 ms-3">
-                                                                    <h3>Jhon Hasan</h3>
-                                                                    <p>front end developer</p>
-                                                                </div>
-                                                            </a>
-                                                            <a href="#" class="d-flex align-items-center">
-                                                                <div class="flex-shrink-0">
-                                                                    <img class="img-fluid" src="https://mehedihtml.com/chatbox/assets/img/user.png" alt="user img">
-                                                                </div>
-                                                                <div class="flex-grow-1 ms-3">
-                                                                    <h3>Tumpa Moni</h3>
-                                                                    <p>front end developer</p>
-                                                                </div>
-                                                            </a>
-                                                            <a href="#" class="d-flex align-items-center">
-                                                                <div class="flex-shrink-0">
-                                                                    <img class="img-fluid" src="https://mehedihtml.com/chatbox/assets/img/user.png" alt="user img">
-                                                                </div>
-                                                                <div class="flex-grow-1 ms-3">
-                                                                    <h3>Payel Akter</h3>
-                                                                    <p>front end developer</p>
-                                                                </div>
-                                                            </a>
-                                                            <a href="#" class="d-flex align-items-center">
-                                                                <div class="flex-shrink-0">
-                                                                    <img class="img-fluid" src="https://mehedihtml.com/chatbox/assets/img/user.png" alt="user img">
-                                                                </div>
-                                                                <div class="flex-grow-1 ms-3">
-                                                                    <h3>Maria SK</h3>
-                                                                    <p>front end developer</p>
-                                                                </div>
-                                                            </a>
-                                                            <a href="#" class="d-flex align-items-center">
-                                                                <div class="flex-shrink-0">
-                                                                    <img class="img-fluid" src="https://mehedihtml.com/chatbox/assets/img/user.png" alt="user img">
-                                                                </div>
-                                                                <div class="flex-grow-1 ms-3">
-                                                                    <h3>Dipa Hasan</h3>
-                                                                    <p>front end developer</p>
-                                                                </div>
-                                                            </a>
-                                                            <a href="#" class="d-flex align-items-center">
-                                                                <div class="flex-shrink-0">
-                                                                    <img class="img-fluid" src="https://mehedihtml.com/chatbox/assets/img/user.png" alt="user img">
-                                                                </div>
-                                                                <div class="flex-grow-1 ms-3">
-                                                                    <h3>Jhon Hasan</h3>
-                                                                    <p>front end developer</p>
-                                                                </div>
-                                                            </a>
-                                                            <a href="#" class="d-flex align-items-center">
-                                                                <div class="flex-shrink-0">
-                                                                    <img class="img-fluid" src="https://mehedihtml.com/chatbox/assets/img/user.png" alt="user img">
-                                                                </div>
-                                                                <div class="flex-grow-1 ms-3">
-                                                                    <h3>Tumpa Moni</h3>
-                                                                    <p>front end developer</p>
-                                                                </div>
-                                                            </a>
-                                                            <a href="#" class="d-flex align-items-center">
-                                                                <div class="flex-shrink-0">
-                                                                    <img class="img-fluid" src="https://mehedihtml.com/chatbox/assets/img/user.png" alt="user img">
-                                                                </div>
-                                                                <div class="flex-grow-1 ms-3">
-                                                                    <h3>Payel Akter</h3>
-                                                                    <p>front end developer</p>
-                                                                </div>
-                                                            </a>
+                                                            @empty
+
+                                                            @endforelse
+
 
 
                                                         </div>
@@ -207,7 +89,7 @@ Messenger
                                                     </div>
                                                 </div>
                                                 <div class="modal-body p-4">
-                                                    <div class="msg-body">
+                                                    <div class="msg-body" id="messagesss">
                                                         <ul class="p-0">
                                                             <li class="repaly d-flex gap-3 justify-content-end">
                                                                 <!-- <p class="default"> -->
@@ -557,52 +439,21 @@ Messenger
     </div>
 @endsection
 @push('scripts')
+
     <script>
-        $(document).ready(function () {
-            $(".chat-list a").click(function () {
-                $(".chatbox").addClass('showbox');
-                return false;
-            });
+        function routetoChat(elm,id){
+            $.ajax({
+                url: 'messenger/chat/'+id,
+                type: 'get',
+                data : {},
+                success : function(res){
+                    $('#messagesss').html(res.data);
 
-            $(".chat-icon").click(function () {
-                $(".chatbox").removeClass('showbox');
-            });
-
-            $('input.deposit-radio').on('change', function () {
-                // Enable or disable the button based on the radio button state
-                if ($('#d-1').is(':checked') || $('#d-2').is(':checked') || $('#d-3').is(':checked') || $('#d-3').is(':checked')) {
-                    $('#deposit-submit').prop('disabled', false);
-                } else {
-                    $('#deposit-submit').prop('disabled', true);
+                },
+                error : function(res){
+                    
                 }
-            });
-
-            function checkButtonStatus() {
-                // Check if input field has a value or if any radio button is checked
-                const customValue = $('#n-custom').val();
-                const radioChecked = $('input[name="negotitate"]:checked').length > 0;
-
-                if(customValue !== ''){
-                    $('#n-custom').addClass('has-value');
-                    $('input[name="negotitate"]').prop('checked', false);
-                } else {
-                    $('#n-custom').removeClass('has-value');
-                }
-
-                $('#negotiate-submit').prop('disabled', customValue === '' && !radioChecked);
-            }
-
-            // Check button status on input field change
-            $('#n-custom').on('input', checkButtonStatus);
-
-            $('input[name="negotitate"]').on('change', function () {
-                $('#n-custom').val('');
-
-                // If any radio button is checked, make the input optional
-                $('#n-custom').prop('required', !$('input[name="negotitate"]:checked').length > 0);
-
-                checkButtonStatus();
-});
-        });
+            })
+        }
     </script>
 @endpush

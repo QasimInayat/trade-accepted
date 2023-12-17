@@ -1,6 +1,6 @@
 @extends('layouts.scaffold')
 @push('title')
-Detail
+{{ $title ?? '' }}
 @endpush
 @section('content')
 
@@ -41,7 +41,7 @@ Detail
                                 </div>
                             </div>
                             <div class="price d-flex align-items-end gap-4 mt-3">
-                                <h4 class="mb-0">${{ $vehicle->price }}</h4>
+                                <h4 class="mb-0">${{ number_format($vehicle->price) }}</h4>
                                 <p class="mb-0">{{ Carbon\Carbon::parse($vehicle->created_at)->diffForHumans() }} . {{ $vehicle->country_id }} {{ $vehicle->city_id }}</p>
                             </div>
                             <div class="desc mt-5">
@@ -65,7 +65,12 @@ Detail
                                             <p class="mb-0 fw-bold">Manual</p>
                                         </div>
                                     </div>
-                                    <a href="{{ route('messenger') }}"><button class="btn btn-primary px-4">Contact</button></a>
+                                    <form action="{{ route('thread.store') }}" method="POST">
+                                        @csrf
+                                        <input type="hidden" name="vehicle_id" value="{{ $vehicle->id }}">
+                                        <input type="hidden" name="to_id" value="{{ $vehicle->user_id }}">
+                                        <button type="post" class="btn btn-primary px-4">Contact</button>
+                                    </form>
                                 </div>
                             </div>
                         </div>

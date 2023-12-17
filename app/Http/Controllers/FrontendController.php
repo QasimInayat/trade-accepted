@@ -7,6 +7,8 @@ use App\Models\Vehicle;
 use App\Models\Gallery;
 use App\Models\User;
 use App\Models\Notification;
+use App\Models\Thread;
+use App\Models\Message;
 
 class FrontendController extends Controller
 {
@@ -23,6 +25,42 @@ class FrontendController extends Controller
         $data['galleries'] = Gallery::where('vehicle_id' , $data['vehicle']->id)->get();
         return view('pages.detail',$data);
     }
+    public function threadStore(Request $request){
+        $request->validate([
+            'vehicle_id' => 'required',
+            'to_id' => 'required',
+        ]);
+        $thread = Thread::where(['to_id' => $request->to_id , 'from_id' => auth()->user()->id])->first();
+        if(!empty($thread)){
+            $this->message($thread->id,$request->to_id,auth()->user()->id,'Hi');
+            return redirect()->route('messenger')->with('error','thread already created');
+        }
+        else{
+            $store = Thread::create([
+                'vehicle_id' => $request->vehicle_id,
+                'to_id' => $request->to_id,
+                'from_id' => auth()->user()->id,
+            ]);
+            if(!empty($store->id)){
+                $this->message($store->id,$request->to_id,auth()->user()->id,'Hi');
+                return redirect()->route('messanger')->with('success' , 'success');
+            }else{
+                return redirect()->back()->with('error' , 'Something went wrong');
+            }
+        }
+    }
+    public function message($thread_id,$to_id,$from_id,$msg){
+        $message = Message::create([
+            'thread_id' => $thread_id,
+            'to_id' => $to_id,
+            'from_id' => $from_id,
+            'message' => $msg,
+        ]);
+        if(!empty($message)){
+            return true;
+        }
+        return false;
+    }
     public function search(Request $request){
         $data ['title'] = 'Search';
         $data ['heading'] = 'Search';
@@ -37,6 +75,7 @@ class FrontendController extends Controller
     public function messenger(){
         $data ['title'] = 'Messenger';
         $data ['heading'] = 'Messenger';
+        $data['threads'] = Thread::where('from_id' , auth()->user()->id)->get();
         return view('pages.messenger',$data);
     }
     public function clientProfile(){
@@ -71,5 +110,26 @@ class FrontendController extends Controller
             $data[] = $item['title'];
         }
         return $data;
+    }
+    public function messagecount(){
+        $messageCount = Message::where(['to_id' => auth()->user()->id , 'status' => '0'])->count();
+        echo json_encode($messageCount);
+    }
+    public function updatemessage(Request $request , $id){
+        $message = Message::find($id);
+        if($message){
+            $message->status = '1';
+            $message->update();
+            return response()->json(['status' => 200 , 'message' => 'Message seen']);
+        }else{
+            return response()->json(['status' => 404 , 'message' => 'Message Not Found']);
+        }
+    }
+    public function messengerv2(){
+        $data['title'] = 'Messenger V2';
+        $data['heading'] = 'Messenger V2';
+        $data['threads'] = Thread::where('from_id' , auth()->user()->id)->get();
+        $data['threadd'] = Thread::where('from_id' , auth()->user()->id)->firstorfail();
+        return view('pages.messenger-v2' ,$data);
     }
 }
