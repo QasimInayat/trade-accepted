@@ -66,7 +66,7 @@
                                 <div class="chatbox">
                                     <div class="modal-dialog-scrollable">
                                         <div id="messagesss" class="modal-content">
-                                            {{-- <div class="msg-head d-lg-none d-block">
+                                            <div class="msg-head d-lg-none d-block">
                                                 <div class="row">
                                                     <div class="col-8">
                                                         <div class="d-flex align-items-center">
@@ -238,7 +238,7 @@
                                                     <button type="button" class="text-primary btn "><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
                                                 </form>
 
-                                            </div> --}}
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
