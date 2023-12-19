@@ -424,7 +424,7 @@
                     $('.loaderShow').hide();
                     },
                success: function (response){
-                $('.loader').hide();
+                $('.loader').remove();
                 $('.loaderShow').show();
                    },
                    error: function (response){
