@@ -1,9 +1,15 @@
+
 <header class="py-3 px-2">
     <div class="container-fluid">
         <div class="d-flex align-items-center justify-content-between">
             <div class="logo-head d-flex align-items-center gap-3">
                 <a href="{{ route('index') }}"><img src="{{asset('assets/imgs/logo.png')}}" alt="" class="d-block"></a>
                 <h1 class="mb-0">{{ $heading ?? '' }}</h1>
+            </div>
+            <div class="d-flex align-items-center gap-3">
+                <div class="menu-btn d-md-none d-block">
+                    <span class="burger"><span></span></span>
+                </div>
             </div>
             <div class="vertical-nav d-flex align-items-center">
                 <ul class="list-unstyled text-end d-lg-block d-none mb-0">
@@ -51,18 +57,41 @@
         </ul>
     </div>
 </li>
+
+<li style="margin-right: 19px" class="d-inline-block">
+    <div class="dropdown">
+        <button style="background-color: transparent; border: none;" type="button"
+            data-bs-toggle="dropdown" aria-expanded="false">
+            <a href="javascript:;" class="px-2">
+                <img src="{{asset('assets/imgs/fi_message-square.svg')}}" alt="">
+                <div style="margin-top: -35px; margin-right: -33px;">
+                    <span style="height: 14px; width: 18px; font-size: 9px; margin-left: -14px;" class="badge bg-danger total_message"></span>
+                </div>
+            </a>
+        </button>
+        <ul class="dropdown-menu" style="width: 300px;">
+            <li><a class="dropdown-item"><small>Messages</small> <span style="float: right; margin-top: 3px;" class="badge bg-danger total_message"></span> </a></li>
+            @forelse (messages() as $aa)
+            <hr>
+            <li>
+                <a href="javascript:;" onclick="message($(this),{{$aa->id}})" class="dropdown-item"><p class="text-primary" style="margin-bottom: 3px;">{{ isset($aa->from) ? $aa->from->full_name : '-' }}</p><small>{{ subStr($aa->message,0,22) }}....</small> <div style="float: right;"><small style="font-size: 12px;" class="text-secondary">{{ Carbon\Carbon::parse($aa->created_at)->diffForHumans() }}</small></div></a>
+            </li>
+            @empty
+            @endforelse
+            <div style="float: right; margin-top: 10px;">
+                <a style="font-size: 13px; margin-left: -59px;" href="{{ route('messenger') }}">View All</a>
+            </div>
+        </ul>
+    </div>
+</li>
 @endauth
-                    <li style="margin-right: 15px" class="d-inline-block">
-                        <a href="{{ route('messenger') }}" class="px-2">
-                            <img src="{{asset('assets/imgs/fi_message-square.svg')}}" alt="">
-                        </a>
-                    </li>
                     <li class="d-inline-block">
                         <a style="font-size: 1px;" href="javascript:;" class="px-2">
-                           
+
                         </a>
                     </li>
                 </ul>
+
                 <div class="d-flex align-items-center">
                     @guest
                     <a class="btn btn-primary" href="{{ route('login') }}"> Login </a>&nbsp;&nbsp;

@@ -4,6 +4,7 @@ use App\Models\Admin;
 use App\Models\Gallery;
 use App\Models\User;
 use App\Models\Notification;
+use App\Models\Message;
 
 
 
@@ -45,3 +46,7 @@ function notificationCount(){
     return $notificationCount;
 }
 
+function messages(){
+    $messages = Message::where(['to_id' => auth()->user()->id , 'status' => '0'])->orderBy('created_at' , 'DESC')->take(3)->get();
+    return $messages;
+}

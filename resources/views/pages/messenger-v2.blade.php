@@ -32,6 +32,7 @@
                                                             </div>
                                                         </a>
                                                         @forelse ($threads as $thread)
+                                                        <a href="javascript:;" onclick="routetoVehicleChat($(this),{{$thread->id}})"></a>
                                                         <a href="javascript:;" onclick="routetoChat($(this),{{$thread->id}})"  class="d-flex align-items-center p-3 ">
                                                             <div class="flex-shrink-0">
                                                                 @if (!empty($thread->to->image))
@@ -66,7 +67,7 @@
                                 <div class="chatbox">
                                     <div class="modal-dialog-scrollable">
                                         <div id="messagesss" class="modal-content">
-                                            <div class="msg-head d-lg-none d-block">
+                                            {{-- <div class="msg-head d-lg-none d-block">
                                                 <div class="row">
                                                     <div class="col-8">
                                                         <div class="d-flex align-items-center">
@@ -238,7 +239,7 @@
                                                     <button type="button" class="text-primary btn "><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
                                                 </form>
 
-                                            </div>
+                                            </div> --}}
                                         </div>
                                     </div>
                                 </div>
@@ -364,11 +365,8 @@
 });
     });
 </script>
-
-
 <script>
     function routetoChat(elm,id){
-
         $.ajax({
             url: 'chat/'+id,
             type: 'get',
@@ -380,7 +378,12 @@
             error : function(res){
                 toastr.error('Something went wrong');
             }
-        });
+        })
+    }
+</script>
+
+<script>
+    function routetoVehicleChat(elm,id){
         $.ajax({
             url: 'vehicle-chat/'+id,
             type: 'get',
@@ -418,9 +421,11 @@
                success: function (response){
                 $('.loader').hide();
                 $('.loaderShow').show();
+                toastr.success(response.message);
                    },
                    error: function (response){
                     $('.loader').hide();
+                    toastr.success(response.message);
                    }
                }
                )
@@ -441,21 +446,5 @@
             $('.messageinput').val("");
             }
             });
-</script>
-<script>
-    function routetoMessenger(elm){
-        $.ajax({
-            url: '{{ route('messenger') }}',
-            type: 'get',
-            data : {},
-            success : function(res){
-                $('#mainbody').html(res);
-
-            },
-            error : function(res){
-                toastr.error('Something went wrong');
-            }
-        });
-    }
 </script>
 @endpush

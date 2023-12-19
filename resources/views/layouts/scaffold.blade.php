@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> {{config("app.name")}} | @stack('title')</title>
+    <title>@stack('title') | {{config("app.name")}}</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="icon" type="image/x-icon" href="{{asset('asset/img/trade-accepted-favico.png')}}">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
@@ -12,7 +12,7 @@
     @stack('styles')
 </head>
 
-<body>
+<body id="mainbody">
     @yield('content')
     @include('partial.header')
     @include('partial.sidebar')
@@ -58,7 +58,7 @@
                 }
             });
         }
-    
+
         loadnotification();
                 function loadnotification(){
                     $.ajax({
@@ -70,8 +70,45 @@
                         }
                     });
                 }
+
+
+
+                function message(elm,id){
+            $.ajax({
+                type: 'POST',
+                url: 'update-message/'+id,
+                data: {
+                    '_token' : "{{csrf_token()}}",
+                },
+                success: function(response){
+                    if(response.status == 400){
+                        $.each(response.errors, function (key, err_values){
+                            $('#updateform_errList').append('<li>'+err_values+'</li>');
+                        });
+                    }else if(response.status == 404){
+                        toastr.error(response.message);
+                    }else{
+                        loadmessage();
+                        window.location.reload();
+                        toastr.success(response.message);
+                    }
+                }
+            });
+        }
+
+        loadmessage();
+                function loadmessage(){
+                    $.ajax({
+                        type: 'GET',
+                        url: '{{ route('load.message.data') }}',
+                        success:function(response){
+                            var response = JSON.parse(response);
+                            $('.total_message').text(response);
+                        }
+                    });
+                }
         </script>
-    
+
 </body>
 
 </html>
