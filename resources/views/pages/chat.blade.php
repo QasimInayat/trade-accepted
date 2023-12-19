@@ -3,7 +3,7 @@
                 <div class="row">
                     <div class="col-8">
                         <div class="d-flex align-items-center">
-                            <span class="chat-icon"><img class="img-fluid" src="{{ asset('assets/imgs/arroleftt.svg') }}" alt="image title"></span>
+                            <span class="chat-icon"><a href="javascript:;" onclick="routetoMessenger($(this))"><img class="img-fluid" src="{{ asset('assets/imgs/arroleftt.svg') }}" alt="image title"></a></span>
                             <div class="flex-shrink-0">
                                 @if (!empty($thread->to->image))
                                 <img src="{{asset('upload/user/'. $thread->to->image)}}" class="rounded-circle" style="height: 33px; width: 40px;">

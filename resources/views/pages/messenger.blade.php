@@ -442,4 +442,20 @@
             }
             });
 </script>
+<script>
+    function routetoMessenger(elm){
+        $.ajax({
+            url: '{{ route('messenger') }}',
+            type: 'get',
+            data : {},
+            success : function(res){
+                $('#mainbody').html(res);
+
+            },
+            error : function(res){
+                toastr.error('Something went wrong');
+            }
+        });
+    }
+</script>
 @endpush

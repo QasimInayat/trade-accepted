@@ -12,7 +12,7 @@
     @stack('styles')
 </head>
 
-<body>
+<body id="mainbody">
     @yield('content')
     @include('partial.header')
     @include('partial.sidebar')
