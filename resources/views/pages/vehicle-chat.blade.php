@@ -6,7 +6,7 @@
                     <h4>{{ $chat->vehicle->title }}</h4>
                 </div>
                 <div class="price mt-3">
-                    <h5 class="mb-0">${{ number_format($chat->vehicle->price) }}</h5>
+                    <h5 class="mb-0">${{ $chat->vehicle->price }}</h5>
                     <p class="mb-0">Listed {{ Carbon\Carbon::parse($chat->vehicle->created_at)->diffForHumans() }} . {{ $chat->vehicle->country_id }} {{ $chat->vehicle->city_id }}</p>
                 </div>
 
@@ -52,4 +52,3 @@
 
             </div>
         </div>
- 

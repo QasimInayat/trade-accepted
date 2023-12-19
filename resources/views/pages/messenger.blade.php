@@ -43,6 +43,14 @@
                                                             <div class="flex-grow-1 ms-3">
                                                                 <h3>{{ ucwords($thread->to->full_name) }}</h3>
                                                                 <p>{{ ucwords($thread->vehicle->title) }}</p>
+                                                                {{-- <p>{{ Carbon\Carbon::parse($thread->to->last_seen)->diffForHumans() }}</p>
+                                                                <p>
+                                                                        @if(Cache::has('user-is-online-' . $thread->to->id))
+                                                                            <span class="badge bg-success">Online</span>
+                                                                        @else
+                                                                            <span class="badge bg-danger">Offline</span>
+                                                                        @endif
+                                                                </p> --}}
                                                             </div>
                                                         </a>
                                                         @empty
