@@ -6,7 +6,7 @@
 <main>
     <div class="content pe-2">
         <div class="container-fluid">
-            
+
             <section class="message-area">
                 <div class="container-fluid">
                     <div class="row">
@@ -16,7 +16,7 @@
                                 <div class="chatlist p-0 me-lg-3">
                                     <div class="modal-dialog-scrollable">
                                         <div class="modal-content">
-        
+
                                             <div class="modal-body">
                                                 <!-- chat-list -->
                                                 <div class="">
@@ -52,7 +52,7 @@
 
 
                                                     </div>
-        
+
                                                 </div>
                                                 <!-- chat-list -->
                                             </div>
@@ -60,14 +60,14 @@
                                     </div>
                                 </div>
                                 <!-- chatlist -->
-        
-        
-        
+
+
+
                                 <!-- chatbox -->
                                 <div class="chatbox">
                                     <div class="modal-dialog-scrollable">
                                         <div id="messagesss" class="modal-content">
-                                            <div class="msg-head d-lg-none d-block">
+                                            {{-- <div class="msg-head d-lg-none d-block">
                                                 <div class="row">
                                                     <div class="col-8">
                                                         <div class="d-flex align-items-center">
@@ -126,7 +126,7 @@
                                                             <span class="time">10:16 am</span>
                                                         </li>
                                                         <li class="repaly">
-                                                            
+
                                                             <p>yes!</p>
                                                             <img src="{{ asset('assets/imgs/user.png') }}" />
                                                             <span class="time">10:20 am</span>
@@ -151,7 +151,7 @@
                                                                 <h6>Today</h6>
                                                             </div>
                                                         </li>
-        
+
                                                         <li class="repaly">
                                                             <p> yes, tell me</p>
                                                             <img src="{{ asset('assets/imgs/user.png') }}" />
@@ -177,7 +177,7 @@
                                                                 <h6>Today</h6>
                                                             </div>
                                                         </li>
-        
+
                                                         <li class="repaly">
                                                             <p> yes, tell me</p>
                                                             <img src="{{ asset('assets/imgs/user.png') }}" />
@@ -203,7 +203,7 @@
                                                                 <h6>Today</h6>
                                                             </div>
                                                         </li>
-        
+
                                                         <li class="repaly">
                                                             <p> yes, tell me</p>
                                                             <img src="{{ asset('assets/imgs/user.png') }}" />
@@ -214,12 +214,12 @@
                                                             <img src="{{ asset('assets/imgs/user.png') }}" />
                                                             <span class="time">junt now</span>
                                                         </li>
-        
+
                                                     </ul>
                                                 </div>
                                             </div>
-        
-        
+
+
                                             <div class="send-box">
                                                 <form action="">
                                                     <button class="btn btn-light bg-transparent border-0">
@@ -235,18 +235,18 @@
                                                         <img src="{{ asset('assets/imgs/fi_mic.svg') }}" alt="">
                                                     </button>
                                                     <input type="text" class="form-control" aria-label="message…">
-        
+
                                                     <button type="button" class="text-primary btn "><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
                                                 </form>
-        
-                                            </div>
+
+                                            </div> --}}
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <!-- chatbox -->
-        
-        
+
+
                         </div>
                         <div  class="col-lg-4 pe-lg-0 mt-lg-0 mt-4 mb-lg-0 mb-4">
                             <div class="custom-flow chat-area w-100 p-4 m-0">
@@ -398,11 +398,53 @@
         })
     }
 </script>
+
 <script>
-$(document).ready(function(){
-    $("#message-sent").click(function(){
-        alert($("#test").val());
-    });
-});
+           $(document).on('submit' ,'#createMessage', function(e){
+           e.preventDefault();
+           $.ajaxSetup({
+               headers: {
+                   'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+               }
+           });
+           let formData = new FormData($('#createMessage')[0]);
+           $.ajax({
+               type: "POST",
+               url: "{{ route('chat.store') }}",
+               data: formData,
+               contentType: false,
+               processData: false,
+               beforeSend : function(response){
+                    $('.loader').show();
+                    $('.loaderShow').hide();
+                    },
+               success: function (response){
+                $('.loader').hide();
+                $('.loaderShow').show();
+                toastr.success(response.message);
+                   },
+                   error: function (response){
+                    $('.loader').hide();
+                    toastr.success(response.message);
+                   }
+               }
+               )
+               let getMessage = $('.messageinput').val();
+           if(getMessage !== ''){
+            let newMessage = "<li class='repaly'>"+
+                "<p>" + getMessage + "</p>"+
+                "@if (!empty($threadd->from->image))"+
+                "<img src='{{asset('upload/user/'. $threadd->from->image)}}' style='height: 40px;'>"+
+                            "@else"+
+                                 "<img src='{{asset('assets/imgs/placeholder1.png')}}'>"+
+                            "@endif"+
+                            "<div class='loader' >"+
+                                "<i class='fa fa-clock-o '></i>"+
+          "</div>"+
+                "<span class='loaderShow time'>just now</span></li>";
+            $('.msg-body .p-0').append(newMessage);
+            $('.messageinput').val("");
+            }
+            });
 </script>
 @endpush

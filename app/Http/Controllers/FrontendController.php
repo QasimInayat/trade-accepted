@@ -33,7 +33,7 @@ class FrontendController extends Controller
         $thread = Thread::where(['to_id' => $request->to_id , 'from_id' => auth()->user()->id])->first();
         if(!empty($thread)){
             $this->message($thread->id,$request->to_id,auth()->user()->id,'Hi');
-            return redirect()->route('messenger')->with('error','thread already created');
+            return redirect()->route('messenger');
         }
         else{
             $store = Thread::create([
@@ -43,9 +43,9 @@ class FrontendController extends Controller
             ]);
             if(!empty($store->id)){
                 $this->message($store->id,$request->to_id,auth()->user()->id,'Hi');
-                return redirect()->route('messanger')->with('success' , 'success');
+                return redirect()->route('messenger');
             }else{
-                return redirect()->back()->with('error' , 'Something went wrong');
+                return redirect()->back();
             }
         }
     }
@@ -76,6 +76,7 @@ class FrontendController extends Controller
         $data ['title'] = 'Messenger';
         $data ['heading'] = 'Messenger';
         $data['threads'] = Thread::where('from_id' , auth()->user()->id)->get();
+        $data['threadd'] = Thread::where('from_id' , auth()->user()->id)->first();
         return view('pages.messenger',$data);
     }
     public function clientProfile(){

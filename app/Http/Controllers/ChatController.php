@@ -27,9 +27,9 @@ class ChatController extends Controller
             'message' => $request->message,
         ]);
         if(!empty($store->id)){
-            return redirect()->back()->with('success' , 'success');
+            return response()->json(['success' => true]);
         }else{
-            return redirect()->back()->with('error' , 'error');
+            return response()->json(['error' => false]);
         }
     }
     public function vehicleChat($id){

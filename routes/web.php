@@ -40,8 +40,8 @@ Route::middleware(['auth'])->group(function () {
     Route::post('thread/store' , [FrontendController::class , 'threadStore'])->name('thread.store');
 
     //Chat
-    Route::get('messenger/chat/{id}' , [ChatController::class , 'index'])->name('chat.index');
-    Route::get('messenger/vehicle-chat/{id}' , [ChatController::class , 'vehicleChat'])->name('vehicle.chat');
+    Route::get('chat/{id}' , [ChatController::class , 'index'])->name('chat.index');
+    Route::get('vehicle-chat/{id}' , [ChatController::class , 'vehicleChat'])->name('vehicle.chat');
     Route::post('message' , [ChatController::class , 'chatStore'])->name('chat.store');
 
     Route::get('profile', [ProfileController::class, 'profile'])->name('profile');
