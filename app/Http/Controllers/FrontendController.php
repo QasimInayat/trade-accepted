@@ -126,11 +126,5 @@ class FrontendController extends Controller
             return response()->json(['status' => 404 , 'message' => 'Message Not Found']);
         }
     }
-    public function messengerv2(){
-        $data['title'] = 'Messenger V2';
-        $data['heading'] = 'Messenger V2';
-        $data['threads'] = Thread::where('from_id' , auth()->user()->id)->get();
-        $data['threadd'] = Thread::where('from_id' , auth()->user()->id)->firstorfail();
-        return view('pages.messenger-v2' ,$data);
-    }
+
 }

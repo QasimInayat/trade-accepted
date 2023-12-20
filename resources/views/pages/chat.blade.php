@@ -97,7 +97,7 @@
                     </button>
                     <input type="hidden" name="to_id" value="{{ $thread->to_id }}">
                     <input type="hidden" name="thread_id" value="{{ $thread->id }}">
-                    <input name="message" autocomplete="off" type="text" class="messageinput form-control" aria-label="message…">
+                    <input required name="message" autocomplete="off" type="text" class="messageinput form-control" aria-label="message…">
 
                     <button type="submit" class="text-primary btn "><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
                 </form>

@@ -29,7 +29,7 @@ class ChatController extends Controller
         if(!empty($store->id)){
             return response()->json(['success' => true]);
         }else{
-            return response()->json(['error' => false]);
+            return response()->json(['error' => true]);
         }
     }
     public function vehicleChat($id){

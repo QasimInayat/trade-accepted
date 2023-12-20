@@ -1,6 +1,6 @@
 @extends('layouts.scaffold')
 @push('title')
-Index
+{{ $title ?? '' }}
 @endpush
 @section('content')
     <main>
@@ -10,22 +10,22 @@ Index
             <div class="container-fluid">
                 <div class="row mb-4">
                     <div class="col-md-10 col-8">
-                        <h2 class="section-heading mb-0">Recent Uploads</h2>
+                        <h2 class="section-heading mb-0">{{ $title ?? '' }} Vehicle</h2>
                     </div>
                     <div class="col-md-2 col-4">
                         {{-- <p class="view-all mb-0 text-end">View All</p> --}}
                     </div>
                 </div>
                 <div class="row mb-5">
-                    @forelse($vehicles as $vehicle)
+                    @forelse($favourites as $favourite)
                     <div class="col-lg-3 col-md-6 mb-3">
                         <a href="javascipt:;">
                             <div class="multi-card">
-                               <a href="{{ route('detail',$vehicle->slug) }}">
+                               <a href="{{ route('detail',$favourite->vehicle->slug) }}">
                                 <div class="card-img position-relative">
-                                    <img style="height: 200px;" src="{{ asset('upload/vehicle/'.mainImage($vehicle->id)) }}" class="w-100" alt="">
+                                    <img style="height: 200px;" src="{{ asset('upload/vehicle/'.mainImage($favourite->vehicle->id)) }}" class="w-100" alt="">
                                     <div class="card-meta d-flex justify-content-between">
-                                        <h5 class="mb-0 text-white">{{ $vehicle->title }}</h5>
+                                        <h5 class="mb-0 text-white">{{ $favourite->vehicle->title }}</h5>
                                         <div>
                                             <span>
                                                 <img src="{{asset('assets/imgs/fi_share-2.svg')}}" alt="">
@@ -35,24 +35,24 @@ Index
                                                 @php $countFavourite = 0 @endphp
                                                 @if (Auth::check())
                                                     @php
-                                                        $countFavourite = App\Models\Favourite::countFavourite($vehicle['id']);
+                                                        $countFavourite = App\Models\Favourite::countFavourite($favourite->vehicle['id']);
                                                     @endphp
                                                 @endif
-                                                <div  data-vehicleid="{{ $vehicle->id }}" class="ms-1 update-favourite">
+                                                <a  data-vehicleid="{{ $favourite->vehicle->id }}" class="ms-1 update-favourite">
                                                     @if ($countFavourite > 0)
                                                     <i style="font-size: 11px;" class="fa fa-bookmark"></i>
                                                     @else
                                                     <i style="font-size: 11px;" class="fa fa-bookmark-o"></i>
                                                         @endif
-                                                </div>
+                                                </a>
                                             </span> --}}
                                         </div>
                                     </div>
                                 </div>
                                </a>
                                 <div class="d-flex justify-content-between align-items-center mt-2">
-                                    <h4 class="mb-0">${{ $vehicle->price }}</h4>
-                                    <p class="mb-0">{{ $vehicle->address }} . {{ $vehicle->country_id }} {{ $vehicle->city_id }}</p>
+                                    <h4 class="mb-0">${{ $favourite->vehicle->price }}</h4>
+                                    <p class="mb-0">{{ $favourite->vehicle->address }} . {{ $favourite->vehicle->country_id }} {{ $favourite->vehicle->city_id }}</p>
                                 </div>
 
                             </div>
@@ -186,7 +186,6 @@ Index
                         $('.loader').hide();
                         $('a[data-vehicleid='+vehicle_id+']').html(`<i style="font-size: 11px;" class="fa fa-bookmark"></i>`);
                         toastr.success(response.message);
-
                     } else if (response.action == 'remove') {
                         $('.loader').hide();
                         $('a[data-vehicleid=' + vehicle_id + ']').html(

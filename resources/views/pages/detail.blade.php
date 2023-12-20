@@ -31,13 +31,30 @@
                         <div class="car-details">
                             <div class="d-flex align-items-center justify-content-between">
                                 <h2>{{ ucwords($vehicle->title) }}</h2>
-                                <div>
-                                    <span>
-                                        <img src="{{asset('assets/imgs/fi_share-2-red.svg')}}" alt="">
-                                    </span>
-                                    <span class="ms-1">
-                                        <img src="{{asset('assets/imgs/fi_bookmark-red.svg')}}" alt="">
-                                    </span>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <span>
+                                            <img src="{{asset('assets/imgs/fi_share-2-red.svg')}}" alt="">
+                                        </span>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <span>
+                                            @php $countFavourite = 0 @endphp
+                                                    @if (Auth::check())
+                                                        @php
+                                                            $countFavourite = App\Models\Favourite::countFavourite($vehicle['id']);
+                                                        @endphp
+                                                    @endif
+                                                    <a style="cursor: pointer;"  data-vehicleid="{{ $vehicle->id }}" class="ms-1 update-favourite">
+                                                        @if ($countFavourite > 0)
+                                                        <i style="font-size: 13px; margin-left: -5px; color: red; margin-bottom: 7px;" class="fa fa-bookmark"></i>
+                                                        @else
+                                                        <i style="font-size: 13px; margin-left: -5px; color: red; margin-bottom: 7px" class="fa fa-bookmark-o"></i>
+                                                            @endif
+                                                    </a>
+                                            {{-- <img src="{{asset('assets/imgs/fi_bookmark-red.svg')}}" alt=""> --}}
+                                        </span>
+                                    </div>
                                 </div>
                             </div>
                             <div class="price d-flex align-items-end gap-4 mt-3">
@@ -197,6 +214,47 @@
                 infinite: true,
                 slidesToShow: 1,
                 slidesToScroll: 1
+            });
+        });
+    </script>
+    <script>
+        var user_id = "{{ Auth::id() }}";
+        $(document).ready(function() {
+            $('.update-favourite').click(function() {
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+                var vehicle_id = $(this).data('vehicleid');
+                $.ajax({
+                    type: 'POST',
+                    url: '{{ route('favourite.store') }}',
+                    data: {
+                        vehicle_id: vehicle_id,
+                        user_id: user_id
+                    },
+                    beforeSend : function(response){
+                    $('.loader').show();
+                    },
+                    success:function(response){
+                        if(response.action == 'type'){
+                            $('.loader').hide();
+                            toastr.error(response.error);
+                        }
+                        else if(response.action == 'add'){
+                            $('.loader').hide();
+                            $('a[data-vehicleid='+vehicle_id+']').html(`<i style="font-size: 13px; margin-left: -5px; color: red; margin-bottom: 7px" class="fa fa-bookmark"></i>`);
+                            toastr.success(response.message);
+    
+                        } else if (response.action == 'remove') {
+                            $('.loader').hide();
+                            $('a[data-vehicleid=' + vehicle_id + ']').html(
+                                `<i style="font-size: 13px; margin-left: -5px; color: red; margin-bottom: 7px" class="fa fa-bookmark-o"></i>`);
+                            toastr.success(response.message);
+                        }
+                    }
+                });
             });
         });
     </script>
