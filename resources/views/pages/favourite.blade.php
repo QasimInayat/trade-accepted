@@ -59,7 +59,6 @@
                         </a>
                     </div>
                     @empty
-                    <h4><b>DATA NOT ADDED</b></h4>
                     @endforelse
                 </div>
 

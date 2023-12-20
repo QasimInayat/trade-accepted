@@ -2,6 +2,23 @@
 @push('title')
 {{ $title ?? '' }}
 @endpush
+@push('styles')
+    <style>
+        #social-links ul li{
+            display: inline-block;
+        }
+        #social-links ul li a{
+            padding: 20px;
+            margin: 2px;
+            font-size: 30px;
+            color: #E81110;
+        }
+        #social-links ul li a:hover{
+            background-color: #E81110;
+            color: white;
+        }
+    </style>
+@endpush
 @section('content')
 
     <main>
@@ -32,11 +49,12 @@
                             <div class="d-flex align-items-center justify-content-between">
                                 <h2>{{ ucwords($vehicle->title) }}</h2>
                                 <div class="row">
-                                    <div class="col-md-4">
+                                    <div data-bs-toggle="modal" data-original-title="test" data-bs-target="#exampleModal" style="cursor: pointer;" class="col-md-4">
                                         <span>
                                             <img src="{{asset('assets/imgs/fi_share-2-red.svg')}}" alt="">
                                         </span>
                                     </div>
+                                    @auth
                                     <div class="col-md-4">
                                         <span>
                                             @php $countFavourite = 0 @endphp
@@ -55,6 +73,7 @@
                                             {{-- <img src="{{asset('assets/imgs/fi_bookmark-red.svg')}}" alt=""> --}}
                                         </span>
                                     </div>
+                                    @endauth
                                 </div>
                             </div>
                             <div class="price d-flex align-items-end gap-4 mt-3">
@@ -205,7 +224,29 @@
         </div>
     </div>
 
+    <div class="modal fade modal-lg" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            {{-- <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Ban and Un Ban User</h5>
+              <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div> --}}
+            <div class="modal-body mt-3" style="text-align: center;">
+                {!! $shareButton !!}
+                <div class="container">
+                    <hr>
+                    <input  style="width: 80%;" type="text" class="p-2" value="{{ route('detail',$vehicle->slug) }}" id="myInput" disabled>
+                    <button style="height: 43px; margin-bottom: 4px;" class="btn btn-primary btn-sm"  onclick="myFunction()" onmouseout="outFunc()"><i class="fa fa-clipboard"></i></button>
+                 </div>
 
+            </div>
+            {{-- <div class="modal-footer">
+              <button class="btn btn-success" type="button" data-bs-dismiss="modal">Close</button>
+              <button class="btn btn-primary update_user" type="button">Save changes</button>
+            </div> --}}
+          </div>
+        </div>
+    </div>
 @endsection
 @push('scripts')
     <script>
@@ -258,4 +299,16 @@
             });
         });
     </script>
+    <script>
+        function myFunction() {
+            toastr.success('Text copied');
+          var copyText = document.getElementById("myInput");
+          copyText.select();
+          copyText.setSelectionRange(0, 99999);
+          navigator.clipboard.writeText(copyText.value);
+          
+          var tooltip = document.getElementById("myTooltip");
+          tooltip.innerHTML = "Copied: " + copyText.value;
+        }
+        </script>
 @endpush

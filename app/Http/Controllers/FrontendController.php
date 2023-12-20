@@ -23,6 +23,17 @@ class FrontendController extends Controller
         $data ['heading'] = 'Detail';
         $data ['vehicle'] = Vehicle::where('slug',$slug)->firstorfail();
         $data['galleries'] = Gallery::where('vehicle_id' , $data['vehicle']->id)->get();
+        $data['shareButton']=\Share::page(
+            route('detail' , $data['vehicle']->slug),
+            'here is the text',
+            )
+            ->whatsapp()
+            ->facebook()
+            ->twitter()
+            ->linkedin()
+            ->reddit()
+            ->telegram()
+            ->pinterest();
         return view('pages.detail',$data);
     }
     public function threadStore(Request $request){
