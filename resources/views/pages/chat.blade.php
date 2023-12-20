@@ -68,8 +68,8 @@
                         @endforelse
                             {{-- @forelse ($senders as $sender)
                             <li class="sender">
-                                @if (!empty($sender->to->image))
-                                <img src="{{asset('upload/user/'. $sender->to->image)}}" style="height: 40px;">
+                                @if (!empty($sender->from->image))
+                                <img src="{{asset('upload/user/'. $sender->from->image)}}" style="height: 40px;">
                             @else
                                  <img src="{{asset('assets/imgs/placeholder1.png')}}" >
                             @endif

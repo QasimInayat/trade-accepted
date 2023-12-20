@@ -94,7 +94,7 @@ Profile
                                     @else
                                     <img src="{{asset('assets/imgs/placeholder1.png')}}" alt="">
                                     @endif
-                                    <span class="d-block mt-3">Member Since 2018</span>
+                                    <span class="d-block mt-3">Member Since {{ date('Y' , strtotime(auth()->user()->created_at) )}}</span>
                                         <h3 class="name text-primary fw-bold mt-3">{{ auth()->user()->first_name }} {{ auth()->user()->last_name }}</h3>
                                         <p class="mb-1">{{ auth()->user()->email }}</p>
                                         <p class="mb-1">+1 (456) 356 5486</p>
