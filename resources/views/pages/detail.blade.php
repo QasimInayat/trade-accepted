@@ -49,13 +49,13 @@
                             <div class="d-flex align-items-center justify-content-between">
                                 <h2>{{ ucwords($vehicle->title) }}</h2>
                                 <div class="row">
-                                    <div data-bs-toggle="modal" data-original-title="test" data-bs-target="#exampleModal" style="cursor: pointer;" class="col-md-4">
+                                    <div class="col-md-6" data-bs-toggle="modal" data-original-title="test" data-bs-target="#exampleModal" style="cursor: pointer;">
                                         <span>
                                             <img src="{{asset('assets/imgs/fi_share-2-red.svg')}}" alt="">
                                         </span>
                                     </div>
                                     @auth
-                                    <div class="col-md-4">
+                                    <div class="col-md-6">
                                         <span>
                                             @php $countFavourite = 0 @endphp
                                                     @if (Auth::check())

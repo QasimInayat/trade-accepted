@@ -43,7 +43,7 @@ class FrontendController extends Controller
         ]);
         $thread = Thread::where(['to_id' => $request->to_id , 'from_id' => auth()->user()->id])->first();
         if(!empty($thread)){
-            $this->message($thread->id,$request->to_id,auth()->user()->id,'Hi');
+            $this->message($thread->id,$request->to_id,auth()->user()->id, 'Please reply');
             return redirect()->route('messenger');
         }
         else{
@@ -53,7 +53,7 @@ class FrontendController extends Controller
                 'from_id' => auth()->user()->id,
             ]);
             if(!empty($store->id)){
-                $this->message($store->id,$request->to_id,auth()->user()->id,'Hi');
+                $this->message($store->id,$request->to_id,auth()->user()->id, $store->vehicle->title.' is it available?');
                 return redirect()->route('messenger');
             }else{
                 return redirect()->back();

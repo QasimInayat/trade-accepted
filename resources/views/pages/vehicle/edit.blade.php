@@ -81,12 +81,7 @@
                          </div>
                          <div class="col-md-6 mt-4">
                             <div class="form-floating">
-                                <select name="city_id" id="" class="form-control">
-                                    <option value="karachi">Karachi</option>
-                                    <option value="lahore">Lahore</option>
-                                    <option value="up">UP</option>
-                                    <option value="bihar">Bihar</option>
-                                </select>
+                                <input type="text" name="city_id" class="form-control" value="{{ $vehicle->city_id }}">
                                <label for="floatingInput">City</label>
                                <small class="text-danger">@error ('city_id') {{ $message }} @enderror</small>
                             </div>

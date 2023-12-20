@@ -30,29 +30,28 @@ Index
                                             <span>
                                                 <img src="{{asset('assets/imgs/fi_share-2.svg')}}" alt="">
                                             </span>
-                                            {{-- <span class="ms-1">
-                                                <img src="{{asset('assets/imgs/fi_bookmark.svg')}}" alt="">
                                                 @php $countFavourite = 0 @endphp
-                                                @if (Auth::check())
-                                                    @php
-                                                        $countFavourite = App\Models\Favourite::countFavourite($vehicle['id']);
-                                                    @endphp
-                                                @endif
-                                                <div  data-vehicleid="{{ $vehicle->id }}" class="ms-1 update-favourite">
+                                                    @if (Auth::check())
+                                                        @php
+                                                            $countFavourite = App\Models\Favourite::countFavourite($vehicle['id']);
+                                                        @endphp
+                                                    @endif
                                                     @if ($countFavourite > 0)
-                                                    <i style="font-size: 11px;" class="fa fa-bookmark"></i>
-                                                    @else
-                                                    <i style="font-size: 11px;" class="fa fa-bookmark-o"></i>
-                                                        @endif
-                                                </div>
-                                            </span> --}}
+                                            <span class="ms-1">
+
+                                                <i style="font-size: 10px;" class="fa fa-bookmark"></i>
+                                                                                                {{-- <img src="{{asset('assets/imgs/fi_bookmark.svg')}}" alt=""> --}}
+                                            </span>
+                                                @else
+                                                @endif
+
                                         </div>
                                     </div>
                                 </div>
                                </a>
                                 <div class="d-flex justify-content-between align-items-center mt-2">
                                     <h4 class="mb-0">${{ $vehicle->price }}</h4>
-                                    <p class="mb-0">{{ $vehicle->address }} . {{ $vehicle->country_id }} {{ $vehicle->city_id }}</p>
+                                    <p class="mb-0">{{ $vehicle->country_id }} {{ $vehicle->city_id }}</p>
                                 </div>
 
                             </div>
@@ -160,42 +159,3 @@ Index
         </div>
     </div>
 @endsection
-@push('scripts')
-<script>
-    var user_id = "{{ Auth::id() }}";
-    $(document).ready(function() {
-        $('.update-favourite').click(function() {
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
-            var vehicle_id = $(this).data('vehicleid');
-            $.ajax({
-                type: 'POST',
-                url: '{{ route('favourite.store') }}',
-                data: {
-                    vehicle_id: vehicle_id,
-                    user_id: user_id
-                },
-                beforeSend : function(response){
-                $('.loader').show();
-                },
-                success:function(response){
-                    if(response.action == 'add'){
-                        $('.loader').hide();
-                        $('a[data-vehicleid='+vehicle_id+']').html(`<i style="font-size: 11px;" class="fa fa-bookmark"></i>`);
-                        toastr.success(response.message);
-
-                    } else if (response.action == 'remove') {
-                        $('.loader').hide();
-                        $('a[data-vehicleid=' + vehicle_id + ']').html(
-                            `<i style="font-size: 11px;" class="fa fa-bookmark-o"></i>`);
-                        toastr.success(response.message);
-                    }
-                }
-            });
-        });
-    });
-</script>
-@endpush

@@ -1,5 +1,7 @@
         <div id="vehicle-details" class="message-for">
-            <img style="height: 160px; width: 400px;" src="{{ asset('upload/vehicle/'.mainImage($chat->vehicle->id)) }}" alt="">
+            <a href="{{ route('detail',$chat->vehicle->slug) }}">
+                <img style="height: 160px; width: 400px;" src="{{ asset('upload/vehicle/'.mainImage($chat->vehicle->id)) }}" alt="">
+            </a>
 
             <div class="car-details mt-3">
                 <div class="d-flex align-items-center justify-content-between">

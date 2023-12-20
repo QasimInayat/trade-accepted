@@ -66,11 +66,19 @@
                         @empty
 
                         @endforelse
-                        {{-- <li class="sender">
-                            <img src="{{asset('assets/imgs/seller.png')}}" />
-                            <p> Hey, Are you there? </p>
-                            <span class="time">10:32 am</span>
-                        </li> --}}
+                            {{-- @forelse ($senders as $sender)
+                            <li class="sender">
+                                @if (!empty($sender->to->image))
+                                <img src="{{asset('upload/user/'. $sender->to->image)}}" style="height: 40px;">
+                            @else
+                                 <img src="{{asset('assets/imgs/placeholder1.png')}}" >
+                            @endif
+                                <p> {{ $sender->message }} </p>
+                                <span class="time">{{ Carbon\Carbon::parse($reply->created_at)->diffForHumans() }}</span>
+                            </li>
+                            @empty
+                                
+                            @endforelse --}}
                         {{-- <li>
                             <div class="divider">
                                 <h6>Today</h6>
