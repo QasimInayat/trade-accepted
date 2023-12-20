@@ -76,7 +76,9 @@ class FrontendController extends Controller
         $data ['title'] = 'Search';
         $data ['heading'] = 'Search';
         if($request->title){
-            $data['searchVehicles'] = Vehicle::where('title','LIKE','%'.$request->title.'%')->get();
+            $data['searchVehicles'] = Vehicle::where('title','LIKE','%'.$request->title.'%')
+            ->where('status',1)
+            ->get();
             return view('pages.search',$data);
         }
         else{

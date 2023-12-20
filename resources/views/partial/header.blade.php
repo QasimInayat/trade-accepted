@@ -24,7 +24,7 @@
                             <div class="custom-search">
                                 <div class="cell-wrapper ui-widget">
                                     <form action="{{ route('search') }}" method="GET">
-                                        <input autocomplete="off" name="title" placeholder="Search Vehcile" class="form-control" id="express-form-typeahead"  type="search">
+                                        <input autocomplete="off" name="title" value="{{ request('title') }}" placeholder="Search Vehcile" class="" id="express-form-typeahead"  type="search">
                                     </form>
                                     <button class="search-btn" type="submit"><span class="icon"></span></button>
                                     <div class="close-search" aria-label="Close" id="closeSearch" ></div>
