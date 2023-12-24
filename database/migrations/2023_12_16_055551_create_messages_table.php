@@ -16,7 +16,7 @@ return new class extends Migration
             $table->integer('thread_id');
             $table->integer('from_id');
             $table->integer('to_id');
-            $table->text('message');
+            $table->text('message')->nullable();
             $table->tinyInteger('status')->default(0);
             $table->timestamps();
         });

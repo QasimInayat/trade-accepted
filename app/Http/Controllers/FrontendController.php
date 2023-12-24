@@ -53,7 +53,7 @@ class FrontendController extends Controller
                 'from_id' => auth()->user()->id,
             ]);
             if(!empty($store->id)){
-                $this->message($store->id,$request->to_id,auth()->user()->id, $store->vehicle->title.' is it available?');
+                $this->message($store->id,$request->to_id,auth()->user()->id, 'Hi');
                 return redirect()->route('messenger');
             }else{
                 return redirect()->back();

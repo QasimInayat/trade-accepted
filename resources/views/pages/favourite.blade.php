@@ -52,7 +52,7 @@
                                </a>
                                 <div class="d-flex justify-content-between align-items-center mt-2">
                                     <h4 class="mb-0">${{ $favourite->vehicle->price }}</h4>
-                                    <p class="mb-0">{{ $favourite->vehicle->address }} . {{ $favourite->vehicle->country_id }} {{ $favourite->vehicle->city_id }}</p>
+                                    <p class="mb-0"> {{ $favourite->vehicle->country_id }} {{ $favourite->vehicle->city_id }}</p>
                                 </div>
 
                             </div>

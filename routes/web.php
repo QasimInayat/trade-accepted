@@ -6,6 +6,7 @@ use App\Http\Controllers\VehicleController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ChatController;
 use App\Http\Controllers\FavouriteController;
+use App\Http\Controllers\PaymentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -72,6 +73,8 @@ Route::middleware(['auth'])->group(function () {
         // deposite
         Route::get('deposite' , [FrontendController::class , 'deposite'])->name('deposite');
         Route::get('deposite/detail', [FrontendController::class, 'ddetail'])->name('deposite.detail');
+
+        Route::get('payment/{slug}' , [PaymentController::class , 'index'])->name('payment');
 });
 
 Auth::routes();
