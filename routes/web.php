@@ -6,6 +6,7 @@ use App\Http\Controllers\VehicleController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ChatController;
 use App\Http\Controllers\FavouriteController;
+use App\Http\Controllers\PaymentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -66,6 +67,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('favourite' , [FavouriteController::class , 'index'])->name('favourite.index');
     Route::post('favourite/store' , [FavouriteController::class , 'store'])->name('favourite.store');
 
+    Route::get('payment/{slug}' , [PaymentController::class , 'index'])->name('payment');
 });
 
 Auth::routes();

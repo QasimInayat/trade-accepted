@@ -322,56 +322,13 @@
         </div>
     </div>
 </main>
+
+
+
+
 @endsection
 @push('scripts')
-<script>
-    $(document).ready(function () {
-        $(".chat-list a").click(function () {
-            $(".chatbox").addClass('showbox');
-            return false;
-        });
 
-        $(".chat-icon").click(function () {
-            $(".chatbox").removeClass('showbox');
-        });
-
-        $('input.deposit-radio').on('change', function () {
-            // Enable or disable the button based on the radio button state
-            if ($('#d-1').is(':checked') || $('#d-2').is(':checked') || $('#d-3').is(':checked') || $('#d-3').is(':checked')) {
-                $('#deposit-submit').prop('disabled', false);
-            } else {
-                $('#deposit-submit').prop('disabled', true);
-            }
-        });
-
-        function checkButtonStatus() {
-            // Check if input field has a value or if any radio button is checked
-            const customValue = $('#n-custom').val();
-            const radioChecked = $('input[name="negotitate"]:checked').length > 0;
-
-            if(customValue !== ''){
-                $('#n-custom').addClass('has-value');
-                $('input[name="negotitate"]').prop('checked', false);
-            } else {
-                $('#n-custom').removeClass('has-value');
-            }
-
-            $('#negotiate-submit').prop('disabled', customValue === '' && !radioChecked);
-        }
-
-        // Check button status on input field change
-        $('#n-custom').on('input', checkButtonStatus);
-
-        $('input[name="negotitate"]').on('change', function () {
-            $('#n-custom').val('');
-
-            // If any radio button is checked, make the input optional
-            $('#n-custom').prop('required', !$('input[name="negotitate"]:checked').length > 0);
-
-            checkButtonStatus();
-});
-    });
-</script>
 
 
 <script>
@@ -466,4 +423,28 @@
         });
     }
 </script>
+<script>
+    $(document).on('submit' ,'#negotiateStore', function(e){
+              e.preventDefault();
+              $.ajaxSetup({
+                  headers: {
+                      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                  }
+              });
+              let formData = new FormData($('#negotiateStore')[0]);
+              $.ajax({
+                  type: "POST",
+                  url: "{{ route('chat.store') }}",
+                  data: formData,
+                  contentType: false,
+                  processData: false,
+                  success: function (res){
+                    $('#negoriate').modal('hide');
+                      },
+                      error: function (res){
+                      }
+                   });
+               });
+   
+   </script>
 @endpush
