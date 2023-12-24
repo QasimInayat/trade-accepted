@@ -66,6 +66,12 @@ Route::middleware(['auth'])->group(function () {
     Route::get('favourite' , [FavouriteController::class , 'index'])->name('favourite.index');
     Route::post('favourite/store' , [FavouriteController::class , 'store'])->name('favourite.store');
 
+        // booking
+        Route::get('booking' , [FrontendController::class , 'booking'])->name('booking');
+        Route::get('booking/detail', [FrontendController::class, 'bdetail'])->name('booking.detail');
+        // deposite
+        Route::get('deposite' , [FrontendController::class , 'deposite'])->name('deposite');
+        Route::get('deposite/detail', [FrontendController::class, 'ddetail'])->name('deposite.detail');
 });
 
 Auth::routes();

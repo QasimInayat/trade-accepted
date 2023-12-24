@@ -139,5 +139,23 @@ class FrontendController extends Controller
             return response()->json(['status' => 404 , 'message' => 'Message Not Found']);
         }
     }
+    public function booking(){
+        $data ['title'] = 'Booking';
+        $data ['heading'] = 'My Booking';
+        return view('pages.booking.index',$data);
+    }
+    public function bdetail(){
+        $data ['title'] = 'Booking Detail';
+        return view('pages.booking.detail',$data);
+    }
+    public function deposite(){
+        $data ['title'] = 'Deposite';
+        $data ['heading'] = 'My Deposite';
+        return view('pages.deposite.index',$data);
+    }
+    public function ddetail(){
+        $data ['title'] = 'Deposite Detail';
+        return view('pages.deposite.detail',$data);
+    }
 
 }
