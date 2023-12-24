@@ -7,7 +7,7 @@
       <meta name="description" content="Start your development with a Dashboard for Bootstrap 5">
       <meta name="keywords" content="dashboard, bootstrap 5 dashboard, bootstrap 5 design, bootstrap 5">
       <link rel="canonical" href="https://1.envato.market/vuexy_admin">
-      <link rel="icon" type="image/x-icon" href="{{asset('asset/img/trade-accepted-favico.png')}}">
+      <link rel="icon" type="image/x-icon" href="{{asset('assets/imgs/trade-accepted-favico.png')}}">
 
       @stack('styles')
    </head>
