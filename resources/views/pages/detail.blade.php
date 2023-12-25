@@ -41,7 +41,7 @@
                                 </div>
                             </div>
                             <div class="price d-flex align-items-end gap-4 mt-3">
-                                <h4 class="mb-0">${{ number_format($vehicle->price) }}</h4>
+                                <h4 class="mb-0">${{ $vehicle->price }}</h4>
                                 <p class="mb-0">{{ Carbon\Carbon::parse($vehicle->created_at)->diffForHumans() }} . {{ $vehicle->country_id }} {{ $vehicle->city_id }}</p>
                             </div>
                             <div class="desc mt-5">
