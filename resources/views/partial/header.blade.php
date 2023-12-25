@@ -6,11 +6,7 @@
                 <a href="{{ route('index') }}"><img src="{{asset('assets/imgs/logo.png')}}" alt="" class="d-block"></a>
                 <h1 class="mb-0">{{ $heading ?? '' }}</h1>
             </div>
-            <div class="d-flex align-items-center gap-3">
-                <div class="menu-btn d-md-none d-block">
-                    <span class="burger"><span></span></span>
-                </div>
-            </div>
+            
             <div class="vertical-nav d-flex align-items-center">
                 <ul class="list-unstyled text-end d-lg-block d-none mb-0">
                    @auth
@@ -95,10 +91,10 @@
                 <div class="d-flex align-items-center">
                     @guest
                     <a class="btn btn-primary" href="{{ route('login') }}"> Login </a>&nbsp;&nbsp;
-                    <a class="btn btn-primary" href="{{ route('register') }}"> Register </a>
+                    <a style="margin-right: 10px;" class="btn btn-primary" href="{{ route('register') }}"> Register </a>
                     @endguest
                     @auth
-                    <div class="dropdown">
+                    <div class="dropdown" style="margin-right: 10px;">
                         <button class="btn btn-secondary dropdown-toggle auth-dropdown" type="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
 
@@ -125,6 +121,9 @@
                         </ul>
                     </div>
                     @endauth
+                    <div class="menu-btn d-md-none d-block">
+                        <span class="burger"><span></span></span>
+                    </div>
                 </div>
             </div>
         </div>

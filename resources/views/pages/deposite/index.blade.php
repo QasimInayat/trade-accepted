@@ -3,7 +3,7 @@
 {{ $title ?? '' }}
 @endpush
 @section('content')
-<div class="layout-page mb-5" style="margin-top:130px; margin-left:100px;">
+<div class="layout-page mb-5" style="margin-top:130px; margin-left: 20px;">
     <div class="content-wrapper">
        <div class="container">
       <div class="card">

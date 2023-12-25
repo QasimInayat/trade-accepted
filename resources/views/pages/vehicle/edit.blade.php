@@ -166,7 +166,7 @@
                                 </div>
                                <div class="row">
                                @foreach ($galleries as $gallery)
-                                <div class="col-md-2">
+                                <div class="col-md-2 col-6">
                                     <div style="border: 1px solid lightgrey; padding: 5px; text-align: center;" class="mt-3">
                                     <img src="{{ asset('upload/vehicle/'.$gallery->image) }}" style="height: 90px; width: 100%;" alt="">
                                     <a href="{{ route('remove.gallery',$gallery->id) }}" class="remove_gallery"><small>Remove Image</small></a><br>

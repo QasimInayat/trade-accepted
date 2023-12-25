@@ -60,7 +60,7 @@
                       <tbody>
                         <tr>
                             <td>
-          <a href="{{ route('admin.dashboard') }}"><img src="{{ asset('asset/img/trade-accepted-logo.png') }}" alt="" height="50px" width="100px"></a>
+          <a href="{{ route('admin.dashboard') }}"><img src="{{ asset('assets/imgs/trade-accepted-logo.png') }}" alt="" height="50px" width="100px"></a>
                             </td>
                         </tr>
                         <tr class="hiddenMobile">

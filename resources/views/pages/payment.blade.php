@@ -10,7 +10,7 @@
             <section class="message-area">
                 <div class="container-fluid">
                     <div class="row">
-                        <div class="col-md-8">
+                        <div class="col-md-8 mt-3">
                             <div class="card shadow">
                                 <div class="card-body">
                                     <div class="payment-form mt-5">
@@ -47,7 +47,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-4 mt-3">
                             <div class="card shadow">
                                 <div class="card-body">
                                     {{-- <h3 class="mt-5 text-center">Vehicle Detail</h3> --}}

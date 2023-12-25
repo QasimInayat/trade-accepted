@@ -26,7 +26,7 @@ class HomeController extends Controller
     public function index()
     {
         $data ['heading'] = 'Home';
-        $data ['vehicles'] = Vehicle::get();
+        $data ['vehicles'] = Vehicle::where('status' , 1)->orderBy('created_at' , 'DESC')->get();
         return view('index' ,$data);
     }
 }
