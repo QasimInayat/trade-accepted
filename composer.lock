@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e7dd68e1e9b000934d0191c0b6675b20",
+    "content-hash": "a74b84de06d488bd3c9ad3cf75485055",
     "packages": [
         {
             "name": "brick/math",
@@ -969,6 +969,69 @@
                 }
             ],
             "time": "2023-08-27T10:19:19+00:00"
+        },
+        {
+            "name": "jorenvanhocht/laravel-share",
+            "version": "4.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jorenvh/laravel-share.git",
+                "reference": "86af334068038a840567ed62f2082fe3ac981476"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jorenvh/laravel-share/zipball/86af334068038a840567ed62f2082fe3ac981476",
+                "reference": "86af334068038a840567ed62f2082fe3ac981476",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.4|^8.0"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^6.13|^7.0",
+                "phpunit/phpunit": "^9.3"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Jorenvh\\Share\\Providers\\ShareServiceProvider"
+                    ],
+                    "aliases": {
+                        "Share": "Jorenvh\\Share\\ShareFacade"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Jorenvh\\Share\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Joren Van Hocht",
+                    "email": "joren@codeswitch.be",
+                    "homepage": "https://codeswitch.be",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Optional package for Laravel to generate social share links.",
+            "homepage": "https://github.com/jorenvh/laravel-share",
+            "keywords": [
+                "laravel",
+                "share",
+                "social links",
+                "social share links"
+            ],
+            "support": {
+                "issues": "https://github.com/jorenvh/laravel-share/issues",
+                "source": "https://github.com/jorenvh/laravel-share/tree/4.2.0"
+            },
+            "time": "2022-02-11T17:20:09+00:00"
         },
         {
             "name": "laravel/framework",
@@ -3241,6 +3304,65 @@
                 }
             ],
             "time": "2023-04-15T23:01:58+00:00"
+        },
+        {
+            "name": "stripe/stripe-php",
+            "version": "v13.7.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/stripe/stripe-php.git",
+                "reference": "1f60eb1a1b86b29f2ba0e14c0ae905ca838c1cdd"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/stripe/stripe-php/zipball/1f60eb1a1b86b29f2ba0e14c0ae905ca838c1cdd",
+                "reference": "1f60eb1a1b86b29f2ba0e14c0ae905ca838c1cdd",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "ext-json": "*",
+                "ext-mbstring": "*",
+                "php": ">=5.6.0"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "3.5.0",
+                "phpstan/phpstan": "^1.2",
+                "phpunit/phpunit": "^5.7 || ^9.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Stripe\\": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Stripe and contributors",
+                    "homepage": "https://github.com/stripe/stripe-php/contributors"
+                }
+            ],
+            "description": "Stripe PHP Library",
+            "homepage": "https://stripe.com/",
+            "keywords": [
+                "api",
+                "payment processing",
+                "stripe"
+            ],
+            "support": {
+                "issues": "https://github.com/stripe/stripe-php/issues",
+                "source": "https://github.com/stripe/stripe-php/tree/v13.7.0"
+            },
+            "time": "2023-12-22T15:57:03+00:00"
         },
         {
             "name": "symfony/console",

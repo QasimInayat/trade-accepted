@@ -13,7 +13,7 @@
 
       <div class="app-brand demo ">
           <div>
-          <a href="{{ route('admin.dashboard') }}"><img src="{{ asset('asset/img/trade-accepted-logo.png') }}" alt="" height="50px" width="200px"></a>
+          <a href="{{ route('admin.dashboard') }}"><img src="{{ asset('assets/imgs/trade-accepted-logo.png') }}" alt="" height="50px" width="200px"></a>
           </div>
 
         </a>

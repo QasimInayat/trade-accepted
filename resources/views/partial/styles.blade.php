@@ -19,7 +19,7 @@
     .close-search{display:none;-webkit-animation: fadeEffect1 2s;animation: fadeEffect1 2s;
     position: absolute;top:9px;right:9px;background-image: url({{ asset('assets/imgs/cross.png') }});width: 15px;
     height: 15px;background-repeat: no-repeat;background-size: 15px;}
-    #express-form-typeahead:focus{background-color:#fff;border-bottom:1px solid #e7e7e7;cursor:text;outline:0;width:200px;border-radius: 0;}
+    #express-form-typeahead:focus{border: 1px solid #e91111;cursor:text;outline:0;width:200px;border-radius: 0;}
     .search-btn{display:none;}
     input[type="search"]{-webkit-appearance:textfield;}
    /* Fade in tabs */
@@ -38,5 +38,41 @@
 }
 .ui-menu{
     z-index: 3500 !important;
+}
+.ui-menu .ui-menu-item-wrapper:hover{
+    background-color: red;
+    color: white;
+    border: 1px solid red;
+}
+
+.ui-menu .ui-menu-item-wrapper:visited{
+    background-color: red;
+    color: white;
+    border: 1px solid red;
+}
+.ui-menu .ui-menu-item-wrapper:active{
+    background-color: red;
+    color: white;
+    border: 1px solid red;
+}
+.ui-menu .ui-menu-item-wrapper:focus{
+    background-color: red;
+    color: white;
+    border: 1px solid red;
+}
+.ui-menu .ui-menu-item-wrapper:focus-within{
+    background-color: red;
+    color: white;
+    border: 1px solid red;
+}
+.ui-menu .ui-menu-item-wrapper:focus-visible{
+    background-color: red;
+    color: white;
+    border: 1px solid red;
+}
+.ui-menu .ui-menu-item-wrapper:target{
+    background-color: red;
+    color: white;
+    border: 1px solid red;
 }
 </style>

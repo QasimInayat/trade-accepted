@@ -23,6 +23,17 @@ class FrontendController extends Controller
         $data ['heading'] = 'Detail';
         $data ['vehicle'] = Vehicle::where('slug',$slug)->firstorfail();
         $data['galleries'] = Gallery::where('vehicle_id' , $data['vehicle']->id)->get();
+        $data['shareButton']=\Share::page(
+            route('detail' , $data['vehicle']->slug),
+            'here is the text',
+            )
+            ->whatsapp()
+            ->facebook()
+            ->twitter()
+            ->linkedin()
+            ->reddit()
+            ->telegram()
+            ->pinterest();
         return view('pages.detail',$data);
     }
     public function threadStore(Request $request){
@@ -32,7 +43,7 @@ class FrontendController extends Controller
         ]);
         $thread = Thread::where(['to_id' => $request->to_id , 'from_id' => auth()->user()->id])->first();
         if(!empty($thread)){
-            $this->message($thread->id,$request->to_id,auth()->user()->id,'Hi');
+            $this->message($thread->id,$request->to_id,auth()->user()->id, 'Please reply');
             return redirect()->route('messenger');
         }
         else{
@@ -42,7 +53,7 @@ class FrontendController extends Controller
                 'from_id' => auth()->user()->id,
             ]);
             if(!empty($store->id)){
-                $this->message($store->id,$request->to_id,auth()->user()->id,'Hi');
+                $this->message($store->id,$request->to_id,auth()->user()->id, 'Hi');
                 return redirect()->route('messenger');
             }else{
                 return redirect()->back();
@@ -65,7 +76,9 @@ class FrontendController extends Controller
         $data ['title'] = 'Search';
         $data ['heading'] = 'Search';
         if($request->title){
-            $data['searchVehicles'] = Vehicle::where('title','LIKE','%'.$request->title.'%')->get();
+            $data['searchVehicles'] = Vehicle::where('title','LIKE','%'.$request->title.'%')
+            ->where('status',1)
+            ->get();
             return view('pages.search',$data);
         }
         else{
@@ -126,11 +139,23 @@ class FrontendController extends Controller
             return response()->json(['status' => 404 , 'message' => 'Message Not Found']);
         }
     }
-    public function messengerv2(){
-        $data['title'] = 'Messenger V2';
-        $data['heading'] = 'Messenger V2';
-        $data['threads'] = Thread::where('from_id' , auth()->user()->id)->get();
-        $data['threadd'] = Thread::where('from_id' , auth()->user()->id)->firstorfail();
-        return view('pages.messenger-v2' ,$data);
+    public function booking(){
+        $data ['title'] = 'Booking';
+        $data ['heading'] = 'My Booking';
+        return view('pages.booking.index',$data);
     }
+    public function bdetail(){
+        $data ['title'] = 'Booking Detail';
+        return view('pages.booking.detail',$data);
+    }
+    public function deposite(){
+        $data ['title'] = 'Deposite';
+        $data ['heading'] = 'My Deposite';
+        return view('pages.deposite.index',$data);
+    }
+    public function ddetail(){
+        $data ['title'] = 'Deposite Detail';
+        return view('pages.deposite.detail',$data);
+    }
+
 }

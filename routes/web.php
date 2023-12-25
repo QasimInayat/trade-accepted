@@ -5,6 +5,8 @@ use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\VehicleController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ChatController;
+use App\Http\Controllers\FavouriteController;
+use App\Http\Controllers\PaymentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,7 +36,6 @@ Route::get('vehicle-list' , [FrontendController::class, 'vehicleList'])->name('v
 Route::middleware(['auth'])->group(function () {
 
     Route::get('messenger', [FrontendController::class, 'messenger'])->name('messenger');
-    Route::get('messenger/v2', [FrontendController::class, 'messengerv2'])->name('messenger.v2');
 
     //Thread
     Route::post('thread/store' , [FrontendController::class , 'threadStore'])->name('thread.store');
@@ -62,6 +63,18 @@ Route::middleware(['auth'])->group(function () {
     Route::post('update-message/{id}' , [FrontendController::class , 'updatemessage']);
     Route::get('message/count' , [FrontendController::class , 'messagecount'])->name('load.message.data');
 
+    //Favourite
+    Route::get('favourite' , [FavouriteController::class , 'index'])->name('favourite.index');
+    Route::post('favourite/store' , [FavouriteController::class , 'store'])->name('favourite.store');
+
+        // booking
+        Route::get('booking' , [FrontendController::class , 'booking'])->name('booking');
+        Route::get('booking/detail', [FrontendController::class, 'bdetail'])->name('booking.detail');
+        // deposite
+        Route::get('deposite' , [FrontendController::class , 'deposite'])->name('deposite');
+        Route::get('deposite/detail', [FrontendController::class, 'ddetail'])->name('deposite.detail');
+
+        Route::get('payment/{slug}' , [PaymentController::class , 'index'])->name('payment');
 });
 
 Auth::routes();

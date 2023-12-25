@@ -6,11 +6,7 @@
                 <a href="{{ route('index') }}"><img src="{{asset('assets/imgs/logo.png')}}" alt="" class="d-block"></a>
                 <h1 class="mb-0">{{ $heading ?? '' }}</h1>
             </div>
-            <div class="d-flex align-items-center gap-3">
-                <div class="menu-btn d-md-none d-block">
-                    <span class="burger"><span></span></span>
-                </div>
-            </div>
+            
             <div class="vertical-nav d-flex align-items-center">
                 <ul class="list-unstyled text-end d-lg-block d-none mb-0">
                    @auth
@@ -24,7 +20,7 @@
                             <div class="custom-search">
                                 <div class="cell-wrapper ui-widget">
                                     <form action="{{ route('search') }}" method="GET">
-                                        <input autocomplete="off" name="title" placeholder="Search Vehcile" class="form-control" id="express-form-typeahead"  type="search">
+                                        <input autocomplete="off" name="title" value="{{ request('title') }}" placeholder="Search Vehcile" class="" id="express-form-typeahead"  type="search">
                                     </form>
                                     <button class="search-btn" type="submit"><span class="icon"></span></button>
                                     <div class="close-search" aria-label="Close" id="closeSearch" ></div>
@@ -95,10 +91,10 @@
                 <div class="d-flex align-items-center">
                     @guest
                     <a class="btn btn-primary" href="{{ route('login') }}"> Login </a>&nbsp;&nbsp;
-                    <a class="btn btn-primary" href="{{ route('register') }}"> Register </a>
+                    <a style="margin-right: 10px;" class="btn btn-primary" href="{{ route('register') }}"> Register </a>
                     @endguest
                     @auth
-                    <div class="dropdown">
+                    <div class="dropdown" style="margin-right: 10px;">
                         <button class="btn btn-secondary dropdown-toggle auth-dropdown" type="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
 
@@ -114,6 +110,9 @@
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="{{route('profile')}}">Profile</a></li>
                             <li><a class="dropdown-item" href="{{route('vehicle.index')}}">My Listing</a></li>
+                            <li><a class="dropdown-item" href="{{route('favourite.index')}}">Favourite</a></li>
+                            <li><a class="dropdown-item" href="{{route('deposite')}}">My Deposite</a></li>
+                            <li><a class="dropdown-item" href="{{route('booking')}}">My Booking</a></li>
                             <li><a class="dropdown-item" href="javscript:;" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="mdi mdi-logout text-muted fs-16 align-middle me-1"></i> <span class="align-middle" data-key="t-logout"> <i class="fa fa-sign-out"></i> Logout
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                     @csrf
@@ -122,6 +121,9 @@
                         </ul>
                     </div>
                     @endauth
+                    <div class="menu-btn d-md-none d-block">
+                        <span class="burger"><span></span></span>
+                    </div>
                 </div>
             </div>
         </div>

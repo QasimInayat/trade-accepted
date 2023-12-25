@@ -37,11 +37,11 @@
             <div class="modal-body p-4">
                 <div class="msg-body">
                     <ul class="p-0">
-                        {{-- <li class="repaly d-flex gap-3 justify-content-end">
+                        <li class="repaly d-flex gap-3 justify-content-end">
                             <!-- <p class="default"> -->
                                 <div class="car-offer">
-                                    <h2>2006 Porsche 911</h2>
-                                    <h4>$48,995</h4>
+                                    <h2>{{ $thread->vehicle->title }}</h2>
+                                    <h4>${{ $thread->vehicle->price }}</h4>
 
                                     <div class="d-xl-flex gap-3">
                                         <button class="btn btn-primary px-4 mt-3" data-bs-toggle="modal" data-bs-target="#deposit">Deposit</button>
@@ -49,8 +49,12 @@
                                     </div>
                                 </div>
                             <!-- </p> -->
-                            <img src="{{asset('assets/imgs/user.png')}}" />
-                        </li> --}}
+                            @if (!empty($thread->from->image))
+                            <img src="{{asset('upload/user/'. $thread->from->image)}}" style="height: 40px;">
+                        @else
+                             <img src="{{asset('assets/imgs/placeholder1.png')}}" >
+                        @endif
+                        </li>
 
                         @forelse ($replies as $reply)
                             <li class="repaly">
@@ -66,11 +70,19 @@
                         @empty
 
                         @endforelse
-                        {{-- <li class="sender">
-                            <img src="{{asset('assets/imgs/seller.png')}}" />
-                            <p> Hey, Are you there? </p>
-                            <span class="time">10:32 am</span>
-                        </li> --}}
+                            {{-- @forelse ($senders as $sender)
+                            <li class="sender">
+                                @if (!empty($sender->from->image))
+                                <img src="{{asset('upload/user/'. $sender->from->image)}}" style="height: 40px;">
+                            @else
+                                 <img src="{{asset('assets/imgs/placeholder1.png')}}" >
+                            @endif
+                                <p> {{ $sender->message }} </p>
+                                <span class="time">{{ Carbon\Carbon::parse($reply->created_at)->diffForHumans() }}</span>
+                            </li>
+                            @empty
+
+                            @endforelse --}}
                         {{-- <li>
                             <div class="divider">
                                 <h6>Today</h6>
@@ -97,11 +109,14 @@
                     </button>
                     <input type="hidden" name="to_id" value="{{ $thread->to_id }}">
                     <input type="hidden" name="thread_id" value="{{ $thread->id }}">
-                    <input name="message" autocomplete="off" type="text" class="messageinput form-control" aria-label="message…">
+                    <input required name="message" autocomplete="off" type="text" class="messageinput form-control" aria-label="message…">
 
                     <button type="submit" class="text-primary btn "><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
                 </form>
 
             </div>
         </div>
+
+
+
 

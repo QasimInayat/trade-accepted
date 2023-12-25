@@ -33,6 +33,7 @@ public function update(Request $request){
     $update = User::where('id', auth()->user()->id)->update([
         'first_name' => $request->first_name,
         'last_name' => $request->last_name,
+        'full_name' => $request->first_name.' '.$request->last_name,
         'address' => $request->address,
         'image' => $imageName,
     ]);

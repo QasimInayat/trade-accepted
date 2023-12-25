@@ -101,6 +101,7 @@ class VehicleController extends Controller
             'model_id' => 'required',
             'status' => 'required',
         ]);
+        $vehicle = Vehicle::where('id' , $id)->first();
         $slug = Str::slug($request->title , '-');
         $update = Vehicle::where('id' , $id)->update([
             'user_id' => $request->user_id,
@@ -122,6 +123,8 @@ class VehicleController extends Controller
             'description' => $request->description,
             'status' => $request->status,
         ]);
+        sendNotification($vehicle->id, 'App/Models/Vehicle', 'vehicle update', 'Vehicle update at ' . $vehicle->created_at);
+
         // sendNotification($update->id, 'App/Models/Vehicle', 'vehicle updated', 'Vehicle updated at ' . $update->created_at);
         $vehicle = Vehicle::where('id' , $id)->firstorfail();
         if($request->has('images')){
@@ -152,7 +155,9 @@ class VehicleController extends Controller
         }
     }
     public function delete($slug){
+        $vehicles = Vehicle::where('slug' , $slug)->first();
         $vehicle = Vehicle::where('slug' , $slug)->delete();
+        sendNotification($vehicles->id, 'App/Models/Vehicle', 'vehicle deleted', 'Vehicle deleted at ' . $vehicles->created_at);
         if(!empty($vehicle)){
             return redirect()->back()->with('success' , 'Vehicle deleted');
         }else{

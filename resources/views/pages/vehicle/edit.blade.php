@@ -81,10 +81,17 @@
                          </div>
                          <div class="col-md-6 mt-4">
                             <div class="form-floating">
+<<<<<<< HEAD
                                        {!! Form::text('city_id', $vehicle->city_id, ['class' => 'form-control', 'id' => 'floatingInput', 'placeholder' => 'City', 'aria-describedby' => 'floatingInputHelp']) !!}
                                        <label for="floatingInput">City</label>
                                        <small class="text-danger">@error ('price') {{ $message }} @enderror</small>
                                     </div>
+=======
+                                <input type="text" name="city_id" class="form-control" value="{{ $vehicle->city_id }}">
+                               <label for="floatingInput">City</label>
+                               <small class="text-danger">@error ('city_id') {{ $message }} @enderror</small>
+                            </div>
+>>>>>>> 904b6f4433d4a465bad06860d5c06bdb34121118
                          </div>
                          <div class="col-md-6 mt-4">
                             <div class="form-floating">
@@ -166,7 +173,7 @@
                                 </div>
                                <div class="row">
                                @foreach ($galleries as $gallery)
-                                <div class="col-md-2">
+                                <div class="col-md-2 col-6">
                                     <div style="border: 1px solid lightgrey; padding: 5px; text-align: center;" class="mt-3">
                                     <img src="{{ asset('upload/vehicle/'.$gallery->image) }}" style="height: 90px; width: 100%;" alt="">
                                     <a href="{{ route('remove.gallery',$gallery->id) }}" class="remove_gallery"><small>Remove Image</small></a><br>

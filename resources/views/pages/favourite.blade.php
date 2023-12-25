@@ -1,6 +1,6 @@
 @extends('layouts.scaffold')
 @push('title')
-Index
+{{ $title ?? '' }}
 @endpush
 @section('content')
     <main>
@@ -10,55 +10,55 @@ Index
             <div class="container-fluid">
                 <div class="row mb-4">
                     <div class="col-md-10 col-8">
-                        <h2 class="section-heading mb-0">Recent Uploads</h2>
+                        <h2 class="section-heading mb-0">{{ $title ?? '' }} Vehicle</h2>
                     </div>
                     <div class="col-md-2 col-4">
                         {{-- <p class="view-all mb-0 text-end">View All</p> --}}
                     </div>
                 </div>
                 <div class="row mb-5">
-                    @forelse($vehicles as $vehicle)
+                    @forelse($favourites as $favourite)
                     <div class="col-lg-3 col-md-6 mb-3">
                         <a href="javascipt:;">
                             <div class="multi-card">
-                               <a href="{{ route('detail',$vehicle->slug) }}">
+                               <a href="{{ route('detail',$favourite->vehicle->slug) }}">
                                 <div class="card-img position-relative">
-                                    <img style="height: 200px;" src="{{ asset('upload/vehicle/'.mainImage($vehicle->id)) }}" class="w-100" alt="">
+                                    <img style="height: 200px;" src="{{ asset('upload/vehicle/'.mainImage($favourite->vehicle->id)) }}" class="w-100" alt="">
                                     <div class="card-meta d-flex justify-content-between">
-                                        <h5 class="mb-0 text-white">{{ $vehicle->title }}</h5>
+                                        <h5 class="mb-0 text-white">{{ $favourite->vehicle->title }}</h5>
                                         <div>
                                             <span>
                                                 <img src="{{asset('assets/imgs/fi_share-2.svg')}}" alt="">
                                             </span>
+                                            {{-- <span class="ms-1">
+                                                <img src="{{asset('assets/imgs/fi_bookmark.svg')}}" alt="">
                                                 @php $countFavourite = 0 @endphp
-                                                    @if (Auth::check())
-                                                        @php
-                                                            $countFavourite = App\Models\Favourite::countFavourite($vehicle['id']);
-                                                        @endphp
-                                                    @endif
-                                                    @if ($countFavourite > 0)
-                                            <span class="ms-1">
-
-                                                <i style="font-size: 10px;" class="fa fa-bookmark"></i>
-                                                                                                {{-- <img src="{{asset('assets/imgs/fi_bookmark.svg')}}" alt=""> --}}
-                                            </span>
-                                                @else
+                                                @if (Auth::check())
+                                                    @php
+                                                        $countFavourite = App\Models\Favourite::countFavourite($favourite->vehicle['id']);
+                                                    @endphp
                                                 @endif
-
+                                                <a  data-vehicleid="{{ $favourite->vehicle->id }}" class="ms-1 update-favourite">
+                                                    @if ($countFavourite > 0)
+                                                    <i style="font-size: 11px;" class="fa fa-bookmark"></i>
+                                                    @else
+                                                    <i style="font-size: 11px;" class="fa fa-bookmark-o"></i>
+                                                        @endif
+                                                </a>
+                                            </span> --}}
                                         </div>
                                     </div>
                                 </div>
                                </a>
                                 <div class="d-flex justify-content-between align-items-center mt-2">
-                                    <h4 class="mb-0">${{ $vehicle->price }}</h4>
-                                    <p class="mb-0">{{ $vehicle->country_id }} {{ $vehicle->city_id }}</p>
+                                    <h4 class="mb-0">${{ $favourite->vehicle->price }}</h4>
+                                    <p class="mb-0"> {{ $favourite->vehicle->country_id }} {{ $favourite->vehicle->city_id }}</p>
                                 </div>
 
                             </div>
                         </a>
                     </div>
                     @empty
-                    <h4><b>DATA NOT ADDED</b></h4>
                     @endforelse
                 </div>
 
@@ -67,12 +67,11 @@ Index
                         <h2 class="section-heading mb-0">Other Listing</h2>
                     </div>
                     <div class="col-md-2 col-4">
-                         <p class="view-all mb-0 text-end">View All</p>
-
+                        <p class="view-all mb-0 text-end">View All</p>
                     </div>
-                </div> --}}
+                </div>
 
-                {{-- <div class="row mb-5">
+                <div class="row mb-5">
                     <div class="col-lg-3 col-md-4 mb-3">
                         <a href="javascipt:;">
                             <div class="multi-card">
@@ -160,3 +159,41 @@ Index
         </div>
     </div>
 @endsection
+@push('scripts')
+<script>
+    var user_id = "{{ Auth::id() }}";
+    $(document).ready(function() {
+        $('.update-favourite').click(function() {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            var vehicle_id = $(this).data('vehicleid');
+            $.ajax({
+                type: 'POST',
+                url: '{{ route('favourite.store') }}',
+                data: {
+                    vehicle_id: vehicle_id,
+                    user_id: user_id
+                },
+                beforeSend : function(response){
+                $('.loader').show();
+                },
+                success:function(response){
+                    if(response.action == 'add'){
+                        $('.loader').hide();
+                        $('a[data-vehicleid='+vehicle_id+']').html(`<i style="font-size: 11px;" class="fa fa-bookmark"></i>`);
+                        toastr.success(response.message);
+                    } else if (response.action == 'remove') {
+                        $('.loader').hide();
+                        $('a[data-vehicleid=' + vehicle_id + ']').html(
+                            `<i style="font-size: 11px;" class="fa fa-bookmark-o"></i>`);
+                        toastr.success(response.message);
+                    }
+                }
+            });
+        });
+    });
+</script>
+@endpush

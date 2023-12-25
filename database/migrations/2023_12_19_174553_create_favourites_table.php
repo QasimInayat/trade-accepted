@@ -11,13 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('messages', function (Blueprint $table) {
+        Schema::create('favourites', function (Blueprint $table) {
             $table->id();
-            $table->integer('thread_id');
-            $table->integer('from_id');
-            $table->integer('to_id');
-            $table->text('message')->nullable();
-            $table->tinyInteger('status')->default(0);
+            $table->integer('vehicle_id');
+            $table->integer('user_id');
             $table->timestamps();
         });
     }
@@ -27,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('messages');
+        Schema::dropIfExists('favourites');
     }
 };

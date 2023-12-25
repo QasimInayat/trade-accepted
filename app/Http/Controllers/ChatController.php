@@ -15,6 +15,7 @@ class ChatController extends Controller
         $data['threads'] = Thread::where('from_id' , auth()->user()->id)->get();
         $data['chat'] = Thread::where('id' , $id)->firstorfail();
         $data['replies'] = Message::where('thread_id' , $id)->get();
+        $data['senders'] = Message::where(['from_id' => auth()->user()->id])->get();
         $data['thread'] = Thread::where('id' , $id)->first();
         $view = view('pages.chat',$data);
         return response(['success' => true, 'data' => $view->render()]);
@@ -29,7 +30,7 @@ class ChatController extends Controller
         if(!empty($store->id)){
             return response()->json(['success' => true]);
         }else{
-            return response()->json(['error' => false]);
+            return response()->json(['error' => true]);
         }
     }
     public function vehicleChat($id){

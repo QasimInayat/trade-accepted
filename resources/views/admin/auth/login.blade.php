@@ -62,7 +62,7 @@
                   <div class="app-brand justify-content-center mb-4 mt-2">
                      <a href="{{ url('/') }}" class="app-brand-link gap-2">
                         <div>
-                            <img src="{{ asset('asset/img/trade-accepted-logo.png') }}" alt="" height="100px" width="250px">
+                            <img src="{{ asset('assets/imgs/trade-accepted-logo.png') }}" alt="" height="100px" width="250px">
                         </div>
                      </a>
                   </div>
