@@ -119,35 +119,35 @@
                             <h4 class="mb-3">Details</h4>
                             <div class="meta-desc">
                                 <div class="row">
-                                    <div class="col-lg-3 col-md-4 col-sm-6 mb-3">
+                                    <div class="col-lg-3 col-md-4 col-sm-6 mb-3 col-6">
                                         <p class="head mb-1">Mileage</p>
                                         <p class="title text-primary">{{ $vehicle->mileage }}</p>
                                     </div>
-                                    <div class="col-lg-3 col-md-4 col-sm-6 mb-3">
+                                    <div class="col-lg-3 col-md-4 col-sm-6 mb-3 col-6">
                                         <p class="head mb-1">Transmission</p>
                                         <p class="title text-primary">{{ $vehicle->transmission }}</p>
                                     </div>
-                                    <div class="col-lg-3 col-md-4 col-sm-6 mb-3">
+                                    <div class="col-lg-3 col-md-4 col-sm-6 mb-3 col-6">
                                         <p class="head mb-1">Exterior Color</p>
                                         <p class="title text-primary">{{ $vehicle->exterior_color }}</p>
                                     </div>
-                                    <div class="col-lg-3 col-md-4 col-sm-6 mb-3">
+                                    <div class="col-lg-3 col-md-4 col-sm-6 mb-3 col-6">
                                         <p class="head mb-1">Interior Color</p>
                                         <p class="title text-primary">{{ $vehicle->interior_color }}</p>
                                     </div>
-                                    <div class="col-lg-3 col-md-4 col-sm-6 mb-3">
+                                    <div class="col-lg-3 col-md-4 col-sm-6 mb-3 col-6">
                                         <p class="head mb-1">Make</p>
                                         <p class="title text-primary">{{ isset($vehicle->make) ? $vehicle->make->name : '-' }}</p>
                                     </div>
-                                    <div class="col-lg-3 col-md-4 col-sm-6 mb-3">
+                                    <div class="col-lg-3 col-md-4 col-sm-6 mb-3 col-6">
                                         <p class="head mb-1">Model</p>
                                         <p class="title text-primary">{{ $vehicle->model_id }}</p>
                                     </div>
-                                    <div class="col-lg-3 col-md-4 col-sm-6 mb-3">
+                                    <div class="col-lg-3 col-md-4 col-sm-6 mb-3 col-6">
                                         <p class="head mb-1">Trim</p>
                                         <p class="title text-primary">{{ $vehicle->trim }}</p>
                                     </div>
-                                    <div class="col-lg-3 col-md-4 col-sm-6 mb-3">
+                                    <div class="col-lg-3 col-md-4 col-sm-6 mb-3 col-6">
                                         <p class="head mb-1">Year</p>
                                         <p class="title text-primary">{{ $vehicle->year }}</p>
                                     </div>
@@ -287,7 +287,7 @@
                             $('.loader').hide();
                             $('a[data-vehicleid='+vehicle_id+']').html(`<i style="font-size: 13px; margin-left: -5px; color: red; margin-bottom: 7px" class="fa fa-bookmark"></i>`);
                             toastr.success(response.message);
-    
+
                         } else if (response.action == 'remove') {
                             $('.loader').hide();
                             $('a[data-vehicleid=' + vehicle_id + ']').html(
@@ -306,7 +306,7 @@
           copyText.select();
           copyText.setSelectionRange(0, 99999);
           navigator.clipboard.writeText(copyText.value);
-          
+
           var tooltip = document.getElementById("myTooltip");
           tooltip.innerHTML = "Copied: " + copyText.value;
         }
