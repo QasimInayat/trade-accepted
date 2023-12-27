@@ -26,61 +26,29 @@
                         <thead>
                            <tr>
                               <th>ID</th>
-                              <th>User </th>
                               <th>Order ID</th>
-                              <th>Package</th>
-                              <th>Subtotal</th>
-                              <th>Expiry</th>
-                              <th>Status</th>
+                              <th>User </th>
+                              <th>Vehicle</th>
+                              <th>Images</th>
+                              <th>Amount</th>
                               <th>Purchased At</th>
                               <th>Action</th>
                            </tr>
                         </thead>
                         <tbody>
+                            @forelse($transactions as $index=>$transaction)
                           <tr>
-                             <td>1</td>
-                             <td>John</td>
-                             <td>9</td>
-                             <td>Mac</td>
-                             <td>1000</td>
-                             <td><span class="badge bg-warning">0 Days left</span></td>
-                             <td><span class="badge bg-danger">Expired</span></td>
-                             <td>06-4-2032</td>
-                             <td><a target="blank"  href="{{route('deposite.detail')}}"><button class="btn btn-danger btn-sm"> <i style="margin-right:5px" class="fa fa-dollar"></i>Detail </button></a></td>
-                          </tr>
-                          <tr>
-                              <td>2</td>
-                              <td>Harry</td>
-                              <td>5</td>
-                              <td>Cell</td>
-                              <td>1500</td>
-                              <td><span class="badge bg-warning">10 Days left</span></td>
-                              <td><span class="badge bg-success">Active</span></td>
-                              <td>05-6-2032</td>
-                              <td><a target="blank"  href="{{route('deposite.detail')}}"><button class="btn btn-danger btn-sm"> <i style="margin-right:5px" class="fa fa-dollar"></i>Detail </button></a></td>
+                              <td>{{ ++$index }}</td>
+                              <td>{{ 'OR-'.($transaction->id + 10000) }}</td>
+                              <td>{{ isset($transaction->user) ? $transaction->user->full_name : '-' }}</td>
+                              <td><a href="{{ route('detail',$transaction->vehicle->slug) }}">{{ isset($transaction->vehicle) ? $transaction->vehicle->title : '-' }}</a></td>
+                             <td><a href="{{ route('detail',$transaction->vehicle->slug) }}"><img style="border-radius:10px;" height="70px" width="100px" src="{{ asset('upload/vehicle/'.mainImage($transaction->vehicle->id)) }}" alt=""></a></td>
+                             <td>${{ number_format($transaction->amount) }}</td>
+                               <td>{{ date('d M Y' , strtotime( $transaction->created_at ))}}</td>
+                              <td><a target="blank"  href="{{route('deposite.detail',1)}}"><button class="btn btn-danger btn-sm"> <i style="margin-right:5px" class="fa fa-dollar"></i>Detail </button></a></td>
                             </tr>
-                           <tr>
-                              <td>3</td>
-                              <td>Jack</td>
-                              <td>2</td>
-                              <td>Apple</td>
-                              <td>2000</td>
-                              <td><span class="badge bg-warning">0 Days left</span></td>
-                              <td><span class="badge bg-danger">Expired</span></td>
-                              <td>12-6-2032</td>
-                              <td><a target="blank"  href="{{route('deposite.detail')}}"><button class="btn btn-danger btn-sm"> <i style="margin-right:5px" class="fa fa-dollar"></i>Detail </button></a></td>
-                            </tr>
-                           <tr>
-                              <td>4</td>
-                              <td>Roy</td>
-                              <td>5</td>
-                              <td>Pro</td>
-                              <td>1700</td>
-                              <td><span class="badge bg-warning">32 Days left</span></td>
-                              <td><span class="badge bg-success">Active</span></td>
-                              <td>11-1-2032</td>
-                              <td><a target="blank"  href="{{route('deposite.detail')}}"><button class="btn btn-danger btn-sm"> <i style="margin-right:5px" class="fa fa-dollar"></i>Detail </button></a></td>
-                            </tr>
+                            @empty
+                            @endforelse
                         </tbody>
                      </table>
             </div>

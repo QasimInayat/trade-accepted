@@ -9,6 +9,7 @@ use App\Models\User;
 use App\Models\Notification;
 use App\Models\Thread;
 use App\Models\Message;
+use App\Models\Transaction;
 
 class FrontendController extends Controller
 {
@@ -43,8 +44,8 @@ class FrontendController extends Controller
         ]);
         $thread = Thread::where(['to_id' => $request->to_id , 'from_id' => auth()->user()->id])->first();
         if(!empty($thread)){
-            $this->message($thread->id,$request->to_id,auth()->user()->id, 'Please reply');
-            return redirect()->route('messenger');
+            // $this->message($thread->id,$request->to_id,auth()->user()->id, 'Please reply');
+            return redirect()->route('messenger',['thread' => $thread->id]);
         }
         else{
             $store = Thread::create([
@@ -53,8 +54,8 @@ class FrontendController extends Controller
                 'from_id' => auth()->user()->id,
             ]);
             if(!empty($store->id)){
-                $this->message($store->id,$request->to_id,auth()->user()->id, 'Hi');
-                return redirect()->route('messenger');
+                $this->message($store->id,$request->to_id,auth()->user()->id, 'Hello!');
+               return redirect()->route('messenger',['thread' => $store->id]);
             }else{
                 return redirect()->back();
             }
@@ -66,6 +67,7 @@ class FrontendController extends Controller
             'to_id' => $to_id,
             'from_id' => $from_id,
             'message' => $msg,
+            'is_offer' => 1,
         ]);
         if(!empty($message)){
             return true;
@@ -88,7 +90,7 @@ class FrontendController extends Controller
     public function messenger(){
         $data ['title'] = 'Messenger';
         $data ['heading'] = 'Messenger';
-        $data['threads'] = Thread::where('from_id' , auth()->user()->id)->get();
+        $data['threads'] = Thread::where('from_id' , auth()->user()->id)->orWhere('to_id', auth()->user()->id)->get();
         $data['threadd'] = Thread::where('from_id' , auth()->user()->id)->first();
         return view('pages.messenger',$data);
     }
@@ -142,20 +144,28 @@ class FrontendController extends Controller
     public function booking(){
         $data ['title'] = 'Booking';
         $data ['heading'] = 'My Booking';
+        $data['transactions'] = Transaction::where('user_id' , auth()->user()->id)->get();
         return view('pages.booking.index',$data);
     }
-    public function bdetail(){
+    public function bdetail($id){
         $data ['title'] = 'Booking Detail';
+        $data['transaction'] = Transaction::where('id' , $id)->firstorfail();
         return view('pages.booking.detail',$data);
     }
     public function deposite(){
-        $data ['title'] = 'Deposite';
-        $data ['heading'] = 'My Deposite';
+        $data ['title'] = 'Deposit';
+        $data ['heading'] = 'My Deposit';
+        $data['vehicle'] = Vehicle::where('user_id' , auth()->user()->id)->first();
+        $data['transactions'] = Transaction::where('user_id' , '6')->get();
         return view('pages.deposite.index',$data);
     }
-    public function ddetail(){
-        $data ['title'] = 'Deposite Detail';
+    public function ddetail($id){
+        $data ['title'] = 'Deposit Detail';
         return view('pages.deposite.detail',$data);
     }
-
+    public function thankYou(){
+        $data['title'] = 'Thank You';
+        $data['Heading'] = 'Thank You';
+        return view('pages.thank',$data);
+    }
 }

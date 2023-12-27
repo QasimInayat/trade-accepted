@@ -27,9 +27,9 @@ Index
                                     <div class="card-meta d-flex justify-content-between">
                                         <h5 class="mb-0 text-white">{{ $vehicle->title }}</h5>
                                         <div>
-                                            <span>
-                                                <img src="{{asset('assets/imgs/fi_share-2.svg')}}" alt="">
-                                            </span>
+                                            <!--<span>-->
+                                            <!--    <img src="{{asset('assets/imgs/fi_share-2.svg')}}" alt="">-->
+                                            <!--</span>-->
                                                 @php $countFavourite = 0 @endphp
                                                     @if (Auth::check())
                                                         @php
@@ -50,7 +50,7 @@ Index
                                 </div>
                                </a>
                                 <div class="d-flex justify-content-between align-items-center mt-2">
-                                    <h4 class="mb-0">${{ $vehicle->price }}</h4>
+                                    <h4 class="mb-0">${{ number_format($vehicle->price) }}</h4>
                                     <p class="mb-0">{{ $vehicle->country_id }} {{ $vehicle->city_id }}</p>
                                 </div>
 

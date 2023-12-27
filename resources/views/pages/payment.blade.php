@@ -2,6 +2,18 @@
 @push('title')
 {{ $title ?? '' }}
 @endpush
+@push('styles')
+<style>
+    .loader{
+        position:fixed;left:0;
+        top:0;width:100%;
+        height:100%;
+        z-index:9999;
+        background: url('/assets/loader/loader.gif') 50% 50% no-repeat rgb(255,255,255,0.5);
+        background-size:120px
+    }
+</style>
+@endpush
 @section('content')
 <main>
     <div class="content pe-2">
@@ -15,34 +27,36 @@
                                 <div class="card-body">
                                     <div class="payment-form mt-5">
                                         <h3 class="text-center">Payment Method</h3>
+                                          <form method="POST" id="form" class="mt-3">
+                                            @csrf
                                             <div class="mb-3">
                                                 <label for="" class="form-label">Card Number</label>
-                                                <input type="text" name="card_number" class="form-control" required id="card_number" value="{{ auth()->user()->card_number }}" placeholder="4242-4242-4242-4242">
+                                                <input type="text" name="card_number" class="form-control" required id="card_number" value="{{ auth()->user()->card_number }}" placeholder="4242-4242-4242-4242" required>
                                             </div>
 
                                             <div class="mb-3">
                                                 <label for="" class="form-label">Card Name</label>
-                                                <input type="text" name="card_name" class="form-control" required value="{{ auth()->user()->card_name }}" id="card-name" placeholder="Full name as displayed on card">
+                                                <input type="text" name="card_name" class="form-control" required value="{{ auth()->user()->card_name }}" id="card-name" placeholder="Full name as displayed on card" required>
                                             </div>
 
                                             <div class="mb-3">
                                                 <label for="" class="form-label">Expiry</label>
-                                                <input type="text" name="expiry" class="form-control" required value="{{ auth()->user()->expiry }}" id="exprationDate" placeholder="MM / YYYY">
+                                                <input type="text" name="expiry" class="form-control" required value="{{ auth()->user()->expiry }}" id="exprationDate" placeholder="MM / YYYY" required>
                                             </div>
                                             <div class="mb-3">
                                                 <label for="" class="form-label">CVC</label>
-                                                <input type="text" name="cvc" class="form-control" required id="card_cvc" value="{{ auth()->user()->cvc }}" placeholder="card-cvc">
+                                                <input type="text" name="cvc" class="form-control" required id="card_cvc" value="{{ auth()->user()->cvc }}" placeholder="card-cvc" required>
                                             </div>
                                             <div class="mb-3">
                                                 <label for="" class="form-label">Country</label>
-                                                <select name="country_id" required class="form-control custom-control" id="country" onchange="print_state('state',this.selectedIndex);">
+                                                <select name="country_id" required class="form-control custom-control" id="country" onchange="print_state('state',this.selectedIndex);" required>
                                                 </select>
                                             </div>
                                             <div class="mb-2" style="float: right;">
                                                 <button type="submit" class="btn-sm btn btn-primary">Save</button>
                                             </div>
                                             <div></div>
-                                            {!! Form::close() !!}
+                                        </form>
                                     </div>
                                 </div>
                             </div>
@@ -61,7 +75,7 @@
                                                 <div style="text-align: center;" class="d-flex  justify-content-between">
                                                 </div>
                                                 <div class="price mt-3">
-                                                    <h5 class="mb-0">${{ 0.95 * $vehicle->price  }}</h5>
+                                                    <h5 class="mb-0">${{ number_format(Session::get('depositPercentage')) }}</h5>
                                                     <p class="mb-0 text-primary">Listed {{ Carbon\Carbon::parse($vehicle->created_at)->diffForHumans() }} . {{ $vehicle->country_id }} {{ $vehicle->city_id }}</p>
                                                 </div>
                                             </div>
@@ -121,6 +135,8 @@
 @endsection
 @push('scripts')
 <script src="{{ asset('assets/js/payment-relatedss.js') }}"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/notify/0.4.2/notify.min.js" integrity="sha512-efUTj3HdSPwWJ9gjfGR71X9cvsrthIA78/Fvd/IN+fttQVy7XWkOAXb295j8B3cmm/kFKVxjiNYzKw9IQJHIuQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script>
    function readURL(input) {
     if (input.files && input.files[0]) {
@@ -138,12 +154,48 @@ $("#imageUpload").change(function() {
 });
 
 $(function() {
-            print_country("country");
+        print_country("country");
         $("#card_number").mask("9999-9999-9999-9999");
         $("#card_cvc").mask("999");
         $("#exprationDate").mask("99/9999");
     });
+    
+    
+    $("#form").submit(function(e) {
+        e.preventDefault();
+        // $('#loader').removeClass('d-none');
+        var formData = $("#form").serialize();
+        console.log(formData);
+        $.ajax({
+            type: "POST",
+            url: "{{route('paymentDetails')}}",
+            data: formData,
+            beforeSend: function(res) {
+               $('.loader').show();
+                $("#submit_btn").attr("disabled", true);
+            },
+            success: function(res) {
+                $('.loader').hide();
+                if (res.success == true) {
+                    $("#submit_btn").attr("disabled", true);
+                    $.notify(res.msg, 'success');
+                    window.location.href = "thank-you";
+                } else if (res.success == false) {
+                    $.notify(res.msg, 'error');
+                    $("#submit_btn").attr("disabled", false);
+                } else {
+                    $.notify('Something Went Wrong', 'error');
+                    $("#submit_btn").attr("disabled", false);
+                }
+            },
+            error: function(res) {
+                $('.loader').hide();
+                $.notify('Something Went Wrong', 'error');
+                $("#submit_btn").attr("disabled", false);
+            }
+        });
+        
+    });
 </script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 
 @endpush

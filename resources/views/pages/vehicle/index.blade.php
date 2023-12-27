@@ -18,15 +18,12 @@
                          <div class="col-md-12">
                             <h2 class="mt-3 text-danger text-center"><b>{{ $title ?? '' }}</b></h2>
                          </div>
-<<<<<<< HEAD
                       </div>
                 <div class="table-responsive mt-3">
-=======
                          <div class="col-md-12">
                          </div>
                       </div>
                 <div class="table-responsive mt-4">
->>>>>>> e12b1dede00bd8cb89cf6b39ff67c27013dea250
                     <table class="table table-striped table-bordered">
                         <thead>
                             <th>ID</th>
@@ -44,7 +41,7 @@
                                 <td>{{ ++$index }}</td>
                                 <td>{{ $item->title }}</td>
                                 <td><img style="border-radius:10px;" height="70px" width="100px" src="{{ asset('upload/vehicle/'.mainImage($item->id)) }}" alt=""></td>
-                                <td>${{ $item->price }}</td>
+                                <td>${{ number_format($item->price) }}</td>
                                 <td>{{ $item->make->name }}</td>
                                 <td>{{ $item->model_id }}</td>
                                 <td>

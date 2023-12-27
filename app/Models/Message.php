@@ -11,10 +11,10 @@ class Message extends Model
     protected $guarded = [];
 
     public function from(){
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class,'from_id','id');
     }
     public function to(){
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class,'to_id','id');
     }
     public function vehicle(){
         return $this->belongsTo(Vehicle::class);

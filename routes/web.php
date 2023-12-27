@@ -35,13 +35,20 @@ Route::get('vehicle-list' , [FrontendController::class, 'vehicleList'])->name('v
 
 Route::middleware(['auth'])->group(function () {
 
-    Route::get('messenger', [FrontendController::class, 'messenger'])->name('messenger');
+    Route::get('messenger', [FrontendController::class, 'messenger'])->name('messenger')->middleware('auth');
 
     //Thread
     Route::post('thread/store' , [FrontendController::class , 'threadStore'])->name('thread.store');
 
     //Chat
     Route::get('chat/{id}' , [ChatController::class , 'index'])->name('chat.index');
+    Route::get('thread_vehicle' , [ChatController::class , 'vehicle'])->name('chat.vehicle');
+    Route::get('thread_messages' , [ChatController::class , 'threadMessages'])->name('chat.messages');
+    Route::get('send-custom-message' , [ChatController::class , 'sendCustomMessage'])->name('chat.customMessage');
+    Route::get('send-deposit' , [ChatController::class , 'sendDeposit'])->name('chat.sendDeposit');
+    Route::post('send-message' , [ChatController::class , 'sendMessage'])->name('chat.sendMessage');
+        
+    
     Route::get('vehicle-chat/{id}' , [ChatController::class , 'vehicleChat'])->name('vehicle.chat');
     Route::post('message' , [ChatController::class , 'chatStore'])->name('chat.store');
 
@@ -69,12 +76,15 @@ Route::middleware(['auth'])->group(function () {
 
         // booking
         Route::get('booking' , [FrontendController::class , 'booking'])->name('booking');
-        Route::get('booking/detail', [FrontendController::class, 'bdetail'])->name('booking.detail');
+        Route::get('booking/detail/{id}', [FrontendController::class, 'bdetail'])->name('booking.detail');
         // deposite
         Route::get('deposite' , [FrontendController::class , 'deposite'])->name('deposite');
-        Route::get('deposite/detail', [FrontendController::class, 'ddetail'])->name('deposite.detail');
+        Route::get('deposite/detail/{id}', [FrontendController::class, 'ddetail'])->name('deposite.detail');
 
-        Route::get('payment/{slug}' , [PaymentController::class , 'index'])->name('payment');
+        Route::get('deposit' , [PaymentController::class , 'index'])->name('deposit');
+        
+        Route::post('payment-detail', [PaymentController::class, 'paymentDetails'])->name('paymentDetails');
+        Route::get('thank-you' , [FrontendController::class , 'thankYou'])->name('thankYou');
 });
 
 Auth::routes();

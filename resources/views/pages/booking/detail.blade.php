@@ -60,7 +60,7 @@
                       <tbody>
                         <tr>
                             <td>
-          <a href="{{ route('admin.dashboard') }}"><img src="{{ asset('assets/imgs/trade-accepted-logo.png') }}" alt="" height="50px" width="100px"></a>
+          <a href="{{ route('index') }}"><img src="{{ asset('assets/imgs/trade-accepted-logo.png') }}" alt="" height="50px" width="100px"></a>
                             </td>
                         </tr>
                         <tr class="hiddenMobile">
@@ -71,7 +71,7 @@
                         </tr>
                         <tr>
                           <td style="font-size: 12px; color: #5b5b5b; font-family: 'Open Sans', sans-serif; line-height: 18px; vertical-align: top; text-align: left;">
-                            John Doe
+                            {{ $transaction->user->full_name }}
                             <br> Thank you for your order.
                           </td>
                         </tr>
@@ -86,7 +86,7 @@
                           <td height="5"></td>
                         </tr>
                         <tr>
-                          <td style="font-size: 21px; color: #0c7cbc; letter-spacing: -1px; font-family: 'Open Sans', sans-serif; line-height: 1; vertical-align: top; text-align: right;">
+                          <td style="font-size: 21px; color: #E91111; letter-spacing: -1px; font-family: 'Open Sans', sans-serif; line-height: 1; vertical-align: top; text-align: right;">
                             Booking Detail
                           </td>
                         </tr>
@@ -100,7 +100,7 @@
                         <tr>
                           <td style="font-size: 12px; color: #5b5b5b; font-family: 'Open Sans', sans-serif; line-height: 18px; vertical-align: top; text-align: right;">
                             <small>Active</small><br />
-                            <small>16-2-2034</small>
+                            <small>{{ date('d M Y' , strtotime( $transaction->created_at ))}}</small>
                           </td>
                         </tr>
                       </tbody>
@@ -136,7 +136,7 @@
                   <tbody>
                     <tr>
                       <th style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #5b5b5b; font-weight: normal; line-height: 1; vertical-align: top; padding: 0 10px 7px 0;" width="52%" align="left">
-                        Package
+                        Vehicle
                       </th>
                       <th style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #1e2b33; font-weight: normal; line-height: 1; vertical-align: top; padding: 0 0 7px;" align="right">
                         Subtotal
@@ -150,10 +150,10 @@
                     </tr>
                         <tr>
                             <td style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #0c7cbc;  line-height: 18px;  vertical-align: top; padding:10px 0;" class="article">
-                       MAC
+                       {{ $transaction->vehicle->title }}
 
                             </td>
-                            <td style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #1e2b33;  line-height: 18px;  vertical-align: top; padding:10px 0;" align="right">$1000</td>
+                            <td style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #1e2b33;  line-height: 18px;  vertical-align: top; padding:10px 0;" align="right">${{ number_format($transaction->amount) }}</td>
                     </tr>
                     <tr>
                       <td height="1" colspan="4" style="border-bottom:1px solid #e4e4e4"></td>
@@ -195,7 +195,7 @@
                     </tr>
                     <tr>
                       <td style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #646a6e; line-height: 22px; vertical-align: top; text-align:right; ">
-                        Trade-accepted Fee
+                        {{ env('APP_NAME') }} Fee
                       </td>
                       <td style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #646a6e; line-height: 22px; vertical-align: top; text-align:right; ">
                        -
@@ -206,7 +206,7 @@
                         <strong>Total</strong>
                       </td>
                       <td style="font-size: 12px; font-family: 'Open Sans', sans-serif; color: #000; line-height: 22px; vertical-align: top; text-align:right; ">
-                        <strong>$1000</strong>
+                        <strong>${{ number_format($transaction->amount) }}</strong>
                       </td>
                     </tr>
                     <tr style="display:none">

@@ -165,7 +165,7 @@ Profile
                                                             <h5>
                                                                 <a href="{{ route('detail',$item->slug) }}">{{ $item->title }}</a>
                                                             </h5>
-                                                            <h4>${{ $item->price }}</h4>
+                                                            <h4>${{ number_format($item->price) }}</h4>
                                                             <p class="mb-2">{{ $item->address }}. {{ $item->country_id }} {{ $item->city_id }}</p>
                                                             <div class="d-flex gap-4">
                                                                 <div class="list-meta">

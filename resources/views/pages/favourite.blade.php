@@ -51,7 +51,7 @@
                                 </div>
                                </a>
                                 <div class="d-flex justify-content-between align-items-center mt-2">
-                                    <h4 class="mb-0">${{ $favourite->vehicle->price }}</h4>
+                                    <h4 class="mb-0">${{ number_format($favourite->vehicle->price) }}</h4>
                                     <p class="mb-0"> {{ $favourite->vehicle->country_id }} {{ $favourite->vehicle->city_id }}</p>
                                 </div>
 

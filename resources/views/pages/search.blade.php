@@ -33,16 +33,27 @@ Search
                                             <span>
                                                 <img src="{{asset('assets/imgs/fi_share-2.svg')}}" alt="">
                                             </span>
+                                             @php $countFavourite = 0 @endphp
+                                                    @if (Auth::check())
+                                                        @php
+                                                            $countFavourite = App\Models\Favourite::countFavourite($vehicle['id']);
+                                                        @endphp
+                                                    @endif
+                                                    @if ($countFavourite > 0)
                                             <span class="ms-1">
-                                                <img src="{{asset('assets/imgs/fi_bookmark.svg')}}" alt="">
+
+                                                <i style="font-size: 10px;" class="fa fa-bookmark"></i>
+                                                                                                {{-- <img src="{{asset('assets/imgs/fi_bookmark.svg')}}" alt=""> --}}
                                             </span>
+                                                @else
+                                                @endif
                                         </div>
                                     </div>
                                 </div>
                                </a>
                                 <div class="d-flex justify-content-between align-items-center mt-2">
                                     <h4 class="mb-0">${{ $vehicle->price }}</h4>
-                                    <p class="mb-0">{{ $vehicle->address }} . {{ $vehicle->country_id }} {{ $vehicle->city_id }}</p>
+                                    <p class="mb-0">{{ $vehicle->country_id }} . {{ $vehicle->city_id }}</p>
                                 </div>
 
                             </div>

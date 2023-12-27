@@ -5,6 +5,10 @@ use App\Models\Gallery;
 use App\Models\User;
 use App\Models\Notification;
 use App\Models\Message;
+use App\Models\Vehicle;
+use App\Models\Thread;
+
+
 
 
 
@@ -49,4 +53,26 @@ function notificationCount(){
 function messages(){
     $messages = Message::where(['to_id' => auth()->user()->id , 'status' => '0'])->orderBy('created_at' , 'DESC')->take(3)->get();
     return $messages;
+}
+function lastMessage($thread_id){
+    $message = Message::where('thread_id',$thread_id)->orderBy('created_at','DESC')->first();
+    if(!empty($message)){
+        return $message->message;
+    }
+    return null;
+}
+function userAvatar($image){
+    $avatar = asset('assets/imgs/placeholder1.png');
+    if(!empty($image)){
+        $avatar = asset('upload/user/'.$image);
+    }
+    return $avatar;
+}
+function vehicleById($id){
+    $thread = Thread::where('id',$id)->first();
+    if(!empty($thread)){
+        $vehicle = Vehicle::where('id',$thread->vehicle_id)->first();
+        return $vehicle;
+    }
+    return null;
 }
