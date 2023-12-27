@@ -7,7 +7,7 @@
                 <!-- <p class="default"> -->
                     <div class="car-offer">
                         @php $vehicle = vehicleById($message->thread_id); @endphp
-                        <h2>{{ $vehicle->title }}</h2>
+                        <h5 class="text-primary">{{ $vehicle->title }}</h5>
                         <h4>${{number_format($vehicle->price)}}</h4>
         
                         <div class="d-xl-flex gap-3">

@@ -18,7 +18,7 @@ Index
                 </div>
                 <div class="row mb-5">
                     @forelse($vehicles as $vehicle)
-                    <div class="col-lg-3 col-md-6 mb-3">
+                    <div class="col-lg-3 col-6 mb-3">
                         <a href="javascipt:;">
                             <div class="multi-card">
                                <a href="{{ route('detail',$vehicle->slug) }}">
@@ -51,7 +51,7 @@ Index
                                </a>
                                 <div class="d-flex justify-content-between align-items-center mt-2">
                                     <h4 class="mb-0">${{ number_format($vehicle->price) }}</h4>
-                                    <p class="mb-0">{{ $vehicle->country_id }} {{ $vehicle->city_id }}</p>
+                                    <p class="mb-0">{{ subStr($vehicle->country_id , 0,5) }} {{ subStr($vehicle->city_id , 0,5)}}</p>
                                 </div>
 
                             </div>

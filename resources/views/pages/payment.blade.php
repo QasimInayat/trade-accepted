@@ -26,7 +26,7 @@
                             <div class="card shadow">
                                 <div class="card-body">
                                     <div class="payment-form mt-5">
-                                        <h3 class="text-center">Payment Method</h3>
+                                        <h3 class="text-center">Add Deposit</h3>
                                           <form method="POST" id="form" class="mt-3">
                                             @csrf
                                             <div class="mb-3">
@@ -53,7 +53,7 @@
                                                 </select>
                                             </div>
                                             <div class="mb-2" style="float: right;">
-                                                <button type="submit" class="btn-sm btn btn-primary">Save</button>
+                                                <button type="submit" class="btn-sm btn btn-primary">Pay</button>
                                             </div>
                                             <div></div>
                                         </form>
@@ -74,47 +74,47 @@
                                             </div>
                                                 <div style="text-align: center;" class="d-flex  justify-content-between">
                                                 </div>
-                                                <div class="price mt-3">
+                                                <div style="text-align: center;" class="price mt-3">
                                                     <h5 class="mb-0">${{ number_format(Session::get('depositPercentage')) }}</h5>
                                                     <p class="mb-0 text-primary">Listed {{ Carbon\Carbon::parse($vehicle->created_at)->diffForHumans() }} . {{ $vehicle->country_id }} {{ $vehicle->city_id }}</p>
                                                 </div>
                                             </div>
                                             
-                                        <div class="car-details ">
+                                        <div class="car-details" style="text-align: center;">
                             
                                             <div class="car-meta">
                                                 <h4 class="mt-4">Details</h4>
                                                 <div class="meta-desc">
                                                     <div class="row ">
-                                                        <div class="col-md-6 mb-2">
+                                                        <div class="col-md-6 col-6 mb-2">
                                                             <p class="head mb-1">Mileage</p>
                                                             <p class="title text-primary">{{ $vehicle->mileage }}</p>
                                                         </div>
-                                                        <div class="col-md-6 mb-2">
+                                                        <div class="col-md-6 col-6 mb-2">
                                                             <p class="head mb-1">Transmission</p>
                                                             <p class="title text-primary">{{ $vehicle->transmission }}</p>
                                                         </div>
-                                                        <div class="col-md-6 mb-2">
+                                                        <div class="col-md-6 col-6 mb-2">
                                                             <p class="head mb-1">Exterior Color</p>
                                                             <p class="title text-primary">{{ $vehicle->exterior_color }}</p>
                                                         </div>
-                                                        <div class="col-md-6 mb-2">
+                                                        <div class="col-md-6 col-6 mb-2">
                                                             <p class="head mb-1">Interior Color</p>
                                                             <p class="title text-primary">{{ $vehicle->interior_color }}</p>
                                                         </div>
-                                                        <div class="col-md-6 mb-2">
+                                                        <div class="col-md-6 col-6 mb-2">
                                                             <p class="head mb-1">Make</p>
                                                             <p class="title text-primary">{{ isset($vehicle->make) ? $vehicle->make->name : '-' }}</p>
                                                         </div>
-                                                        <div class="col-md-6 mb-2">
+                                                        <div class="col-md-6 col-6 mb-2">
                                                             <p class="head mb-1">Model</p>
                                                             <p class="title text-primary">{{ $vehicle->model_id }}</p>
                                                         </div>
-                                                        <div class="col-md-6 mb-2">
+                                                        <div class="col-md-6 col-6 mb-2">
                                                             <p class="head mb-1">Trim</p>
                                                             <p class="title text-primary">{{ $vehicle->trim }}</p>
                                                         </div>
-                                                        <div class="col-md-6 mb-2">
+                                                        <div class="col-md-6 col-6 mb-2">
                                                             <p class="head mb-1">Year</p>
                                                             <p class="title text-primary">{{ $vehicle->year }}</p>
                                                         </div>

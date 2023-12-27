@@ -43,8 +43,10 @@
                              <td><a href="{{ route('detail',$transaction->vehicle->slug) }}"><img style="border-radius:10px;" height="70px" width="100px" src="{{ asset('upload/vehicle/'.mainImage($transaction->vehicle->id)) }}" alt=""></a></td>
                              <td>${{ number_format($transaction->amount) }}</td>
                              <td>{{ date('d M Y' , strtotime( $transaction->created_at ))}}</td>
-                             <td><a target="blank"  href="{{route('booking.detail',$transaction->id)}}"><button class="btn btn-danger btn-sm"> <i style="margin-right:5px" class="fa fa-dollar"></i>Detail </button></a></td>
-                          </tr>
+                             <td><a target="blank"  href="{{route('booking.detail',$transaction->id)}}"> <i style="margin-right:5px" class="text-success fa fa-file-text "></i> </a>
+                             {{-- <button data-toggle="modal" data-target="#myModal"> <i style="margin-right:5px" class="text-warning fa fa-star"></i> </button> --}}
+                            </td>
+                            </tr>
                           @empty
                           @endforelse
                         </tbody>
@@ -61,5 +63,6 @@
 </div>
 
 </div>
+
 @endsection
 

@@ -170,7 +170,7 @@ Profile
                                                             <div class="d-flex gap-4">
                                                                 <div class="list-meta">
                                                                     <a style="font-size: 11px;" href="{{ route('vehicle.edit',$item->slug) }}" class="badge bg-primary"><i class="text-light fa fa-edit"></i> Edit</a>&nbsp;|&nbsp;
-                                                                    <a style="font-size: 11px;" href="{{ route('vehicle.delete',$item->slug) }}" class="badge bg-danger"><i class="text-light fa fa-trash"></i> Delete</a>
+                                                                    <a  style="font-size: 11px;" href="{{ route('vehicle.delete',$item->slug) }}" class="badge bg-danger"><i class="text-light fa fa-trash"></i> Delete</a>
                                                                    
                                                                 </div>
                                                             </div>

@@ -70,7 +70,7 @@
             @forelse (messages() as $aa)
             <hr>
             <li>
-                <a href="javascript:;" onclick="message($(this),{{$aa->id}})" class="dropdown-item"><p class="text-primary" style="margin-bottom: 3px;">{{ isset($aa->from) ? $aa->from->full_name : '-' }}</p><small>{{ subStr($aa->message,0,22) }}....</small> <div style="float: right;"><small style="font-size: 12px;" class="text-secondary">{{ Carbon\Carbon::parse($aa->created_at)->diffForHumans() }}</small></div></a>
+                <a href="{{ route('messenger',['thread' => $aa->thread_id   ])  }}" class="dropdown-item"><p class="text-primary" style="margin-bottom: 3px;">{{ isset($aa->from) ? $aa->from->full_name : '-' }}</p><small>{{ subStr($aa->message,0,22) }}....</small> <div style="float: right;"><small style="font-size: 12px;" class="text-secondary">{{ Carbon\Carbon::parse($aa->created_at)->diffForHumans() }}</small></div></a>
             </li>
             @empty
             @endforelse
@@ -113,7 +113,7 @@
                             <li><a class="dropdown-item" href="{{route('favourite.index')}}">Favourite</a></li>
                             <!--<li><a class="dropdown-item" href="{{route('deposite')}}">My Deposit</a></li>-->
                             <li><a class="dropdown-item" href="{{route('booking')}}">My Booking</a></li>
-                            <li><a class="dropdown-item" href="javscript:;" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="mdi mdi-logout text-muted fs-16 align-middle me-1"></i> <span class="align-middle" data-key="t-logout"> <i class="fa fa-sign-out"></i> Logout
+                            <li><a class="dropdown-item" href="javscript:;" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="mdi mdi-logout text-muted fs-16 align-middle me-1"></i> <span class="align-middle" data-key="t-logout"> Logout
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                     @csrf
                                 </form>

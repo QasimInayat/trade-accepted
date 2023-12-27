@@ -16,35 +16,35 @@
             <h4>Details</h4>
             <div class="meta-desc">
                 <div class="row">
-                    <div class="col-md-6 mb-2">
+                    <div class="col-md-6 col-6 mb-2">
                         <p class="head mb-1">Mileage</p>
                         <p class="title text-primary">{{ $thread->vehicle->mileage }}</p>
                     </div>
-                    <div class="col-md-6 mb-2">
+                    <div class="col-md-6 col-6 mb-2">
                         <p class="head mb-1">Transmission</p>
                         <p class="title text-primary">{{ $thread->vehicle->transmission }}</p>
                     </div>
-                    <div class="col-md-6 mb-2">
+                    <div class="col-md-6 col-6 mb-2">
                         <p class="head mb-1">Exterior Color</p>
                         <p class="title text-primary">{{ $thread->vehicle->exterior_color }}</p>
                     </div>
-                    <div class="col-md-6 mb-2">
+                    <div class="col-md-6 col-6 mb-2">
                         <p class="head mb-1">Interior Color</p>
                         <p class="title text-primary">{{ $thread->vehicle->interior_color }}</p>
                     </div>
-                    <div class="col-md-6 mb-2">
+                    <div class="col-md-6 col-6 mb-2">
                         <p class="head mb-1">Make</p>
                         <p class="title text-primary">{{ isset($thread->vehicle->make) ? $thread->vehicle->make->name : '-' }}</p>
                     </div>
-                    <div class="col-md-6 mb-2">
+                    <div class="col-md-6 col-6 mb-2">
                         <p class="head mb-1">Model</p>
                         <p class="title text-primary">{{ $thread->vehicle->model_id }}</p>
                     </div>
-                    <div class="col-md-6 mb-2">
+                    <div class="col-md-6 col-6 mb-2">
                         <p class="head mb-1">Trim</p>
                         <p class="title text-primary">{{ $thread->vehicle->trim }}</p>
                     </div>
-                    <div class="col-md-6 mb-2">
+                    <div class="col-md-6 col-6 mb-2">
                         <p class="head mb-1">Year</p>
                         <p class="title text-primary">{{ $thread->vehicle->year }}</p>
                     </div>
