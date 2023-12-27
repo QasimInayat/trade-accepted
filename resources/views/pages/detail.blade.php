@@ -37,7 +37,7 @@
                         <div class="car-slider">
                             @forelse ($galleries as $gallery)
                             <div>
-                                <img height="290px" class="w-100" src="{{ asset('upload/vehicle/'.$gallery->image) }}" alt="">
+                                <img  class="w-100" src="{{ asset('upload/vehicle/'.$gallery->image) }}" alt="">
                             </div>
                             @empty
                             @endforelse
