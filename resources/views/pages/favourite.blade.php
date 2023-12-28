@@ -27,9 +27,9 @@
                                     <div class="card-meta d-flex justify-content-between">
                                         <h5 class="mb-0 text-white">{{ $favourite->vehicle->title }}</h5>
                                         <div>
-                                            <span>
+                                            {{-- <span>
                                                 <img src="{{asset('assets/imgs/fi_share-2.svg')}}" alt="">
-                                            </span>
+                                            </span> --}}
                                             {{-- <span class="ms-1">
                                                 <img src="{{asset('assets/imgs/fi_bookmark.svg')}}" alt="">
                                                 @php $countFavourite = 0 @endphp
