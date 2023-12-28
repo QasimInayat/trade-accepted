@@ -10,6 +10,7 @@ use App\Models\Notification;
 use App\Models\Thread;
 use App\Models\Message;
 use App\Models\Transaction;
+use App\Models\Review;
 
 class FrontendController extends Controller
 {
@@ -167,5 +168,23 @@ class FrontendController extends Controller
         $data['title'] = 'Thank You';
         $data['Heading'] = 'Thank You';
         return view('pages.thank',$data);
+    }
+    public function reviewStore(Request $request){
+        $booking = Transaction::where('user_id' , auth()->user()->id)->first();
+        $request->validate([
+            'review' => 'required',
+            'message' => 'required|max:255',
+        ]);
+        $store = Review::create([
+            'user_id' => auth()->user()->id,
+            'booking_id' => $booking->vehicle->user_id,
+            'review' => $request->review,
+            'message' => $request->message,
+        ]);
+        if(!empty($store->id)){
+            return redirect()->back()->with('success' , 'Review created');
+        }else{
+            return redirect()->back()->with('error' , 'Something went wrong');
+        }
     }
 }

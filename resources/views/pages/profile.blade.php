@@ -145,12 +145,12 @@ Profile
                                                 aria-controls="pills-active" aria-selected="true">Active
                                                 Listings</button>
                                         </li>
-                                        <li class="nav-item" role="presentation">
+                                        {{-- <li class="nav-item" role="presentation">
                                             <button class="nav-link" id="pills-previous-tab" data-bs-toggle="pill"
                                                 data-bs-target="#pills-previous" type="button" role="tab"
                                                 aria-controls="pills-previous" aria-selected="false">Previous
                                                 listings</button>
-                                        </li>
+                                        </li> --}}
                                     </ul>
                                     <div class="tab-content" id="pills-tabContent">
                                         <div class="tab-pane fade show active" id="pills-active" role="tabpanel"
@@ -171,7 +171,7 @@ Profile
                                                                 <div class="list-meta">
                                                                     <a style="font-size: 11px;" href="{{ route('vehicle.edit',$item->slug) }}" class="badge bg-primary"><i class="text-light fa fa-edit"></i> Edit</a>&nbsp;|&nbsp;
                                                                     <a  style="font-size: 11px;" href="{{ route('vehicle.delete',$item->slug) }}" class="badge bg-danger"><i class="text-light fa fa-trash"></i> Delete</a>
-                                                                   
+
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -277,13 +277,28 @@ Profile
                                 <div class="reviews">
                                     <h5 class="fw-bold">Reviews</h5>
 
+                                    @forelse ($reviews as $review)
                                     <div class="review-list mt-4">
                                         <div class="review-image d-flex justify-content-between align-items-end">
-                                            <img src="{{asset('assets/imgs/user.png')}}" alt="" class="d-block users">
-                                            <img src="{{asset('assets/imgs/star.png')}}" alt="">
+                                            @if (!empty($review->user->image))
+                                            <img class="img-thumbnail" style="height: 60px;" src="{{asset('upload/user/'. $review->user->image)}}" alt="">
+                                        @else
+                                        <img height="60px" src="{{asset('assets/imgs/placeholder1.png')}}" alt="">
+                                        @endif
+                                        <div style="margin-left: 32px;"></div>
+                                            @php $ratenum = number_format($review->review) @endphp
+                                            @for ($i = 1; $i <= $ratenum; $i++)
+                                               <i style="color: #FFBD13;" class="fa fa-star"></i>
+                                            @endfor
+                                            @for ($j = $ratenum+1; $j <= 5; $j++)
+                                               <i class="fa fa-star"></i>
+                                            @endfor
                                         </div>
-                                        <p class="mt-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et  magna aliqua.</p>
+                                        <p class="mt-2">{{ ucwords($review->message) }}</p>
                                     </div>
+                                    @empty
+
+                                    @endforelse
 
                                 </div>
                             </div>

@@ -47,8 +47,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('send-custom-message' , [ChatController::class , 'sendCustomMessage'])->name('chat.customMessage');
     Route::get('send-deposit' , [ChatController::class , 'sendDeposit'])->name('chat.sendDeposit');
     Route::post('send-message' , [ChatController::class , 'sendMessage'])->name('chat.sendMessage');
-        
-    
+
+
     Route::get('vehicle-chat/{id}' , [ChatController::class , 'vehicleChat'])->name('vehicle.chat');
     Route::post('message' , [ChatController::class , 'chatStore'])->name('chat.store');
 
@@ -82,9 +82,11 @@ Route::middleware(['auth'])->group(function () {
         Route::get('deposite/detail/{id}', [FrontendController::class, 'ddetail'])->name('deposite.detail');
 
         Route::get('deposit' , [PaymentController::class , 'index'])->name('deposit');
-        
+
         Route::post('payment-detail', [PaymentController::class, 'paymentDetails'])->name('paymentDetails');
         Route::get('thank-you' , [FrontendController::class , 'thankYou'])->name('thankYou');
+
+        Route::post('review/store' , [FrontendController::class , 'reviewStore'])->name('review.store');
 });
 
 Auth::routes();
