@@ -6,7 +6,7 @@
                 <a href="{{ route('index') }}"><img src="{{asset('assets/imgs/logo.png')}}" alt="" class="d-block"></a>
                 <h1 class="mb-0">{{ $heading ?? '' }}</h1>
             </div>
-            
+
             <div class="vertical-nav d-flex align-items-center">
                 <ul class="list-unstyled text-end d-lg-block d-none mb-0">
                    @auth
@@ -20,7 +20,7 @@
                             <div class="custom-search">
                                 <div class="cell-wrapper ui-widget">
                                     <form action="{{ route('search') }}" method="GET">
-                                        <input autocomplete="off" name="title" value="{{ request('title') }}" placeholder="Search Vehcile" class="" id="express-form-typeahead"  type="search">
+                                        <input autocomplete="off" name="title" value="{{ request('title') }}" placeholder="Search Vehcile" class="vehicel-title" id="express-form-typeahead"  type="search">
                                     </form>
                                     <button class="search-btn" type="submit"><span class="icon"></span></button>
                                     <div class="close-search" aria-label="Close" id="closeSearch" ></div>
