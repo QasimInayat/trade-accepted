@@ -20,8 +20,8 @@ Index
                                 <input autocomplete="off" name="title" value="{{ request('title') }}" placeholder="Search Vehcile" class="vehicel-title form-control" id=""  type="search">
                                 <select name="" class="form-control" style="padding:14px;" id="">
                                     <option value="0">All Cities</option>
-                                    <option value="1">Karchi</option>
-                                    <option value="2">Lahore</option>
+                                    <option value="1">Canada</option>
+                                    <option value="2">America</option>
                                     </select>
 
                                 <div class="input-group-prepend">
