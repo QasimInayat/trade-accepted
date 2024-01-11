@@ -5,12 +5,37 @@ Index
 @section('content')
     <main>
 
-
         <div class="content pe-2">
             <div class="container-fluid">
+                <div class="container p-2">
+                    <div class="text-center">
+                        <h1>Find Used Cars in World</h1>
+                        <p>With thousands of cars, we have just the right one for you</p>
+                       <div class="row">
+                        <div class="col-md-2"></div>
+                        <div class="col-md-8">
+                            <form action="#">
+                                <div class="input-group mb-2">
+                                    <input type="text" class="form-control" placeholder=" Car Modal" style="">
+                                    <select name="" class="form-control" style="padding:14px;" id="">
+                                        <option value="0">All Cities</option>
+                                        <option value="1">Karchi</option>
+                                        <option value="2">Lahore</option>
+                                        </select>
+
+                                    <div class="input-group-prepend">
+                                        <button class="btn btn-primary " style="border-radius: 0px 10px 10px 0px; padding:14px; "><i class="fa fa-search"></i></button>
+                                    </div>
+                                </div>
+                              </form>
+                        </div>
+                        <div class="col-md-2"></div>
+                       </div>
+                    </div>
+                </div>
                 <div class="row mb-4">
                     <div class="col-md-10 col-8">
-                        <h2 class="section-heading mb-0">Recent Uploads</h2>
+                        <h2 class="section-heading mb-0 mt-4">Recent Uploads</h2>
                     </div>
                     <div class="col-md-2 col-4">
                         {{-- <p class="view-all mb-0 text-end">View All</p> --}}
