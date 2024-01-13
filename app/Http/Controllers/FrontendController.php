@@ -11,6 +11,7 @@ use App\Models\Thread;
 use App\Models\Message;
 use App\Models\Transaction;
 use App\Models\Review;
+use App\Models\Favourite;
 
 class FrontendController extends Controller
 {
@@ -186,5 +187,12 @@ class FrontendController extends Controller
         }else{
             return redirect()->back()->with('error' , 'Something went wrong');
         }
+    }
+    public function userVehicle($full_name){
+        $data['user'] = User::where('full_name' , $full_name)->firstorfail();
+        $data['vehicles'] = Vehicle::where('user_id' , $data['user']->id)->get();
+        $data['title'] =  'Trades of'.' '.$data['user']->first_name.' '.$data['user']->last_name;
+        $data['heading'] =  'Trades of'.' '.$data['user']->first_name.' '.$data['user']->last_name;
+        return view('pages.user-vehicle' ,$data);
     }
 }

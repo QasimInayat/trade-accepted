@@ -39,7 +39,7 @@
 .ui-menu{
     z-index: 3500 !important;
 }
-.ui-menu .ui-menu-item-wrapper:hover{
+/* .ui-menu .ui-menu-item-wrapper:hover{
     background-color: red;
     color: white;
     border: 1px solid red;
@@ -74,5 +74,5 @@
     background-color: red;
     color: white;
     border: 1px solid red;
-}
+} */
 </style>
