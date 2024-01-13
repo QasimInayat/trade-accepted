@@ -130,7 +130,7 @@ Search
                             </div>
                         </div>
                         @empty
-                    <h4><b>DATA NOT ADDED</b></h4>
+                    <h4 style="margin-top:10px"><b>DATA NOT ADDED</b></h4>
                     @endforelse
                     </div>
 
