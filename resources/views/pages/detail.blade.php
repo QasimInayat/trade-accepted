@@ -97,7 +97,7 @@
                                         @endif
                                         </div>
                                         <div class="seller-info">
-                                            <h5>{{ $vehicle->user->first_name }} {{ $vehicle->user->last_name }}</h5>
+                                            <h5><a href="{{ route('user.vehicle',$vehicle->user->full_name) }}">{{ $vehicle->user->first_name }} {{ $vehicle->user->last_name }}</a></h5>
                                             <p class="mb-0 fw-bold">Manual</p>
                                         </div>
                                     </div>

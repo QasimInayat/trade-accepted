@@ -31,7 +31,7 @@ Route::get('detail/{id}', [FrontendController::class, 'detail'])->name('detail')
 Route::get('search', [FrontendController::class, 'search'])->name('search');
 Route::get('client_profile', [FrontendController::class, 'clientProfile'])->name('client-profile');
 Route::get('vehicle-list' , [FrontendController::class, 'vehicleList'])->name('vehicle-list');
-
+Route::get('{full_name}/vehicle' , [FrontendController::class , 'userVehicle'])->name('user.vehicle');
 
 Route::middleware(['auth'])->group(function () {
 
