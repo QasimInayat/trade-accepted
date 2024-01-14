@@ -552,7 +552,6 @@ function toggleAccordion() {
 
 items.forEach(item => item.addEventListener('click', toggleAccordion));
 </script>
-@push('scripts')
 <script>
     var user_id = "{{ Auth::id() }}";
     $(document).ready(function() {
