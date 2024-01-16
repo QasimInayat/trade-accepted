@@ -166,12 +166,15 @@ Search
                   <div class="accordion-item">
                      <button id="accordion-button-1" aria-expanded="true"><span class="accordion-title p-3 "><b>Search by Keyword</b></span><span class="icon" aria-hidden="true"><i class="fas fa-angle-right"></i></span></button>
                      <div class="accordion-content p-3">
-                        <div class="input-group mb-3">
-                          <hr>
-                          <input type="text" class="form-control" id="demo" >
-                           <div class="input-group-append">
-                              <span class="input-group-text" style="background:red;"><i class="fa fa-search text-light p-1"></i></span>
-                           </div>
+                         <div class="input-group mb-3">
+                           <form action="{{ route('search') }}" method="GET">
+                               <div class="input-group mb-2">
+                                   <input autocomplete="off" name="title" value="{{ request('title') }}" placeholder="Search Vehcile" class="vehicel-title form-control" id=""  type="search">
+                                   <div class="input-group-prepend">
+                                       <button class="btn btn-primary" type="submit" style="background:red;"><i class="fa fa-search text-light p-1"></i></button>
+                                   </div>
+                               </div>
+                             </form>
                         </div>
                      </div>
                   </div>
