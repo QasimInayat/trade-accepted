@@ -50,26 +50,17 @@ Search
    right: 7px;
    width: 22px;
    height: 20px;
-   border: 1px solid;
    border-radius: 22px;
    &::before {
    display: block;
    position: absolute;
    content: '';
-   top: 9px;
-   left: 5px;
-   width: 10px;
-   height: 2px;
    background: currentColor;
    }
    &::after {
    display: block;
    position: absolute;
    content: '';
-   top: 5px;
-   left: 9px;
-   width: 2px;
-   height: 10px;
    background: currentColor;
    }
    }
@@ -100,7 +91,7 @@ Search
    }
    .accordion-title{
    font-size: 15px;
-   font-family: bold;
+
    }
    #size{
    font-size: 5px;
@@ -166,231 +157,232 @@ Search
          --}}
          <div class="row">
             <div class="col-md-3">
-               <div class="card bg-danger text-light">
+                <div class="card text-light" style="background-color:red;">
                   <div class="card-header">
                      <span >Search Results By:</span>
-                  </div>
+                </div>
                </div>
-               <div class="accordion">
+               <div class="accordion ">
                   <div class="accordion-item">
-                     <button id="accordion-button-1" aria-expanded="false"><span class="accordion-title p-3 ">Search by Keyword</span><span class="icon" aria-hidden="true"></span></button>
+                     <button id="accordion-button-1" aria-expanded="true"><span class="accordion-title p-3 "><b>Search by Keyword</b></span><span class="icon" aria-hidden="true"><i class="fas fa-angle-right"></i></span></button>
                      <div class="accordion-content p-3">
                         <div class="input-group mb-3">
-                           <input type="text" class="form-control" id="demo" >
+                          <hr>
+                          <input type="text" class="form-control" id="demo" >
                            <div class="input-group-append">
-                              <span class="input-group-text"><i class="fa fa-search p-1"></i></span>
+                              <span class="input-group-text" style="background:red;"><i class="fa fa-search text-light p-1"></i></span>
                            </div>
                         </div>
                      </div>
                   </div>
                   <div class="accordion-item">
-                     <button id="accordion-button-2" aria-expanded="false"><span class="accordion-title p-3">City</span><span class="icon" aria-hidden="true"></span></button>
+                     <button id="accordion-button-2" aria-expanded="false"><span class="accordion-title p-3"><b> City</b></span><span class="icon" aria-hidden="true"><i class="fas fa-angle-right"></i></span></button>
                      <div class="accordion-content p-3">
-                        <input type="checkbox" name="" id="size">&nbsp; <small> Lahore  </small> <span  style="padding-left: 50%"></span><span class="badge bg-secondary">112</span><br>
-                        <input type="checkbox" name="" id="size">&nbsp; <small> Lahore  </small> <span  style="padding-left: 50%"></span><span class="badge bg-secondary">112</span><br>
-                        <input type="checkbox" name="" id="size">&nbsp; <small> Lahore  </small> <span  style="padding-left: 50%"></span><span class="badge bg-secondary">112</span><br>
-                        <input type="checkbox" name="" id="size">&nbsp; <small> Lahore  </small> <span  style="padding-left: 50%"></span><span class="badge bg-secondary">112</span><br>
-                        <input type="checkbox" name="" id="size">&nbsp; <small> Lahore  </small> <span  style="padding-left: 50%"></span><span class="badge bg-secondary">112</span><br>
-                        <a href="#">more choices...</a>
+                        <input type="checkbox" name="" id="size">&nbsp; <small> Lahore  </small> <span  style="padding-left: 50%"></span><span class="badge bg-light text-dark border">112</span><br>
+                        <input type="checkbox" name="" id="size">&nbsp; <small> Lahore  </small> <span  style="padding-left: 50%"></span><span class="badge bg-light text-dark border">112</span><br>
+                        <input type="checkbox" name="" id="size">&nbsp; <small> Lahore  </small> <span  style="padding-left: 50%"></span><span class="badge bg-light text-dark border">112</span><br>
+                        <input type="checkbox" name="" id="size">&nbsp; <small> Lahore  </small> <span  style="padding-left: 50%"></span><span class="badge bg-light text-dark border">112</span><br>
+                        <input type="checkbox" name="" id="size">&nbsp; <small> Lahore  </small> <span  style="padding-left: 50%"></span><span class="badge bg-light text-dark border">112</span><br>
+                        <a href="javascript:;" style="color:blue;"><small> more choices... </small></a>
                      </div>
                   </div>
                   <div class="accordion-item">
-                     <button id="accordion-button-3" aria-expanded="false"><span class="accordion-title p-3">Province</span><span class="icon" aria-hidden="true"></span></button>
+                     <button id="accordion-button-3" aria-expanded="false"><span class="accordion-title p-3"><b> Province</b></span><span class="icon" aria-hidden="true"><i class="fas fa-angle-right"></i></span></button>
                      <div class="accordion-content p-3">
-                        <input type="checkbox" name="" id="size">&nbsp; <small> Punjab  </small> <span  style="padding-left: 50%"></span><span class="badge bg-secondary">112</span><br>
-                        <input type="checkbox" name="" id="size">&nbsp; <small> Punjab  </small> <span  style="padding-left: 50%"></span><span class="badge bg-secondary">112</span><br>
-                        <input type="checkbox" name="" id="size">&nbsp; <small> Punjab  </small> <span  style="padding-left: 50%"></span><span class="badge bg-secondary">112</span><br>
-                        <input type="checkbox" name="" id="size">&nbsp; <small> Punjab  </small> <span  style="padding-left: 50%"></span><span class="badge bg-secondary">112</span><br>
-                        <input type="checkbox" name="" id="size">&nbsp; <small> Punjab  </small> <span  style="padding-left: 50%"></span><span class="badge bg-secondary">112</span><br>
+                        <input type="checkbox" name="" id="size">&nbsp; <small> Punjab  </small> <span  style="padding-left: 50%"></span><span class="badge bg-light text-dark border">112</span><br>
+                        <input type="checkbox" name="" id="size">&nbsp; <small> Punjab  </small> <span  style="padding-left: 50%"></span><span class="badge bg-light text-dark border">112</span><br>
+                        <input type="checkbox" name="" id="size">&nbsp; <small> Punjab  </small> <span  style="padding-left: 50%"></span><span class="badge bg-light text-dark border">112</span><br>
+                        <input type="checkbox" name="" id="size">&nbsp; <small> Punjab  </small> <span  style="padding-left: 50%"></span><span class="badge bg-light text-dark border">112</span><br>
+                        <input type="checkbox" name="" id="size">&nbsp; <small> Punjab  </small> <span  style="padding-left: 50%"></span><span class="badge bg-light text-dark border">112</span><br>
                      </div>
                   </div>
                   <div class="accordion-item">
-                     <button id="accordion-button-4" aria-expanded="false"><span class="accordion-title p-3">Make</span><span class="icon" aria-hidden="true"></span></button>
+                     <button id="accordion-button-4" aria-expanded="false"><span class="accordion-title p-3"><b> Make</b></span><span class="icon" aria-hidden="true"><i class="fas fa-angle-right"></i></span></button>
                      <div class="accordion-content p-3">
-                        <input type="checkbox" name="" id="size">&nbsp; <small> Honda   </small><span  style="padding-left: 50%"></span><span class="badge bg-secondary">112</span><br>
-                        <input type="checkbox" name="" id="size">&nbsp; <small> Honda   </small><span  style="padding-left: 50%"></span><span class="badge bg-secondary">112</span><br>
-                        <input type="checkbox" name="" id="size">&nbsp; <small> Honda   </small><span  style="padding-left: 50%"></span><span class="badge bg-secondary">112</span><br>
-                        <input type="checkbox" name="" id="size">&nbsp; <small> Honda   </small><span  style="padding-left: 50%"></span><span class="badge bg-secondary">112</span><br>
-                        <input type="checkbox" name="" id="size">&nbsp; <small> Honda   </small><span  style="padding-left: 50%"></span><span class="badge bg-secondary">112</span><br>
-                        <a href="#">more choices...</a>
+                        <input type="checkbox" name="" id="size">&nbsp; <small> Honda   </small><span  style="padding-left: 50%"></span><span class="badge bg-light text-dark border">112</span><br>
+                        <input type="checkbox" name="" id="size">&nbsp; <small> Honda   </small><span  style="padding-left: 50%"></span><span class="badge bg-light text-dark border">112</span><br>
+                        <input type="checkbox" name="" id="size">&nbsp; <small> Honda   </small><span  style="padding-left: 50%"></span><span class="badge bg-light text-dark border">112</span><br>
+                        <input type="checkbox" name="" id="size">&nbsp; <small> Honda   </small><span  style="padding-left: 50%"></span><span class="badge bg-light text-dark border">112</span><br>
+                        <input type="checkbox" name="" id="size">&nbsp; <small> Honda   </small><span  style="padding-left: 50%"></span><span class="badge bg-light text-dark border">112</span><br>
+                        <a href="javascript:;" style="color:blue;"><small> more choices... </small></a>
                      </div>
                   </div>
                   <div class="accordion-item">
-                     <button id="accordion-button-5" aria-expanded="false"><span class="accordion-title p-3">Price Range</span><span class="icon" aria-hidden="true"></span></button>
+                     <button id="accordion-button-5" aria-expanded="false"><span class="accordion-title p-3"><b> Price Range</b></span><span class="icon" aria-hidden="true"><i class="fas fa-angle-right"></i></span></button>
                      <div class="accordion-content p-3">
                         <form>
                            <div class="input-group mb-3">
                               <input type="text" class="form-control" placeholder="From">
                               <input type="text" class="form-control" placeholder="To">
                               <div class="input-group-prepend">
-                                 <span class="input-group-text">Go</span>
+                                 <span class="input-group-text" style="background:red; color:white;">Go</span>
                               </div>
                            </div>
                         </form>
                      </div>
                   </div>
                   <div class="accordion-item">
-                     <button id="accordion-button-5" aria-expanded="false"><span class="accordion-title p-3">Year</span><span class="icon" aria-hidden="true"></span></button>
+                     <button id="accordion-button-5" aria-expanded="false"><span class="accordion-title p-3"><b> Year</b></span><span class="icon" aria-hidden="true"><i class="fas fa-angle-right"></i></span></button>
                      <div class="accordion-content p-3">
                         <form>
                            <div class="input-group mb-3">
                               <input type="text" class="form-control" placeholder="From">
                               <input type="text" class="form-control" placeholder="To">
                               <div class="input-group-prepend">
-                                 <span class="input-group-text">Go</span>
+                                 <span class="input-group-text" style="background:red; color:white;">Go</span>
                               </div>
                            </div>
                         </form>
                      </div>
                   </div>
                   <div class="accordion-item">
-                     <button id="accordion-button-5" aria-expanded="false"><span class="accordion-title p-3">Mileage (KM)</span><span class="icon" aria-hidden="true"></span></button>
+                     <button id="accordion-button-5" aria-expanded="false"><span class="accordion-title p-3"><b> Mileage (KM) </b></span><span class="icon" aria-hidden="true"><i class="fas fa-angle-right"></i></span></button>
                      <div class="accordion-content p-3">
                         <form>
                            <div class="input-group mb-3">
                               <input type="text" class="form-control" placeholder="From">
                               <input type="text" class="form-control" placeholder="To">
                               <div class="input-group-prepend">
-                                 <span class="input-group-text">Go</span>
+                                 <span class="input-group-text" style="background:red; color:white;">Go</span>
                               </div>
                            </div>
                         </form>
                      </div>
                   </div>
                   <div class="accordion-item">
-                     <button id="accordion-button-4" aria-expanded="false"><span class="accordion-title p-3">Color</span><span class="icon" aria-hidden="true"></span></button>
+                     <button id="accordion-button-4" aria-expanded="false"><span class="accordion-title p-3"><b> Color</b></span><span class="icon" aria-hidden="true"><i class="fas fa-angle-right"></i></span></button>
                      <div class="accordion-content p-3">
-                        <input type="checkbox" name="" id="size">&nbsp; <small> Honda   </small><span  style="padding-left: 50%"></span><span class="badge bg-secondary">112</span><br>
-                        <input type="checkbox" name="" id="size">&nbsp; <small> Honda   </small><span  style="padding-left: 50%"></span><span class="badge bg-secondary">112</span><br>
-                        <input type="checkbox" name="" id="size">&nbsp; <small> Honda   </small><span  style="padding-left: 50%"></span><span class="badge bg-secondary">112</span><br>
-                        <input type="checkbox" name="" id="size">&nbsp; <small> Honda   </small><span  style="padding-left: 50%"></span><span class="badge bg-secondary">112</span><br>
-                        <input type="checkbox" name="" id="size">&nbsp; <small> Honda   </small><span  style="padding-left: 50%"></span><span class="badge bg-secondary">112</span><br>
-                        <a href="#">more choices...</a>
+                        <input type="checkbox" name="" id="size">&nbsp; <small> Honda   </small><span  style="padding-left: 50%"></span><span class="badge bg-light text-dark border">112</span><br>
+                        <input type="checkbox" name="" id="size">&nbsp; <small> Honda   </small><span  style="padding-left: 50%"></span><span class="badge bg-light text-dark border">112</span><br>
+                        <input type="checkbox" name="" id="size">&nbsp; <small> Honda   </small><span  style="padding-left: 50%"></span><span class="badge bg-light text-dark border">112</span><br>
+                        <input type="checkbox" name="" id="size">&nbsp; <small> Honda   </small><span  style="padding-left: 50%"></span><span class="badge bg-light text-dark border">112</span><br>
+                        <input type="checkbox" name="" id="size">&nbsp; <small> Honda   </small><span  style="padding-left: 50%"></span><span class="badge bg-light text-dark border">112</span><br>
+                        <a href="javascript:;" style="color:blue;"><small> more choices... </small></a>
                      </div>
                   </div>
                   <div class="accordion-item">
-                     <button id="accordion-button-4" aria-expanded="false"><span class="accordion-title p-3">Egine Type</span><span class="icon" aria-hidden="true"></span></button>
+                     <button id="accordion-button-4" aria-expanded="false"><span class="accordion-title p-3"><b> Egine Type </b></span><span class="icon" aria-hidden="true"><i class="fas fa-angle-right"></i></span></button>
                      <div class="accordion-content p-3">
-                        <input type="checkbox" name="" id="size">&nbsp; <small> Honda   </small><span  style="padding-left: 50%"></span><span class="badge bg-secondary">112</span><br>
-                        <input type="checkbox" name="" id="size">&nbsp; <small> Honda   </small><span  style="padding-left: 50%"></span><span class="badge bg-secondary">112</span><br>
-                        <input type="checkbox" name="" id="size">&nbsp; <small> Honda   </small><span  style="padding-left: 50%"></span><span class="badge bg-secondary">112</span><br>
-                        <input type="checkbox" name="" id="size">&nbsp; <small> Honda   </small><span  style="padding-left: 50%"></span><span class="badge bg-secondary">112</span><br>
-                        <input type="checkbox" name="" id="size">&nbsp; <small> Honda   </small><span  style="padding-left: 50%"></span><span class="badge bg-secondary">112</span><br>
+                        <input type="checkbox" name="" id="size">&nbsp; <small> Honda   </small><span  style="padding-left: 50%"></span><span class="badge bg-light text-dark border">112</span><br>
+                        <input type="checkbox" name="" id="size">&nbsp; <small> Honda   </small><span  style="padding-left: 50%"></span><span class="badge bg-light text-dark border">112</span><br>
+                        <input type="checkbox" name="" id="size">&nbsp; <small> Honda   </small><span  style="padding-left: 50%"></span><span class="badge bg-light text-dark border">112</span><br>
+                        <input type="checkbox" name="" id="size">&nbsp; <small> Honda   </small><span  style="padding-left: 50%"></span><span class="badge bg-light text-dark border">112</span><br>
+                        <input type="checkbox" name="" id="size">&nbsp; <small> Honda   </small><span  style="padding-left: 50%"></span><span class="badge bg-light text-dark border">112</span><br>
                      </div>
                   </div>
                   <div class="accordion-item">
-                     <button id="accordion-button-4" aria-expanded="false"><span class="accordion-title p-3">Egine Capacity (CC)</span><span class="icon" aria-hidden="true"></span></button>
+                     <button id="accordion-button-4" aria-expanded="false"><span class="accordion-title p-3"><b> Egine Capacity (CC)</b></span><span class="icon" aria-hidden="true"><i class="fas fa-angle-right"></i></span></button>
                      <div class="accordion-content p-3">
-                        <input type="checkbox" name="" id="size">&nbsp; <small> Honda   </small><span  style="padding-left: 50%"></span><span class="badge bg-secondary">112</span><br>
-                        <input type="checkbox" name="" id="size">&nbsp; <small> Honda   </small><span  style="padding-left: 50%"></span><span class="badge bg-secondary">112</span><br>
-                        <input type="checkbox" name="" id="size">&nbsp; <small> Honda   </small><span  style="padding-left: 50%"></span><span class="badge bg-secondary">112</span><br>
-                        <input type="checkbox" name="" id="size">&nbsp; <small> Honda   </small><span  style="padding-left: 50%"></span><span class="badge bg-secondary">112</span><br>
-                        <input type="checkbox" name="" id="size">&nbsp; <small> Honda   </small><span  style="padding-left: 50%"></span><span class="badge bg-secondary">112</span><br>
+                        <input type="checkbox" name="" id="size">&nbsp; <small> Honda   </small><span  style="padding-left: 50%"></span><span class="badge bg-light text-dark border">112</span><br>
+                        <input type="checkbox" name="" id="size">&nbsp; <small> Honda   </small><span  style="padding-left: 50%"></span><span class="badge bg-light text-dark border">112</span><br>
+                        <input type="checkbox" name="" id="size">&nbsp; <small> Honda   </small><span  style="padding-left: 50%"></span><span class="badge bg-light text-dark border">112</span><br>
+                        <input type="checkbox" name="" id="size">&nbsp; <small> Honda   </small><span  style="padding-left: 50%"></span><span class="badge bg-light text-dark border">112</span><br>
+                        <input type="checkbox" name="" id="size">&nbsp; <small> Honda   </small><span  style="padding-left: 50%"></span><span class="badge bg-light text-dark border">112</span><br>
                      </div>
                   </div>
                   <div class="accordion-item">
-                     <button id="accordion-button-4" aria-expanded="false"><span class="accordion-title p-3">Assambly</span><span class="icon" aria-hidden="true"></span></button>
+                     <button id="accordion-button-4" aria-expanded="false"><span class="accordion-title p-3"><b> Assambly</b></span><span class="icon" aria-hidden="true"><i class="fas fa-angle-right"></i></span></button>
                      <div class="accordion-content p-3">
-                        <input type="checkbox" name="" id="size">&nbsp; <small> Honda   </small><span  style="padding-left: 50%"></span><span class="badge bg-secondary">112</span><br>
-                        <input type="checkbox" name="" id="size">&nbsp; <small> Honda   </small><span  style="padding-left: 50%"></span><span class="badge bg-secondary">112</span><br>
-                        <input type="checkbox" name="" id="size">&nbsp; <small> Honda   </small><span  style="padding-left: 50%"></span><span class="badge bg-secondary">112</span><br>
-                        <input type="checkbox" name="" id="size">&nbsp; <small> Honda   </small><span  style="padding-left: 50%"></span><span class="badge bg-secondary">112</span><br>
-                        <input type="checkbox" name="" id="size">&nbsp; <small> Honda   </small><span  style="padding-left: 50%"></span><span class="badge bg-secondary">112</span><br>
-                        <a href="#">more choices...</a>
+                        <input type="checkbox" name="" id="size">&nbsp; <small> Honda   </small><span  style="padding-left: 50%"></span><span class="badge bg-light text-dark border">112</span><br>
+                        <input type="checkbox" name="" id="size">&nbsp; <small> Honda   </small><span  style="padding-left: 50%"></span><span class="badge bg-light text-dark border">112</span><br>
+                        <input type="checkbox" name="" id="size">&nbsp; <small> Honda   </small><span  style="padding-left: 50%"></span><span class="badge bg-light text-dark border">112</span><br>
+                        <input type="checkbox" name="" id="size">&nbsp; <small> Honda   </small><span  style="padding-left: 50%"></span><span class="badge bg-light text-dark border">112</span><br>
+                        <input type="checkbox" name="" id="size">&nbsp; <small> Honda   </small><span  style="padding-left: 50%"></span><span class="badge bg-light text-dark border">112</span><br>
+                        <a href="javascript:;" style="color:blue;"><small> more choices... </small></a>
                      </div>
                   </div>
                   <div class="accordion-item">
-                     <button id="accordion-button-4" aria-expanded="false"><span class="accordion-title p-3">Body Type</span><span class="icon" aria-hidden="true"></span></button>
+                     <button id="accordion-button-4" aria-expanded="false"><span class="accordion-title p-3"><b> Body Type</b></span><span class="icon" aria-hidden="true"><i class="fas fa-angle-right"></i></span></button>
                      <div class="accordion-content p-3">
-                        <input type="checkbox" name="" id="size">&nbsp; <small> Honda   </small><span  style="padding-left: 50%"></span><span class="badge bg-secondary">112</span><br>
-                        <input type="checkbox" name="" id="size">&nbsp; <small> Honda   </small><span  style="padding-left: 50%"></span><span class="badge bg-secondary">112</span><br>
-                        <input type="checkbox" name="" id="size">&nbsp; <small> Honda   </small><span  style="padding-left: 50%"></span><span class="badge bg-secondary">112</span><br>
-                        <input type="checkbox" name="" id="size">&nbsp; <small> Honda   </small><span  style="padding-left: 50%"></span><span class="badge bg-secondary">112</span><br>
-                        <input type="checkbox" name="" id="size">&nbsp; <small> Honda   </small><span  style="padding-left: 50%"></span><span class="badge bg-secondary">112</span><br>
-                        <a href="#">more choices...</a>
+                        <input type="checkbox" name="" id="size">&nbsp; <small> Honda   </small><span  style="padding-left: 50%"></span><span class="badge bg-light text-dark border">112</span><br>
+                        <input type="checkbox" name="" id="size">&nbsp; <small> Honda   </small><span  style="padding-left: 50%"></span><span class="badge bg-light text-dark border">112</span><br>
+                        <input type="checkbox" name="" id="size">&nbsp; <small> Honda   </small><span  style="padding-left: 50%"></span><span class="badge bg-light text-dark border">112</span><br>
+                        <input type="checkbox" name="" id="size">&nbsp; <small> Honda   </small><span  style="padding-left: 50%"></span><span class="badge bg-light text-dark border">112</span><br>
+                        <input type="checkbox" name="" id="size">&nbsp; <small> Honda   </small><span  style="padding-left: 50%"></span><span class="badge bg-light text-dark border">112</span><br>
+                        <a href="javascript:;" style="color:blue;"><small> more choices... </small></a>
                      </div>
                   </div>
                   <div class="accordion-item">
-                     <button id="accordion-button-4" aria-expanded="false"><span class="accordion-title p-3">Number of Doors</span><span class="icon" aria-hidden="true"></span></button>
+                     <button id="accordion-button-4" aria-expanded="false"><span class="accordion-title p-3"><b> Number of Doors</b></span><span class="icon" aria-hidden="true"><i class="fas fa-angle-right"></i></span></button>
                      <div class="accordion-content p-3">
-                        <input type="checkbox" name="" id="size">&nbsp; <small> Honda   </small><span  style="padding-left: 50%"></span><span class="badge bg-secondary">112</span><br>
-                        <input type="checkbox" name="" id="size">&nbsp; <small> Honda   </small><span  style="padding-left: 50%"></span><span class="badge bg-secondary">112</span><br>
-                        <input type="checkbox" name="" id="size">&nbsp; <small> Honda   </small><span  style="padding-left: 50%"></span><span class="badge bg-secondary">112</span><br>
-                        <input type="checkbox" name="" id="size">&nbsp; <small> Honda   </small><span  style="padding-left: 50%"></span><span class="badge bg-secondary">112</span><br>
-                        <input type="checkbox" name="" id="size">&nbsp; <small> Honda   </small><span  style="padding-left: 50%"></span><span class="badge bg-secondary">112</span><br>
-                        <a href="#">more choices...</a>
+                        <input type="checkbox" name="" id="size">&nbsp; <small> Honda   </small><span  style="padding-left: 50%"></span><span class="badge bg-light text-dark border">112</span><br>
+                        <input type="checkbox" name="" id="size">&nbsp; <small> Honda   </small><span  style="padding-left: 50%"></span><span class="badge bg-light text-dark border">112</span><br>
+                        <input type="checkbox" name="" id="size">&nbsp; <small> Honda   </small><span  style="padding-left: 50%"></span><span class="badge bg-light text-dark border">112</span><br>
+                        <input type="checkbox" name="" id="size">&nbsp; <small> Honda   </small><span  style="padding-left: 50%"></span><span class="badge bg-light text-dark border">112</span><br>
+                        <input type="checkbox" name="" id="size">&nbsp; <small> Honda   </small><span  style="padding-left: 50%"></span><span class="badge bg-light text-dark border">112</span><br>
+                        <a href="javascript:;" style="color:blue;"><small> more choices... </small></a>
                      </div>
                   </div>
                   <div class="accordion-item">
-                     <button id="accordion-button-4" aria-expanded="false"><span class="accordion-title p-3">Seating Capacity</span><span class="icon" aria-hidden="true"></span></button>
+                     <button id="accordion-button-4" aria-expanded="false"><span class="accordion-title p-3"><b> Seating Capacity</b></span><span class="icon" aria-hidden="true"><i class="fas fa-angle-right"></i></span></button>
                      <div class="accordion-content p-3">
-                        <input type="checkbox" name="" id="size">&nbsp; <small> Honda   </small><span  style="padding-left: 50%"></span><span class="badge bg-secondary">112</span><br>
-                        <input type="checkbox" name="" id="size">&nbsp; <small> Honda   </small><span  style="padding-left: 50%"></span><span class="badge bg-secondary">112</span><br>
-                        <input type="checkbox" name="" id="size">&nbsp; <small> Honda   </small><span  style="padding-left: 50%"></span><span class="badge bg-secondary">112</span><br>
-                        <input type="checkbox" name="" id="size">&nbsp; <small> Honda   </small><span  style="padding-left: 50%"></span><span class="badge bg-secondary">112</span><br>
-                        <input type="checkbox" name="" id="size">&nbsp; <small> Honda   </small><span  style="padding-left: 50%"></span><span class="badge bg-secondary">112</span><br>
-                        <a href="#">more choices...</a>
+                        <input type="checkbox" name="" id="size">&nbsp; <small> Honda   </small><span  style="padding-left: 50%"></span><span class="badge bg-light text-dark border">112</span><br>
+                        <input type="checkbox" name="" id="size">&nbsp; <small> Honda   </small><span  style="padding-left: 50%"></span><span class="badge bg-light text-dark border">112</span><br>
+                        <input type="checkbox" name="" id="size">&nbsp; <small> Honda   </small><span  style="padding-left: 50%"></span><span class="badge bg-light text-dark border">112</span><br>
+                        <input type="checkbox" name="" id="size">&nbsp; <small> Honda   </small><span  style="padding-left: 50%"></span><span class="badge bg-light text-dark border">112</span><br>
+                        <input type="checkbox" name="" id="size">&nbsp; <small> Honda   </small><span  style="padding-left: 50%"></span><span class="badge bg-light text-dark border">112</span><br>
+                        <a href="javascript:;" style="color:blue;"><small> more choices... </small></a>
                      </div>
                   </div>
                   <div class="accordion-item">
-                     <button id="accordion-button-4" aria-expanded="false"><span class="accordion-title p-3">Modal Catagory</span><span class="icon" aria-hidden="true"></span></button>
+                     <button id="accordion-button-4" aria-expanded="false"><span class="accordion-title p-3"><b> Modal Catagory</b></span><span class="icon" aria-hidden="true"><i class="fas fa-angle-right"></i></span></button>
                      <div class="accordion-content p-3">
-                        <input type="checkbox" name="" id="size">&nbsp; <small> Honda   </small><span  style="padding-left: 50%"></span><span class="badge bg-secondary">112</span><br>
-                        <input type="checkbox" name="" id="size">&nbsp; <small> Honda   </small><span  style="padding-left: 50%"></span><span class="badge bg-secondary">112</span><br>
-                        <input type="checkbox" name="" id="size">&nbsp; <small> Honda   </small><span  style="padding-left: 50%"></span><span class="badge bg-secondary">112</span><br>
-                        <input type="checkbox" name="" id="size">&nbsp; <small> Honda   </small><span  style="padding-left: 50%"></span><span class="badge bg-secondary">112</span><br>
-                        <input type="checkbox" name="" id="size">&nbsp; <small> Honda   </small><span  style="padding-left: 50%"></span><span class="badge bg-secondary">112</span><br>
-                        <a href="#">more choices...</a>
+                        <input type="checkbox" name="" id="size">&nbsp; <small> Honda   </small><span  style="padding-left: 50%"></span><span class="badge bg-light text-dark border">112</span><br>
+                        <input type="checkbox" name="" id="size">&nbsp; <small> Honda   </small><span  style="padding-left: 50%"></span><span class="badge bg-light text-dark border">112</span><br>
+                        <input type="checkbox" name="" id="size">&nbsp; <small> Honda   </small><span  style="padding-left: 50%"></span><span class="badge bg-light text-dark border">112</span><br>
+                        <input type="checkbox" name="" id="size">&nbsp; <small> Honda   </small><span  style="padding-left: 50%"></span><span class="badge bg-light text-dark border">112</span><br>
+                        <input type="checkbox" name="" id="size">&nbsp; <small> Honda   </small><span  style="padding-left: 50%"></span><span class="badge bg-light text-dark border">112</span><br>
+                        <a href="javascript:;" style="color:blue;"><small> more choices... </small></a>
                      </div>
                   </div>
                   <div class="accordion-item">
-                     <button id="accordion-button-4" aria-expanded="false"><span class="accordion-title p-3">Seller Type</span><span class="icon" aria-hidden="true"></span></button>
+                     <button id="accordion-button-4" aria-expanded="false"><span class="accordion-title p-3"><b> Seller Type</b></span><span class="icon" aria-hidden="true"><i class="fas fa-angle-right"></i></span></button>
                      <div class="accordion-content p-3">
-                        <input type="checkbox" name="" id="size">&nbsp; <small> Honda   </small><span  style="padding-left: 50%"></span><span class="badge bg-secondary">112</span><br>
-                        <input type="checkbox" name="" id="size">&nbsp; <small> Honda   </small><span  style="padding-left: 50%"></span><span class="badge bg-secondary">112</span><br>
-                        <input type="checkbox" name="" id="size">&nbsp; <small> Honda   </small><span  style="padding-left: 50%"></span><span class="badge bg-secondary">112</span><br>
-                        <input type="checkbox" name="" id="size">&nbsp; <small> Honda   </small><span  style="padding-left: 50%"></span><span class="badge bg-secondary">112</span><br>
-                        <input type="checkbox" name="" id="size">&nbsp; <small> Honda   </small><span  style="padding-left: 50%"></span><span class="badge bg-secondary">112</span><br>
-                        <a href="#">more choices...</a>
+                        <input type="checkbox" name="" id="size">&nbsp; <small> Honda   </small><span  style="padding-left: 50%"></span><span class="badge bg-light text-dark border">112</span><br>
+                        <input type="checkbox" name="" id="size">&nbsp; <small> Honda   </small><span  style="padding-left: 50%"></span><span class="badge bg-light text-dark border">112</span><br>
+                        <input type="checkbox" name="" id="size">&nbsp; <small> Honda   </small><span  style="padding-left: 50%"></span><span class="badge bg-light text-dark border">112</span><br>
+                        <input type="checkbox" name="" id="size">&nbsp; <small> Honda   </small><span  style="padding-left: 50%"></span><span class="badge bg-light text-dark border">112</span><br>
+                        <input type="checkbox" name="" id="size">&nbsp; <small> Honda   </small><span  style="padding-left: 50%"></span><span class="badge bg-light text-dark border">112</span><br>
+                        <a href="javascript:;" style="color:blue;"><small> more choices... </small></a>
                      </div>
                   </div>
                   <div class="accordion-item">
-                     <button id="accordion-button-4" aria-expanded="false"><span class="accordion-title p-3">Picture Availability</span><span class="icon" aria-hidden="true"></span></button>
+                     <button id="accordion-button-4" aria-expanded="false"><span class="accordion-title p-3"><b> Picture Availability</b></span><span class="icon" aria-hidden="true"><i class="fas fa-angle-right"></i></span></button>
                      <div class="accordion-content p-3">
-                        <input type="checkbox" name="" id="size">&nbsp; <small> Honda   </small><span  style="padding-left: 50%"></span><span class="badge bg-secondary">112</span><br>
-                        <input type="checkbox" name="" id="size">&nbsp; <small> Honda   </small><span  style="padding-left: 50%"></span><span class="badge bg-secondary">112</span><br>
-                        <input type="checkbox" name="" id="size">&nbsp; <small> Honda   </small><span  style="padding-left: 50%"></span><span class="badge bg-secondary">112</span><br>
-                        <input type="checkbox" name="" id="size">&nbsp; <small> Honda   </small><span  style="padding-left: 50%"></span><span class="badge bg-secondary">112</span><br>
-                        <input type="checkbox" name="" id="size">&nbsp; <small> Honda   </small><span  style="padding-left: 50%"></span><span class="badge bg-secondary">112</span><br>
-                        <a href="#">more choices...</a>
+                        <input type="checkbox" name="" id="size">&nbsp; <small> Honda   </small><span  style="padding-left: 50%"></span><span class="badge bg-light text-dark border">112</span><br>
+                        <input type="checkbox" name="" id="size">&nbsp; <small> Honda   </small><span  style="padding-left: 50%"></span><span class="badge bg-light text-dark border">112</span><br>
+                        <input type="checkbox" name="" id="size">&nbsp; <small> Honda   </small><span  style="padding-left: 50%"></span><span class="badge bg-light text-dark border">112</span><br>
+                        <input type="checkbox" name="" id="size">&nbsp; <small> Honda   </small><span  style="padding-left: 50%"></span><span class="badge bg-light text-dark border">112</span><br>
+                        <input type="checkbox" name="" id="size">&nbsp; <small> Honda   </small><span  style="padding-left: 50%"></span><span class="badge bg-light text-dark border">112</span><br>
+                        <a href="javascript:;" style="color:blue;"><small> more choices... </small></a>
                      </div>
                   </div>
                   <div class="accordion-item">
-                     <button id="accordion-button-4" aria-expanded="false"><span class="accordion-title p-3">Video Availability</span><span class="icon" aria-hidden="true"></span></button>
+                     <button id="accordion-button-4" aria-expanded="false"><span class="accordion-title p-3"><b> Video Availability</b></span><span class="icon" aria-hidden="true"><i class="fas fa-angle-right"></i></span></button>
                      <div class="accordion-content p-3">
-                        <input type="checkbox" name="" id="size">&nbsp; <small> Honda   </small><span  style="padding-left: 50%"></span><span class="badge bg-secondary">112</span><br>
-                        <input type="checkbox" name="" id="size">&nbsp; <small> Honda   </small><span  style="padding-left: 50%"></span><span class="badge bg-secondary">112</span><br>
-                        <input type="checkbox" name="" id="size">&nbsp; <small> Honda   </small><span  style="padding-left: 50%"></span><span class="badge bg-secondary">112</span><br>
-                        <input type="checkbox" name="" id="size">&nbsp; <small> Honda   </small><span  style="padding-left: 50%"></span><span class="badge bg-secondary">112</span><br>
-                        <input type="checkbox" name="" id="size">&nbsp; <small> Honda   </small><span  style="padding-left: 50%"></span><span class="badge bg-secondary">112</span><br>
-                        <a href="#">more choices...</a>
+                        <input type="checkbox" name="" id="size">&nbsp; <small> Honda   </small><span  style="padding-left: 50%"></span><span class="badge bg-light text-dark border">112</span><br>
+                        <input type="checkbox" name="" id="size">&nbsp; <small> Honda   </small><span  style="padding-left: 50%"></span><span class="badge bg-light text-dark border">112</span><br>
+                        <input type="checkbox" name="" id="size">&nbsp; <small> Honda   </small><span  style="padding-left: 50%"></span><span class="badge bg-light text-dark border">112</span><br>
+                        <input type="checkbox" name="" id="size">&nbsp; <small> Honda   </small><span  style="padding-left: 50%"></span><span class="badge bg-light text-dark border">112</span><br>
+                        <input type="checkbox" name="" id="size">&nbsp; <small> Honda   </small><span  style="padding-left: 50%"></span><span class="badge bg-light text-dark border">112</span><br>
+                        <a href="javascript:;" style="color:blue;"><small> more choices... </small></a>
                      </div>
                   </div>
                   <div class="accordion-item">
-                     <button id="accordion-button-4" aria-expanded="false"><span class="accordion-title p-3">AD Type</span><span class="icon" aria-hidden="true"></span></button>
+                     <button id="accordion-button-4" aria-expanded="false"><span class="accordion-title p-3"><b> AD Type</b></span><span class="icon" aria-hidden="true"><i class="fas fa-angle-right"></i></span></button>
                      <div class="accordion-content p-3">
-                        <input type="checkbox" name="" id="size">&nbsp; <small> Honda   </small><span  style="padding-left: 50%"></span><span class="badge bg-secondary">112</span><br>
-                        <input type="checkbox" name="" id="size">&nbsp; <small> Honda   </small><span  style="padding-left: 50%"></span><span class="badge bg-secondary">112</span><br>
-                        <input type="checkbox" name="" id="size">&nbsp; <small> Honda   </small><span  style="padding-left: 50%"></span><span class="badge bg-secondary">112</span><br>
-                        <input type="checkbox" name="" id="size">&nbsp; <small> Honda   </small><span  style="padding-left: 50%"></span><span class="badge bg-secondary">112</span><br>
-                        <input type="checkbox" name="" id="size">&nbsp; <small> Honda   </small><span  style="padding-left: 50%"></span><span class="badge bg-secondary">112</span><br>
-                        <a href="#">more choices...</a>
+                        <input type="checkbox" name="" id="size">&nbsp; <small> Honda   </small><span  style="padding-left: 50%"></span><span class="badge bg-light text-dark border">112</span><br>
+                        <input type="checkbox" name="" id="size">&nbsp; <small> Honda   </small><span  style="padding-left: 50%"></span><span class="badge bg-light text-dark border">112</span><br>
+                        <input type="checkbox" name="" id="size">&nbsp; <small> Honda   </small><span  style="padding-left: 50%"></span><span class="badge bg-light text-dark border">112</span><br>
+                        <input type="checkbox" name="" id="size">&nbsp; <small> Honda   </small><span  style="padding-left: 50%"></span><span class="badge bg-light text-dark border">112</span><br>
+                        <input type="checkbox" name="" id="size">&nbsp; <small> Honda   </small><span  style="padding-left: 50%"></span><span class="badge bg-light text-dark border">112</span><br>
+                        <a href="javascript:;" style="color:blue;"><small> more choices... </small></a>
                      </div>
                   </div>
                </div>
             </div>
             <div class="col-md-9">
-               <div style="border:groove 1px lightgrey;background-color:rgb(245, 242, 242)" class="card">
+               {{-- <div style="border:groove 1px lightgrey;background-color:rgb(245, 242, 242)" class="card">
                   <div class="card-body">
                      <div class="row">
                         <div class="col-md-1">
@@ -406,9 +398,9 @@ Search
                         </div>
                      </div>
                   </div>
-               </div>
+               </div> --}}
                @forelse($searchVehicles as $vehicle)
-               <div style="border:groove 1px lightgrey;background-color:rgb(245, 242, 242)" class="card mt-4">
+               <div style="border:groove 1px lightgrey;background-color:rgb(245, 242, 242)" class="card mt-2">
                   <div class="card-body">
                      <div class="row">
                         <div class="col-md-3">
