@@ -18,11 +18,8 @@ Index
                         <form action="{{ route('search') }}" method="GET">
                             <div class="input-group mb-2">
                                 <input autocomplete="off" name="title" value="{{ request('title') }}" placeholder="Search Vehcile" class="vehicel-title form-control" id=""  type="search">
-                                <select name="" class="form-control" style="padding:14px;" id="">
-                                    <option value="0">All Countries</option>
-                                    <option value="1">Canada</option>
-                                    <option value="2">America</option>
-                                    </select>
+                                <select name="country_id" class="form-control custom-control" id="country" onchange="print_state('state',this.selectedIndex);">
+                                </select>
 
                                 <div class="input-group-prepend">
                                     <button class="btn btn-primary" type="submit" style="border-radius: 0px 10px 10px 0px; padding:14px; "><i class="fa fa-search"></i></button>
@@ -188,3 +185,10 @@ Index
         </div>
     </div>
 @endsection
+@push('scripts')
+<script src="{{ asset('assets/js/payment-related.js') }}"></script>
+<script>
+        print_country("country");
+</script>
+@endpush
+

@@ -81,13 +81,13 @@
                                     </div>
                                  </div>
                                  <div class="col-md-6 mt-4">
-                                     
+
                                       <div class="form-floating">
                                        {!! Form::text('city_id', null, ['class' => 'form-control', 'id' => 'floatingInput', 'placeholder' => 'City', 'aria-describedby' => 'floatingInputHelp']) !!}
                                        <label for="floatingInput">City</label>
                                        <small class="text-danger">@error ('price') {{ $message }} @enderror</small>
                                     </div>
-                                  
+
                                  </div>
                                  <div class="col-md-6 mt-4">
                                     <div class="form-floating">
