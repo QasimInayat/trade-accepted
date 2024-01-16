@@ -239,7 +239,7 @@ Search
                            {{-- <img src="{{asset('assets/imgs/fi_bookmark-red.svg')}}" alt=""> --}}
                            </span>
                            @endauth
-                           <button style="font-size:10px;margin-left:45px;margin-top:10px" class="btn btn-primary"> <i class="fa fa-phone"></i>   Show Phone No.</button>
+                           <button style="font-size:10px;margin-left:45px;margin-top:10px" class="btn btn-primary"> <i class=""></i>   Show Contact.</button>
                         </div>
                      </div>
                   </div>
