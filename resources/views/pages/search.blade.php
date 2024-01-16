@@ -210,11 +210,11 @@ Search
                   <div class="accordion-item">
                      <button id="accordion-button-4" aria-expanded="false"><span class="accordion-title p-3"><b> Make Modal</b></span><span class="icon" aria-hidden="true"><i class="fas fa-angle-right"></i></span></button>
                      <div class="accordion-content p-3">
-                        <form>
+                        <form action="{{ route('search') }}" method="GET">
                             <div class="input-group mb-3">
-                               <input type="text" class="form-control" placeholder="Make Modal">
+                               <input autocomplete="off" name="model_id" value="{{ request('model_id') }}" type="search" class="form-control" placeholder="Make Modal">
                                <div class="input-group-prepend">
-                                  <span class="input-group-text" style="background:red; color:white;">Go</span>
+                                  <button class="btn btn-primary" type="submit" style="background:red; color:white;">Go</button>
                                </div>
                             </div>
                          </form>
@@ -229,11 +229,11 @@ Search
                   <div class="accordion-item">
                      <button id="accordion-button-5" aria-expanded="false"><span class="accordion-title p-3"><b> Trim</b></span><span class="icon" aria-hidden="true"><i class="fas fa-angle-right"></i></span></button>
                      <div class="accordion-content p-3">
-                        <form>
+                        <form action="{{ route('search') }}" method="GET">
                            <div class="input-group mb-3">
-                              <input type="text" class="form-control" placeholder="Trim">
+                              <input autocomplete="off" name="trim" value="{{ request('trim') }}" type="search" type="text" class="form-control" placeholder="Trim">
                               <div class="input-group-prepend">
-                                 <span class="input-group-text" style="background:red; color:white;">Go</span>
+                                 <button class=" btn btn-primary" type="submit" style="background:red; color:white;">Go</button>
                               </div>
                            </div>
                         </form>
