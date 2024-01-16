@@ -85,6 +85,12 @@ class FrontendController extends Controller
             ->get();
             return view('pages.search',$data);
         }
+        if($request->country_id){
+            $data['searchVehicles'] = Vehicle::where('country_id','LIKE','%'.$request->country_id.'%')
+            ->where('status',1)
+            ->get();
+            return view('pages.search',$data);
+        }
         else{
             return redirect()->back()->with('error','Empty Search');
         }
