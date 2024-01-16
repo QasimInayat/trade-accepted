@@ -100,7 +100,7 @@ Search
 </style>
 @endpush
 @section('content')
-<main>
+<main style="width: 100%;">
    <div class="content pe-2">
       <div class="container-fluid">
          <div class="row mb-4">
@@ -108,7 +108,7 @@ Search
                <h2 class="section-heading mb-0">Results for "<span class="text-primary text-italic fw-normal">{{ request('title') }}</span>"</h2>
             </div>
             <div class="col-md-2 col-4">
-               <p class="view-all mb-0 text-end">View All</p>
+               {{-- <p class="view-all mb-0 text-end">View All</p> --}}
             </div>
          </div>
          {{--
