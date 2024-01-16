@@ -181,11 +181,11 @@ Search
                   <div class="accordion-item">
                      <button id="accordion-button-2" aria-expanded="false"><span class="accordion-title p-3"><b> City Location</b></span><span class="icon" aria-hidden="true"><i class="fas fa-angle-right"></i></span></button>
                      <div class="accordion-content p-3">
-                        <form>
+                        <form action="{{ route('search') }}" method="GET">
                             <div class="input-group mb-3">
-                               <input type="text" class="form-control" placeholder="Search City">
+                               <input type="text" class="form-control" value="{{ request('city_id') }}" name="city_id" placeholder="Search City">
                                <div class="input-group-prepend">
-                                  <span class="input-group-text" style="background:red; color:white;">Go</span>
+                                  <button class="input-group-text" style="background:red; color:white;">Go</button>
                                </div>
                             </div>
                          </form>
@@ -242,12 +242,12 @@ Search
                   <div class="accordion-item">
                      <button id="accordion-button-5" aria-expanded="false"><span class="accordion-title p-3"><b> Year</b></span><span class="icon" aria-hidden="true"><i class="fas fa-angle-right"></i></span></button>
                      <div class="accordion-content p-3">
-                        <form>
+                        <form action="{{ route('search') }}" method="GET">
                            <div class="input-group mb-3">
-                              <input type="text" class="form-control" placeholder="From">
-                              <input type="text" class="form-control" placeholder="To">
+                              <input type="text" class="form-control" name="year" value="{{ request('year') }}" placeholder="From">
+                              <input type="text" class="form-control" name="year" placeholder="To">
                               <div class="input-group-prepend">
-                                 <span class="input-group-text" style="background:red; color:white;">Go</span>
+                                 <button class="input-group-text" style="background:red; color:white;">Go</button>
                               </div>
                            </div>
                         </form>
@@ -256,33 +256,14 @@ Search
                   <div class="accordion-item">
                      <button id="accordion-button-5" aria-expanded="false"><span class="accordion-title p-3"><b>Odometer Mileage </b></span><span class="icon" aria-hidden="true"><i class="fas fa-angle-right"></i></span></button>
                      <div class="accordion-content p-3">
-                        <form>
+                        <form action="{{ route('search') }}" method="GET">
                            <div class="input-group mb-3">
-                              <input type="text" class="form-control" placeholder="Mileage">
+                              <input type="text" class="form-control" value="{{ request('mileage') }}" name="mileage" placeholder="Mileage">
                               <div class="input-group-prepend">
-                                 <span class="input-group-text" style="background:red; color:white;">Go</span>
+                                 <button class="input-group-text" style="background:red; color:white;">Go</button>
                               </div>
                            </div>
                         </form>
-                     </div>
-                  </div>
-                  <div class="accordion-item">
-                     <button id="accordion-button-4" aria-expanded="false"><span class="accordion-title p-3"><b> Distance</b></span><span class="icon" aria-hidden="true"><i class="fas fa-angle-right"></i></span></button>
-                     <div class="accordion-content p-3">
-                        <form>
-                            <div class="input-group mb-3">
-                               <input type="text" class="form-control" placeholder="Distance">
-                               <div class="input-group-prepend">
-                                  <span class="input-group-text" style="background:red; color:white;">Go</span>
-                               </div>
-                            </div>
-                         </form>
-                         {{-- <input type="checkbox" name="" id="size">&nbsp; <small> Honda   </small><span  style="padding-left: 50%"></span><span class="badge bg-light text-dark border">112</span><br>
-                        <input type="checkbox" name="" id="size">&nbsp; <small> Honda   </small><span  style="padding-left: 50%"></span><span class="badge bg-light text-dark border">112</span><br>
-                        <input type="checkbox" name="" id="size">&nbsp; <small> Honda   </small><span  style="padding-left: 50%"></span><span class="badge bg-light text-dark border">112</span><br>
-                        <input type="checkbox" name="" id="size">&nbsp; <small> Honda   </small><span  style="padding-left: 50%"></span><span class="badge bg-light text-dark border">112</span><br>
-                        <input type="checkbox" name="" id="size">&nbsp; <small> Honda   </small><span  style="padding-left: 50%"></span><span class="badge bg-light text-dark border">112</span><br>
-                        <a href="javascript:;" style="color:blue;"><small> more choices... </small></a> --}}
                      </div>
                   </div>
                   {{-- <div class="accordion-item">
