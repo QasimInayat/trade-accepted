@@ -151,8 +151,8 @@
                                        <label for="floatingInput">Year</label>
                                        <small class="text-danger">@error ('year') {{ $message }} @enderror</small>
                                     </div>
-                                 </div>
-                            
+                                  </div>
+
                                  <div class="col-md-12 mt-4">
                                     <div class="multiple-uploader" id="multiple-uploader">
                                         <div class="mup-msg">
