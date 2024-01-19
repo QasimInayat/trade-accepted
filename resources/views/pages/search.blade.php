@@ -118,7 +118,7 @@ Search
                 </div>
                </div>
                <div class="accordion ">
-                  <form action="{{ route('search') }}" method="POST">
+                  <form action="{{ route('search') }}" method="GET">
                     <div class="accordion-item">
                         <button id="accordion-button-1" type="button" aria-expanded="true"><span class="accordion-title p-3 "><b>Search by Keyword</b></span><span class="icon" aria-hidden="true"><i class="fas fa-angle-right"></i></span></button>
                         <div class="accordion-content p-3">
