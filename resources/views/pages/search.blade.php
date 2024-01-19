@@ -117,7 +117,7 @@ Search
                      <span >Search Results By:</span>
                 </div>
                </div>
-               <div class="accordion ">
+               <div class="accordion">
                   <form action="">
                     <div class="accordion-item">
                         <button id="accordion-button-1" type="button" aria-expanded="true"><span class="accordion-title p-3 "><b>Search by Keyword</b></span><span class="icon" aria-hidden="true"><i class="fas fa-angle-right"></i></span></button>
@@ -169,8 +169,8 @@ Search
                         <button id="accordion-button-5" type="button" aria-expanded="false"><span class="accordion-title p-3"><b> Year</b></span><span class="icon" aria-hidden="true"><i class="fas fa-angle-right"></i></span></button>
                         <div class="accordion-content p-3">
                               <div class="input-group mb-3">
-                                 <input type="text" class="form-control" name="year" value="{{ request('year') }}" placeholder="From">
-                                 <input type="text" class="form-control" name="year" placeholder="To">
+                                 <input type="text" class="form-control" name="from" value="{{ request('year') }}" placeholder="From">
+                                 <input type="text" class="form-control" name="to" placeholder="To">
                                  <div class="input-group-prepend">
                                     <button class="input-group-text" style="background:red; color:white;">Go</button>
                                  </div>

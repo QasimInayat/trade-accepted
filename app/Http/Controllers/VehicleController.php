@@ -54,6 +54,8 @@ class VehicleController extends Controller
            'model_id' => $request->model_id,
            'trim' => $request->trim,
            'year' => $request->year,
+           'from' => $request->from,
+           'to' => $request->to,
            'fuel' => $request->fuel,
            'description' => $request->description,
            'status' => $request->status,
@@ -71,7 +73,7 @@ class VehicleController extends Controller
                 ]);
             }
         }
-        
+
 
         if(!empty($store->id)){
             return redirect()->route('vehicle.index')->with('success' , 'Vehicle created');
@@ -119,6 +121,8 @@ class VehicleController extends Controller
             'model_id' => $request->model_id,
             'trim' => $request->trim,
             'year' => $request->year,
+            'from' => $request->from,
+            'to' => $request->to,
             'fuel' => $request->fuel,
             'description' => $request->description,
             'status' => $request->status,
