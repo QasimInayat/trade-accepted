@@ -110,8 +110,15 @@ class FrontendController extends Controller
             ->get();
             return view('pages.search',$data);
         }
-        if($request->year){
-            $data['searchVehicles'] = Vehicle::where('year','LIKE','%'.$request->year.'%')
+        if($request->from){
+            $data['searchVehicles'] = Vehicle::where('from','LIKE','%'.$request->from.'%')
+            ->where('status',1)
+            ->get();
+            return view('pages.search',$data);
+        }
+
+        if($request->to){
+            $data['searchVehicles'] = Vehicle::where('to','LIKE','%'.$request->to.'%')
             ->where('status',1)
             ->get();
             return view('pages.search',$data);

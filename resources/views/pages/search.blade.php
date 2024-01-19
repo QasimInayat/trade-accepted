@@ -117,8 +117,8 @@ Search
                      <span >Search Results By:</span>
                 </div>
                </div>
-               <div class="accordion">
-                  <form action="">
+               <div class="accordion ">
+                  <form action="{{ route('search') }}" method="GET">
                     <div class="accordion-item">
                         <button id="accordion-button-1" type="button" aria-expanded="true"><span class="accordion-title p-3 "><b>Search by Keyword</b></span><span class="icon" aria-hidden="true"><i class="fas fa-angle-right"></i></span></button>
                         <div class="accordion-content p-3">
@@ -130,6 +130,18 @@ Search
                                       </div>
                                   </div>
                            </div>
+                        </div>
+                     </div>
+                     <div class="accordion-item">
+                        <button id="accordion-button-2" type="button" aria-expanded="false"><span class="accordion-title p-3"><b> Country Location</b></span><span class="icon" aria-hidden="true"><i class="fas fa-angle-right"></i></span></button>
+                        <div class="accordion-content p-3">
+                               <div class="input-group mb-3">
+                                <select name="country_id" class="form-control custom-control" value="{{ request('country_id') }}" id="country" onchange="print_state('state',this.selectedIndex);">
+                                </select>
+                                  <div class="input-group-prepend">
+                                     <button class="input-group-text" style="background:red; color:white;">Go</button>
+                                  </div>
+                               </div>
                         </div>
                      </div>
                      <div class="accordion-item">
@@ -169,8 +181,8 @@ Search
                         <button id="accordion-button-5" type="button" aria-expanded="false"><span class="accordion-title p-3"><b> Year</b></span><span class="icon" aria-hidden="true"><i class="fas fa-angle-right"></i></span></button>
                         <div class="accordion-content p-3">
                               <div class="input-group mb-3">
-                                 <input type="text" class="form-control" name="from" value="{{ request('year') }}" placeholder="From">
-                                 <input type="text" class="form-control" name="to" placeholder="To">
+                                 <input type="text" class="form-control" name="from" value="{{ request('from') }}" placeholder="From">
+                                 <input type="text" class="form-control" name="to" value="{{ request('to') }}" placeholder="To">
                                  <div class="input-group-prepend">
                                     <button class="input-group-text" style="background:red; color:white;">Go</button>
                                  </div>
@@ -207,7 +219,7 @@ Search
                            <br>
                            <span  style="font-size: 14px;margin-left:15px">{{ $vehicle->year }} | {{ $vehicle->mileage }} | {{ $vehicle->fuel }} | {{ $vehicle->trim }}</span>
                            <br>
-                           <span style="font-size: 11px;margin-left:15px">Updated about 2 hours ago</span>
+                           <span style="font-size: 11px;margin-left:15px">Created at {{ Carbon\Carbon::parse($vehicle->created_at)->diffForHumans() }}</span>
                         </div>
                         <div class="col-md-3">
                            <span style="font-size:19px;margin-left:60px"><b>${{ number_format($vehicle->price) }}</b></span>
@@ -252,7 +264,6 @@ Search
          </div>
          <div class="modal-body">
             <div class="add-listing-form">
-               <form action="">
                   <div class="row">
                      <div class="col-md-6">
                         <h4 class="text-center mb-4">My</h4>
@@ -300,6 +311,10 @@ Search
 </div>
 @endsection
 @push('scripts')
+<script src="{{ asset('assets/js/payment-related.js') }}"></script>
+<script>
+        print_country("country");
+</script>
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script>
    const items = document.querySelectorAll(".accordion button");
