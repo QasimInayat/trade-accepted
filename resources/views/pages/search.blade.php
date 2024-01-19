@@ -221,27 +221,27 @@ Search
                            <span style="font-size: 13px;">{{ $vehicle->country_id }} . {{ $vehicle->city_id }}</span><br> <br>
                            {{-- <br> --}}
                            <div class="row">
-                            <div class="col-md-3">
+                            <div class="col-md-3 col-6">
                                 <span style="font-size: 14px">
                                     <small class="text-primary">Year</small><br>
                                     {{ $vehicle->year }}
                                     </span>
 
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-3 col-6">
                                 <span style="font-size: 14px">
                                     <small class="text-primary">Mileage</small><br>
                                     {{ $vehicle->mileage }}
                                     </span>
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-3 col-6">
                                 <span style="font-size: 14px">
                                     <small class="text-primary">Fuel</small><br>
                                     {{ $vehicle->fuel }}
                                     </span>
 
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-3 col-6">
                                 <span style="font-size: 14px">
                                     <small class="text-primary">Trim</small><br>
                                     {{ $vehicle->trim }}
