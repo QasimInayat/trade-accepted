@@ -115,6 +115,9 @@ Search
                 <div class="card text-light" style="background-color:red;">
                   <div class="card-header">
                      <span >Search Results By:</span>
+                     <div style="margin-top: -20px; text-align: right;">
+                         <a href="{{ route('search') }}">clear</a>
+                     </div>
                 </div>
                </div>
                <div class="accordion ">
@@ -181,7 +184,7 @@ Search
                         <button id="accordion-button-5" type="button" aria-expanded="false"><span class="accordion-title p-3"><b> Year</b></span><span class="icon" aria-hidden="true"><i class="fas fa-angle-right"></i></span></button>
                         <div class="accordion-content p-3">
                               <div class="input-group mb-3">
-                                 <input type="number" class="form-control" name="from" value="{{ request('year') }}" placeholder="From">
+                                 <input type="number" class="form-control" name="from" placeholder="From">
                                  <input type="number" class="form-control" name="to"  placeholder="To">
                                  <div class="input-group-prepend">
                                     <button class="input-group-text" style="background:red; color:white;">Go</button>
@@ -204,7 +207,7 @@ Search
                </div>
             </div>
             <div class="col-md-9">
-               @forelse($searchVehicles as $vehicle)
+               @forelse($data as $vehicle)
                <div style="border:groove 1px lightgrey;background-color:rgb(245, 242, 242)" class="card mt-2">
                   <div class="card-body">
                      <div class="row">
@@ -213,13 +216,41 @@ Search
                         </div>
                         <div class="col-md-6">
                            <a href="{{ route('detail',$vehicle->slug) }}">
-                              <h4 class="text-primary" style="font-size:18px;margin-left:15px;margin-top:5px">{{ $vehicle->title }}</h4>
+                              <h4 class="text-primary" style="font-size:18px;margin-top:5px">{{ $vehicle->title }}</h4>
                            </a>
-                           <span style="font-size: 13px;margin-left:15px">{{ $vehicle->country_id }} . {{ $vehicle->city_id }}</span><br>
+                           <span style="font-size: 13px;">{{ $vehicle->country_id }} . {{ $vehicle->city_id }}</span><br> <br>
+                           {{-- <br> --}}
+                           <div class="row">
+                            <div class="col-md-3">
+                                <span style="font-size: 14px">
+                                    <small class="text-primary">Year</small><br>
+                                    {{ $vehicle->year }}
+                                    </span>
+
+                            </div>
+                            <div class="col-md-3">
+                                <span style="font-size: 14px">
+                                    <small class="text-primary">Mileage</small><br>
+                                    {{ $vehicle->mileage }}
+                                    </span>
+                            </div>
+                            <div class="col-md-3">
+                                <span style="font-size: 14px">
+                                    <small class="text-primary">Fuel</small><br>
+                                    {{ $vehicle->fuel }}
+                                    </span>
+
+                            </div>
+                            <div class="col-md-3">
+                                <span style="font-size: 14px">
+                                    <small class="text-primary">Trim</small><br>
+                                    {{ $vehicle->trim }}
+                                    </span>
+                            </div>
                            <br>
-                           <span  style="font-size: 14px;margin-left:15px">{{ $vehicle->year }} | {{ $vehicle->mileage }} | {{ $vehicle->fuel }} | {{ $vehicle->trim }}</span>
-                           <br>
-                           <span style="font-size: 11px;margin-left:15px">Created at {{ Carbon\Carbon::parse($vehicle->created_at)->diffForHumans() }}</span>
+                        </div>
+
+                           <span style="font-size: 11px;">Created at {{ Carbon\Carbon::parse($vehicle->created_at)->diffForHumans() }}</span>
                         </div>
                         <div class="col-md-3">
                            <span style="font-size:19px;margin-left:60px"><b>${{ number_format($vehicle->price) }}</b></span>
@@ -241,7 +272,12 @@ Search
                            {{-- <img src="{{asset('assets/imgs/fi_bookmark-red.svg')}}" alt=""> --}}
                            </span>
                            @endauth
-                           <button style="font-size:10px;margin-left:45px;margin-top:10px" class="btn btn-primary"> <i class=""></i>   Show Contact.</button>
+                           <form action="{{ route('thread.store') }}" method="POST">
+                            @csrf
+                            <input type="hidden" name="vehicle_id" value="{{ $vehicle->id }}">
+                            <input type="hidden" name="to_id" value="{{ $vehicle->user_id }}">
+                            <button type="post" style="font-size:10px;margin-left:45px;margin-top:10px" class="btn btn-primary"> <i class=""></i>  Contact.</button>
+                        </form>
                         </div>
                      </div>
                   </div>
