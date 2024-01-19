@@ -22,11 +22,11 @@
                     <img src="{{asset('assets/imgs/fi_message-square-1.svg')}}" alt="">
                 </a>
             </li>
-            {{-- <li>
-                <a href="javascript:;">
-                    <img src="{{asset('assets/imgs/fi_settings.svg')}}" alt="">
+            <li>
+                <a href="{{ route('search') }}">
+                    <img src="{{ asset('assets/imgs/fi_search_white.svg') }}" alt="">
                 </a>
-            </li> --}}
+            </li>
         </ul>
         @auth
         <a href="javscript:;" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="mdi mdi-logout text-muted fs-16 align-middle me-1"></i> <span class="align-middle" data-key="t-logout"> <img src="{{asset('assets/imgs/fi_log-out.svg')}}" alt="">

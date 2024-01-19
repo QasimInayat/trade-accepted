@@ -15,18 +15,10 @@
                 </li>
                 @endauth
                     <li class="d-inline-block">
-                        {{-- <img style="margin-bottom: -50px;" src="{{asset('assets/imgs/fi_search.svg')}}" alt=""> --}}
-                        <div class="search-bar">
-                            <div class="custom-search">
-                                <div class="cell-wrapper ui-widget">
-                                    <form action="{{ route('search') }}" method="GET">
-                                        <input autocomplete="off" name="title" value="{{ request('title') }}" placeholder="Search Vehcile" class="vehicel-title" id="express-form-typeahead"  type="search">
-                                    </form>
-                                    <button class="search-btn" type="submit"><span class="icon"></span></button>
-                                    <div class="close-search" aria-label="Close" id="closeSearch" ></div>
-                                </div>
-                            </div>
-                        </div>
+                        <a href="{{ route('search') }}">
+                            {{-- <img style="margin-bottom: -50px;" src="{{asset('assets/imgs/fi_search.svg')}}" alt=""> --}}
+                            <img src="{{ asset('assets/imgs/fi_search.svg') }}" alt="">
+                        </a>
                     </li>
 @auth
 <li class="d-inline-block">
