@@ -115,6 +115,9 @@ Search
                 <div class="card text-light" style="background-color:red;">
                   <div class="card-header">
                      <span >Search Results By:</span>
+                     <div style="margin-top: -20px; text-align: right;">
+                         <a href="{{ route('search') }}">clear</a>
+                     </div>
                 </div>
                </div>
                <div class="accordion ">
@@ -181,7 +184,7 @@ Search
                         <button id="accordion-button-5" type="button" aria-expanded="false"><span class="accordion-title p-3"><b> Year</b></span><span class="icon" aria-hidden="true"><i class="fas fa-angle-right"></i></span></button>
                         <div class="accordion-content p-3">
                               <div class="input-group mb-3">
-                                 <input type="number" class="form-control" name="from" value="{{ request('year') }}" placeholder="From">
+                                 <input type="number" class="form-control" name="from" placeholder="From">
                                  <input type="number" class="form-control" name="to"  placeholder="To">
                                  <div class="input-group-prepend">
                                     <button class="input-group-text" style="background:red; color:white;">Go</button>
@@ -204,7 +207,7 @@ Search
                </div>
             </div>
             <div class="col-md-9">
-               @forelse($searchVehicles as $vehicle)
+               @forelse($data as $vehicle)
                <div style="border:groove 1px lightgrey;background-color:rgb(245, 242, 242)" class="card mt-2">
                   <div class="card-body">
                      <div class="row">
@@ -217,7 +220,7 @@ Search
                            </a>
                            <span style="font-size: 13px;margin-left:15px">{{ $vehicle->country_id }} . {{ $vehicle->city_id }}</span><br>
                            <br>
-                           <span  style="font-size: 14px;margin-left:15px">{{ $vehicle->year }} | {{ $vehicle->mileage }} | {{ $vehicle->fuel }} | {{ $vehicle->trim }}</span>
+                           <span  style="font-size: 14px;margin-left:15px">year:- {{ $vehicle->year }} | mileage:- {{ $vehicle->mileage }} | fuel:- {{ $vehicle->fuel }} | trim:- {{ $vehicle->trim }}</span>
                            <br>
                            <span style="font-size: 11px;margin-left:15px">Created at {{ Carbon\Carbon::parse($vehicle->created_at)->diffForHumans() }}</span>
                         </div>

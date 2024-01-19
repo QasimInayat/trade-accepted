@@ -79,46 +79,32 @@ class FrontendController extends Controller
     public function search(Request $request){
         $data ['title'] = 'Search';
         $data ['heading'] = 'Search';
-        if($request->title){
-            $data['searchVehicles'] = Vehicle::where('title','LIKE','%'.$request->title.'%')
-            ->where('status',1)
-            ->get();
-            return view('pages.search',$data);
+        $data = new Vehicle ();
+        
+        if(isset($request->title)){
+            $data = $data::where('title','LIKE','%'.$request->title.'%');
         }
-        if($request->model_id){
-            $data['searchVehicles'] = Vehicle::where('model_id','LIKE','%'.$request->model_id.'%')
-            ->where('status',1)
-            ->get();
-            return view('pages.search',$data);
+        if(isset($request->model_id)){
+            $data = $data::where('model_id','LIKE','%'.$request->model_id.'%');
+        }
+        if(isset($request->to) && isset($request->from)){
+            $data = $data->whereBetween('year',[$request->from,$request->to]);
+        }
+        if(isset($request->trim)){
+            $data = $data::where('trim','LIKE','%'.$request->trim.'%');
+        }
+        if(isset($request->country_id)){
+            $data = $data::where('country_id','LIKE','%'.$request->country_id.'%');
+        }
+        if(isset($request->mileage)){
+            $data = $data::where('mileage','LIKE','%'.$request->mileage.'%');
+        }
+        if(isset($request->city_id)){
+            $data = $data::where('city_id','LIKE','%'.$request->city_id.'%');
         }
 
-        if($request->trim){
-            $data['searchVehicles'] = Vehicle::where('trim','LIKE','%'.$request->trim.'%')
-            ->where('status',1)
-            ->get();
-            return view('pages.search',$data);
-        }
-        if($request->country_id){
-            $data['searchVehicles'] = Vehicle::where('country_id','LIKE','%'.$request->country_id.'%')
-            ->where('status',1)
-            ->get();
-            return view('pages.search',$data);
-        }
-        if($request->mileage){
-            $data['searchVehicles'] = Vehicle::where('mileage','LIKE','%'.$request->mileage.'%')
-            ->where('status',1)
-            ->get();
-            return view('pages.search',$data);
-        }
-        if($request->city_id){
-            $data['searchVehicles'] = Vehicle::where('city_id','LIKE','%'.$request->city_id.'%')
-            ->where('status',1)
-            ->get();
-            return view('pages.search',$data);
-        }
-        else{
-            return redirect()->back()->with('error','Empty Search');
-        }
+        $data = $data->where('status', 1)->get();
+        return view('pages.search',compact('data'));
     }
     public function messenger(){
         $data ['title'] = 'Messenger';
