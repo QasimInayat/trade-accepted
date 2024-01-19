@@ -54,8 +54,6 @@ class VehicleController extends Controller
            'trim' => $request->trim,
            'fuel' => $request->fuel,
            'year' => $request->year,
-           'from' => $request->from,
-           'to' => $request->to,
            'description' => $request->description,
            'status' => $request->status,
         ]);
@@ -115,8 +113,6 @@ class VehicleController extends Controller
             'trim' => $request->trim,
             'fuel' => $request->fuel,
             'year' => $request->year,
-            'from' => $request->from,
-            'to' => $request->to,
             'description' => $request->description,
             'status' => $request->status,
         ]);

@@ -152,20 +152,6 @@
                                <small class="text-danger">@error ('year') {{ $message }} @enderror</small>
                             </div>
                          </div>
-                         <div class="col-md-6 mt-4">
-                            <div class="form-floating">
-                               {!! Form::text('from', null, ['class' => 'form-control', 'id' => 'floatingInput', 'placeholder' => 'Enter your From', 'aria-describedby' => 'floatingInputHelp']) !!}
-                               <label for="floatingInput">From</label>
-                               <small class="text-danger">@error ('from') {{ $message }} @enderror</small>
-                            </div>
-                         </div>
-                         <div class="col-md-6 mt-4">
-                            <div class="form-floating">
-                               {!! Form::text('to', null, ['class' => 'form-control', 'id' => 'floatingInput', 'placeholder' => 'Enter your To', 'aria-describedby' => 'floatingInputHelp']) !!}
-                               <label for="floatingInput">To</label>
-                               <small class="text-danger">@error ('to') {{ $message }} @enderror</small>
-                            </div>
-                         </div>
 
                          <div class="col-md-12 mt-4">
                                 <div class="multiple-uploader" id="multiple-uploader">
