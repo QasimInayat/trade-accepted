@@ -45,7 +45,7 @@ Login/Register
                                             </div>
                                             <div class="mb-3 d-flex justify-content-between align-items-center">
                                                 <div class="form-check">
-                                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                    <input type="checkbox" class="form-check-input" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
                                                     <label class="form-check-label fw-light fs-14"
                                                         for="exampleCheck1">Keep me login</label>
                                                 </div>
