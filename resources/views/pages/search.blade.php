@@ -118,7 +118,7 @@ Search
                 </div>
                </div>
                <div class="accordion ">
-                  <form action="">
+                  <form action="{{ route('search') }}" method="POST">
                     <div class="accordion-item">
                         <button id="accordion-button-1" type="button" aria-expanded="true"><span class="accordion-title p-3 "><b>Search by Keyword</b></span><span class="icon" aria-hidden="true"><i class="fas fa-angle-right"></i></span></button>
                         <div class="accordion-content p-3">
@@ -252,7 +252,6 @@ Search
          </div>
          <div class="modal-body">
             <div class="add-listing-form">
-               <form action="">
                   <div class="row">
                      <div class="col-md-6">
                         <h4 class="text-center mb-4">My</h4>
