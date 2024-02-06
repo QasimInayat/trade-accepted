@@ -5,7 +5,7 @@
 @section('content')
     <main>
         <div class="content pe-2">
-            <div class="p-1">
+            <div class="p-4">
 
                 <div style="background-image: url({{ asset('assets/imgs/bg-image.jpg') }})">
 
@@ -47,28 +47,20 @@
                                             <h4 class="text-primary"><b>Title</b></h4>
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
-                                        <p class="text-primary mt-3"><b>Make</b></p>
-                                    </div>
-                                    <div class="col-md-7">
+                                    <div class="col-md-12">
+                                        <label class="text-primary mt-3"><b>Make</b></label>
                                         <input type="text" class="form-control mt-2">
                                     </div>
-                                    <div class="col-md-4">
-                                        <p class="text-primary mt-3"><b>Modal</b></p>
-                                    </div>
-                                    <div class="col-md-7">
+                                    <div class="col-md-12">
+                                        <label class="text-primary mt-3"><b>Modal</b></label>
                                         <input type="text" class="form-control mt-2">
                                     </div>
-                                    <div class="col-md-4">
-                                        <p class="text-primary mt-3"><b>Year</b></p>
-                                    </div>
-                                    <div class="col-md-7">
+                                    <div class="col-md-12">
+                                        <label class="text-primary mt-3"><b>Year</b></label>
                                         <input type="text" class="form-control mt-2">
                                     </div>
-                                    <div class="col-md-4">
-                                        <p class="text-primary mt-3"><b>Transmission</b></p>
-                                    </div>
-                                    <div class="col-md-7">
+                                    <div class="col-md-12">
+                                        <label class="text-primary mt-3"><b>Transmission</b></label>
                                         <input type="text" class="form-control mt-2">
                                     </div>
                                 </div>
@@ -85,28 +77,20 @@
                                             <h4 class="text-primary"><b>Title</b></h4>
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
-                                        <p class="text-primary mt-3"><b>Make</b></p>
-                                    </div>
-                                    <div class="col-md-7">
+                                    <div class="col-md-12">
+                                        <label class="text-primary mt-3"><b>Make</b></label>
                                         <input type="text" class="form-control mt-2">
                                     </div>
-                                    <div class="col-md-4">
-                                        <p class="text-primary mt-3"><b>Modal</b></p>
-                                    </div>
-                                    <div class="col-md-7">
+                                    <div class="col-md-12">
+                                        <label class="text-primary mt-3"><b>Modal</b></label>
                                         <input type="text" class="form-control mt-2">
                                     </div>
-                                    <div class="col-md-4">
-                                        <p class="text-primary mt-3"><b>Year</b></p>
-                                    </div>
-                                    <div class="col-md-7">
+                                    <div class="col-md-12">
+                                        <label class="text-primary mt-3"><b>Year</b></label>
                                         <input type="text" class="form-control mt-2">
                                     </div>
-                                    <div class="col-md-4">
-                                        <p class="text-primary mt-3"><b>Transmission</b></p>
-                                    </div>
-                                    <div class="col-md-7">
+                                    <div class="col-md-12">
+                                        <label class="text-primary mt-3"><b>Transmission</b></label>
                                         <input type="text" class="form-control mt-2">
                                     </div>
                                 </div>
@@ -123,28 +107,20 @@
                                             <h4 class="text-primary"><b>Title</b></h4>
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
-                                        <p class="text-primary mt-3"><b>Make</b></p>
-                                    </div>
-                                    <div class="col-md-7">
+                                    <div class="col-md-12">
+                                        <label class="text-primary mt-3"><b>Make</b></label>
                                         <input type="text" class="form-control mt-2">
                                     </div>
-                                    <div class="col-md-4">
-                                        <p class="text-primary mt-3"><b>Modal</b></p>
-                                    </div>
-                                    <div class="col-md-7">
+                                    <div class="col-md-12">
+                                        <label class="text-primary mt-3"><b>Modal</b></label>
                                         <input type="text" class="form-control mt-2">
                                     </div>
-                                    <div class="col-md-4">
-                                        <p class="text-primary mt-3"><b>Year</b></p>
-                                    </div>
-                                    <div class="col-md-7">
+                                    <div class="col-md-12">
+                                        <label class="text-primary mt-3"><b>Year</b></label>
                                         <input type="text" class="form-control mt-2">
                                     </div>
-                                    <div class="col-md-4">
-                                        <p class="text-primary mt-3"><b>Transmission</b></p>
-                                    </div>
-                                    <div class="col-md-7">
+                                    <div class="col-md-12">
+                                        <label class="text-primary mt-3"><b>Transmission</b></label>
                                         <input type="text" class="form-control mt-2">
                                     </div>
                                 </div>
@@ -161,28 +137,20 @@
                                             <h4 class="text-primary"><b>Title</b></h4>
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
-                                        <p class="text-primary mt-3"><b>Make</b></p>
-                                    </div>
-                                    <div class="col-md-7">
+                                    <div class="col-md-12">
+                                        <label class="text-primary mt-3"><b>Make</b></label>
                                         <input type="text" class="form-control mt-2">
                                     </div>
-                                    <div class="col-md-4">
-                                        <p class="text-primary mt-3"><b>Modal</b></p>
-                                    </div>
-                                    <div class="col-md-7">
+                                    <div class="col-md-12">
+                                        <label class="text-primary mt-3"><b>Modal</b></label>
                                         <input type="text" class="form-control mt-2">
                                     </div>
-                                    <div class="col-md-4">
-                                        <p class="text-primary mt-3"><b>Year</b></p>
-                                    </div>
-                                    <div class="col-md-7">
+                                    <div class="col-md-12">
+                                        <label class="text-primary mt-3"><b>Year</b></label>
                                         <input type="text" class="form-control mt-2">
                                     </div>
-                                    <div class="col-md-4">
-                                        <p class="text-primary mt-3"><b>Transmission</b></p>
-                                    </div>
-                                    <div class="col-md-7">
+                                    <div class="col-md-12">
+                                        <label class="text-primary mt-3"><b>Transmission</b></label>
                                         <input type="text" class="form-control mt-2">
                                     </div>
                                 </div>
@@ -199,28 +167,20 @@
                                             <h4 class="text-primary"><b>Title</b></h4>
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
-                                        <p class="text-primary mt-3"><b>Make</b></p>
-                                    </div>
-                                    <div class="col-md-7">
+                                    <div class="col-md-12">
+                                        <label class="text-primary mt-3"><b>Make</b></label>
                                         <input type="text" class="form-control mt-2">
                                     </div>
-                                    <div class="col-md-4">
-                                        <p class="text-primary mt-3"><b>Modal</b></p>
-                                    </div>
-                                    <div class="col-md-7">
+                                    <div class="col-md-12">
+                                        <label class="text-primary mt-3"><b>Modal</b></label>
                                         <input type="text" class="form-control mt-2">
                                     </div>
-                                    <div class="col-md-4">
-                                        <p class="text-primary mt-3"><b>Year</b></p>
-                                    </div>
-                                    <div class="col-md-7">
+                                    <div class="col-md-12">
+                                        <label class="text-primary mt-3"><b>Year</b></label>
                                         <input type="text" class="form-control mt-2">
                                     </div>
-                                    <div class="col-md-4">
-                                        <p class="text-primary mt-3"><b>Transmission</b></p>
-                                    </div>
-                                    <div class="col-md-7">
+                                    <div class="col-md-12">
+                                        <label class="text-primary mt-3"><b>Transmission</b></label>
                                         <input type="text" class="form-control mt-2">
                                     </div>
                                 </div>
