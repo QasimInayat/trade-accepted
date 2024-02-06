@@ -5,7 +5,7 @@
 @section('content')
     <main>
         <div class="content pe-2">
-            <div class="p-4">
+            <div class="p-1">
 
                 <div style="background-image: url({{ asset('assets/imgs/bg-image.jpg') }})">
 
@@ -37,7 +37,7 @@
                     </div>
                 </div>
 
-                <div class="row">
+                <div class="row p-4">
                     <div class="col-md-4">
                         <div class="card mt-4">
                             <div class="card-body">
