@@ -80,7 +80,7 @@ class FrontendController extends Controller
         $data ['title'] = 'Search';
         $data ['heading'] = 'Search';
         $data = new Vehicle ();
-        
+
         if(isset($request->title)){
             $data = $data::where('title','LIKE','%'.$request->title.'%');
         }
@@ -211,5 +211,11 @@ class FrontendController extends Controller
         $data['title'] =  'Trades of'.' '.$data['user']->first_name.' '.$data['user']->last_name;
         $data['heading'] =  'Trades of'.' '.$data['user']->first_name.' '.$data['user']->last_name;
         return view('pages.user-vehicle' ,$data);
+    }
+
+    public function search2(){
+        $data ['title'] = 'Search By User';
+        $data ['heading'] = 'Search By User';
+        return view('pages.search2',$data);
     }
 }
