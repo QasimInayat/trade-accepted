@@ -14,24 +14,22 @@
                         <p class="text-white">With thousands of cars, we have just the right one for you</p>
                         <div class="row">
                             <div class="col-md-2"></div>
-                            <div class="col-md-8">
-                                <form action="">
-                                    <div class="input-group mb-2">
-                                        <select name="" id="" class="vehicel-title form-control">
-                                            <option value="">Please Select</option>
-                                            <option value="civic">Civic</option>
-                                            <option value="corola">Corola</option>
-                                            <option value="supra">Supra</option>
-                                            <option value="BMW">BMW</option>
-                                        </select>
-                                        <div class="input-group-prepend">
-                                            <button class="btn btn-primary" type="submit"
-                                                style="border-radius: 0px 10px 10px 0px; padding:14px; "><i
-                                                    class="fa fa-search"></i></button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
+
+                         <div class="col-md-8">
+                            <form action="">
+                                <div class="input-group mb-2">
+                                    <select name="" id="" class="vehicel-title form-control">
+                                        <option value="">Please Select</option>
+                                        @forelse ($vehicles as $item)
+                                        <option value="">{{ $item->title }}</option>
+                                        @empty
+                                        Not Data Added
+                                        @endforelse
+                                    </select>
+                                </div>
+                            </form>
+                        </div>
+
                             <div class="col-md-2"></div>
                         </div>
                     </div>

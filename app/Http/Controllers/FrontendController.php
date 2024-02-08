@@ -216,6 +216,7 @@ class FrontendController extends Controller
     public function search2(){
         $data ['title'] = 'Search By User';
         $data ['heading'] = 'Search By User';
+        $data ['vehicles'] = Vehicle::get();
         return view('pages.search2',$data);
     }
 }
