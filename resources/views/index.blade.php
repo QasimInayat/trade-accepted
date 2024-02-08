@@ -10,8 +10,8 @@ Index
 
             <div class="container p-4">
                 <div class="text-center">
-                    <h1 class="text-white">Find Used Cars in World</h1>
-                    <p class="text-white">With thousands of cars, we have just the right one for you</p>
+                    {{-- <h1 class="text-white">Find Used Cars in World</h1> --}}
+                    {{-- <p class="text-white">With thousands of cars, we have just the right one for you</p> --}}
                    <div class="row">
                     <div class="col-md-2"></div>
                     <div class="col-md-8">

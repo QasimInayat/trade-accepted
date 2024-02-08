@@ -213,10 +213,15 @@ class FrontendController extends Controller
         return view('pages.user-vehicle' ,$data);
     }
 
-    public function search2(){
-        $data ['title'] = 'Search By User';
-        $data ['heading'] = 'Search By User';
+    public function exchange(){
+        $data ['title'] = 'Exchange your cars';
+        $data ['heading'] = 'Exchange your cars';
         $data ['vehicles'] = Vehicle::get();
-        return view('pages.search2',$data);
+        return view('pages.exchange',$data);
+    }
+    public function exchangeVehicle($id){
+        $data['vehicle'] = Vehicle::where('id',$id)->firstorfail();
+        $view = view('pages.exchange-vehicle',$data);
+        return response(['success' => true, 'data' => $view->render()]);
     }
 }

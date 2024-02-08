@@ -1,6 +1,6 @@
 @extends('layouts.scaffold')
 @push('title')
-    Search 2
+    {{ $title ?? '' }}
 @endpush
 @section('content')
     <main>
@@ -10,29 +10,32 @@
                 <div style="background-image: url({{ asset('assets/imgs/bg-image.jpg') }})">
 
                     <div class="text-center p-4">
-                        <h1 class="text-white">Found Cars </h1>
-                        <p class="text-white">With thousands of cars, we have just the right one for you</p>
+                        <h1 class="text-white">Exchange Your Cars </h1>
+                        {{-- <p class="text-white">With thousands of cars, we have just the right one for you</p> --}}
                         <div class="row">
                             <div class="col-md-2"></div>
 
-                         <div class="col-md-8">
-                            <form action="">
-                                <div class="input-group mb-2">
-                                    <select name="" id="" class="vehicel-title form-control">
+                            <div class="col-md-8">
+                                <div class="mb-2">
+                                    <select name="" id="vehicle-select" class="form-control">
                                         <option value="">Please Select</option>
                                         @forelse ($vehicles as $item)
-                                        <option value="">{{ $item->title }}</option>
+                                            <option value="{{ $item->id }}">{{ $item->title }}</option>
                                         @empty
-                                        Not Data Added
+                                            Not Data Added
                                         @endforelse
                                     </select>
                                 </div>
-                            </form>
-                        </div>
+                            </div>
 
                             <div class="col-md-2"></div>
                         </div>
                     </div>
+                </div>
+                <div id="exchange_vehicle">
+
+                  
+
                 </div>
 
                 <div class="row p-4">
@@ -50,8 +53,8 @@
                                         <input type="text" name="make[]" class="form-control mt-2">
                                     </div>
                                     <div class="col-md-12">
-                                        <label class="text-primary mt-3"><b>Modal</b></label>
-                                        <input type="text" name="modal[]" class="form-control mt-2">
+                                        <label class="text-primary mt-3"><b>Model</b></label>
+                                        <input type="text" name="model[]" class="form-control mt-2">
                                     </div>
                                     <div class="col-md-12">
                                         <label class="text-primary mt-3"><b>Year</b></label>
@@ -80,8 +83,8 @@
                                         <input type="text" name="make[]" class="form-control mt-2">
                                     </div>
                                     <div class="col-md-12">
-                                        <label class="text-primary mt-3"><b>Modal</b></label>
-                                        <input type="text" name="modal[]" class="form-control mt-2">
+                                        <label class="text-primary mt-3"><b>Model</b></label>
+                                        <input type="text" name="model[]" class="form-control mt-2">
                                     </div>
                                     <div class="col-md-12">
                                         <label class="text-primary mt-3"><b>Year</b></label>
@@ -112,8 +115,8 @@
                                         <input type="text" name="make[]" class="form-control mt-2">
                                     </div>
                                     <div class="col-md-12">
-                                        <label class="text-primary mt-3"><b>Modal</b></label>
-                                        <input type="text" name="modal[]" class="form-control mt-2">
+                                        <label class="text-primary mt-3"><b>Model</b></label>
+                                        <input type="text" name="model[]" class="form-control mt-2">
                                     </div>
                                     <div class="col-md-12">
                                         <label class="text-primary mt-3"><b>Year</b></label>
@@ -166,8 +169,8 @@
                     "<input type='text' name='make[]' class='form-control mt-2'>" +
                     "</div>" +
                     "<div class='col-md-12'>" +
-                    "<label class='text-primary mt-3'><b>Modal</b></label>" +
-                    "<input type='text' name='modal[]' class='form-control mt-2'>" +
+                    "<label class='text-primary mt-3'><b>Model</b></label>" +
+                    "<input type='text' name='model[]' class='form-control mt-2'>" +
                     "</div>" +
                     "<div class='col-md-12'>" +
                     "<label class='text-primary mt-3'><b>Year</b></label>" +
@@ -186,6 +189,29 @@
             $(document).on('click', '#remove_card', function() {
                 $(this).parent().parent().parent().parent().remove();
             })
-        })
+        });
+        $(document).ready(function() {
+            $('#vehicle-select').change(function() {
+                var selectedId = $(this).val();
+                if (selectedId) {
+                    routetoVehicle(selectedId);
+                }
+            });
+        });
+
+        function routetoVehicle(id) {
+            $.ajax({
+                url: 'exchange-vehicle/' + id,
+                type: 'get',
+                data: {},
+                success: function(res) {
+                    $('#exchange_vehicle').html(res.data);
+
+                },
+                error: function(res) {
+                    toastr.error('Something went wrong');
+                }
+            });
+        }
     </script>
 @endpush
