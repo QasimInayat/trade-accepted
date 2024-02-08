@@ -131,17 +131,17 @@
                     </div>
 
 
-                    <div class="row" id="append_card">
+                </div>
+                <div class="row p-4" style="margin-top: -30px;" id="append_card">
 
+                </div>
+                <div style="justify-content: center; text-align:center;">
+                    <div id="add_card" style="width: 60px; " class="btn btn-primary mt-3">
+                        <i class="fa fa-plus"></i>
                     </div>
-                    <div style="justify-content: center; text-align:center;">
-                        <div id="add_card" style="width: 60px; " class="btn btn-primary mt-3">
-                            <i class="fa fa-plus"></i>
-                        </div>
-                    </div>
-                    <div class="col-md-12 mt-4 text-center mb-3">
-                        <button style="padding-left: 50px;padding-right:50px" class="btn btn-primary">Search</button>
-                    </div>
+                </div>
+                <div class="col-md-12 mt-4 text-center mb-3">
+                    <button style="padding-left: 50px;padding-right:50px" class="btn btn-primary">Search</button>
                 </div>
 
             </div>
