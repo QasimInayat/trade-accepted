@@ -35,8 +35,9 @@ class ExchangeController extends Controller
             $title = 'Exchange your cars';
             $heading = 'Exchange your cars';
             $makes = Make::get();
-            $vehicle['make_id'] = $vehicle->make_id;
-            $vehicle['model_id'] = $vehicle->model_id;
+            $vehicle['id'] = $vehicle->id;
+            $vehicle['make'] = $vehicle->make_id;
+            $vehicle['model'] = $vehicle->model_id;
             $vehicle['transmission'] = $vehicle->transmission;
             $vehicle['year'] = $vehicle->year;
             return view('pages.exchange-results',compact('query','title','heading','makes','vehicle'));

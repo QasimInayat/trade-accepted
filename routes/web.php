@@ -93,6 +93,7 @@ Route::middleware(['auth'])->group(function () {
 
     // Exchage
     Route::post('exchange' , [ExchangeController::class , 'store'])->name('exchange.store');
+
 });
 
 Auth::routes();

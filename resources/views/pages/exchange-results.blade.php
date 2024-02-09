@@ -141,13 +141,14 @@
                             </div>
                         </div>
                         <div class="accordion ">
-                            <form action="{{ route('search') }}" method="GET">
+                            <form action="{{ route('exchange') }}" method="GET">
                                 <div class="accordion-item">
                                     <button id="accordion-button-2" type="button" aria-expanded="false"><span
                                             class="accordion-title p-3"><b> Vehicle 1</b></span><span class="icon"
                                             aria-hidden="true"><i class="fas fa-angle-right"></i></span></button>
                                     <div class="accordion-content p-3">
                                         <div class="col-md-12">
+                                            <input type="hidden" name="vehicle_id" value="{{ $vehicle->id }}">
                                             <div class="card mt-4">
                                                 <div class="card-body">
                                                     <div class="row">
@@ -183,6 +184,13 @@
                                                             <label class="text-primary mt-3"><b>Transmission</b></label>
                                                             <input type="text" value="{{ $vehicle->transmission }}"
                                                                 name="transmission[]" class="form-control mt-2" required>
+                                                        </div>
+                                                        <div class="col-md-12 mt-3 ">
+                                                            <div style="float: right;">
+                                                                <button class="input-group-text" type="submit"
+                                                                    style="background:red; color:white;"><i
+                                                                        class="fa fa-search"></i></button>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -196,6 +204,7 @@
                                             aria-hidden="true"><i class="fas fa-angle-right"></i></span></button>
                                     <div class="accordion-content p-3">
                                         <div class="col-md-12">
+
                                             <div class="card mt-4">
                                                 <div class="card-body">
                                                     <div class="row">
@@ -219,8 +228,8 @@
                                                         <div class="col-md-12">
                                                             <label class="text-primary mt-3"><b>Model</b></label>
                                                             <input type="text" name="model[]"
-                                                                value="{{ $vehicle->model_id }}" class="form-control mt-2"
-                                                                required>
+                                                                value="{{ $vehicle->model_id }}"
+                                                                class="form-control mt-2" required>
                                                         </div>
                                                         <div class="col-md-12">
                                                             <label class="text-primary mt-3"><b>Year</b></label>
@@ -231,6 +240,13 @@
                                                             <label class="text-primary mt-3"><b>Transmission</b></label>
                                                             <input type="text" value="{{ $vehicle->transmission }}"
                                                                 name="transmission[]" class="form-control mt-2" required>
+                                                        </div>
+                                                        <div class="col-md-12 mt-3 ">
+                                                            <div style="float: right;">
+                                                                <button class="input-group-text" type="submit"
+                                                                    style="background:red; color:white;"><i
+                                                                        class="fa fa-search"></i></button>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -244,6 +260,7 @@
                                             aria-hidden="true"><i class="fas fa-angle-right"></i></span></button>
                                     <div class="accordion-content p-3">
                                         <div class="col-md-12">
+
                                             <div class="card mt-4">
                                                 <div class="card-body">
                                                     <div class="row">
@@ -267,8 +284,8 @@
                                                         <div class="col-md-12">
                                                             <label class="text-primary mt-3"><b>Model</b></label>
                                                             <input type="text" name="model[]"
-                                                                value="{{ $vehicle->model_id }}" class="form-control mt-2"
-                                                                required>
+                                                                value="{{ $vehicle->model_id }}"
+                                                                class="form-control mt-2" required>
                                                         </div>
                                                         <div class="col-md-12">
                                                             <label class="text-primary mt-3"><b>Year</b></label>
@@ -279,6 +296,13 @@
                                                             <label class="text-primary mt-3"><b>Transmission</b></label>
                                                             <input type="text" value="{{ $vehicle->transmission }}"
                                                                 name="transmission[]" class="form-control mt-2" required>
+                                                        </div>
+                                                        <div class="col-md-12 mt-3 ">
+                                                            <div style="float: right;">
+                                                                <button class="input-group-text" type="submit"
+                                                                    style="background:red; color:white;"><i
+                                                                        class="fa fa-search"></i></button>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -315,8 +339,8 @@
                                                         <div class="col-md-12">
                                                             <label class="text-primary mt-3"><b>Model</b></label>
                                                             <input type="text" name="model[]"
-                                                                value="{{ $vehicle->model_id }}" class="form-control mt-2"
-                                                                required>
+                                                                value="{{ $vehicle->model_id }}"
+                                                                class="form-control mt-2" required>
                                                         </div>
                                                         <div class="col-md-12">
                                                             <label class="text-primary mt-3"><b>Year</b></label>
@@ -327,6 +351,13 @@
                                                             <label class="text-primary mt-3"><b>Transmission</b></label>
                                                             <input type="text" value="{{ $vehicle->transmission }}"
                                                                 name="transmission[]" class="form-control mt-2" required>
+                                                        </div>
+                                                        <div class="col-md-12 mt-3 ">
+                                                            <div style="float: right;">
+                                                                <button class="input-group-text" type="submit"
+                                                                    style="background:red; color:white;"><i
+                                                                        class="fa fa-search"></i></button>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -340,7 +371,8 @@
 
                     <div class="col-md-9">
                         @forelse($query as $vehicle)
-                            <div style="border:groove 1px lightgrey;background-color:rgb(245, 242, 242)" class="card mt-2">
+                            <div style="border:groove 1px lightgrey;background-color:rgb(245, 242, 242)"
+                                class="card mt-2">
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col-md-3">
@@ -416,8 +448,7 @@
                                             @endauth
                                             <form action="{{ route('thread.store') }}" method="POST">
                                                 @csrf
-                                                <input type="hidden" name="vehicle_id" value="{{ $vehicle->id }}">
-                                                <input type="hidden" name="to_id" value="{{ $vehicle->user_id }}">
+    
                                                 <button type="post"
                                                     style="font-size:10px;margin-left:45px;margin-top:10px"
                                                     class="btn btn-primary"> <i class=""></i> Contact.</button>
@@ -542,14 +573,14 @@
                             $('.loader').hide();
                             $('a[data-vehicleid=' + vehicle_id + ']').html(
                                 `<i style="font-size: 13px;  color: red; margin-bottom: 7px" class="fa fa-bookmark"></i>`
-                                );
+                            );
                             toastr.success(response.message);
 
                         } else if (response.action == 'remove') {
                             $('.loader').hide();
                             $('a[data-vehicleid=' + vehicle_id + ']').html(
                                 `<i style="font-size: 13px;  color: red; margin-bottom: 7px" class="fa fa-bookmark-o"></i>`
-                                );
+                            );
                             toastr.success(response.message);
                         }
                     }
