@@ -57,7 +57,6 @@
                                                 @forelse ($makes as $make)
                                                     <option value="{{ $make->id }}">{{ $make->name }}</option>
                                                 @empty
-                                                    
                                                 @endforelse
                                             </select>
                                         </div>
@@ -94,7 +93,6 @@
                                                 @forelse ($makes as $make)
                                                     <option value="{{ $make->id }}">{{ $make->name }}</option>
                                                 @empty
-                                                    
                                                 @endforelse
                                             </select>
                                         </div>
@@ -133,7 +131,6 @@
                                                 @forelse ($makes as $make)
                                                     <option value="{{ $make->id }}">{{ $make->name }}</option>
                                                 @empty
-                                                    
                                                 @endforelse
                                             </select>
                                         </div>
@@ -147,7 +144,8 @@
                                         </div>
                                         <div class="col-md-12">
                                             <label class="text-primary mt-3"><b>Transmission</b></label>
-                                            <input type="text" name="transmission[]" class="form-control mt-2" required>
+                                            <input type="text" name="transmission[]" class="form-control mt-2"
+                                                required>
                                         </div>
                                     </div>
                                 </div>
@@ -191,7 +189,14 @@
                     "</div>" +
                     "<div class='col-md-12'>" +
                     "<label class='text-primary mt-3'><b>Make</b></label>" +
-                    "<input type='text' name='make[]' class='form-control mt-2' required>" +
+                    "<select name='make[]' class='form-control' required>" +
+                    "<option value=''>Please Select</option>" +
+                    "@forelse ($makes as $make)" +
+                    "<option value='{{ $make->id }}'>{{ $make->name }}</option>" +
+                    "@empty" +
+
+                    "@endforelse" +
+                    "</select>" +
                     "</div>" +
                     "<div class='col-md-12'>" +
                     "<label class='text-primary mt-3'><b>Model</b></label>" +
