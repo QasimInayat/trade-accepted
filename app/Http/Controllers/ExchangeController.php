@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class ExchangeController extends Controller
 {
     public function exchange(Request $request){
-        $data ['title'] = 'Ex your cars';
+        $data ['title'] = 'Exchange your cars';
         $data ['heading'] = 'Exchange your cars';
         $data ['vehicles'] = Vehicle::where('status','1')->get();
         $data['makes'] = Make::get();
@@ -32,8 +32,9 @@ class ExchangeController extends Controller
             }
 
             $query = $query->get();
-
-            dd($query);
+            $title = 'Exchange your cars';
+            $heading = 'Exchange your cars';
+            return view('pages.exchange-results',compact('query','title','heading'));
 
         }
         return view('pages.exchange',$data);
