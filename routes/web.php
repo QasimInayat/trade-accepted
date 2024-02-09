@@ -7,6 +7,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ChatController;
 use App\Http\Controllers\FavouriteController;
 use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\ExchangeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,8 +30,8 @@ Route::group(['middleware' => ['auth','isUser']], function() {
 Route::get('/' , [FrontendController::class , 'index'])->name('index');
 Route::get('detail/{id}', [FrontendController::class, 'detail'])->name('detail');
 Route::get('search', [FrontendController::class, 'search'])->name('search');
-Route::get('exchange', [FrontendController::class, 'exchange'])->name('exchange');
-Route::get('exchange-vehicle/{id}' , [FrontendController::class, 'exchangeVehicle'])->name('exchange-vehicle');
+Route::get('exchange', [ExchangeController::class, 'exchange'])->name('exchange');
+Route::get('exchange-vehicle/{id}' , [ExchangeController::class, 'exchangeVehicle'])->name('exchange-vehicle');
 Route::get('client_profile', [FrontendController::class, 'clientProfile'])->name('client-profile');
 Route::get('vehicle-list' , [FrontendController::class, 'vehicleList'])->name('vehicle-list');
 Route::get('{full_name}/vehicle' , [FrontendController::class , 'userVehicle'])->name('user.vehicle');
@@ -89,6 +90,9 @@ Route::middleware(['auth'])->group(function () {
         Route::get('thank-you' , [FrontendController::class , 'thankYou'])->name('thankYou');
 
         Route::post('review/store' , [FrontendController::class , 'reviewStore'])->name('review.store');
+
+    // Exchage
+    Route::post('exchange' , [ExchangeController::class , 'store'])->name('exchange.store');
 });
 
 Auth::routes();

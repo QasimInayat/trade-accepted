@@ -212,16 +212,4 @@ class FrontendController extends Controller
         $data['heading'] =  'Trades of'.' '.$data['user']->first_name.' '.$data['user']->last_name;
         return view('pages.user-vehicle' ,$data);
     }
-
-    public function exchange(){
-        $data ['title'] = 'Exchange your cars';
-        $data ['heading'] = 'Exchange your cars';
-        $data ['vehicles'] = Vehicle::get();
-        return view('pages.exchange',$data);
-    }
-    public function exchangeVehicle($id){
-        $data['vehicle'] = Vehicle::where('id',$id)->firstorfail();
-        $view = view('pages.exchange-vehicle',$data);
-        return response(['success' => true, 'data' => $view->render()]);
-    }
 }
