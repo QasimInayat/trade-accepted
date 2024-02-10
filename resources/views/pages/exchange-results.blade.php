@@ -312,7 +312,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="accordion-item">
+                                {{-- <div class="accordion-item">
                                     <button id="accordion-button-2" type="button" aria-expanded="false"><span
                                             class="accordion-title p-3"><b> Vehicle 4</b></span><span class="icon"
                                             aria-hidden="true"><i class="fas fa-angle-right"></i></span></button>
@@ -368,7 +368,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> --}}
                             </form>
                         </div>
                     </div>
