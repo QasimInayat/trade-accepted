@@ -36,11 +36,11 @@ class ExchangeController extends Controller
             $heading = 'Exchange your cars';
             $makes = Make::get();
             $vehicle['id'] = $vehicle->id;
-            $vehicle['make'] = $vehicle->make_id;
-            $vehicle['model'] = $vehicle->model_id;
-            $vehicle['transmission'] = $vehicle->transmission;
-            $vehicle['year'] = $vehicle->year;
-            return view('pages.exchange-results',compact('query','title','heading','makes','vehicle'));
+            $make = array_values($request->input('make', []));
+            $model = array_values($request->input('model', []));
+            $year = array_values($request->input('year', []));
+            $transmission = array_values($request->input('transmission', []));
+            return view('pages.exchange-results',compact('make','model','year','transmission', 'query','title','heading','makes','vehicle'));
 
         }
         return view('pages.exchange',$data);

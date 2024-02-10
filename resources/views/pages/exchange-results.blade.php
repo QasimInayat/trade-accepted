@@ -161,28 +161,28 @@
                                                             <label class="text-primary mt-3"><b>Make</b></label>
                                                             <select name="make[]" class="form-control" required>
                                                                 <option value="">Please Select</option>
-                                                                @forelse ($makes as $make)
-                                                                    <option value="{{ $make->id }}"
-                                                                        @if ($make->id == $vehicle->make_id) selected @else @endif>
-                                                                        {{ $make->name }}</option>
+                                                                @forelse ($makes as $making)
+                                                                    <option value="{{ $making->id }}"
+                                                                        @if ($making->id == $make[0]) selected @else @endif>
+                                                                        {{ $making->name }}</option>
+
                                                                 @empty
                                                                 @endforelse
                                                             </select>
                                                         </div>
                                                         <div class="col-md-12">
                                                             <label class="text-primary mt-3"><b>Model</b></label>
-                                                            <input type="text" name="model[]"
-                                                                value="{{ $vehicle->model_id }}" class="form-control mt-2"
-                                                                required>
+                                                            <input type="text" name="model[]" value="{{ $model[0] }}"
+                                                                class="form-control mt-2" required>
                                                         </div>
                                                         <div class="col-md-12">
                                                             <label class="text-primary mt-3"><b>Year</b></label>
-                                                            <input type="text" value="{{ $vehicle->year }}"
-                                                                name="year[]" class="form-control mt-2" required>
+                                                            <input type="text" value="{{ $year[0] }}" name="year[]"
+                                                                class="form-control mt-2" required>
                                                         </div>
                                                         <div class="col-md-12">
                                                             <label class="text-primary mt-3"><b>Transmission</b></label>
-                                                            <input type="text" value="{{ $vehicle->transmission }}"
+                                                            <input type="text" value="{{ $transmission[0] }}"
                                                                 name="transmission[]" class="form-control mt-2" required>
                                                         </div>
                                                         <div class="col-md-12 mt-3 ">
@@ -204,7 +204,7 @@
                                             aria-hidden="true"><i class="fas fa-angle-right"></i></span></button>
                                     <div class="accordion-content p-3">
                                         <div class="col-md-12">
-
+                                            <input type="hidden" name="vehicle_id" value="{{ $vehicle->id }}">
                                             <div class="card mt-4">
                                                 <div class="card-body">
                                                     <div class="row">
@@ -217,10 +217,11 @@
                                                             <label class="text-primary mt-3"><b>Make</b></label>
                                                             <select name="make[]" class="form-control" required>
                                                                 <option value="">Please Select</option>
-                                                                @forelse ($makes as $make)
-                                                                    <option value="{{ $make->id }}"
-                                                                        @if ($make->id == $vehicle->make_id) selected @else @endif>
-                                                                        {{ $make->name }}</option>
+                                                                @forelse ($makes as $making)
+                                                                    <option value="{{ $making->id }}"
+                                                                        @if ($making->id == $make[1]) selected @else @endif>
+                                                                        {{ $making->name }}</option>
+
                                                                 @empty
                                                                 @endforelse
                                                             </select>
@@ -228,17 +229,17 @@
                                                         <div class="col-md-12">
                                                             <label class="text-primary mt-3"><b>Model</b></label>
                                                             <input type="text" name="model[]"
-                                                                value="{{ $vehicle->model_id }}"
-                                                                class="form-control mt-2" required>
+                                                                value="{{ $model[1] }}" class="form-control mt-2"
+                                                                required>
                                                         </div>
                                                         <div class="col-md-12">
                                                             <label class="text-primary mt-3"><b>Year</b></label>
-                                                            <input type="text" value="{{ $vehicle->year }}"
+                                                            <input type="text" value="{{ $year[1] }}"
                                                                 name="year[]" class="form-control mt-2" required>
                                                         </div>
                                                         <div class="col-md-12">
                                                             <label class="text-primary mt-3"><b>Transmission</b></label>
-                                                            <input type="text" value="{{ $vehicle->transmission }}"
+                                                            <input type="text" value="{{ $transmission[1] }}"
                                                                 name="transmission[]" class="form-control mt-2" required>
                                                         </div>
                                                         <div class="col-md-12 mt-3 ">
@@ -260,7 +261,7 @@
                                             aria-hidden="true"><i class="fas fa-angle-right"></i></span></button>
                                     <div class="accordion-content p-3">
                                         <div class="col-md-12">
-
+                                            <input type="hidden" name="vehicle_id" value="{{ $vehicle->id }}">
                                             <div class="card mt-4">
                                                 <div class="card-body">
                                                     <div class="row">
@@ -273,10 +274,11 @@
                                                             <label class="text-primary mt-3"><b>Make</b></label>
                                                             <select name="make[]" class="form-control" required>
                                                                 <option value="">Please Select</option>
-                                                                @forelse ($makes as $make)
-                                                                    <option value="{{ $make->id }}"
-                                                                        @if ($make->id == $vehicle->make_id) selected @else @endif>
-                                                                        {{ $make->name }}</option>
+                                                                @forelse ($makes as $making)
+                                                                    <option value="{{ $making->id }}"
+                                                                        @if ($making->id == $make[2]) selected @else @endif>
+                                                                        {{ $making->name }}</option>
+
                                                                 @empty
                                                                 @endforelse
                                                             </select>
@@ -284,17 +286,17 @@
                                                         <div class="col-md-12">
                                                             <label class="text-primary mt-3"><b>Model</b></label>
                                                             <input type="text" name="model[]"
-                                                                value="{{ $vehicle->model_id }}"
-                                                                class="form-control mt-2" required>
+                                                                value="{{ $model[2] }}" class="form-control mt-2"
+                                                                required>
                                                         </div>
                                                         <div class="col-md-12">
                                                             <label class="text-primary mt-3"><b>Year</b></label>
-                                                            <input type="text" value="{{ $vehicle->year }}"
+                                                            <input type="text" value="{{ $year[2] }}"
                                                                 name="year[]" class="form-control mt-2" required>
                                                         </div>
                                                         <div class="col-md-12">
                                                             <label class="text-primary mt-3"><b>Transmission</b></label>
-                                                            <input type="text" value="{{ $vehicle->transmission }}"
+                                                            <input type="text" value="{{ $transmission[2] }}"
                                                                 name="transmission[]" class="form-control mt-2" required>
                                                         </div>
                                                         <div class="col-md-12 mt-3 ">
@@ -316,6 +318,7 @@
                                             aria-hidden="true"><i class="fas fa-angle-right"></i></span></button>
                                     <div class="accordion-content p-3">
                                         <div class="col-md-12">
+                                            <input type="hidden" name="vehicle_id" value="{{ $vehicle->id }}">
                                             <div class="card mt-4">
                                                 <div class="card-body">
                                                     <div class="row">
@@ -328,10 +331,11 @@
                                                             <label class="text-primary mt-3"><b>Make</b></label>
                                                             <select name="make[]" class="form-control" required>
                                                                 <option value="">Please Select</option>
-                                                                @forelse ($makes as $make)
-                                                                    <option value="{{ $make->id }}"
-                                                                        @if ($make->id == $vehicle->make_id) selected @else @endif>
-                                                                        {{ $make->name }}</option>
+                                                                @forelse ($makes as $making)
+                                                                    <option value="{{ $making->id }}"
+                                                                        @if ($making->id == $make[0]) selected @else @endif>
+                                                                        {{ $making->name }}</option>
+
                                                                 @empty
                                                                 @endforelse
                                                             </select>
@@ -339,17 +343,17 @@
                                                         <div class="col-md-12">
                                                             <label class="text-primary mt-3"><b>Model</b></label>
                                                             <input type="text" name="model[]"
-                                                                value="{{ $vehicle->model_id }}"
-                                                                class="form-control mt-2" required>
+                                                                value="{{ $model[0] }}" class="form-control mt-2"
+                                                                required>
                                                         </div>
                                                         <div class="col-md-12">
                                                             <label class="text-primary mt-3"><b>Year</b></label>
-                                                            <input type="text" value="{{ $vehicle->year }}"
+                                                            <input type="text" value="{{ $year[0] }}"
                                                                 name="year[]" class="form-control mt-2" required>
                                                         </div>
                                                         <div class="col-md-12">
                                                             <label class="text-primary mt-3"><b>Transmission</b></label>
-                                                            <input type="text" value="{{ $vehicle->transmission }}"
+                                                            <input type="text" value="{{ $transmission[0] }}"
                                                                 name="transmission[]" class="form-control mt-2" required>
                                                         </div>
                                                         <div class="col-md-12 mt-3 ">
@@ -448,7 +452,7 @@
                                             @endauth
                                             <form action="{{ route('thread.store') }}" method="POST">
                                                 @csrf
-    
+
                                                 <button type="post"
                                                     style="font-size:10px;margin-left:45px;margin-top:10px"
                                                     class="btn btn-primary"> <i class=""></i> Contact.</button>
