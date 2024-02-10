@@ -28,13 +28,6 @@
 
                 </div>
 
-                <div class="col-md-6 mb-3 col-6">
-                    <div style="">
-                        <small class="text-primary mb-1">Transmission</small> <br>
-                        <b><small>{{ $vehicle->transmission }}</small></b>
-                    </div>
-
-                </div>
 
                 <div class="col-md-6 mb-3 col-6">
                     <div style="">
@@ -43,7 +36,14 @@
                     </div>
 
                 </div>
-               
+                <div class="col-md-6 mb-3 col-6">
+                    <div style="">
+                        <small class="text-primary mb-1">Transmission</small> <br>
+                        <b><small>{{ $vehicle->transmission }}</small></b>
+                    </div>
+
+                </div>
+
             </div>
         </div>
     </div>
