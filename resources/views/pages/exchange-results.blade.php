@@ -124,7 +124,7 @@
             <div class="container-fluid">
                 <div class="row mb-4">
                     <div class="col-md-10 col-8">
-                        <h2 class="section-heading mb-0">Results for "<span
+                        <h2 class="section-heading mb-0">Results for "{{ $vehicle->title }}"<span
                                 class="text-primary text-italic fw-normal">{{ request('title') }}</span>"</h2>
                     </div>
                     <div class="col-md-2 col-4">

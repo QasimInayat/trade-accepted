@@ -36,6 +36,7 @@ class ExchangeController extends Controller
             $heading = 'Exchange your cars';
             $makes = Make::get();
             $vehicle['id'] = $vehicle->id;
+            $vehicle['title'] = $vehicle->title;
             $make = array_values($request->input('make', []));
             $model = array_values($request->input('model', []));
             $year = array_values($request->input('year', []));
