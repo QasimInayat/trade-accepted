@@ -18,6 +18,21 @@
                 <!-- </p> -->
                 <img src="{{userAvatar(isset($message->from) ? $message->from->image : null) }}" />
             </li>
+            <li class="repaly d-flex gap-3 justify-content-end">
+                <!-- <p class="default"> -->
+                    <div class="car-offer">
+                        @php $vehicle = vehicleById($message->thread_id); @endphp
+                        <img style="width: 90px; height: 80px;" src="{{ asset('upload/vehicle/'.mainImage($vehicle->id)) }}" alt="">
+                        <h5 class="text-primary">{{ $vehicle->title }}</h5>
+                        <h4>${{number_format($vehicle->price)}}</h4>
+
+                        <div class="d-xl-flex gap-3">
+                            <p>I want to exchnage the vehicle.</p>
+                        </div>
+                    </div>
+                <!-- </p> -->
+                <img src="{{userAvatar(isset($message->from) ? $message->from->image : null) }}" />
+            </li>
         @endif
         @if($message->from_id == auth()->user()->id)
            <li class="repaly">
