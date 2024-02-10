@@ -396,28 +396,30 @@
                                             <div class="row">
                                                 <div class="col-md-3 col-6">
                                                     <span style="font-size: 14px">
+                                                        <small class="text-primary">Make</small><br>
+                                                        {{ $vehicle->make->name }}
+                                                    </span>
+
+                                                </div>
+                                                <div class="col-md-3 col-6">
+                                                    <span style="font-size: 14px">
+                                                        <small class="text-primary">Model</small><br>
+                                                        {{ $vehicle->model_id }}
+                                                    </span>
+                                                </div>
+
+                                                <div class="col-md-3 col-6">
+                                                    <span style="font-size: 14px">
                                                         <small class="text-primary">Year</small><br>
                                                         {{ $vehicle->year }}
                                                     </span>
 
                                                 </div>
-                                                <div class="col-md-3 col-6">
-                                                    <span style="font-size: 14px">
-                                                        <small class="text-primary">Mileage</small><br>
-                                                        {{ $vehicle->mileage }}
-                                                    </span>
-                                                </div>
-                                                <div class="col-md-3 col-6">
-                                                    <span style="font-size: 14px">
-                                                        <small class="text-primary">Fuel</small><br>
-                                                        {{ $vehicle->fuel }}
-                                                    </span>
 
-                                                </div>
                                                 <div class="col-md-3 col-6">
                                                     <span style="font-size: 14px">
-                                                        <small class="text-primary">Trim</small><br>
-                                                        {{ $vehicle->trim }}
+                                                        <small class="text-primary">Transmission</small><br>
+                                                        {{ $vehicle->transmission }}
                                                     </span>
                                                 </div>
                                                 <br>
