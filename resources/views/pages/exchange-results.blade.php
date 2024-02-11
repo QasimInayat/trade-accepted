@@ -420,6 +420,7 @@
                                                     <span style="font-size: 14px">
                                                         <small class="text-primary">Transmission</small><br>
                                                         {{ $vehicle->transmission }}
+                                                        {{ $vehicle->id }}
                                                     </span>
                                                 </div>
                                                 <br>
@@ -454,7 +455,9 @@
                                             @endauth
                                             <form action="{{ route('thread.store') }}" method="POST">
                                                 @csrf
-
+                                                <input type="hidden" name="vehicle_id" value="{{ $vehicle->id }}">
+                                                <input type="hidden" name="is_vehicle_id" value="{{ $vehicle->id }}">
+                                                <input type="hidden" name="to_id" value="{{ $vehicle->user_id }}">
                                                 <button type="post"
                                                     style="font-size:10px;margin-left:45px;margin-top:10px"
                                                     class="btn btn-primary"> <i class=""></i> Contact.</button>
@@ -606,4 +609,5 @@
             tooltip.innerHTML = "Copied: " + copyText.value;
         }
     </script>
+
 @endpush

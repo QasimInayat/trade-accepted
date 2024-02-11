@@ -19,6 +19,9 @@ class Message extends Model
     public function vehicle(){
         return $this->belongsTo(Vehicle::class);
     }
+    public function isVehicle(){
+        return $this->belongsTo(Vehicle::class);
+    }
     public function thread(){
         return $this->belongsTo(Message::class,'thread_id');
     }

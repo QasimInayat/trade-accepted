@@ -18,24 +18,33 @@
                 <!-- </p> -->
                 <img src="{{userAvatar(isset($message->from) ? $message->from->image : null) }}" />
             </li>
-            <li class="repaly d-flex gap-3 justify-content-end">
-                <!-- <p class="default"> -->
-                    <div class="car-offer">
-                        @php $vehicle = vehicleById($message->thread_id); @endphp
-                        <img style="width: 90px; height: 80px;" src="{{ asset('upload/vehicle/'.mainImage($vehicle->id)) }}" alt="">
-                        <h5 class="text-primary">{{ $vehicle->title }}</h5>
-                        <h4>${{number_format($vehicle->price)}}</h4>
 
-                        <div class="d-xl-flex gap-3">
-                            <p>I want to exchnage the vehicle.</p>
-                        </div>
+        @endif
+        @if( $message->is_vehicle_id  && auth()->user()->id == $message->from_id)
+        <li class="repaly d-flex gap-3 justify-content-end">
+            <!-- <p class="default"> -->
+                <div class="car-offer">
+                    @php $vehicle = vehicleById($message->thread_id); @endphp
+                    <a href="{{ route('detail',$message->isVehicle->slug) }}">
+                        <img style="width: 90px; height: 80px;" src="{{ asset('upload/vehicle/'.mainImage($message->isVehicle->id)) }}" alt="">
+                    </a>
+                    <a href="{{ route('detail',$message->isVehicle->slug) }}">
+                        <h5 class="text-primary">{{ $message->isVehicle->title }}</h5>
+                    </a>
+                    <h4>${{number_format($message->isVehicle->price)}}</h4>
+
+                    <div class="d-xl-flex gap-3">
+                        <p>I want to exchnage the vehicle.</p>
                     </div>
-                <!-- </p> -->
-                <img src="{{userAvatar(isset($message->from) ? $message->from->image : null) }}" />
-            </li>
+                </div>
+            <!-- </p> -->
+            <img src="{{userAvatar(isset($message->from) ? $message->from->image : null) }}" />
+        </li>
+
         @endif
         @if($message->from_id == auth()->user()->id)
            <li class="repaly">
+            {{-- <p>{{ $message->id }}</p> --}}
                 <p>{{$message->message}}</p>
                 <img src="{{userAvatar(isset($message->from) ? $message->from->image : null) }}" />
                 <span class="time">{{date('h:m A',strtotime($message->created_at))}}</span>

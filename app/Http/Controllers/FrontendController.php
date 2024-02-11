@@ -39,31 +39,34 @@ class FrontendController extends Controller
             ->pinterest();
         return view('pages.detail',$data);
     }
-    public function threadStore(Request $request){
-        $request->validate([
-            'vehicle_id' => 'required',
-            'to_id' => 'required',
+    public function threadStore(Request $request)
+{
+    $request->validate([
+        'vehicle_id' => 'required',
+        'to_id' => 'required',
+    ]);
+
+    $thread = Thread::where(['to_id' => $request->to_id , 'from_id' => auth()->user()->id])->first();
+
+    if (!empty($thread)) {
+        // $this->message($thread->id,$request->to_id,auth()->user()->id, 'Please reply');
+        return redirect()->route('messenger', ['thread' => $thread->id]);
+    } else {
+        $store = Thread::create([
+            'vehicle_id' => $request->vehicle_id,
+            'to_id' => $request->to_id,
+            'from_id' => auth()->user()->id,
         ]);
-        $thread = Thread::where(['to_id' => $request->to_id , 'from_id' => auth()->user()->id])->first();
-        if(!empty($thread)){
-            // $this->message($thread->id,$request->to_id,auth()->user()->id, 'Please reply');
-            return redirect()->route('messenger',['thread' => $thread->id]);
-        }
-        else{
-            $store = Thread::create([
-                'vehicle_id' => $request->vehicle_id,
-                'to_id' => $request->to_id,
-                'from_id' => auth()->user()->id,
-            ]);
-            if(!empty($store->id)){
-                $this->message($store->id,$request->to_id,auth()->user()->id, 'Hello!');
-               return redirect()->route('messenger',['thread' => $store->id]);
-            }else{
-                return redirect()->back();
-            }
+
+        if (!empty($store->id)) {
+            $this->message($request, $store->id, $request->to_id, auth()->user()->id, 'Hello!');
+            return redirect()->route('messenger', ['thread' => $store->id]);
+        } else {
+            return redirect()->back();
         }
     }
-    public function message($thread_id,$to_id,$from_id,$msg){
+}
+    public function message(Request $request, $thread_id, $to_id, $from_id, $msg){
         $message = Message::create([
             'thread_id' => $thread_id,
             'to_id' => $to_id,
@@ -72,6 +75,11 @@ class FrontendController extends Controller
             'is_offer' => 1,
         ]);
         if(!empty($message)){
+            if ($message->is_offer == 1) {
+                $message->update([
+                    'is_vehicle_id' => $request->input('is_vehicle_id'),
+                ]);
+            }
             return true;
         }
         return false;

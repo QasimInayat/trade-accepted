@@ -236,16 +236,16 @@ Search
                             </div>
                             <div class="col-md-3 col-6">
                                 <span style="font-size: 14px">
+                                    <small class="text-primary">Year</small><br>
+                                    {{ $vehicle->year }}
+                                </span>
+                            </div>
+                            <div class="col-md-3 col-6">
+                                <span style="font-size: 14px">
                                     <small class="text-primary">Transmission</small><br>
                                     {{ $vehicle->transmission }}
                                     </span>
 
-                            </div>
-                            <div class="col-md-3 col-6">
-                                <span style="font-size: 14px">
-                                    <small class="text-primary">Year</small><br>
-                                    {{ $vehicle->year }}
-                                    </span>
                             </div>
                            <br>
                         </div>
