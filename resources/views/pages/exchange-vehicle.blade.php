@@ -28,15 +28,13 @@
 
                 </div>
 
-                
                 <div class="col-md-6 mb-3 col-6">
                     <div style="">
                         <small class="text-primary mb-1">Year</small> <br>
                         <b><small>{{ $vehicle->year }}</small></b>
                     </div>
-                    
+
                 </div>
-                
                 <div class="col-md-6 mb-3 col-6">
                     <div style="">
                         <small class="text-primary mb-1">Transmission</small> <br>
