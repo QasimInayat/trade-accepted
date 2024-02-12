@@ -185,13 +185,7 @@
                                                             <input type="text" value="{{ $transmission[0] }}"
                                                                 name="transmission[]" class="form-control mt-2" required>
                                                         </div>
-                                                        <div class="col-md-12 mt-3 ">
-                                                            <div style="float: right;">
-                                                                <button class="input-group-text" type="submit"
-                                                                    style="background:red; color:white;"><i
-                                                                        class="fa fa-search"></i></button>
-                                                            </div>
-                                                        </div>
+                                                        
                                                     </div>
                                                 </div>
                                             </div>
@@ -242,13 +236,7 @@
                                                             <input type="text" value="{{ $transmission[1] }}"
                                                                 name="transmission[]" class="form-control mt-2" required>
                                                         </div>
-                                                        <div class="col-md-12 mt-3 ">
-                                                            <div style="float: right;">
-                                                                <button class="input-group-text" type="submit"
-                                                                    style="background:red; color:white;"><i
-                                                                        class="fa fa-search"></i></button>
-                                                            </div>
-                                                        </div>
+                                                       
                                                     </div>
                                                 </div>
                                             </div>
@@ -299,13 +287,7 @@
                                                             <input type="text" value="{{ $transmission[2] }}"
                                                                 name="transmission[]" class="form-control mt-2" required>
                                                         </div>
-                                                        <div class="col-md-12 mt-3 ">
-                                                            <div style="float: right;">
-                                                                <button class="input-group-text" type="submit"
-                                                                    style="background:red; color:white;"><i
-                                                                        class="fa fa-search"></i></button>
-                                                            </div>
-                                                        </div>
+                                                        
                                                     </div>
                                                 </div>
                                             </div>
@@ -369,6 +351,13 @@
                                         </div>
                                     </div>
                                 </div> --}}
+                                <div class="col-md-12 mt-3 ">
+                                    <div style="float: right;">
+                                        <button class="input-group-text" type="submit"
+                                            style="background:red; color:white;"><i
+                                                class="fa fa-search"></i></button>
+                                    </div>
+                                </div>
                             </form>
                         </div>
                     </div>
@@ -456,7 +445,7 @@
                                             <form action="{{ route('thread.store') }}" method="POST">
                                                 @csrf
                                                 <input type="hidden" name="vehicle_id" value="{{ $vehicle->id }}">
-                                                <input type="hidden" name="is_vehicle_id" value="{{ $vehicle->id }}">
+                                                <input type="hidden" name="is_vehicle_id" value="{{ $exchange }}">
                                                 <input type="hidden" name="to_id" value="{{ $vehicle->user_id }}">
                                                 <button type="post"
                                                     style="font-size:10px;margin-left:45px;margin-top:10px"

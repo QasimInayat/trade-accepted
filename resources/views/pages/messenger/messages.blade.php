@@ -23,7 +23,7 @@
         @if( $message->is_vehicle_id  && auth()->user()->id == $message->from_id)
         <li class="repaly d-flex gap-3 justify-content-end">
             <!-- <p class="default"> -->
-                <div class="car-offer">
+                <div style="width: 317px;"  class="car-offer">
                     @php $vehicle = vehicleById($message->thread_id); @endphp
                     <a href="{{ route('detail',$message->isVehicle->slug) }}">
                         <img style="width: 90px; height: 80px;" src="{{ asset('upload/vehicle/'.mainImage($message->isVehicle->id)) }}" alt="">
@@ -32,10 +32,6 @@
                         <h5 class="text-primary">{{ $message->isVehicle->title }}</h5>
                     </a>
                     <h4>${{number_format($message->isVehicle->price)}}</h4>
-
-                    <div class="d-xl-flex gap-3">
-                        <p>I want to exchnage the vehicle.</p>
-                    </div>
                 </div>
             <!-- </p> -->
             <img src="{{userAvatar(isset($message->from) ? $message->from->image : null) }}" />

@@ -49,8 +49,7 @@ class FrontendController extends Controller
     $thread = Thread::where(['to_id' => $request->to_id , 'from_id' => auth()->user()->id])->first();
 
     if (!empty($thread)) {
-        // $this->message($thread->id,$request->to_id,auth()->user()->id, 'Please reply');
-        return redirect()->route('messenger', ['thread' => $thread->id]);
+        $is_offer = 0;
     } else {
         $store = Thread::create([
             'vehicle_id' => $request->vehicle_id,
@@ -59,31 +58,41 @@ class FrontendController extends Controller
         ]);
 
         if (!empty($store->id)) {
-            $this->message($request, $store->id, $request->to_id, auth()->user()->id, 'Hello!');
-            return redirect()->route('messenger', ['thread' => $store->id]);
+            $is_offer = 1;
         } else {
             return redirect()->back();
         }
     }
+
+    if ($request->input('is_vehicle_id')) {
+        $this->message($request, $thread->id ?? $store->id, $request->to_id, auth()->user()->id, 'I want to exchnage this vehicle.', $is_offer, $request->input('is_vehicle_id'));
+    } else {
+        $this->message($request, $thread->id ?? $store->id, $request->to_id, auth()->user()->id, 'Hello!', $is_offer);
+    }
+
+    return redirect()->route('messenger', ['thread' => $thread->id ?? $store->id]);
 }
-    public function message(Request $request, $thread_id, $to_id, $from_id, $msg){
-        $message = Message::create([
-            'thread_id' => $thread_id,
-            'to_id' => $to_id,
-            'from_id' => $from_id,
-            'message' => $msg,
-            'is_offer' => 1,
-        ]);
-        if(!empty($message)){
-            if ($message->is_offer == 1) {
-                $message->update([
-                    'is_vehicle_id' => $request->input('is_vehicle_id'),
-                ]);
-            }
-            return true;
-        }
+public function message(Request $request, $thread_id, $to_id, $from_id, $msg = 'Hello!', $is_offer, $is_vehicle_id = null){
+    $message = Message::create([
+        'thread_id' => $thread_id,
+        'to_id' => $to_id,
+        'from_id' => $from_id,
+        'message' => $msg,
+        'is_offer' => $is_offer,
+    ]);
+
+    if (!$message->save()) {
         return false;
     }
+
+    if ([$message->is_offer == 1 => $message->is_offer == 2]) {
+        $message->update([
+            'is_vehicle_id' => $is_vehicle_id,
+        ]);
+    }
+
+    return true;
+}
     public function search(Request $request){
         $data ['title'] = 'Search';
         $data ['heading'] = 'Search';
