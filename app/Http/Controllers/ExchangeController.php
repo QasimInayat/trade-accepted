@@ -11,7 +11,7 @@ class ExchangeController extends Controller
     public function exchange(Request $request){
         $data ['title'] = 'Exchange your cars';
         $data ['heading'] = 'Exchange your cars';
-        $data ['vehicles'] = Vehicle::where('status','1')->get();
+        $data ['vehicles'] = Vehicle::where(['status'=>'1','user_id' => auth()->user()->id])->get();
         $data['makes'] = Make::get();
         if(isset($request->vehicle_id)){
             $vehicle = Vehicle::where('id',$request->vehicle_id)->first();

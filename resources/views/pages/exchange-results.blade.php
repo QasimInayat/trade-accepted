@@ -456,7 +456,7 @@
                                 </div>
                             </div>
                         @empty
-                            <h4 style="margin-top:10px"><b>DATA NOT ADDED</b></h4>
+                            <h4 style="margin-top:10px"><b>No record found.</b></h4>
                         @endforelse
                     </div>
                 </div>
