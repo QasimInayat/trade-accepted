@@ -35,7 +35,7 @@
           </div>
         </div>
         <!-- View sales -->
-      
+
         <!-- Statistics -->
         <div class="col-xl-8 mb-4 col-lg-7 col-12">
           <div class="card h-100">
@@ -87,13 +87,13 @@
             </div>
           </div>
         </div>
-       
-      
-      
-      
+
+
+
+
       </div>
     <div class="row">
-        
+
 
 
           <div class="col-12 col-xl-12 mb-4">
@@ -102,7 +102,7 @@
                 <div class="card-title mb-0">
                   <h5 class="mb-0">Trade-accepted Reports</h5>
                 </div>
-                
+
               </div>
               <div class="card-body">
                 <ul class="nav nav-tabs widget-nav-tabs pb-3 gap-4 mx-1 d-flex flex-nowrap" role="tablist">
@@ -188,7 +188,7 @@
                                                 <td>{{ isset($item->user) ? $item->user->first_name : '' }} {{ isset($item->user) ? $item->user->last_name : '-' }}</td>
                                                 <td>{{ $item->title }}</td>
                                                 <td><img style="border-radius:10px;" height="70px" width="100px" src="{{ asset('upload/vehicle/'.mainImage($item->id)) }}" alt=""></td>
-                                                <td>${{ $item->price }}</td>
+                                                <td>${{ number_format($item->price) }}</td>
                                                 <td>{{ $item->make->name }}</td>
                                                 <td>{{ $item->model_id }}</td>
                                                 <td>
