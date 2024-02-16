@@ -52,7 +52,7 @@ Route::resource('vehicle_type' , VehicleTypeController::class);
     Route::get('vehicles' , [VehicleController::class , 'index'])->name('vehicle.index');
     Route::post('vehicle/{id}/update' , [VehicleController::class , 'update'])->name('vehicle.update');
     Route::get('vehicle/{id}/delete' , [VehicleController::class , 'delete'])->name('vehicle.delete');
-    Route::get('vehicle/store' , [VehicleController::class , 'store'])->name('vehicle.store');
+    Route::post('vehicle/store' , [VehicleController::class , 'store'])->name('vehicle.store');
     Route::get('vehicle/create' , [VehicleController::class , 'create'])->name('vehicle.create');
     Route::get('vehicle/{id}/edit' , [VehicleController::class , 'edit'])->name('vehicle.edit');
     Route::get('remove_gallery/{id}', [VehicleController::class , 'remove_gallery'])->name('remove.gallery');

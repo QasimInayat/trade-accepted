@@ -45,7 +45,6 @@
                   </div>
                   <div class="card-body">
                     {!! Form::model($vehicle, ['route' => ['admin.vehicle.update' , $vehicle->id], 'enctype' => 'multipart/form-data' , 'id' => 'my-form']) !!}
-                    @method('PUT')
                      <div class="row">
                         <div class="col-md-6 mt-4">
                             <div class="form-floating">
@@ -61,26 +60,32 @@
                                <small class="text-danger">@error ('title') {{ $message }} @enderror</small>
                             </div>
                          </div>
-                         <div class="col-md-6 mt-4">
-                            <div class="form-floating">
-                               {!! Form::text('price', null, ['class' => 'form-control', 'id' => 'floatingInput', 'placeholder' => 'Enter your price', 'aria-describedby' => 'floatingInputHelp']) !!}
-                               <label for="floatingInput">Price</label>
-                               <small class="text-danger">@error ('price') {{ $message }} @enderror</small>
+                         <div class="col-md-12 mt-4">
+                            <div class="multiple-uploader" id="multiple-uploader">
+                                <div class="mup-msg">
+                                    <i class="display-4 text-muted ri-upload-cloud-2-fill"></i>
+                                    <span class="mup-main-msg">Click to upload images.</span>
+                                    <label for="" style="display: none;">
+                                    <input type="file" name="images[]" id="" accept="image/*" class="form-control" multiple>
+                                    </label>
+                                </div>
                             </div>
-                         </div>
-                         <div class="col-md-6 mt-4">
-                            <div class="form-floating">
-                               {!! Form::text('address', null, ['class' => 'form-control', 'id' => 'floatingInput', 'placeholder' => 'Enter your address', 'aria-describedby' => 'floatingInputHelp']) !!}
-                               <label for="floatingInput">Address</label>
-                               <small class="text-danger">@error ('address') {{ $message }} @enderror</small>
+                           <div class="row">
+                           @foreach ($galleries as $gallery)
+                            <div class="col-md-2">
+                                <div style="border: 1px solid lightgrey; padding: 5px; text-align: center;" class="mt-3">
+                                <img src="{{ asset('upload/vehicle/'.$gallery->image) }}" style="height: 90px; width: 100%;" alt="">
+                                <a href="{{ route('admin.remove.gallery',$gallery->id) }}" class="remove_gallery"><small>Remove Image</small></a><br>
+                                <input type="radio" name="is_main" class="mt-3"  @if($gallery->is_main == 1)  checked @endif value="{{$gallery->id}}">
                             </div>
-                         </div>
-                         <div class="col-md-6 mt-4">
+                           </div>
+                           @endforeach
+                        </div>
+                           <small class="text-danger">@error ('images[]') {{ $message }} @enderror</small>
+                        </div>
+                        <div class="col-md-6 mt-4">
                             <div class="form-floating">
-                                <select name="country_id" id="" class="form-control">
-                                    <option value="pakistan">Pakistan</option>
-                                    <option value="india">India</option>
-                                </select>
+                                <select name="country_id" required class="form-control custom-control" id="country" onchange="print_state('state',this.selectedIndex);"></select>
                                <label for="floatingInput">Country</label>
                                <small class="text-danger">@error ('country_id') {{ $message }} @enderror</small>
                             </div>
@@ -99,31 +104,16 @@
                          </div>
                          <div class="col-md-6 mt-4">
                             <div class="form-floating">
-                               {!! Form::text('mileage', null, ['class' => 'form-control', 'id' => 'floatingInput', 'placeholder' => 'Enter your mileage', 'aria-describedby' => 'floatingInputHelp']) !!}
-                               <label for="floatingInput">Mileage</label>
-                               <small class="text-danger">@error ('mileage') {{ $message }} @enderror</small>
+                               {!! Form::text('address', null, ['class' => 'form-control', 'id' => 'floatingInput', 'placeholder' => 'Enter your address', 'aria-describedby' => 'floatingInputHelp']) !!}
+                               <label for="floatingInput">Address</label>
+                               <small class="text-danger">@error ('address') {{ $message }} @enderror</small>
                             </div>
                          </div>
                          <div class="col-md-6 mt-4">
                             <div class="form-floating">
-                               {!! Form::text('transmission', null, ['class' => 'form-control', 'id' => 'floatingInput', 'placeholder' => 'Enter your transmission', 'aria-describedby' => 'floatingInputHelp']) !!}
-                               <label for="floatingInput">Transmission</label>
-                               <small class="text-danger">@error ('transmission') {{ $message }} @enderror</small>
-                            </div>
-                         </div>
-                         <div class="col-md-6 mt-4">
-                            <div class="form-floating">
-                               {!! Form::text('exterior_color', null, ['class' => 'form-control', 'id' => 'floatingInput', 'placeholder' => 'Enter your exterior_color', 'aria-describedby' => 'floatingInputHelp']) !!}
-                               <label for="floatingInput">Exterior Color</label>
-                               <small class="text-danger">@error ('exterior_color') {{ $message }} @enderror</small>
-                            </div>
-                         </div>
-
-                         <div class="col-md-6 mt-4">
-                            <div class="form-floating">
-                               {!! Form::text('interior_color', null, ['class' => 'form-control', 'id' => 'floatingInput', 'placeholder' => 'Enter your interior_color', 'aria-describedby' => 'floatingInputHelp']) !!}
-                               <label for="floatingInput">Interior Color</label>
-                               <small class="text-danger">@error ('interior_color') {{ $message }} @enderror</small>
+                               {!! Form::text('year', null, ['class' => 'form-control', 'id' => 'floatingInput', 'placeholder' => 'Enter your year', 'aria-describedby' => 'floatingInputHelp']) !!}
+                               <label for="floatingInput">Year</label>
+                               <small class="text-danger">@error ('year') {{ $message }} @enderror</small>
                             </div>
                          </div>
                          <div class="col-md-6 mt-4">
@@ -150,49 +140,66 @@
                          </div>
                          <div class="col-md-6 mt-4">
                             <div class="form-floating">
+                               {!! Form::text('transmission', null, ['class' => 'form-control', 'id' => 'floatingInput', 'placeholder' => 'Enter your transmission', 'aria-describedby' => 'floatingInputHelp']) !!}
+                               <label for="floatingInput">Transmission</label>
+                               <small class="text-danger">@error ('transmission') {{ $message }} @enderror</small>
+                            </div>
+                         </div>
+                         <div class="col-md-6 mt-4">
+                            <div class="form-floating">
+                               {!! Form::text('exterior_color', null, ['class' => 'form-control', 'id' => 'floatingInput', 'placeholder' => 'Enter your exterior_color', 'aria-describedby' => 'floatingInputHelp']) !!}
+                               <label for="floatingInput">Exterior Color</label>
+                               <small class="text-danger">@error ('exterior_color') {{ $message }} @enderror</small>
+                            </div>
+                         </div>
+
+                         <div class="col-md-6 mt-4">
+                            <div class="form-floating">
+                               {!! Form::text('interior_color', null, ['class' => 'form-control', 'id' => 'floatingInput', 'placeholder' => 'Enter your interior_color', 'aria-describedby' => 'floatingInputHelp']) !!}
+                               <label for="floatingInput">Interior Color</label>
+                               <small class="text-danger">@error ('interior_color') {{ $message }} @enderror</small>
+                            </div>
+                         </div>
+
+                         <div class="col-md-6 mt-4">
+                            <div class="form-floating">
                                {!! Form::text('fuel', null, ['class' => 'form-control', 'id' => 'floatingInput', 'placeholder' => 'Enter your Fuel', 'aria-describedby' => 'floatingInputHelp']) !!}
                                <label for="floatingInput">Fuel</label>
                                <small class="text-danger">@error ('fuel') {{ $message }} @enderror</small>
                             </div>
                          </div>
+
                          <div class="col-md-6 mt-4">
                             <div class="form-floating">
-                               {!! Form::text('year', null, ['class' => 'form-control', 'id' => 'floatingInput', 'placeholder' => 'Enter your year', 'aria-describedby' => 'floatingInputHelp']) !!}
-                               <label for="floatingInput">Year</label>
-                               <small class="text-danger">@error ('year') {{ $message }} @enderror</small>
+                               {!! Form::text('mileage', null, ['class' => 'form-control', 'id' => 'floatingInput', 'placeholder' => 'Enter your mileage', 'aria-describedby' => 'floatingInputHelp']) !!}
+                               <label for="floatingInput">Mileage</label>
+                               <small class="text-danger">@error ('mileage') {{ $message }} @enderror</small>
                             </div>
                          </div>
-                         <div class="col-md-12 mt-4">
-                                <div class="multiple-uploader" id="multiple-uploader">
-                                    <div class="mup-msg">
-                                        <i class="display-4 text-muted ri-upload-cloud-2-fill"></i>
-                                        <span class="mup-main-msg">Click to upload images.</span>
-                                        <label for="" style="display: none;">
-                                        <input type="file" name="images[]" id="" accept="image/*" class="form-control" multiple>
-                                        </label>
-                                    </div>
-                                </div>
-                               <div class="row">
-                               @foreach ($galleries as $gallery)
-                                <div class="col-md-2">
-                                    <div style="border: 1px solid lightgrey; padding: 5px; text-align: center;" class="mt-3">
-                                    <img src="{{ asset('upload/vehicle/'.$gallery->image) }}" style="height: 90px; width: 100%;" alt="">
-                                    <a href="{{ route('admin.remove.gallery',$gallery->id) }}" class="remove_gallery"><small>Remove Image</small></a><br>
-                                    <input type="radio" name="is_main" class="mt-3"  @if($gallery->is_main == 1)  checked @endif value="{{$gallery->id}}">
-                                </div>
-                               </div>
-                               @endforeach
+
+                         <div class="col-md-6 mt-4">
+                            <div class="form-floating">
+                               {!! Form::text('price', null, ['class' => 'form-control', 'id' => 'floatingInput', 'placeholder' => 'Enter your price', 'aria-describedby' => 'floatingInputHelp']) !!}
+                               <label for="floatingInput">Price</label>
+                               <small class="text-danger">@error ('price') {{ $message }} @enderror</small>
                             </div>
-                               <small class="text-danger">@error ('images[]') {{ $message }} @enderror</small>
-                            </div>
+                         </div>
+
+
+
+
+
 
                          <div class="col-md-12 mt-4">
-                            <div class="form-floating">
-                                <textarea name="description" class="form-control" id="" cols="30" rows="20">{{ $vehicle->description }}</textarea>
-                               <label for="floatingInput">Description</label>
-                               <small class="text-danger">@error ('description') {{ $message }} @enderror</small>
-                            </div>
-                         </div>
+                            <label for="floatingInput">Description</label>
+                            <textarea name="description" class="form-control" rows="5">{{ $vehicle->description }}</textarea>
+                            <small class="text-danger">
+                                @error('description')
+                                    {{ $message }}
+                                @enderror
+                            </small>
+                        </div>
+
                          <div class="col-md-12 mt-4">
                             <div class="form-floating">
                                 {!! Form::select('status', ['0' => 'Deactive' , '1' => 'Active'], null, ['class' => 'form-control' , 'placeholder' => 'Please Select']) !!}
@@ -216,14 +223,16 @@
 </div>
 @endsection
 @push('scripts')
-<script src="{{ asset('assets/js/multiple-uploader.js') }}"></script>
-<script>
+    <script src="{{ asset('assets/js/multiple-uploader.js') }}"></script>
+    <script src="{{ asset('assets/js/payment-related.js') }}"></script>
+    <script>
+        print_country("country");
 
-    let multipleUploader = new MultipleUploader('#multiple-uploader').init({
-        maxUpload : 20, // maximum number of uploaded images
-        maxSize:2, // in size in mb
-        filesInpName:'images', // input name sent to backend
-        formSelector: '#my-form', // form selector
-    });
-</script>
+        let multipleUploader = new MultipleUploader('#multiple-uploader').init({
+            maxUpload: 20, // maximum number of uploaded images
+            maxSize: 2, // in size in mb
+            filesInpName: 'images', // input name sent to backend
+            formSelector: '#my-form', // form selector
+        });
+    </script>
 @endpush
