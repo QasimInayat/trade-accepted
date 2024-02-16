@@ -5,98 +5,109 @@ Search
 @push('styles')
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Hind:300,400&display=swap">
 <style>
-   * {
-   box-sizing: border-box;
-   &::before, &::after {
-   box-sizing: border-box;
-   }
-   }
+
    body {
    font-family: 'Hind', sans-serif;
    background: $bg;
    color: $gray;
    display: flex;
    }
-   .accordion {
-   .accordion-item {
-   border-bottom: 1px solid $lightgray;
-   button[aria-expanded='true'] {
-   border-bottom: 1px solid $blue;
-   }
-   }
-   button {
-   position: relative;
-   display: block;
-   text-align: left;
-   width: 100%;
-   color: $text;
-   font-size: 1.15rem;
-   border: none;
-   background: none;
-   outline: none;
-   &:hover, &:focus {
-   cursor: pointer;
-   color: $blue;
-   &::after {
-   cursor: pointer;
-   color: $blue;
-   border: 1px solid $blue;
-   }
-   }
-   .icon {
-   display: inline-block;
-   position: absolute;
-   top: 5px;
-   right: 7px;
-   width: 22px;
-   height: 20px;
-   border-radius: 22px;
-   &::before {
-   display: block;
-   position: absolute;
-   content: '';
-   background: currentColor;
-   }
-   &::after {
-   display: block;
-   position: absolute;
-   content: '';
-   background: currentColor;
-   }
-   }
-   }
-   button[aria-expanded='true'] {
-   color: $blue;
-   .icon {
-   &::after {
-   width: 0;
-   }
-   }
-   + .accordion-content {
-   opacity: 1;
-   max-height: 12em;
-   }
-   }
-   .accordion-content {
-   opacity: 0;
-   max-height: 0;
-   overflow: hidden;
-   transition: opacity 200ms linear, max-height 200ms linear;
-   will-change: opacity, max-height;
-   p {
-   font-size: 1rem;
-   font-weight: 300;
-   margin: 2em 0;
-   }
-   }
    .accordion-title{
    font-size: 15px;
-
    }
+   .accordion-item{
+    border: none;
+   }
+
    #size{
    font-size: 5px;
    }
-   }
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+.wrapper {
+  width: 400px;
+  border-radius: 10px;
+  padding: 5px 20px 20px;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.1);
+}
+.price-input {
+  width: 100%;
+  display: flex;
+  margin: 30px 0 35px;
+}
+.price-input .field {
+  display: flex;
+  width: 80%;
+  height: 40px;
+  align-items: center;
+}
+.field input {
+  width: 100%;
+  height: 100%;
+  font-size: 19px;
+  margin-left: 12px;
+  text-align: center;
+  border-radius : 3px;
+  border: 1px solid #999;
+  -moz-appearance: textfield;
+}
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+.price-input .separator {
+  width: 80px;
+  display: flex;
+  font-size: 19px;
+  align-items: center;
+  justify-content: center;
+}
+.slider {
+  height: 5px;
+  position: relative;
+  background: #ddd;
+  border-radius: 5px;
+}
+.slider .progress {
+  height: 100%;
+  left: 25%;
+  right: 25%;
+  position: absolute;
+  border-radius: 5px;
+  background: red;
+}
+.range-input {
+  position: relative;
+}
+.range-input input {
+  position: absolute;
+  width: 100%;
+  height: 5px;
+  top: -5px;
+  background: none;
+  pointer-events: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+input[type="range"]::-webkit-slider-thumb {
+  height: 17px;
+  width: 17px;
+  border-radius: 50%;
+  background: red;
+  pointer-events: auto;
+  -webkit-appearance: none;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.05);
+}
+input[type="range"]::-moz-range-thumb {
+  height: 17px;
+  width: 17px;
+  border: none;
+  border-radius: 50%;
+  background: red;
+  pointer-events: auto;
+  -moz-appearance: none;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.05);
+}
 </style>
 @endpush
 @section('content')
@@ -120,87 +131,91 @@ Search
                      </div>
                 </div>
                </div>
+               <div class="d-flex">
+                <div class="wrapper">
+                  <div class="price-input">
+                    <div class="field">
+                      <span>Min</span>
+                      <input type="number" name="min" class="input-min" value="2500">
+                    </div>
+                    <div class="separator"></div>
+                    <div class="field">
+                      <span>Max</span>
+                      <input type="number" name="max" class="input-max" value="7500">
+                    </div>
+                  </div>
+                  <div class="slider">
+                    <div class="progress"></div>
+                  </div>
+                  <div class="range-input">
+                    <input type="range" name="min" class="range-min" min="0" max="100000" value="25000" step="100">
+                    <input type="range" name="max"  class="range-max" min="0" max="100000" value="75000" step="100">
+                  </div>
+                </div>
+              </div>
                <div class="accordion ">
                   <form action="{{ route('search') }}" method="GET">
                     <div class="accordion-item">
-                        <button id="accordion-button-1" type="button" aria-expanded="true"><span class="accordion-title p-3 "><b>Search by Keyword</b></span><span class="icon" aria-hidden="true"><i class="fas fa-angle-right"></i></span></button>
-                        <div class="accordion-content p-3">
-                            <div class="input-group mb-3">
-                                  <div class="input-group mb-2">
+                        <h5 class="mt-1" id="accordion-button-1" aria-expanded="true"><span class="accordion-title p-1 "><b>Search by Keyword</b></span></h5>
+                        <div class="accordion-content p-2">
+                            <div class="input-group">
+                                  <div class="input-group ">
                                       <input autocomplete="off" name="title" value="{{ request('title') }}" placeholder="Search Vehcile" class="vehicel-title form-control" id=""  type="search">
-                                      <div class="input-group-prepend">
-                                          <button class="btn btn-primary" type="submit" style="background:red;"><i class="fa fa-search text-light p-1"></i></button>
-                                      </div>
                                   </div>
                            </div>
                         </div>
                      </div>
                      <div class="accordion-item">
-                        <button id="accordion-button-2" type="button" aria-expanded="false"><span class="accordion-title p-3"><b> Country Location</b></span><span class="icon" aria-hidden="true"><i class="fas fa-angle-right"></i></span></button>
-                        <div class="accordion-content p-3">
-                               <div class="input-group mb-3">
+                        <h5 class="mt-1" id="accordion-button-2" aria-expanded="true"><span class="accordion-title p-1"><b> Country Location</b></span></h5>
+                        <div class="accordion-content p-2">
+                               <div class="input-group">
                                 <select name="country_id" class="form-control custom-control" value="{{ request('country_id') }}" id="country" onchange="print_state('state',this.selectedIndex);">
                                 </select>
-                                  <div class="input-group-prepend">
-                                     <button class="input-group-text" style="background:red; color:white;">Go</button>
-                                  </div>
                                </div>
                         </div>
                      </div>
                      <div class="accordion-item">
-                        <button id="accordion-button-2" type="button" aria-expanded="false"><span class="accordion-title p-3"><b> City Location</b></span><span class="icon" aria-hidden="true"><i class="fas fa-angle-right"></i></span></button>
-                        <div class="accordion-content p-3">
-                               <div class="input-group mb-3">
+                        <h5 class="mt-1" id="accordion-button-2" aria-expanded="true"><span class="accordion-title p-1"><b> City Location</b></span></h5>
+                        <div class="accordion-content p-2">
+                               <div class="input-group">
                                   <input type="text" class="form-control" value="{{ request('city_id') }}" name="city_id" placeholder="Search City">
-                                  <div class="input-group-prepend">
-                                     <button class="input-group-text" style="background:red; color:white;">Go</button>
-                                  </div>
                                </div>
                         </div>
                      </div>
                      <div class="accordion-item">
-                        <button id="accordion-button-4" type="button" aria-expanded="false"><span class="accordion-title p-3"><b> Make Modal</b></span><span class="icon" aria-hidden="true"><i class="fas fa-angle-right"></i></span></button>
-                        <div class="accordion-content p-3">
-                               <div class="input-group mb-3">
+                        <h5 class="mt-1" id="accordion-button-4" aria-expanded="true"><span class="accordion-title p-1"><b> Make Modal</b></span></h5>
+                        <div class="accordion-content p-2">
+                               <div class="input-group">
                                   <input autocomplete="off" name="model_id" value="{{ request('model_id') }}" type="search" class="form-control" placeholder="Make Modal">
-                                  <div class="input-group-prepend">
-                                     <button class="btn btn-primary" type="submit" style="background:red; color:white;">Go</button>
-                                  </div>
                                </div>
                         </div>
                      </div>
                      <div class="accordion-item">
-                        <button id="accordion-button-5" type="button" aria-expanded="false"><span class="accordion-title p-3"><b> Trim</b></span><span class="icon" aria-hidden="true"><i class="fas fa-angle-right"></i></span></button>
-                        <div class="accordion-content p-3">
-                              <div class="input-group mb-3">
+                        <h5 class="mt-1" id="accordion-button-5" aria-expanded="true"><span class="accordion-title p-1"><b> Trim</b></span></h5>
+                        <div class="accordion-content p-2">
+                              <div class="input-group">
                                  <input autocomplete="off" name="trim" value="{{ request('trim') }}" type="search" type="text" class="form-control" placeholder="Trim">
-                                 <div class="input-group-prepend">
-                                    <button class=" btn btn-primary" type="submit" style="background:red; color:white;">Go</button>
-                                 </div>
                               </div>
                         </div>
                      </div>
                      <div class="accordion-item">
-                        <button id="accordion-button-5" type="button" aria-expanded="false"><span class="accordion-title p-3"><b> Year</b></span><span class="icon" aria-hidden="true"><i class="fas fa-angle-right"></i></span></button>
-                        <div class="accordion-content p-3">
-                              <div class="input-group mb-3">
+                        <h5 class="mt-1" id="accordion-button-5" aria-expanded="true"><span class="accordion-title p-1"><b> Year</b></span></h5>
+                        <div class="accordion-content p-2">
+                              <div class="input-group">
                                  <input type="number" class="form-control" name="from" placeholder="From">
                                  <input type="number" class="form-control" name="to"  placeholder="To">
-                                 <div class="input-group-prepend">
-                                    <button class="input-group-text" style="background:red; color:white;">Go</button>
-                                 </div>
                               </div>
                         </div>
                      </div>
                      <div class="accordion-item">
-                        <button id="accordion-button-5" type="button" aria-expanded="false"><span class="accordion-title p-3"><b>Odometer Mileage </b></span><span class="icon" aria-hidden="true"><i class="fas fa-angle-right"></i></span></button>
-                        <div class="accordion-content p-3">
-                              <div class="input-group mb-3">
+                        <h5 class="mt-1" id="accordion-button-5" aria-expanded="true"><span class="accordion-title p-1"><b>Odometer Mileage </b></span></h5>
+                        <div class="accordion-content p-2">
+                              <div class="input-group">
                                  <input type="text" class="form-control" value="{{ request('mileage') }}" name="mileage" placeholder="Mileage">
-                                 <div class="input-group-prepend">
-                                    <button class="input-group-text" style="background:red; color:white;">Go</button>
-                                 </div>
                               </div>
+                        </div>
+                         <div style="float: right;">
+                            <button class="input-group-text mt-2" type="submit" style="background:red; color:white;"><i class="fa fa-search p-1"></i></button>
                         </div>
                      </div>
                   </form>
@@ -421,5 +436,47 @@ Search
      var tooltip = document.getElementById("myTooltip");
      tooltip.innerHTML = "Copied: " + copyText.value;
    }
+   const rangeInput = document.querySelectorAll(".range-input input"),
+  priceInput = document.querySelectorAll(".price-input input"),
+  range = document.querySelector(".slider .progress");
+let priceGap = 1000;
+
+priceInput.forEach((input) => {
+  input.addEventListener("input", (e) => {
+    let minPrice = parseInt(priceInput[0].value),
+      maxPrice = parseInt(priceInput[1].value);
+
+    if (maxPrice - minPrice >= priceGap && maxPrice <= rangeInput[1].max) {
+      if (e.target.className === "input-min") {
+        rangeInput[0].value = minPrice;
+        range.style.left = (minPrice / rangeInput[0].max) * 100 + "%";
+      } else {
+        rangeInput[1].value = maxPrice;
+        range.style.right = 100 - (maxPrice / rangeInput[1].max) * 100 + "%";
+      }
+    }
+  });
+});
+
+rangeInput.forEach((input) => {
+  input.addEventListener("input", (e) => {
+    let minVal = parseInt(rangeInput[0].value),
+      maxVal = parseInt(rangeInput[1].value);
+
+    if (maxVal - minVal < priceGap) {
+      if (e.target.className === "range-min") {
+        rangeInput[0].value = maxVal - priceGap;
+      } else {
+        rangeInput[1].value = minVal + priceGap;
+      }
+    } else {
+      priceInput[0].value = minVal;
+      priceInput[1].value = maxVal;
+      range.style.left = (minVal / rangeInput[0].max) * 100 + "%";
+      range.style.right = 100 - (maxVal / rangeInput[1].max) * 100 + "%";
+    }
+  });
+});
+
 </script>
 @endpush

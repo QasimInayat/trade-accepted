@@ -90,6 +90,9 @@ class FrontendController extends Controller
         if(isset($request->to) && isset($request->from)){
             $data = $data->whereBetween('year',[$request->from,$request->to]);
         }
+        if(isset($request->min) && isset($request->max)){
+            $data = $data->whereBetween('price',[$request->max,$request->min]);
+        }
         if(isset($request->trim)){
             $data = $data::where('trim','LIKE','%'.$request->trim.'%');
         }
