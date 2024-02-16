@@ -151,6 +151,14 @@
                                         <p class="head mb-1">Year</p>
                                         <p class="title text-primary">{{ $vehicle->year }}</p>
                                     </div>
+                                    <div class="col-lg-3 col-md-4 col-sm-6 mb-3 col-6">
+                                        <p class="head mb-1">Address</p>
+                                        <p class="title text-primary">{{ $vehicle->address }}</p>
+                                    </div>
+                                    <div class="col-lg-3 col-md-4 col-sm-6 mb-3 col-6">
+                                        <p class="head mb-1">Fuel</p>
+                                        <p class="title text-primary">{{ $vehicle->fuel }}</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>

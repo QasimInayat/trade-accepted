@@ -11,7 +11,7 @@ class ExchangeController extends Controller
     public function exchange(Request $request){
         $data ['title'] = 'Exchange your cars';
         $data ['heading'] = 'Exchange your cars';
-        $data ['vehicles'] = Vehicle::where('status','1')->get();
+        $data ['vehicles'] = Vehicle::where(['status'=>'1','user_id' => auth()->user()->id])->get();
         $data['makes'] = Make::get();
         if(isset($request->vehicle_id)){
             $vehicle = Vehicle::where('id',$request->vehicle_id)->first();
@@ -37,11 +37,12 @@ class ExchangeController extends Controller
             $makes = Make::get();
             $vehicle['id'] = $vehicle->id;
             $vehicle['title'] = $vehicle->title;
+            $exchange = $request->vehicle_id;
             $make = array_values($request->input('make', []));
             $model = array_values($request->input('model', []));
             $year = array_values($request->input('year', []));
             $transmission = array_values($request->input('transmission', []));
-            return view('pages.exchange-results',compact('make','model','year','transmission', 'query','title','heading','makes','vehicle'));
+            return view('pages.exchange-results',compact('make','model','year','transmission', 'query','exchange','title','heading','makes','vehicle'));
 
         }
         return view('pages.exchange',$data);

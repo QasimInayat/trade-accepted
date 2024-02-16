@@ -38,7 +38,7 @@
                             <td>{{ isset($item->user) ? $item->user->first_name : '' }} {{ isset($item->user) ? $item->user->last_name : '-' }}</td>
                             <td>{{ $item->title }}</td>
                             <td><img style="border-radius:10px;" height="70px" width="100px" src="{{ asset('upload/vehicle/'.mainImage($item->id)) }}" alt=""></td>
-                            <td>${{ $item->price }}</td>
+                            <td>${{ number_format($item->price) }}</td>
                             <td>{{ $item->make->name }}</td>
                             <td>{{ $item->model_id }}</td>
                             <td>

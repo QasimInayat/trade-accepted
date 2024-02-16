@@ -185,7 +185,6 @@
                                                             <input type="text" value="{{ $transmission[0] }}"
                                                                 name="transmission[]" class="form-control mt-2" required>
                                                         </div>
-
                                                     </div>
                                                 </div>
                                             </div>
@@ -236,6 +235,7 @@
                                                             <input type="text" value="{{ $transmission[1] }}"
                                                                 name="transmission[]" class="form-control mt-2" required>
                                                         </div>
+
                                                     </div>
                                                 </div>
                                             </div>
@@ -286,6 +286,7 @@
                                                             <input type="text" value="{{ $transmission[2] }}"
                                                                 name="transmission[]" class="form-control mt-2" required>
                                                         </div>
+
                                                     </div>
                                                 </div>
                                             </div>
@@ -401,6 +402,7 @@
                                                     <span style="font-size: 14px">
                                                         <small class="text-primary">Transmission</small><br>
                                                         {{ $vehicle->transmission }}
+                                                        {{ $vehicle->id }}
                                                     </span>
                                                 </div>
                                                 <br>
@@ -436,15 +438,18 @@
                                             <form action="{{ route('thread.store') }}" method="POST">
                                                 @csrf
                                                 <input type="hidden" name="vehicle_id" value="{{ $vehicle->id }}">
+                                                <input type="hidden" name="is_vehicle_id" value="{{ $exchange }}">
                                                 <input type="hidden" name="to_id" value="{{ $vehicle->user_id }}">
-                                                <button type="post" class="btn btn-primary px-4">Contact</button>
-                                            </form>
+                                                <button type="post"
+                                                    style="font-size:10px;margin-left:45px;margin-top:10px"
+                                                    class="btn btn-primary"> <i class=""></i> Contact.</button>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         @empty
-                            <h4 style="margin-top:10px"><b>DATA NOT ADDED</b></h4>
+                            <h4 style="margin-top:10px"><b>No record found.</b></h4>
                         @endforelse
                     </div>
                 </div>
@@ -586,4 +591,5 @@
             tooltip.innerHTML = "Copied: " + copyText.value;
         }
     </script>
+
 @endpush
