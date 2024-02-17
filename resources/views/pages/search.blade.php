@@ -24,11 +24,12 @@ Search
    }
 
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
-.wrapper {
-  width: 400px;
+.wrapper1 {
+  width: 280px;
   border-radius: 10px;
   padding: 5px 20px 20px;
   box-shadow: 0 12px 35px rgba(0, 0, 0, 0.1);
+  
 }
 .price-input {
   width: 100%;
@@ -132,10 +133,10 @@ input[type="range"]::-moz-range-thumb {
                 </div>
                </div>
 
-               <div class="accordion ">
+               <div class="accordion wrapper1">
                   <form action="{{ route('search') }}" method="GET">
                     <div class="d-flex">
-                        <div class="wrapper">
+                        <div class="">
                           <div class="price-input">
                             <div class="field">
                               <span>Min</span>
@@ -156,7 +157,7 @@ input[type="range"]::-moz-range-thumb {
                           </div>
                         </div>
                       </div>
-                    <div class="accordion-item">
+                    <div class="accordion-item mt-4">
                         <h5 class="mt-1" id="accordion-button-1" aria-expanded="true"><span class="accordion-title p-1 "><b>Search by Keyword</b></span></h5>
                         <div class="accordion-content p-2">
                             <div class="input-group">
@@ -184,10 +185,21 @@ input[type="range"]::-moz-range-thumb {
                         </div>
                      </div>
                      <div class="accordion-item">
-                        <h5 class="mt-1" id="accordion-button-4" aria-expanded="true"><span class="accordion-title p-1"><b> Make Modal</b></span></h5>
+                        <h5 class="mt-1" id="accordion-button-4" aria-expanded="true"><span class="accordion-title p-1"><b> Modal</b></span></h5>
                         <div class="accordion-content p-2">
                                <div class="input-group">
-                                  <input autocomplete="off" name="model_id" value="{{ request('model_id') }}" type="search" class="form-control" placeholder="Make Modal">
+                                  <input autocomplete="off" name="model_id" value="{{ request('model_id') }}" type="search" class="form-control" placeholder="Modal">
+                               </div>
+                        </div>
+                     </div>
+                     <div class="accordion-item">
+                        <h5 class="mt-1" id="accordion-button-4" aria-expanded="true"><span class="accordion-title p-1"><b>Make</b></span></h5>
+                        <div class="accordion-content p-2">
+                               <div class="input-group">
+                                <select name="make_id" class="form-control custom-control" value="" >
+                                <option value="">Please Select</option>
+                                <option value=""></option>
+                            </select>
                                </div>
                         </div>
                      </div>
@@ -196,6 +208,38 @@ input[type="range"]::-moz-range-thumb {
                         <div class="accordion-content p-2">
                               <div class="input-group">
                                  <input autocomplete="off" name="trim" value="{{ request('trim') }}" type="search" type="text" class="form-control" placeholder="Trim">
+                              </div>
+                        </div>
+                     </div>
+                     <div class="accordion-item">
+                        <h5 class="mt-1" id="accordion-button-5" aria-expanded="true"><span class="accordion-title p-1"><b> Transmission</b></span></h5>
+                        <div class="accordion-content p-2">
+                              <div class="input-group">
+                                 <input autocomplete="off" name="transmission" value="{{ request('transmission') }}" type="search" type="text" class="form-control" placeholder="Transmission">
+                              </div>
+                        </div>
+                     </div>
+                     <div class="accordion-item">
+                        <h5 class="mt-1" id="accordion-button-5" aria-expanded="true"><span class="accordion-title p-1"><b> Fuel</b></span></h5>
+                        <div class="accordion-content p-2">
+                              <div class="input-group">
+                                 <input autocomplete="off" name="fuel" value="{{ request('fuel') }}" type="search" type="text" class="form-control" placeholder="Fuel">
+                              </div>
+                        </div>
+                     </div>
+                     <div class="accordion-item">
+                        <h5 class="mt-1" id="accordion-button-5" aria-expanded="true"><span class="accordion-title p-1"><b> Exterior Color</b></span></h5>
+                        <div class="accordion-content p-2">
+                              <div class="input-group">
+                                 <input autocomplete="off" name="exterior_color" value="{{ request('exterior_color') }}" type="search" type="text" class="form-control" placeholder="exterior_color">
+                              </div>
+                        </div>
+                     </div>
+                     <div class="accordion-item">
+                        <h5 class="mt-1" id="accordion-button-5" aria-expanded="true"><span class="accordion-title p-1"><b> Interior Color</b></span></h5>
+                        <div class="accordion-content p-2">
+                              <div class="input-group">
+                                 <input autocomplete="off" name="interior_color" value="{{ request('interior_color') }}" type="search" type="text" class="form-control" placeholder="interior_color">
                               </div>
                         </div>
                      </div>

@@ -104,6 +104,9 @@ public function message(Request $request, $thread_id, $to_id, $from_id, $msg = '
         if(isset($request->model_id)){
             $data = $data->where('model_id','LIKE','%'.$request->model_id.'%');
         }
+        if(isset($request->make_id)){
+            $data = $data::where('make_id','LIKE','%'.$request->make_id.'%');
+        }
         if(isset($request->to) && isset($request->from)){
             $data = $data->whereBetween('year',[$request->from,$request->to]);
         }
@@ -113,6 +116,18 @@ public function message(Request $request, $thread_id, $to_id, $from_id, $msg = '
         }
         if(isset($request->trim)){
             $data = $data->where('trim','LIKE','%'.$request->trim.'%');
+        }
+        if(isset($request->transmission)){
+            $data = $data::where('transmission','LIKE','%'.$request->transmission.'%');
+        }
+        if(isset($request->fuel)){
+            $data = $data::where('fuel','LIKE','%'.$request->fuel.'%');
+        }
+        if(isset($request->interior_color)){
+            $data = $data::where('interior_color','LIKE','%'.$request->interior_color.'%');
+        }
+        if(isset($request->exterior_color)){
+            $data = $data::where('exterior_color','LIKE','%'.$request->exterior_color.'%');
         }
         if(isset($request->country_id)){
             $data = $data->where('country_id','LIKE','%'.$request->country_id.'%');
