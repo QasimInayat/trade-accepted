@@ -372,8 +372,8 @@
                                                 <h4 class="text-primary" style="font-size:18px;margin-top:5px">
                                                     {{ $vehicle->title }}</h4>
                                             </a>
-                                            <span style="font-size: 13px;">{{ $vehicle->country_id }} .
-                                                {{ $vehicle->city_id }}</span><br> <br>
+                                            <span style="font-size: 13px;">{{ $vehicle->city_id }} .
+                                                {{ $vehicle->country_id }}</span><br> <br>
                                             {{-- <br> --}}
                                             <div class="row">
                                                 <div class="col-md-3 col-6">

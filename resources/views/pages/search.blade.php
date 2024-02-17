@@ -212,16 +212,6 @@
                                 </div>
                                 <div class="accordion-item">
                                     <h5 class="mt-1" id="accordion-button-4" aria-expanded="true"><span
-                                            class="accordion-title p-1"><b> Modal</b></span></h5>
-                                    <div class="accordion-content p-2">
-                                        <div class="input-group">
-                                            <input autocomplete="off" name="model_id" value="{{ request('model_id') }}"
-                                                type="search" class="form-control" placeholder="Modal">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="accordion-item">
-                                    <h5 class="mt-1" id="accordion-button-4" aria-expanded="true"><span
                                             class="accordion-title p-1"><b>Make</b></span></h5>
                                     <div class="accordion-content p-2">
                                         <div class="input-group">
@@ -236,6 +226,17 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="accordion-item">
+                                    <h5 class="mt-1" id="accordion-button-4" aria-expanded="true"><span
+                                            class="accordion-title p-1"><b> Modal</b></span></h5>
+                                    <div class="accordion-content p-2">
+                                        <div class="input-group">
+                                            <input autocomplete="off" name="model_id" value="{{ request('model_id') }}"
+                                                type="search" class="form-control" placeholder="Modal">
+                                        </div>
+                                    </div>
+                                </div>
+                                
                                 <div class="accordion-item">
                                     <h5 class="mt-1" id="accordion-button-5" aria-expanded="true"><span
                                             class="accordion-title p-1"><b> Trim</b></span></h5>
@@ -295,8 +296,8 @@
                                     <div class="accordion-content p-2">
                                         <div class="input-group">
                                             <input type="number" class="form-control" name="from"
-                                                placeholder="From">
-                                            <input type="number" class="form-control" name="to" placeholder="To">
+                                                placeholder="From" value="{{ request('from') }}">
+                                            <input type="number" class="form-control" name="to" value="{{ request('to') }}" placeholder="To">
                                         </div>
                                     </div>
                                 </div>
@@ -334,8 +335,8 @@
                                                 <h4 class="text-primary" style="font-size:18px;margin-top:5px">
                                                     {{ $vehicle->title }}</h4>
                                             </a>
-                                            <span style="font-size: 13px;">{{ $vehicle->country_id }} .
-                                                {{ $vehicle->city_id }}</span><br> <br>
+                                            <span style="font-size: 13px;">{{ $vehicle->city_id }} .
+                                                {{ $vehicle->country_id }}</span><br> <br>
                                             {{-- <br> --}}
                                             <div class="row">
                                                 <div class="col-md-3 col-6">

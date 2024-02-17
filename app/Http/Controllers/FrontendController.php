@@ -112,7 +112,7 @@ public function message(Request $request, $thread_id, $to_id, $from_id, $msg = '
             $data = $data->whereBetween('year',[$request->from,$request->to]);
         }
         if (isset($request->min) && isset($request->max)) {
-            $data = $data->whereBetween('price', [$request->min, $request->max]);
+            $data = $data->whereBetween('price', [intVal($request->min), intVal($request->max)]);
         }
         if(isset($request->trim)){
             $data = $data->where('trim','LIKE','%'.$request->trim.'%');
