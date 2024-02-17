@@ -80,7 +80,7 @@
 
         .slider .progress {
             height: 100%;
-            left: 25%;
+            left: 0%;
             right: 25%;
             position: absolute;
             border-radius: 5px;
@@ -155,23 +155,23 @@
                                             <div class="field">
                                                 <span>Min</span>
                                                 <input type="number" name="min" class="input-min"
-                                                    value="{{ request('min') ?? 20000 }}">
+                                                    value="{{ request('min') ?? 100 }}">
                                             </div>
                                             <div class="separator"></div>
                                             <div class="field">
                                                 <span>Max</span>
                                                 <input type="number" name="max" class="input-max"
-                                                    value="{{ request('max') ?? 75000 }}">
+                                                    value="{{ request('max') ?? 750000 }}">
                                             </div>
                                         </div>
                                         <div class="slider">
                                             <div class="progress"></div>
                                         </div>
                                         <div class="range-input">
-                                            <input type="range" name="min" class="range-min" min=""
-                                                max="100000" value="{{ request('min') ?? 20000 }}" step="100">
-                                            <input type="range" name="max" class="range-max" min=""
-                                                max="100000" value="{{ request('max') ?? 75000 }}" step="100">
+                                            <input type="range" name="min" class="range-min" min="100"
+                                                max="1000000" value="{{ request('min') ?? 100 }}" step="100">
+                                            <input type="range" name="max" class="range-max" min="100"
+                                                max="1000000" value="{{ request('max') ?? 750000 }}" step="100">
                                         </div>
                                     </div>
                                 </div>
