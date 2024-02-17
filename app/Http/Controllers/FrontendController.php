@@ -2,16 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\Vehicle;
-use App\Models\Gallery;
-use App\Models\User;
-use App\Models\Notification;
-use App\Models\Thread;
-use App\Models\Message;
-use App\Models\Transaction;
-use App\Models\Review;
 use App\Models\Favourite;
+use App\Models\Gallery;
+use App\Models\Make;
+use App\Models\Message;
+use App\Models\Notification;
+use App\Models\Review;
+use App\Models\Thread;
+use App\Models\Transaction;
+use App\Models\User;
+use App\Models\Vehicle;
+use Illuminate\Http\Request;
 
 class FrontendController extends Controller
 {
@@ -105,36 +106,32 @@ public function message(Request $request, $thread_id, $to_id, $from_id, $msg = '
             $data = $data->where('model_id','LIKE','%'.$request->model_id.'%');
         }
         if(isset($request->make_id)){
-            $data = $data::where('make_id','LIKE','%'.$request->make_id.'%');
+            $data = $data->where('make_id','LIKE','%'.$request->make_id.'%');
         }
         if(isset($request->to) && isset($request->from)){
             $data = $data->whereBetween('year',[$request->from,$request->to]);
         }
         if (isset($request->min) && isset($request->max)) {
             $data = $data->whereBetween('price', [$request->min, $request->max]);
-            // dd($request->min);
         }
         if(isset($request->trim)){
             $data = $data->where('trim','LIKE','%'.$request->trim.'%');
         }
         if(isset($request->transmission)){
-            $data = $data::where('transmission','LIKE','%'.$request->transmission.'%');
+            $data = $data->where('transmission','LIKE','%'.$request->transmission.'%');
         }
         if(isset($request->fuel)){
-            $data = $data::where('fuel','LIKE','%'.$request->fuel.'%');
+            $data = $data->where('fuel','LIKE','%'.$request->fuel.'%');
         }
         if(isset($request->interior_color)){
-            $data = $data::where('interior_color','LIKE','%'.$request->interior_color.'%');
+            $data = $data->where('interior_color','LIKE','%'.$request->interior_color.'%');
         }
         if(isset($request->exterior_color)){
-            $data = $data::where('exterior_color','LIKE','%'.$request->exterior_color.'%');
+            $data = $data->where('exterior_color','LIKE','%'.$request->exterior_color.'%');
         }
         if(isset($request->country_id)){
             $data = $data->where('country_id','LIKE','%'.$request->country_id.'%');
         }
-        // if(isset($request->country_id)){
-        //     $data = $data->where('country_id','LIKE','%'.$request->country_id.'%');
-        // }
         if(isset($request->mileage)){
             $data = $data->where('mileage','LIKE','%'.$request->mileage.'%');
         }
@@ -143,7 +140,8 @@ public function message(Request $request, $thread_id, $to_id, $from_id, $msg = '
         }
 
         $data = $data->where('status', 1)->get();
-        return view('pages.search',compact('data'));
+        $makes = Make::get();
+        return view('pages.search',compact('data','makes'));
     }
     public function messenger(){
         $data ['title'] = 'Messenger';

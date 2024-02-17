@@ -25,7 +25,7 @@ Search
 
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
 .wrapper1 {
-  width: 280px;
+  width: 100%;
   border-radius: 10px;
   padding: 5px 20px 20px;
   box-shadow: 0 12px 35px rgba(0, 0, 0, 0.1);
@@ -198,7 +198,9 @@ input[type="range"]::-moz-range-thumb {
                                <div class="input-group">
                                 <select name="make_id" class="form-control custom-control" value="" >
                                 <option value="">Please Select</option>
-                                <option value=""></option>
+                                @foreach($makes as $make)
+                                    <option value="{{ $make->id }}">{{ $make->name }}</option>
+                                @endforeach
                             </select>
                                </div>
                         </div>
