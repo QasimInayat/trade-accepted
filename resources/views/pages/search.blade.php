@@ -311,7 +311,7 @@
                                         </div>
                                     </div>
                                         <button class="btn btn-primary w-100 input-group-text mt-2" type="submit"
-                                            style="background:red; color:white;">Search<i style="font-size: 13px;margin-left:10px" class="fa fa-search"></i></button>
+                                            style="background:red; color:white;">Search</button>
                                 </div>
                             </form>
                         </div>
