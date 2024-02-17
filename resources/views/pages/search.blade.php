@@ -140,20 +140,20 @@ input[type="range"]::-moz-range-thumb {
                           <div class="price-input">
                             <div class="field">
                               <span>Min</span>
-                              <input type="number" name="mmin" class="input-min" value="{{ request('min') ?? 25000 }}">
+                              <input type="number" name="min" class="input-min" value="{{ request('min') ?? 0 }}">
                             </div>
                             <div class="separator"></div>
                             <div class="field">
                               <span>Max</span>
-                              <input type="number" name="mmax" class="input-max" value="{{ request('max') ?? 75000 }}">
+                              <input type="number" name="max" class="input-max" value="{{ request('max') ?? 100000 }}">
                             </div>
                           </div>
                           <div class="slider">
                             <div class="progress"></div>
                           </div>
                           <div class="range-input">
-                            <input type="range" name="min" class="range-min" min="0" max="100000" value="{{ request('min') ?? 25000 }}" step="100">
-                            <input type="range" name="max"  class="range-max" min="0" max="100000" value="{{ request('max') ?? 75000 }}" step="100">
+                            <input type="range" name="min" class="range-min" min="0" max="100000" value="{{ request('min') ?? 0 }}" step="100">
+                            <input type="range" name="max"  class="range-max" min="0" max="100000" value="{{ request('max') ?? 100000 }}" step="100">
                           </div>
                         </div>
                       </div>
@@ -233,7 +233,7 @@ input[type="range"]::-moz-range-thumb {
                         <h5 class="mt-1" id="accordion-button-5" aria-expanded="true"><span class="accordion-title p-1"><b> Exterior Color</b></span></h5>
                         <div class="accordion-content p-2">
                               <div class="input-group">
-                                 <input autocomplete="off" name="exterior_color" value="{{ request('exterior_color') }}" type="search" type="text" class="form-control" placeholder="exterior_color">
+                                 <input autocomplete="off" name="exterior_color" value="{{ request('exterior_color') }}" type="search" type="text" class="form-control" placeholder="Exterior color">
                               </div>
                         </div>
                      </div>
@@ -241,7 +241,7 @@ input[type="range"]::-moz-range-thumb {
                         <h5 class="mt-1" id="accordion-button-5" aria-expanded="true"><span class="accordion-title p-1"><b> Interior Color</b></span></h5>
                         <div class="accordion-content p-2">
                               <div class="input-group">
-                                 <input autocomplete="off" name="interior_color" value="{{ request('interior_color') }}" type="search" type="text" class="form-control" placeholder="interior_color">
+                                 <input autocomplete="off" name="interior_color" value="{{ request('interior_color') }}" type="search" type="text" class="form-control" placeholder="Interior color">
                               </div>
                         </div>
                      </div>
@@ -255,7 +255,7 @@ input[type="range"]::-moz-range-thumb {
                         </div>
                      </div>
                      <div class="accordion-item">
-                        <h5 class="mt-1" id="accordion-button-5" aria-expanded="true"><span class="accordion-title p-1"><b>Odometer Mileage </b></span></h5>
+                        <h5 class="mt-1" id="accordion-button-5" aria-expanded="true"><span class="accordion-title p-1"><b>Mileage </b></span></h5>
                         <div class="accordion-content p-2">
                               <div class="input-group">
                                  <input type="text" class="form-control" value="{{ request('mileage') }}" name="mileage" placeholder="Mileage">
