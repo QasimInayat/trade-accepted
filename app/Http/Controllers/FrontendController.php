@@ -99,28 +99,32 @@ public function message(Request $request, $thread_id, $to_id, $from_id, $msg = '
         $data = new Vehicle ();
 
         if(isset($request->title)){
-            $data = $data::where('title','LIKE','%'.$request->title.'%');
+            $data = $data->where('title','LIKE','%'.$request->title.'%');
         }
         if(isset($request->model_id)){
-            $data = $data::where('model_id','LIKE','%'.$request->model_id.'%');
+            $data = $data->where('model_id','LIKE','%'.$request->model_id.'%');
         }
         if(isset($request->to) && isset($request->from)){
             $data = $data->whereBetween('year',[$request->from,$request->to]);
         }
         if (isset($request->min) && isset($request->max)) {
             $data = $data->whereBetween('price', [$request->min, $request->max]);
+            // dd($request->min);
         }
         if(isset($request->trim)){
-            $data = $data::where('trim','LIKE','%'.$request->trim.'%');
+            $data = $data->where('trim','LIKE','%'.$request->trim.'%');
         }
         if(isset($request->country_id)){
-            $data = $data::where('country_id','LIKE','%'.$request->country_id.'%');
+            $data = $data->where('country_id','LIKE','%'.$request->country_id.'%');
         }
+        // if(isset($request->country_id)){
+        //     $data = $data->where('country_id','LIKE','%'.$request->country_id.'%');
+        // }
         if(isset($request->mileage)){
-            $data = $data::where('mileage','LIKE','%'.$request->mileage.'%');
+            $data = $data->where('mileage','LIKE','%'.$request->mileage.'%');
         }
         if(isset($request->city_id)){
-            $data = $data::where('city_id','LIKE','%'.$request->city_id.'%');
+            $data = $data->where('city_id','LIKE','%'.$request->city_id.'%');
         }
 
         $data = $data->where('status', 1)->get();

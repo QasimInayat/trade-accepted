@@ -139,20 +139,20 @@ input[type="range"]::-moz-range-thumb {
                           <div class="price-input">
                             <div class="field">
                               <span>Min</span>
-                              <input type="number" name="min" class="input-min" value="{{ request('min') }}">
+                              <input type="number" name="mmin" class="input-min" value="{{ request('min') ?? 25000 }}">
                             </div>
                             <div class="separator"></div>
                             <div class="field">
                               <span>Max</span>
-                              <input type="number" name="max" class="input-max" value="{{ request('max') }}">
+                              <input type="number" name="mmax" class="input-max" value="{{ request('max') ?? 75000 }}">
                             </div>
                           </div>
                           <div class="slider">
                             <div class="progress"></div>
                           </div>
                           <div class="range-input">
-                            <input type="range" name="min" class="range-min" min="0" max="100000" value="{{ request('min') }}" step="100">
-                            <input type="range" name="max"  class="range-max" min="0" max="100000" value="{{ request('max') }}" step="100">
+                            <input type="range" name="min" class="range-min" min="0" max="100000" value="{{ request('min') ?? 25000 }}" step="100">
+                            <input type="range" name="max"  class="range-max" min="0" max="100000" value="{{ request('max') ?? 75000 }}" step="100">
                           </div>
                         </div>
                       </div>
@@ -299,7 +299,7 @@ input[type="range"]::-moz-range-thumb {
                   </div>
                </div>
                @empty
-               <h4 style="margin-top:10px"><b>DATA NOT ADDED</b></h4>
+               <h4 style="margin-top:10px"><b>No record found.</b></h4>
                @endforelse
             </div>
          </div>
