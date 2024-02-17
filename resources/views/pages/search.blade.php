@@ -29,7 +29,7 @@ Search
   border-radius: 10px;
   padding: 5px 20px 20px;
   box-shadow: 0 12px 35px rgba(0, 0, 0, 0.1);
-
+  
 }
 .price-input {
   width: 100%;
@@ -133,7 +133,7 @@ input[type="range"]::-moz-range-thumb {
                 </div>
                </div>
 
-               <div class="accordion wrapper1 pb-5">
+               <div class="accordion wrapper1">
                   <form action="{{ route('search') }}" method="GET">
                     <div class="d-flex">
                         <div class="">
@@ -199,8 +199,8 @@ input[type="range"]::-moz-range-thumb {
                                 <select name="make_id" class="form-control custom-control" value="" >
                                 <option value="">Please Select</option>
                                 @foreach($makes as $make)
-                                    <option value="{{ $make->id }}">{{ $make->name }}</option>
-                                @endforeach
+<option value="{{ $make->id }}" @if( request('make_id')  == $make->id) selected @endif>{{ $make->name }}</option>
+@endforeach
                             </select>
                                </div>
                         </div>
