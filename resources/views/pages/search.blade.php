@@ -140,12 +140,12 @@ input[type="range"]::-moz-range-thumb {
                           <div class="price-input">
                             <div class="field">
                               <span>Min</span>
-                              <input type="number" name="min" class="input-min" value="{{ request('min') ?? 0 }}">
+                              <input type="number" name="min" class="input-min" value="{{ request('min') ?? 20000 }}">
                             </div>
                             <div class="separator"></div>
                             <div class="field">
                               <span>Max</span>
-                              <input type="number" name="max" class="input-max" value="{{ request('max') ?? 100000 }}">
+                              <input type="number" name="max" class="input-max" value="{{ request('max') ?? 75000 }}">
                             </div>
                           </div>
                           <div class="slider">
