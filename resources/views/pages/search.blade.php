@@ -310,10 +310,8 @@
                                                 name="mileage" placeholder="Mileage">
                                         </div>
                                     </div>
-                                    <div style="float: right;">
-                                        <button class="input-group-text mt-2" type="submit"
-                                            style="background:red; color:white;"><i class="fa fa-search p-1"></i></button>
-                                    </div>
+                                        <button class="btn btn-primary w-100 input-group-text mt-2" type="submit"
+                                            style="background:red; color:white;">Search<i style="font-size: 13px;margin-left:10px" class="fa fa-search"></i></button>
                                 </div>
                             </form>
                         </div>
